@@ -1,0 +1,169 @@
+/* REVI Bookkeeping site styles
+   Source of truth: Figma, REVI Design System (Website section).
+   Every class starts with "revi-" so nothing here touches existing Squarespace pages.
+   Lato and Lora are loaded by the Squarespace site fonts. */
+
+:root {
+  /* Color */
+  --revi-surface-page: #f6f6f6;
+  --revi-surface-raised: #ffffff;
+  --revi-surface-sunken: #e9e9e9;
+  --revi-surface-brand-tint: #f3e8f7;
+  --revi-surface-on-brand-tile: #d6d6d6;
+  --revi-text-primary: #3d3c3d;
+  --revi-text-accent: #651482;
+  --revi-text-on-brand: #ffffff;
+  --revi-text-on-brand-muted: #d6d6d6;
+  --revi-text-numeral: #e1c6eb;
+  --revi-border-subtle: #e9e9e9;
+  --revi-border-default: #e2e2e2;
+  --revi-border-brand: #871aae;
+  --revi-border-brand-subtle: #c38cd7;
+  --revi-border-focus: #a553c2;
+  --revi-brand: #871aae;
+  --revi-brand-hover: #651482;
+  --revi-brand-pressed: #440d57;
+  --revi-icon-brand: #871aae;
+
+  /* Space */
+  --revi-space-4: 4px;
+  --revi-space-8: 8px;
+  --revi-space-10: 10px;
+  --revi-space-12: 12px;
+  --revi-space-16: 16px;
+  --revi-space-20: 20px;
+  --revi-space-24: 24px;
+  --revi-space-32: 32px;
+  --revi-space-40: 40px;
+  --revi-space-48: 48px;
+  --revi-space-56: 56px;
+  --revi-space-64: 64px;
+  --revi-space-80: 80px;
+  --revi-space-96: 96px;
+
+  /* Radius */
+  --revi-radius-sm: 6px;
+  --revi-radius-md: 8px;
+  --revi-radius-lg: 12px;
+  --revi-radius-pill: 999px;
+
+  /* Type */
+  --revi-serif: "Lora", Georgia, serif;
+  --revi-sans: "Lato", "Helvetica Neue", Arial, sans-serif;
+  --revi-content: 912px;
+}
+
+/* ---------- Layout ---------- */
+.revi-section { padding: var(--revi-space-80) var(--revi-space-24) var(--revi-space-96); background: var(--revi-surface-page); }
+.revi-section--sunken { background: var(--revi-surface-sunken); }
+.revi-section--tint { background: var(--revi-surface-brand-tint); }
+.revi-section--raised { background: var(--revi-surface-raised); }
+.revi-container { max-width: var(--revi-content); margin: 0 auto; display: flex; flex-direction: column; gap: var(--revi-space-16); }
+.revi-row { display: flex; gap: var(--revi-space-56); align-items: flex-start; }
+.revi-row--center { align-items: center; }
+.revi-col { display: flex; flex-direction: column; gap: var(--revi-space-16); flex: 1 1 0; min-width: 0; }
+.revi-stack-0 { display: flex; flex-direction: column; gap: 0; }
+.revi-stack-8 { display: flex; flex-direction: column; gap: var(--revi-space-8); }
+.revi-stack-16 { display: flex; flex-direction: column; gap: var(--revi-space-16); }
+@media (max-width: 767px) {
+  .revi-section { padding: var(--revi-space-56) var(--revi-space-20) var(--revi-space-64); }
+  .revi-row { flex-direction: column; gap: var(--revi-space-32); }
+}
+
+/* ---------- Type (web/* text styles) ---------- */
+.revi-display, .revi-section-title, .revi-price, .revi-card-title, .revi-small-title, .revi-footer-title { font-family: var(--revi-serif); font-weight: 600; color: var(--revi-text-primary); margin: 0; }
+.revi-display { font-size: 48px; line-height: 1.12; letter-spacing: -0.5px; }
+.revi-section-title { font-size: 44px; line-height: 1.12; letter-spacing: -0.5px; }
+.revi-display em, .revi-section-title em { font-style: italic; font-weight: 400; color: var(--revi-text-accent); }
+.revi-price { font-size: 34px; line-height: 1.15; letter-spacing: -0.5px; }
+.revi-card-title { font-size: 22px; line-height: 1.3; }
+.revi-small-title { font-size: 17px; line-height: 1.3; }
+.revi-footer-title { font-size: 15px; line-height: 1.3; font-weight: 700; }
+.revi-lead, .revi-body, .revi-body-sm, .revi-caption, .revi-label, .revi-label-caps, .revi-lead-strong, .revi-body-sm-strong { font-family: var(--revi-sans); color: var(--revi-text-primary); margin: 0; }
+.revi-lead { font-size: 15px; line-height: 1.5; }
+.revi-lead-strong { font-size: 15px; line-height: 1.5; font-weight: 700; }
+.revi-body { font-size: 14px; line-height: 1.5; }
+.revi-body-sm { font-size: 13px; line-height: 1.5; }
+.revi-body-sm-strong { font-size: 13px; line-height: 1.5; font-weight: 700; }
+.revi-label { font-size: 11px; line-height: 1.4; font-weight: 700; }
+.revi-label-caps { font-size: 11px; line-height: 1.4; font-weight: 700; text-transform: uppercase; }
+.revi-caption { font-size: 11px; line-height: 1.5; }
+.revi-numeral { font-family: var(--revi-sans); font-weight: 300; font-size: 64px; line-height: 1; color: var(--revi-text-numeral); margin: 0; }
+.revi-accent { color: var(--revi-text-accent); }
+.revi-link { color: var(--revi-text-accent); text-decoration: underline; }
+@media (max-width: 767px) {
+  .revi-display { font-size: 36px; }
+  .revi-section-title { font-size: 32px; }
+}
+
+/* ---------- Eyebrow ---------- */
+.revi-eyebrow { display: inline-flex; align-items: center; gap: var(--revi-space-12); font-family: var(--revi-sans); font-weight: 900; font-size: 12px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--revi-text-accent); }
+.revi-eyebrow::before { content: ""; width: 16px; height: 2px; background: var(--revi-brand); }
+
+/* ---------- Button (Lato SemiBold, per the design system) ---------- */
+.revi-button { display: inline-flex; align-items: center; justify-content: center; font-family: var(--revi-sans); font-weight: 600; font-size: 14px; line-height: 1; color: var(--revi-text-on-brand); background: var(--revi-brand); border: 0; border-radius: var(--revi-radius-md); padding: 12px 20px; text-decoration: none; cursor: pointer; }
+.revi-button:hover { background: var(--revi-brand-hover); }
+.revi-button:active { background: var(--revi-brand-pressed); }
+.revi-button:focus-visible { outline: 2px solid var(--revi-border-focus); outline-offset: 2px; }
+.revi-button--full { width: 100%; }
+
+/* ---------- Icon tile (Lucide icon inside) ---------- */
+.revi-icon-tile { flex: none; width: 28px; height: 28px; border-radius: var(--revi-radius-pill); background: var(--revi-surface-brand-tint); display: inline-flex; align-items: center; justify-content: center; color: var(--revi-icon-brand); }
+.revi-icon-tile svg { width: 16px; height: 16px; stroke: currentColor; }
+
+/* ---------- Checklist item + card ---------- */
+.revi-check { display: flex; gap: var(--revi-space-10); padding: var(--revi-space-10) 0; border-bottom: 1px solid var(--revi-border-subtle); font-family: var(--revi-sans); font-size: 13px; line-height: 1.5; color: var(--revi-text-primary); }
+.revi-check::before { content: "\2713"; font-weight: 700; color: var(--revi-text-accent); }
+.revi-checklist-card { background: var(--revi-surface-page); border: 1px solid var(--revi-border-brand); border-radius: var(--revi-radius-lg); padding: var(--revi-space-8) var(--revi-space-16); }
+
+/* ---------- Note callout ---------- */
+.revi-note { background: var(--revi-surface-brand-tint); border-radius: var(--revi-radius-md); padding: var(--revi-space-16) var(--revi-space-20); font-family: var(--revi-sans); font-size: 13px; line-height: 1.5; color: var(--revi-text-accent); }
+.revi-note strong { font-weight: 700; }
+
+/* ---------- Feature row ---------- */
+.revi-feature { display: flex; gap: var(--revi-space-12); padding: var(--revi-space-12) 0; border-bottom: 1px solid var(--revi-border-subtle); }
+.revi-feature__title { font-family: var(--revi-sans); font-weight: 700; font-size: 13px; line-height: 1.5; color: var(--revi-text-accent); margin: 0; }
+.revi-feature__body { font-family: var(--revi-sans); font-size: 13px; line-height: 1.5; color: var(--revi-text-primary); margin: var(--revi-space-4) 0 0; }
+
+/* ---------- Audience card ---------- */
+.revi-audience-card { background: var(--revi-surface-page); border: 1px solid var(--revi-border-brand); border-radius: var(--revi-radius-lg); padding: var(--revi-space-24); display: flex; flex-direction: column; gap: var(--revi-space-8); }
+
+/* ---------- Price card ---------- */
+.revi-price-card { border-radius: var(--revi-radius-lg); padding: var(--revi-space-24); display: flex; flex-direction: column; gap: var(--revi-space-10); background: var(--revi-surface-sunken); border: 1px solid var(--revi-border-subtle); }
+.revi-price-card--brand { background: var(--revi-surface-brand-tint); border-color: var(--revi-border-brand); }
+
+/* ---------- Process step ---------- */
+.revi-step { display: flex; gap: var(--revi-space-16); padding: var(--revi-space-12) 0; }
+.revi-step__num { flex: none; width: 32px; height: 32px; border-radius: var(--revi-radius-pill); display: inline-flex; align-items: center; justify-content: center; font-family: var(--revi-sans); font-weight: 700; font-size: 13px; background: var(--revi-surface-raised); border: 1px solid var(--revi-border-default); color: var(--revi-text-accent); }
+.revi-step--current .revi-step__num { background: var(--revi-brand); border-color: var(--revi-brand); color: var(--revi-text-on-brand); }
+.revi-step__title { display: flex; align-items: center; gap: var(--revi-space-8); font-family: var(--revi-sans); font-weight: 700; font-size: 13px; color: var(--revi-text-primary); margin: 0; }
+.revi-tag { font-family: var(--revi-sans); font-weight: 700; font-size: 11px; line-height: 1; padding: 4px 8px; border-radius: var(--revi-radius-pill); background: var(--revi-surface-brand-tint); color: var(--revi-text-accent); }
+
+/* ---------- Numbered item ---------- */
+.revi-numbered { display: flex; gap: var(--revi-space-12); padding: var(--revi-space-12) 0; border-bottom: 1px solid var(--revi-border-subtle); }
+.revi-numbered__num { flex: none; width: 24px; height: 24px; border-radius: var(--revi-radius-pill); background: var(--revi-surface-brand-tint); display: inline-flex; align-items: center; justify-content: center; font-family: var(--revi-sans); font-size: 11px; color: var(--revi-text-accent); }
+
+/* ---------- CTA card ---------- */
+.revi-cta-card { background: var(--revi-surface-raised); border: 1px solid var(--revi-border-subtle); border-radius: var(--revi-radius-lg); padding: var(--revi-space-24); display: flex; flex-direction: column; gap: var(--revi-space-12); flex: 0 0 320px; }
+@media (max-width: 767px) { .revi-cta-card { flex-basis: auto; } }
+
+/* ---------- Fit chip ---------- */
+.revi-chips { display: grid; grid-template-columns: 1fr 1fr; gap: var(--revi-space-8); }
+.revi-chip { display: flex; align-items: center; gap: var(--revi-space-8); padding: var(--revi-space-8) var(--revi-space-10); background: var(--revi-surface-brand-tint); border: 1px solid var(--revi-border-brand-subtle); border-radius: var(--revi-radius-md); font-family: var(--revi-sans); font-size: 11px; line-height: 1.5; color: var(--revi-text-accent); }
+.revi-chip::before { content: ""; flex: none; width: 4px; height: 4px; border-radius: 50%; background: var(--revi-brand); }
+
+/* ---------- Exclusion item ---------- */
+.revi-exclusion { display: flex; align-items: center; gap: var(--revi-space-12); padding: var(--revi-space-8) 0; border-bottom: 1px solid var(--revi-border-subtle); font-family: var(--revi-sans); font-size: 13px; color: var(--revi-text-primary); }
+
+/* ---------- Contact item ---------- */
+.revi-contact { display: flex; align-items: center; gap: var(--revi-space-12); }
+.revi-contact__detail { font-family: var(--revi-sans); font-weight: 700; font-size: 15px; line-height: 1.5; color: var(--revi-text-accent); text-decoration: none; }
+.revi-contact__note { font-family: var(--revi-sans); font-size: 11px; line-height: 1.5; color: var(--revi-text-primary); }
+
+/* ---------- FAQ item ---------- */
+.revi-faq { padding: var(--revi-space-16) 0; }
+.revi-faq__q { font-family: var(--revi-sans); font-weight: 700; font-size: 15px; line-height: 1.5; color: var(--revi-text-primary); margin: 0 0 var(--revi-space-8); }
+.revi-faq__a { font-family: var(--revi-sans); font-size: 14px; line-height: 1.5; color: var(--revi-text-primary); margin: 0; }
+
+/* ---------- Portrait ---------- */
+.revi-portrait { width: 336px; max-width: 100%; aspect-ratio: 1; border-radius: 50%; object-fit: cover; object-position: center 35%; }
