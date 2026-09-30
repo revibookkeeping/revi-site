@@ -14,6 +14,174 @@
   --rds-text-accent: #651482;
   --rds-text-on-brand: #ffffff;
   --rds-text-on-brand-muted: #d6d6d6;
+  --rds-text-numeral: #a553c2;
+  --rds-border-subtle: #e9e9e9;
+  --rds-border-default: #e2e2e2;
+  --rds-border-brand: #871aae;
+  --rds-border-brand-subtle: #c38cd7;
+  --rds-border-focus: #a553c2;
+  --rds-brand: #871aae;
+  --rds-brand-hover: #651482;
+  --rds-brand-pressed: #440d57;
+  --rds-icon-brand: #871aae;
+
+  /* Space */
+  --rds-space-4: 4px;
+  --rds-space-8: 8px;
+  --rds-space-10: 10px;
+  --rds-space-12: 12px;
+  --rds-space-16: 16px;
+  --rds-space-20: 20px;
+  --rds-space-24: 24px;
+  --rds-space-32: 32px;
+  --rds-space-40: 40px;
+  --rds-space-48: 48px;
+  --rds-space-56: 56px;
+  --rds-space-64: 64px;
+  --rds-space-80: 80px;
+  --rds-space-96: 96px;
+
+  /* Radius */
+  --rds-radius-sm: 6px;
+  --rds-radius-md: 8px;
+  --rds-radius-lg: 12px;
+  --rds-radius-pill: 999px;
+
+  /* Type */
+  --rds-serif: "Lora", Georgia, serif;
+  --rds-sans: "Lato", "Helvetica Neue", Arial, sans-serif;
+  --rds-content: 912px;
+}
+
+/* ---------- Layout ---------- */
+.rds-section { padding: var(--rds-space-80) var(--rds-space-24) var(--rds-space-96); background: var(--rds-surface-page); }
+.rds-section--sunken { background: var(--rds-surface-sunken); }
+.rds-section--tint { background: var(--rds-surface-brand-tint); }
+.rds-section--raised { background: var(--rds-surface-raised); }
+.rds-container { max-width: var(--rds-content); margin: 0 auto; display: flex; flex-direction: column; gap: var(--rds-space-16); }
+.rds-row { display: flex; gap: var(--rds-space-56); align-items: flex-start; }
+.rds-row--center { align-items: center; }
+.rds-col { display: flex; flex-direction: column; gap: var(--rds-space-16); flex: 1 1 0; min-width: 0; }
+.rds-stack-0 { display: flex; flex-direction: column; gap: 0; }
+.rds-stack-8 { display: flex; flex-direction: column; gap: var(--rds-space-8); }
+.rds-stack-16 { display: flex; flex-direction: column; gap: var(--rds-space-16); }
+@media (max-width: 767px) {
+  .rds-section { padding: var(--rds-space-56) var(--rds-space-20) var(--rds-space-64); }
+  .rds-row { flex-direction: column; gap: var(--rds-space-32); }
+}
+
+/* ---------- Type (web/* text styles) ---------- */
+.rds-display, .rds-section-title, .rds-price, .rds-card-title, .rds-small-title, .rds-footer-title { font-family: var(--rds-serif); font-weight: 600; color: var(--rds-text-primary); margin: 0; }
+.rds-display { font-size: 48px; line-height: 1.12; letter-spacing: -0.5px; }
+.rds-section-title { font-size: 44px; line-height: 1.12; letter-spacing: -0.5px; }
+.rds-display em, .rds-section-title em { font-style: italic; font-weight: 400; color: var(--rds-text-accent); }
+.rds-price { font-size: 34px; line-height: 1.15; letter-spacing: -0.5px; }
+.rds-card-title { font-size: 22px; line-height: 1.3; }
+.rds-small-title { font-size: 17px; line-height: 1.3; }
+.rds-footer-title { font-size: 15px; line-height: 1.3; font-weight: 700; }
+.rds-lead, .rds-body, .rds-body-sm, .rds-caption, .rds-label, .rds-label-caps, .rds-lead-strong, .rds-body-sm-strong { font-family: var(--rds-sans); color: var(--rds-text-primary); margin: 0; }
+.rds-lead { font-size: 15px; line-height: 1.5; }
+.rds-lead-strong { font-size: 15px; line-height: 1.5; font-weight: 700; }
+.rds-body { font-size: 14px; line-height: 1.5; }
+.rds-body-sm { font-size: 13px; line-height: 1.5; }
+.rds-body-sm-strong { font-size: 13px; line-height: 1.5; font-weight: 700; }
+.rds-label { font-size: 11px; line-height: 1.4; font-weight: 700; }
+.rds-label-caps { font-size: 11px; line-height: 1.4; font-weight: 700; text-transform: uppercase; }
+.rds-caption { font-size: 11px; line-height: 1.5; }
+.rds-numeral { font-family: var(--rds-sans); font-weight: 300; font-size: 64px; line-height: 1; color: var(--rds-text-numeral); margin: 0; }
+.rds-accent { color: var(--rds-text-accent); }
+.rds-link { color: var(--rds-text-accent); text-decoration: underline; }
+@media (max-width: 767px) {
+  .rds-display { font-size: 36px; }
+  .rds-section-title { font-size: 32px; }
+}
+
+/* ---------- Eyebrow (16px caps label, no rule; use only where it adds meaning) ---------- */
+.rds-eyebrow { display: block; font-family: var(--rds-sans); font-weight: 900; font-size: 16px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rds-text-accent); margin: 0; }
+
+/* ---------- Button (Lato SemiBold, per the design system) ---------- */
+.rds-button { display: inline-flex; align-items: center; justify-content: center; font-family: var(--rds-sans); font-weight: 600; font-size: 14px; line-height: 1; color: var(--rds-text-on-brand); background: var(--rds-brand); border: 0; border-radius: var(--rds-radius-md); padding: 12px 20px; text-decoration: none; cursor: pointer; }
+.rds-button:hover { background: var(--rds-brand-hover); }
+.rds-button:active { background: var(--rds-brand-pressed); }
+.rds-button:focus-visible { outline: 2px solid var(--rds-border-focus); outline-offset: 2px; }
+.rds-button--full { width: 100%; }
+
+/* ---------- Icon tile (Lucide icon inside) ---------- */
+.rds-icon-tile { flex: none; width: 28px; height: 28px; border-radius: var(--rds-radius-pill); background: var(--rds-surface-brand-tint); display: inline-flex; align-items: center; justify-content: center; color: var(--rds-icon-brand); }
+.rds-icon-tile svg { width: 16px; height: 16px; stroke: currentColor; }
+
+/* ---------- Checklist item + card ---------- */
+.rds-check { display: flex; gap: var(--rds-space-10); padding: var(--rds-space-10) 0; border-bottom: 1px solid var(--rds-border-subtle); font-family: var(--rds-sans); font-size: 13px; line-height: 1.5; color: var(--rds-text-primary); }
+.rds-check::before { content: "\2713"; font-weight: 700; color: var(--rds-text-accent); }
+.rds-checklist-card { background: var(--rds-surface-page); border: 1px solid var(--rds-border-brand); border-radius: var(--rds-radius-lg); padding: var(--rds-space-8) var(--rds-space-16); }
+
+/* ---------- Note callout ---------- */
+.rds-note { background: var(--rds-surface-brand-tint); border-radius: var(--rds-radius-md); padding: var(--rds-space-16) var(--rds-space-20); font-family: var(--rds-sans); font-size: 13px; line-height: 1.5; color: var(--rds-text-accent); }
+.rds-note strong { font-weight: 700; }
+
+/* ---------- Feature row ---------- */
+.rds-feature { display: flex; gap: var(--rds-space-12); padding: var(--rds-space-12) 0; border-bottom: 1px solid var(--rds-border-subtle); }
+.rds-feature__title { font-family: var(--rds-sans); font-weight: 700; font-size: 13px; line-height: 1.5; color: var(--rds-text-accent); margin: 0; }
+.rds-feature__body { font-family: var(--rds-sans); font-size: 13px; line-height: 1.5; color: var(--rds-text-primary); margin: var(--rds-space-4) 0 0; }
+
+/* ---------- Audience card ---------- */
+.rds-audience-card { background: var(--rds-surface-page); border: 1px solid var(--rds-border-brand); border-radius: var(--rds-radius-lg); padding: var(--rds-space-24); display: flex; flex-direction: column; gap: var(--rds-space-8); }
+
+/* ---------- Price card ---------- */
+.rds-price-card { border-radius: var(--rds-radius-lg); padding: var(--rds-space-24); display: flex; flex-direction: column; gap: var(--rds-space-10); background: var(--rds-surface-sunken); border: 1px solid var(--rds-border-subtle); }
+.rds-price-card--brand { background: var(--rds-surface-brand-tint); border-color: var(--rds-border-brand); }
+
+/* ---------- Process step ---------- */
+.rds-step { display: flex; gap: var(--rds-space-16); padding: var(--rds-space-12) 0; }
+.rds-step__num { flex: none; width: 32px; height: 32px; border-radius: var(--rds-radius-pill); display: inline-flex; align-items: center; justify-content: center; font-family: var(--rds-sans); font-weight: 700; font-size: 13px; background: var(--rds-surface-raised); border: 1px solid var(--rds-border-default); color: var(--rds-text-accent); }
+.rds-step--current .rds-step__num { background: var(--rds-brand); border-color: var(--rds-brand); color: var(--rds-text-on-brand); }
+.rds-step__title { display: flex; align-items: center; gap: var(--rds-space-8); font-family: var(--rds-sans); font-weight: 700; font-size: 13px; color: var(--rds-text-primary); margin: 0; }
+.rds-tag { font-family: var(--rds-sans); font-weight: 700; font-size: 11px; line-height: 1; padding: 4px 8px; border-radius: var(--rds-radius-pill); background: var(--rds-surface-brand-tint); color: var(--rds-text-accent); }
+
+/* ---------- Numbered item ---------- */
+.rds-numbered { display: flex; gap: var(--rds-space-12); padding: var(--rds-space-12) 0; border-bottom: 1px solid var(--rds-border-subtle); }
+.rds-numbered__num { flex: none; width: 24px; height: 24px; border-radius: var(--rds-radius-pill); background: var(--rds-surface-brand-tint); display: inline-flex; align-items: center; justify-content: center; font-family: var(--rds-sans); font-size: 11px; color: var(--rds-text-accent); }
+
+/* ---------- CTA card ---------- */
+.rds-cta-card { background: var(--rds-surface-raised); border: 1px solid var(--rds-border-subtle); border-radius: var(--rds-radius-lg); padding: var(--rds-space-24); display: flex; flex-direction: column; gap: var(--rds-space-12); flex: 0 0 320px; }
+@media (max-width: 767px) { .rds-cta-card { flex-basis: auto; } }
+
+/* ---------- Fit chip ---------- */
+.rds-chips { display: grid; grid-template-columns: 1fr 1fr; gap: var(--rds-space-8); }
+.rds-chip { display: flex; align-items: center; gap: var(--rds-space-8); padding: var(--rds-space-8) var(--rds-space-10); background: var(--rds-surface-brand-tint); border: 1px solid var(--rds-border-brand-subtle); border-radius: var(--rds-radius-md); font-family: var(--rds-sans); font-size: 11px; line-height: 1.5; color: var(--rds-text-accent); }
+.rds-chip::before { content: ""; flex: none; width: 4px; height: 4px; border-radius: 50%; background: var(--rds-brand); }
+
+/* ---------- Exclusion item ---------- */
+.rds-exclusion { display: flex; align-items: center; gap: var(--rds-space-12); padding: var(--rds-space-8) 0; border-bottom: 1px solid var(--rds-border-subtle); font-family: var(--rds-sans); font-size: 13px; color: var(--rds-text-primary); }
+
+/* ---------- Contact item ---------- */
+.rds-contact { display: flex; align-items: center; gap: var(--rds-space-12); }
+.rds-contact__detail { font-family: var(--rds-sans); font-weight: 700; font-size: 15px; line-height: 1.5; color: var(--rds-text-accent); text-decoration: none; }
+.rds-contact__note { font-family: var(--rds-sans); font-size: 11px; line-height: 1.5; color: var(--rds-text-primary); }
+
+/* ---------- FAQ item ---------- */
+.rds-faq { padding: var(--rds-space-16) 0; }
+.rds-faq__q { font-family: var(--rds-sans); font-weight: 700; font-size: 15px; line-height: 1.5; color: var(--rds-text-primary); margin: 0 0 var(--rds-space-8); }
+.rds-faq__a { font-family: var(--rds-sans); font-size: 14px; line-height: 1.5; color: var(--rds-text-primary); margin: 0; }
+
+/* ---------- Portrait ---------- */
+.rds-portrait { width: 336px; max-width: 100%; aspect-ratio: 1; border-radius: 50%; object-fit: cover; object-position: center 35%; }
+/* REVI Bookkeeping site styles (REVI Design System, "rds")
+   Source of truth: Figma, REVI Design System (Website section).
+   Every class starts with "rds-" so nothing here touches the existing Squarespace pages,
+   which use their own "revi-" classes. Lato and Lora come from the Squarespace site fonts. */
+
+:root {
+  /* Color */
+  --rds-surface-page: #f6f6f6;
+  --rds-surface-raised: #ffffff;
+  --rds-surface-sunken: #e9e9e9;
+  --rds-surface-brand-tint: #f3e8f7;
+  --rds-surface-on-brand-tile: #d6d6d6;
+  --rds-text-primary: #3d3c3d;
+  --rds-text-accent: #651482;
+  --rds-text-on-brand: #ffffff;
+  --rds-text-on-brand-muted: #d6d6d6;
   --rds-text-numeral: #e1c6eb;
   --rds-border-subtle: #e9e9e9;
   --rds-border-default: #e2e2e2;
