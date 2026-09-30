@@ -166,3 +166,15 @@
 
 /* ---------- Portrait ---------- */
 .rds-portrait { width: 336px; max-width: 100%; aspect-ratio: 1; border-radius: 50%; object-fit: cover; object-position: center 35%; }
+
+/* ---------- Page layout helpers (added for the page builds) ---------- */
+.rds-hero-copy { max-width: 640px; }
+.rds-col--copy { flex: 0 0 430px; }
+.rds-col--cta-copy { flex: 0 0 536px; }
+.rds-kind { margin-bottom: var(--rds-space-12); }
+.rds-steps { padding-top: var(--rds-space-16); }
+.rds-icon-tile svg { fill: currentColor; stroke: none; }
+.rds-section *, .rds-section *::before, .rds-section *::after { box-sizing: border-box; }
+@media (max-width: 767px) {
+  .rds-col--copy, .rds-col--cta-copy { flex: 1 1 auto; }
+}
