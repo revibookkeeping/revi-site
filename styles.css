@@ -242,3 +242,6 @@
 .rds-in-sqs .rds-panel__value { font-size: 20px; }
 .rds-in-sqs .rds-panel__label { font-size: 13px; }
 .rds-in-sqs .rds-panel__total { font-size: 20px; }
+
+/* Hero intro line length scales with the site-sized text, matching the Figma frames */
+.rds-in-sqs .rds-hero-copy { max-width: 42em; }
