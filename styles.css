@@ -245,3 +245,15 @@
 
 /* Hero intro line length scales with the site-sized text, matching the Figma frames */
 .rds-in-sqs .rds-hero-copy { max-width: 42em; }
+
+/* ---------- About and FAQs ---------- */
+.rds-contact-list { display: flex; flex-direction: column; gap: var(--rds-space-20); padding-top: var(--rds-space-16); }
+.rds-contact__detail:hover { text-decoration: underline; }
+.rds-faq__q { font-family: var(--rds-sans); }
+.rds-disclaimer { padding-top: var(--rds-space-24); }
+.rds-in-sqs .rds-contact__detail { font-size: 20px; }
+.rds-in-sqs .rds-contact__note { font-size: 14px; margin: var(--rds-space-4) 0 0; }
+.rds-in-sqs .rds-faq { padding: var(--rds-space-20) 0; }
+.rds-in-sqs .rds-faq__q, .rds-in-sqs .rds-faq__a { font-size: calc(1rem + (var(--normal-text-size-value, 1.3) - 1) * var(--rds-sq-unit)); line-height: 1.5; }
+.rds-in-sqs .rds-section-title + .rds-faq { padding-top: var(--rds-space-32); }
+.rds-in-sqs .rds-caption { font-size: 14px; }
