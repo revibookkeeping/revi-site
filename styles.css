@@ -209,3 +209,36 @@
 
 /* Dividers go between rows, not after the last one */
 .rds-feature:last-child, .rds-check:last-child, .rds-numbered:last-child, .rds-exclusion:last-child { border-bottom: none; }
+
+/* ---------- Home page pieces ---------- */
+.rds-hero-note { font-family: var(--rds-sans); font-size: 13px; line-height: 1.5; color: var(--rds-text-primary); margin: 0; }
+.rds-actions { display: flex; flex-direction: column; align-items: flex-start; gap: var(--rds-space-12); padding-top: var(--rds-space-8); }
+.rds-checks-2col { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--rds-space-32); }
+.rds-checks-2col .rds-check:last-child { border-bottom: 1px solid var(--rds-border-subtle); }
+@media (max-width: 767px) { .rds-checks-2col { grid-template-columns: 1fr; } .rds-checks-2col .rds-check:last-child { border-bottom: none; } }
+.rds-note { margin: 0; }
+
+/* Monthly Portfolio Summary panel (sample numbers) */
+.rds-panel { background: var(--rds-surface-raised); border-radius: var(--rds-radius-lg); overflow: hidden; box-shadow: 0 8px 24px rgba(61, 60, 61, 0.10); font-family: var(--rds-sans); color: var(--rds-text-primary); }
+.rds-panel__head { display: flex; align-items: center; justify-content: space-between; gap: var(--rds-space-12); padding: var(--rds-space-12) var(--rds-space-16); background: var(--rds-brand-pressed); color: var(--rds-text-on-brand); font-weight: 700; font-size: 14px; }
+.rds-panel__date { background: var(--rds-surface-raised); color: var(--rds-text-accent); border-radius: var(--rds-radius-pill); padding: 4px 10px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+.rds-panel__row { display: flex; justify-content: space-between; align-items: center; gap: var(--rds-space-12); padding: var(--rds-space-12) var(--rds-space-16); border-bottom: 1px solid var(--rds-border-subtle); }
+.rds-panel__name { font-size: 14px; line-height: 1.4; margin: 0 0 var(--rds-space-4); }
+.rds-panel__amount { text-align: right; }
+.rds-panel__value { font-size: 17px; font-weight: 700; color: var(--rds-text-accent); margin: 0; line-height: 1.2; }
+.rds-panel__label { font-size: 11px; margin: 0; }
+.rds-panel__total { display: flex; justify-content: space-between; align-items: center; padding: var(--rds-space-16); background: var(--rds-surface-brand-tint); color: var(--rds-text-accent); font-weight: 700; font-size: 17px; }
+
+/* Squarespace sizes for these pieces */
+.rds-in-sqs .rds-body, .rds-in-sqs .rds-note, .rds-in-sqs .rds-hero-note { font-size: 16px; line-height: 1.5; }
+.rds-in-sqs .rds-price { font-size: 40px; }
+.rds-in-sqs .rds-step__title { font-size: 18px; }
+.rds-in-sqs .rds-tag { font-size: 13px; padding: 5px 10px; }
+.rds-in-sqs .rds-step__num { width: 36px; height: 36px; font-size: 15px; }
+.rds-in-sqs .rds-audience-card .rds-label { font-size: 15px; }
+.rds-in-sqs .rds-panel__head { font-size: 17px; }
+.rds-in-sqs .rds-panel__date { font-size: 14px; }
+.rds-in-sqs .rds-panel__name { font-size: 16px; }
+.rds-in-sqs .rds-panel__value { font-size: 20px; }
+.rds-in-sqs .rds-panel__label { font-size: 13px; }
+.rds-in-sqs .rds-panel__total { font-size: 20px; }
