@@ -178,3 +178,6 @@
 @media (max-width: 767px) {
   .rds-col--copy, .rds-col--cta-copy { flex: 1 1 auto; }
 }
+
+/* Inside a Squarespace section: the section supplies width, background and padding */
+.rds-in-sqs { max-width: none; margin: 0; }
