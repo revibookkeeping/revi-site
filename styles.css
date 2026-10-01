@@ -200,3 +200,4 @@
 .rds-in-sqs .rds-feature { gap: var(--rds-space-16); padding: var(--rds-space-16) 0; }
 .rds-in-sqs .rds-numbered__num { width: 28px; height: 28px; font-size: 14px; }
 .rds-in-sqs .rds-button { font-size: 16px; padding: 14px 24px; }
+.rds-in-sqs, .rds-in-sqs *, .rds-in-sqs *::before, .rds-in-sqs *::after { box-sizing: border-box; }
