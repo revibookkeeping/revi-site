@@ -181,3 +181,22 @@
 
 /* Inside a Squarespace section: the section supplies width, background and padding */
 .rds-in-sqs { max-width: none; margin: 0; }
+
+/* ---------- Type inside Squarespace sections ----------
+   Headings and body follow Squarespace's own fluid type scale (Site Styles), so code blocks
+   match the text blocks around them. Small text matches the existing site HTML (16 to 18px). */
+.rds-in-sqs { --rds-sq-unit: min(1.2vw, 18.432px); }
+.rds-in-sqs .rds-display, .rds-in-sqs .rds-section-title { font-size: calc(1rem + (var(--heading-1-size-value, 4) - 1) * var(--rds-sq-unit)); line-height: 1.06; }
+.rds-in-sqs .rds-card-title { font-size: calc(1rem + (var(--heading-4-size-value, 1.6) - 1) * var(--rds-sq-unit)); line-height: 1.2; }
+.rds-in-sqs .rds-lead { font-size: calc(1rem + (var(--normal-text-size-value, 1.3) - 1) * var(--rds-sq-unit)); line-height: 1.5; }
+.rds-in-sqs .rds-numeral { font-size: 110px; line-height: 0.8; }
+.rds-in-sqs .rds-eyebrow { font-size: 16px; }
+.rds-in-sqs .rds-feature__title, .rds-in-sqs .rds-body-sm-strong { font-size: 18px; line-height: 1.3; }
+.rds-in-sqs .rds-feature__body, .rds-in-sqs .rds-body-sm, .rds-in-sqs .rds-check, .rds-in-sqs .rds-chip { font-size: 16px; line-height: 1.4; }
+.rds-in-sqs .rds-label, .rds-in-sqs .rds-label-caps { font-size: 16px; }
+.rds-in-sqs .rds-cta-card .rds-card-title { font-size: 24px; }
+.rds-in-sqs .rds-icon-tile { width: 36px; height: 36px; }
+.rds-in-sqs .rds-icon-tile svg { width: 20px; height: 20px; }
+.rds-in-sqs .rds-feature { gap: var(--rds-space-16); padding: var(--rds-space-16) 0; }
+.rds-in-sqs .rds-numbered__num { width: 28px; height: 28px; font-size: 14px; }
+.rds-in-sqs .rds-button { font-size: 16px; padding: 14px 24px; }
