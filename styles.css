@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100&display=swap');
 /* REVI Bookkeeping site styles (REVI Design System, "rds")
    Source of truth: Figma, REVI Design System (Website section).
    Every class starts with "rds-" so nothing here touches the existing Squarespace pages,
@@ -201,3 +202,7 @@
 .rds-in-sqs .rds-numbered__num { width: 28px; height: 28px; font-size: 14px; }
 .rds-in-sqs .rds-button { font-size: 16px; padding: 14px 24px; }
 .rds-in-sqs, .rds-in-sqs *, .rds-in-sqs *::before, .rds-in-sqs *::after { box-sizing: border-box; }
+
+/* Numerals: Lato Thin (loaded at the top of this file), smaller on phones */
+.rds-numeral { font-weight: 100; }
+@media (max-width: 767px) { .rds-in-sqs .rds-numeral { font-size: 72px; } }
