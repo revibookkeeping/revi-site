@@ -206,3 +206,6 @@
 /* Numerals: Lato Thin (loaded at the top of this file), smaller on phones */
 .rds-numeral { font-weight: 100; }
 @media (max-width: 767px) { .rds-in-sqs .rds-numeral { font-size: 72px; } }
+
+/* Dividers go between rows, not after the last one */
+.rds-feature:last-child, .rds-check:last-child, .rds-numbered:last-child, .rds-exclusion:last-child { border-bottom: none; }
