@@ -278,3 +278,7 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 .rds-transcript summary:focus-visible { outline: 2px solid var(--rds-border-focus); outline-offset: 2px; }
 .rds-transcript[open] summary { margin-bottom: var(--rds-space-16); }
 .rds-transcript em { font-style: italic; color: var(--rds-text-accent); }
+
+/* Smaller section heading for supporting sections, like the homepage video (Figma: web/subsection) */
+.rds-subsection-title { font-family: var(--rds-serif); font-weight: 600; font-size: 38px; line-height: 1.12; color: var(--rds-text-primary); margin: 0; }
+.rds-in-sqs .rds-subsection-title { font-size: calc(1rem + (var(--heading-2-size-value, 2.3) - 1) * var(--rds-sq-unit)); }
