@@ -282,3 +282,14 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 /* Smaller section heading for supporting sections, like the homepage video (Figma: web/subsection) */
 .rds-subsection-title { font-family: var(--rds-serif); font-weight: 600; font-size: 38px; line-height: 1.12; color: var(--rds-text-primary); margin: 0; }
 .rds-in-sqs .rds-subsection-title { font-size: calc(1rem + (var(--heading-2-size-value, 2.3) - 1) * var(--rds-sq-unit)); }
+
+/* Transcript toggle: document icon, text, chevron that turns when open; content eases in and out */
+.rds-transcript summary { list-style: none; }
+.rds-transcript summary::-webkit-details-marker { display: none; }
+.rds-transcript__toggle { display: inline-flex; align-items: center; gap: 0.4em; color: var(--rds-text-accent); font-family: var(--rds-sans); font-weight: 700; text-decoration: none; }
+.rds-transcript__toggle span { text-decoration: underline; text-underline-offset: 3px; }
+.rds-transcript__icon { width: 1em; height: 1em; flex: none; }
+.rds-transcript__chevron { width: 0.85em; height: 0.85em; flex: none; transition: transform 0.3s ease; }
+.rds-transcript[open]:not(.is-closing) .rds-transcript__chevron { transform: rotate(180deg); }
+.rds-transcript__content { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .rds-transcript__chevron { transition: none; } }

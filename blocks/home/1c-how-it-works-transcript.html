@@ -1,7 +1,7 @@
 <div class="rds-container rds-in-sqs">
 <details class="rds-transcript">
-  <summary class="rds-link">Read the transcript</summary>
-  <div class="rds-stack-8">
+  <summary class="rds-transcript__toggle"><svg class="rds-transcript__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg><span>Read the transcript</span><svg class="rds-transcript__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+  <div class="rds-stack-8 rds-transcript__content">
     <p class="rds-body"><em>On screen: a row of four houses, with receipts and statements stacking up beside them.</em><br>When you own rentals or you&rsquo;re flipping houses, most of your attention goes to the properties. The bookkeeping usually gets built later, and by then there are a lot of transactions to sort through.</p>
     <p class="rds-body"><em>On screen: the houses move to the left and the REVI Bookkeeping logo appears.</em><br>REVI Bookkeeping focuses on bookkeeping for flippers and long-term rental landlords.</p>
     <p class="rds-body"><em>On screen: a three-item checklist being ticked, and a calendar with one day circled.</em><br>You start by answering a few questions on our website and booking a discovery call.</p>
@@ -13,4 +13,7 @@
     <p class="rds-body"><em>On screen: the REVI Bookkeeping logo and website address.</em><br>Get in touch on the REVI Bookkeeping website.</p>
   </div>
 </details>
+<script>
+(function(){document.querySelectorAll('details.rds-transcript').forEach(function(d){if(d.dataset.rdsAnim)return;d.dataset.rdsAnim='1';var s=d.querySelector('summary'),c=d.querySelector('.rds-transcript__content'),busy=false;s.addEventListener('click',function(e){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!c.animate)return;e.preventDefault();if(busy)return;busy=true;if(d.open){var h=c.offsetHeight;d.classList.add('is-closing');var a=c.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:280,easing:'ease-in-out'});a.onfinish=function(){d.open=false;d.classList.remove('is-closing');busy=false;};}else{d.open=true;var h2=c.offsetHeight;var b=c.animate([{height:'0px',opacity:0},{height:h2+'px',opacity:1}],{duration:340,easing:'ease-in-out'});b.onfinish=function(){busy=false;};}});});})();
+</script>
 </div>
