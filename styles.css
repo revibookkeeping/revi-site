@@ -301,7 +301,7 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 .blog-item-wrapper, .blog-side-by-side-wrapper, .item-pagination, .rds-guide-end { --rds-sq-unit: min(1.2vw, 18.432px); --rds-guide-text: calc(1rem + (var(--normal-text-size-value, 1.3) - 1) * var(--rds-sq-unit)); }
 .blog-item-wrapper .blog-item-top-wrapper,
 .blog-item-wrapper .blog-item-content-wrapper,
-.rds-guide-end { max-width: calc(var(--rds-guide-text) * 38); }
+.rds-guide-end { max-width: calc(var(--rds-guide-text) * 38); margin-left: auto !important; margin-right: auto !important; }
 .blog-item-wrapper .blog-item-top-wrapper { margin-bottom: var(--rds-space-32) !important; }
 .blog-item-wrapper .blog-item-title::before { content: "Guide"; display: block; font-family: var(--rds-sans); font-weight: 900; font-size: 16px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rds-text-accent); margin-bottom: var(--rds-space-12); }
 .blog-item-wrapper h1.entry-title { font-family: var(--rds-serif) !important; font-weight: 600 !important; font-size: calc(1rem + (var(--heading-1-size-value, 4) - 1) * var(--rds-sq-unit) * 0.75) !important; line-height: 1.12 !important; letter-spacing: -0.5px !important; color: var(--rds-text-primary) !important; text-wrap: balance; }
@@ -320,7 +320,7 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 @media (max-width: 767px) { .blog-item-content h2 { margin-top: var(--rds-space-40) !important; } }
 
 /* End of each guide (Post Blog Item Code Injection): get in touch card and a link back to the list */
-.rds-guide-end { margin: var(--rds-space-48) 0 0; display: flex; flex-direction: column; gap: var(--rds-space-20); }
+.rds-guide-end { margin-top: var(--rds-space-48); display: flex; flex-direction: column; gap: var(--rds-space-20); }
 .rds-guide-end .rds-cta-card { flex: none; }
 .rds-guide-end .rds-cta-card { max-width: 30em; font-size: var(--rds-guide-text); }
 .rds-guide-end .rds-card-title { font-size: calc(1rem + (var(--heading-4-size-value, 1.6) - 1) * var(--rds-sq-unit)); }
