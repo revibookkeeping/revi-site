@@ -336,9 +336,11 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 
 /* Guide list page: one column of questions, no empty image column */
 .blog-side-by-side-wrapper { max-width: 1536px !important; margin: 0 auto !important; }
+.blog-side-by-side-wrapper::before { content: "Guides"; display: block; font-family: var(--rds-sans); font-weight: 900; font-size: 16px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rds-text-accent); margin: var(--rds-space-24) 0 var(--rds-space-12); }
+.blog-side-by-side-wrapper::after { content: ""; display: block; height: var(--rds-space-48); }
+.blog-side-by-side-wrapper article:first-of-type { border-top: 1px solid var(--rds-border-default); padding-top: var(--rds-space-24) !important; }
 .blog-side-by-side-wrapper .blog-image-wrapper { display: none !important; }
 .blog-side-by-side-wrapper article { display: block !important; max-width: calc(var(--rds-guide-text) * 38); margin: 0 !important; padding: var(--rds-space-24) 0 !important; border-bottom: 1px solid var(--rds-border-default); }
-.blog-side-by-side-wrapper article:first-child { padding-top: 0 !important; }
 .blog-side-by-side-wrapper .blog-item-summary { width: 100% !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
 .blog-side-by-side-wrapper .blog-title { font-family: var(--rds-serif) !important; font-weight: 600 !important; font-size: calc(1rem + (var(--heading-4-size-value, 1.6) - 1) * var(--rds-sq-unit)) !important; line-height: 1.25 !important; margin: 0 0 var(--rds-space-12) !important; }
 .blog-side-by-side-wrapper .blog-title a { color: var(--rds-text-primary) !important; text-decoration: none !important; }
