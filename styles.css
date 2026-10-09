@@ -298,7 +298,7 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
    Post pages and the guide list use the site's type: Lora 600 headings, Lato body,
    purple accents, on the same fluid scale as the other pages (Site Styles sizes).
    Width is capped in ems so lines stay readable at any screen size. */
-.blog-item-wrapper, .blog-side-by-side-wrapper { --rds-sq-unit: min(1.2vw, 18.432px); --rds-guide-text: calc(1rem + (var(--normal-text-size-value, 1.3) - 1) * var(--rds-sq-unit)); }
+.blog-item-wrapper, .blog-side-by-side-wrapper, .item-pagination, .rds-guide-end { --rds-sq-unit: min(1.2vw, 18.432px); --rds-guide-text: calc(1rem + (var(--normal-text-size-value, 1.3) - 1) * var(--rds-sq-unit)); }
 .blog-item-wrapper .blog-item-top-wrapper,
 .blog-item-wrapper .blog-item-content-wrapper,
 .rds-guide-end { max-width: calc(var(--rds-guide-text) * 38); }
@@ -321,11 +321,17 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 
 /* End of each guide (Post Blog Item Code Injection): get in touch card and a link back to the list */
 .rds-guide-end { margin: var(--rds-space-48) 0 0; display: flex; flex-direction: column; gap: var(--rds-space-20); }
-.rds-guide-end .rds-cta-card { max-width: 440px; flex: none; }
-.rds-guide-end .rds-card-title { font-size: 24px; }
-.rds-guide-end .rds-body { font-size: 16px; }
-.rds-guide-end .rds-button { font-size: 16px; padding: 14px 24px; }
-.rds-guide-end .rds-link { font-family: var(--rds-sans); font-weight: 700; font-size: 16px; text-underline-offset: 3px; }
+.rds-guide-end .rds-cta-card { flex: none; }
+.rds-guide-end .rds-cta-card { max-width: 30em; font-size: var(--rds-guide-text); }
+.rds-guide-end .rds-card-title { font-size: calc(1rem + (var(--heading-4-size-value, 1.6) - 1) * var(--rds-sq-unit)); }
+.rds-guide-end .rds-body { font-size: var(--rds-guide-text); line-height: 1.5; }
+.rds-guide-end .rds-button { font-size: var(--rds-guide-text); padding: 0.8em 1.4em; }
+.rds-guide-end .rds-link { font-family: var(--rds-sans); font-weight: 700; font-size: var(--rds-guide-text); text-underline-offset: 3px; }
+
+/* Previous and next guide links under each post */
+.item-pagination .item-pagination-title { font-family: var(--rds-sans) !important; font-weight: 700 !important; font-size: var(--rds-guide-text) !important; line-height: 1.4 !important; color: var(--rds-text-accent) !important; letter-spacing: normal !important; }
+.item-pagination .item-pagination-icon { color: var(--rds-text-accent) !important; }
+.item-pagination .item-pagination-link:hover .item-pagination-title { text-decoration: underline; text-underline-offset: 3px; }
 .rds-guide-end, .rds-guide-end * { box-sizing: border-box; }
 
 /* Guide list page: one column of questions, no empty image column */
