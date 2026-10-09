@@ -335,6 +335,7 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 .rds-guide-end, .rds-guide-end * { box-sizing: border-box; }
 
 /* Guide list page: one column of questions, no empty image column */
+.blog-side-by-side-wrapper { max-width: 1536px !important; margin: 0 auto !important; }
 .blog-side-by-side-wrapper .blog-image-wrapper { display: none !important; }
 .blog-side-by-side-wrapper article { display: block !important; max-width: calc(var(--rds-guide-text) * 38); margin: 0 !important; padding: var(--rds-space-24) 0 !important; border-bottom: 1px solid var(--rds-border-default); }
 .blog-side-by-side-wrapper article:first-child { padding-top: 0 !important; }
