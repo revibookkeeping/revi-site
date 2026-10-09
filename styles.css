@@ -305,7 +305,8 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 .blog-item-wrapper .blog-item-top-wrapper { margin-bottom: var(--rds-space-32) !important; }
 .blog-item-wrapper .blog-item-title::before { content: "Guide"; display: block; font-family: var(--rds-sans); font-weight: 900; font-size: 16px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rds-text-accent); margin-bottom: var(--rds-space-12); }
 .blog-item-wrapper h1.entry-title { font-family: var(--rds-serif) !important; font-weight: 600 !important; font-size: calc(1rem + (var(--heading-1-size-value, 4) - 1) * var(--rds-sq-unit) * 0.75) !important; line-height: 1.12 !important; letter-spacing: -0.5px !important; color: var(--rds-text-primary) !important; text-wrap: balance; }
-.blog-item-wrapper .blog-meta-item--date, .blog-item-wrapper .blog-meta-item--date span { font-family: var(--rds-sans) !important; font-size: 14px !important; letter-spacing: normal !important; text-transform: none !important; color: var(--rds-text-primary) !important; }
+/* Dates hidden on guides; the list hides them too */
+.blog-item-wrapper .blog-item-meta-wrapper { display: none !important; }
 .blog-item-content h2 { font-family: var(--rds-serif) !important; font-weight: 600 !important; font-size: calc(1rem + (var(--heading-2-size-value, 2.3) - 1) * var(--rds-sq-unit) * 0.7) !important; line-height: 1.2 !important; letter-spacing: -0.3px !important; color: var(--rds-text-primary) !important; margin: var(--rds-space-48) 0 var(--rds-space-12) !important; }
 .blog-item-content h2:first-child { margin-top: 0 !important; }
 .blog-item-content p, .blog-item-content li { font-family: var(--rds-sans) !important; font-size: var(--rds-guide-text) !important; line-height: 1.6 !important; color: var(--rds-text-primary) !important; }
