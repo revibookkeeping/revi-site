@@ -293,3 +293,48 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 .rds-transcript[open]:not(.is-closing) .rds-transcript__chevron { transform: rotate(180deg); }
 .rds-transcript__content { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .rds-transcript__chevron { transition: none; } }
+
+/* ---------- Guides (Squarespace blog at /guides) ----------
+   Post pages and the guide list use the site's type: Lora 600 headings, Lato body,
+   purple accents, on the same fluid scale as the other pages (Site Styles sizes).
+   Width is capped in ems so lines stay readable at any screen size. */
+.blog-item-wrapper, .blog-side-by-side-wrapper { --rds-sq-unit: min(1.2vw, 18.432px); --rds-guide-text: calc(1rem + (var(--normal-text-size-value, 1.3) - 1) * var(--rds-sq-unit)); }
+.blog-item-wrapper .blog-item-top-wrapper,
+.blog-item-wrapper .blog-item-content-wrapper,
+.rds-guide-end { max-width: calc(var(--rds-guide-text) * 38); }
+.blog-item-wrapper .blog-item-top-wrapper { margin-bottom: var(--rds-space-32) !important; }
+.blog-item-wrapper .blog-item-title::before { content: "Guide"; display: block; font-family: var(--rds-sans); font-weight: 900; font-size: 16px; line-height: 1.4; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rds-text-accent); margin-bottom: var(--rds-space-12); }
+.blog-item-wrapper h1.entry-title { font-family: var(--rds-serif) !important; font-weight: 600 !important; font-size: calc(1rem + (var(--heading-2-size-value, 2.3) - 1) * var(--rds-sq-unit)) !important; line-height: 1.12 !important; letter-spacing: -0.5px !important; color: var(--rds-text-primary) !important; text-wrap: balance; }
+.blog-item-wrapper .blog-meta-item--date, .blog-item-wrapper .blog-meta-item--date span { font-family: var(--rds-sans) !important; font-size: 14px !important; letter-spacing: normal !important; text-transform: none !important; color: var(--rds-text-primary) !important; }
+.blog-item-content h2 { font-family: var(--rds-serif) !important; font-weight: 600 !important; font-size: calc(1rem + (var(--heading-4-size-value, 1.6) - 1) * var(--rds-sq-unit)) !important; line-height: 1.2 !important; letter-spacing: -0.3px !important; color: var(--rds-text-primary) !important; margin: var(--rds-space-48) 0 var(--rds-space-12) !important; }
+.blog-item-content h2:first-child { margin-top: 0 !important; }
+.blog-item-content p, .blog-item-content li { font-family: var(--rds-sans) !important; font-size: var(--rds-guide-text) !important; line-height: 1.6 !important; color: var(--rds-text-primary) !important; }
+.blog-item-content p { margin: 0 0 var(--rds-space-16) !important; }
+.blog-item-content strong { font-weight: 700; color: var(--rds-text-accent); }
+.blog-item-content a { color: var(--rds-text-accent) !important; font-weight: 700; text-decoration: underline !important; text-underline-offset: 3px; }
+.blog-item-content a:hover { color: var(--rds-brand-pressed) !important; }
+.blog-item-content ul { margin: 0 0 var(--rds-space-16) !important; padding-left: 1.25em !important; }
+.blog-item-content li { margin: 0 0 var(--rds-space-8) !important; padding-left: 0.25em; }
+.blog-item-content li p { margin: 0 !important; }
+.blog-item-content li::marker { color: var(--rds-brand); }
+@media (max-width: 767px) { .blog-item-content h2 { margin-top: var(--rds-space-40) !important; } }
+
+/* End of each guide (Post Blog Item Code Injection): get in touch card and a link back to the list */
+.rds-guide-end { margin: var(--rds-space-48) 0 0; display: flex; flex-direction: column; gap: var(--rds-space-20); }
+.rds-guide-end .rds-cta-card { max-width: 440px; flex: none; }
+.rds-guide-end .rds-card-title { font-size: 24px; }
+.rds-guide-end .rds-body { font-size: 16px; }
+.rds-guide-end .rds-button { font-size: 16px; padding: 14px 24px; }
+.rds-guide-end .rds-link { font-family: var(--rds-sans); font-weight: 700; font-size: 16px; text-underline-offset: 3px; }
+.rds-guide-end, .rds-guide-end * { box-sizing: border-box; }
+
+/* Guide list page: one column of questions, no empty image column */
+.blog-side-by-side-wrapper .blog-image-wrapper { display: none !important; }
+.blog-side-by-side-wrapper article { display: block !important; max-width: calc(var(--rds-guide-text) * 38); margin: 0 !important; padding: var(--rds-space-24) 0 !important; border-bottom: 1px solid var(--rds-border-default); }
+.blog-side-by-side-wrapper article:first-child { padding-top: 0 !important; }
+.blog-side-by-side-wrapper .blog-item-summary { width: 100% !important; max-width: none !important; padding: 0 !important; margin: 0 !important; }
+.blog-side-by-side-wrapper .blog-title { font-family: var(--rds-serif) !important; font-weight: 600 !important; font-size: calc(1rem + (var(--heading-4-size-value, 1.6) - 1) * var(--rds-sq-unit)) !important; line-height: 1.25 !important; margin: 0 0 var(--rds-space-12) !important; }
+.blog-side-by-side-wrapper .blog-title a { color: var(--rds-text-primary) !important; text-decoration: none !important; }
+.blog-side-by-side-wrapper .blog-title a:hover { color: var(--rds-text-accent) !important; }
+.blog-side-by-side-wrapper .blog-meta-section { display: none !important; }
+.blog-side-by-side-wrapper .blog-more-link { font-family: var(--rds-sans) !important; font-weight: 700 !important; font-size: 16px !important; color: var(--rds-text-accent) !important; text-decoration: underline !important; text-underline-offset: 3px; letter-spacing: normal !important; text-transform: none !important; }
