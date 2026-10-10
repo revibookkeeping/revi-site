@@ -1,0 +1,148 @@
+/* REVI Bookkeeping dark mode
+   Turns on only when the visitor's device is set to dark mode.
+   Values come from the "REVI semantics" Dark mode in the Figma REVI Design System.
+   To switch dark mode off, remove the dark.css line from Squarespace
+   Settings > Advanced > Code Injection > Header. Nothing else depends on this file. */
+
+@media (prefers-color-scheme: dark) {
+  /* Design system tokens, Dark mode */
+  :root {
+    color-scheme: dark;
+    --rds-surface-page: #171617;          /* gray/1000 */
+    --rds-surface-raised: #292829;        /* gray/900 */
+    --rds-surface-control: #3d3c3d;       /* gray/800 */
+    --rds-surface-sunken: #171617;        /* gray/1000 */
+    --rds-surface-brand-tint: #330a41;    /* purple/800 */
+    --rds-surface-on-brand-tile: #d6d6d6; /* gray/300 */
+    --rds-text-primary: #f6f6f6;          /* gray/100 */
+    --rds-text-secondary: #b6b5b8;        /* gray/400 */
+    --rds-text-accent: #e1c6eb;           /* purple/200 */
+    --rds-text-on-brand: #ffffff;         /* white */
+    --rds-text-on-brand-muted: #d6d6d6;   /* gray/300 */
+    --rds-text-numeral: #e1c6eb;          /* purple/200 */
+    --rds-border-subtle: #3d3c3d;         /* gray/800 */
+    --rds-border-default: #5b5a5b;        /* gray/700 */
+    --rds-border-strong: #7a797b;         /* gray/600 */
+    --rds-border-brand: #a553c2;          /* purple/400 */
+    --rds-border-brand-subtle: #c38cd7;   /* purple/300 */
+    --rds-border-focus: #c38cd7;          /* purple/300 */
+    --rds-brand: #a553c2;                 /* purple/400 */
+    --rds-brand-hover: #871aae;           /* purple/500 */
+    --rds-brand-pressed: #651482;         /* purple/600 */
+    --rds-icon-brand: #c38cd7;            /* purple/300 */
+  }
+  html, body { background-color: var(--rds-surface-page); }
+
+  /* Squarespace section themes (header and page sections) mapped to the same tokens.
+     The purple footer is the same in both modes, so it is not touched. */
+  html body [data-section-theme="black-bold"] {
+    --headingExtraLargeColor: var(--rds-text-accent);
+    --headingLargeColor: var(--rds-text-accent);
+    --headingMediumColor: var(--rds-text-accent);
+    --headingSmallColor: var(--rds-text-accent);
+    --siteBackgroundColor: var(--rds-surface-raised);
+  }
+  html body [data-section-theme="white-bold"] {
+    --headingExtraLargeColor: var(--rds-text-primary);
+    --headingLargeColor: var(--rds-text-primary);
+    --headingMediumColor: var(--rds-text-primary);
+    --headingSmallColor: var(--rds-text-primary);
+    --siteBackgroundColor: var(--rds-surface-raised);
+  }
+  html body [data-section-theme="light"] {
+    --headingExtraLargeColor: var(--rds-text-accent);
+    --headingLargeColor: var(--rds-text-primary);
+    --headingMediumColor: var(--rds-text-accent);
+    --headingSmallColor: var(--rds-text-accent);
+    --siteBackgroundColor: var(--rds-surface-page);
+  }
+  html body [data-section-theme="white"] {
+    --headingExtraLargeColor: var(--rds-text-primary);
+    --headingLargeColor: var(--rds-text-primary);
+    --headingMediumColor: var(--rds-text-primary);
+    --headingSmallColor: var(--rds-text-primary);
+    --siteBackgroundColor: var(--rds-surface-raised);
+  }
+  html body [data-section-theme="black-bold"],
+  html body [data-section-theme="white-bold"],
+  html body [data-section-theme="light"],
+  html body [data-section-theme="white"] {
+    --gradientHeaderBackgroundColor: var(--rds-surface-raised);
+    --gradientHeaderBorderColor: var(--rds-border-default);
+    --gradientHeaderNavigationColor: var(--rds-text-primary);
+    --headerBorderColor: var(--rds-border-default);
+    --headingLinkColor: var(--rds-text-accent);
+    --menuOverlayBackgroundColor: var(--rds-surface-raised);
+    --menuOverlayButtonBackgroundColor: var(--rds-brand);
+    --menuOverlayButtonTextColor: var(--rds-text-on-brand);
+    --menuOverlayNavigationLinkColor: var(--rds-text-primary);
+    --navigationLinkColor: var(--rds-text-primary);
+    --paragraphLargeColor: var(--rds-text-primary);
+    --paragraphLinkColor: var(--rds-text-accent);
+    --paragraphMediumColor: var(--rds-text-primary);
+    --paragraphSmallColor: var(--rds-text-primary);
+    --primaryButtonBackgroundColor: var(--rds-brand);
+    --primaryButtonTextColor: var(--rds-text-on-brand);
+    --secondaryButtonBackgroundColor: var(--rds-brand);
+    --secondaryButtonTextColor: var(--rds-text-on-brand);
+    --section-divider-stroke-color: var(--rds-border-default);
+    --siteTitleColor: var(--rds-text-primary);
+    --solidHeaderBackgroundColor: var(--rds-surface-raised);
+    --solidHeaderBorderColor: var(--rds-border-default);
+    --solidHeaderNavigationColor: var(--rds-text-primary);
+    --tertiaryButtonBackgroundColor: var(--rds-brand);
+    --tertiaryButtonTextColor: var(--rds-text-on-brand);
+    --tweak-accordion-block-divider-color-on-background: var(--rds-border-default);
+    --tweak-accordion-block-divider-color: var(--rds-border-default);
+    --tweak-accordion-block-icon-color-on-background: var(--rds-text-primary);
+    --tweak-accordion-block-icon-color: var(--rds-text-primary);
+    --tweak-accordion-block-stroke-color: var(--rds-border-default);
+    --tweak-blog-item-author-profile-color: var(--rds-text-secondary);
+    --tweak-blog-item-meta-color: var(--rds-text-secondary);
+    --tweak-blog-item-pagination-icon-color: var(--rds-text-primary);
+    --tweak-blog-item-pagination-meta-color: var(--rds-text-secondary);
+    --tweak-blog-item-pagination-title-color: var(--rds-text-primary);
+    --tweak-blog-item-title-color: var(--rds-text-primary);
+    --tweak-blog-side-by-side-list-excerpt-color: var(--rds-text-primary);
+    --tweak-blog-side-by-side-list-meta-color: var(--rds-text-secondary);
+    --tweak-blog-side-by-side-list-read-more-color: var(--rds-text-accent);
+    --tweak-blog-side-by-side-list-title-color: var(--rds-text-primary);
+    --tweak-form-block-button-background-color-on-background: var(--rds-brand);
+    --tweak-form-block-button-background-color: var(--rds-brand);
+    --tweak-form-block-button-text-color-on-background: var(--rds-text-on-brand);
+    --tweak-form-block-button-text-color: var(--rds-text-on-brand);
+    --tweak-form-block-caption-color-on-background: var(--rds-text-primary);
+    --tweak-form-block-caption-color: var(--rds-text-primary);
+    --tweak-form-block-description-color-on-background: var(--rds-text-primary);
+    --tweak-form-block-description-color: var(--rds-text-primary);
+    --tweak-form-block-field-accent-color-on-background: var(--rds-brand);
+    --tweak-form-block-field-accent-color: var(--rds-brand);
+    --tweak-form-block-field-accessory-color-on-background: var(--rds-text-secondary);
+    --tweak-form-block-field-accessory-color: var(--rds-text-secondary);
+    --tweak-form-block-field-border-color-on-background: var(--rds-border-default);
+    --tweak-form-block-field-border-color: var(--rds-border-default);
+    --tweak-form-block-field-fill-color-on-background: var(--rds-surface-control);
+    --tweak-form-block-field-fill-color: var(--rds-surface-control);
+    --tweak-form-block-field-input-color-on-background: var(--rds-text-primary);
+    --tweak-form-block-field-input-color: var(--rds-text-primary);
+    --tweak-form-block-option-color-on-background: var(--rds-text-primary);
+    --tweak-form-block-option-color: var(--rds-text-primary);
+    --tweak-form-block-stroke-color: var(--rds-border-default);
+    --tweak-form-block-survey-title-color-on-background: var(--rds-text-primary);
+    --tweak-form-block-survey-title-color: var(--rds-text-primary);
+    --tweak-form-block-title-color-on-background: var(--rds-text-primary);
+    --tweak-form-block-title-color: var(--rds-text-primary);
+    --tweak-heading-extra-large-color-on-background: var(--rds-text-primary);
+    --tweak-heading-large-color-on-background: var(--rds-text-primary);
+    --tweak-heading-medium-color-on-background: var(--rds-text-primary);
+    --tweak-heading-small-color-on-background: var(--rds-text-primary);
+    --tweak-line-block-line-color: var(--rds-border-default);
+    --tweak-paragraph-large-color-on-background: var(--rds-text-primary);
+    --tweak-paragraph-link-color-on-background: var(--rds-text-accent);
+    --tweak-paragraph-medium-color-on-background: var(--rds-text-primary);
+    --tweak-paragraph-small-color-on-background: var(--rds-text-primary);
+  }
+
+  /* Homepage portfolio panel: soften the shadow on a dark page */
+  .rds-panel { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45); }
+}
