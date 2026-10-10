@@ -63,10 +63,18 @@
     --headingSmallColor: var(--rds-text-primary);
     --siteBackgroundColor: var(--rds-surface-raised);
   }
+  html body [data-section-theme="light-bold"] {
+    --headingExtraLargeColor: var(--rds-text-primary);
+    --headingLargeColor: var(--rds-text-primary);
+    --headingMediumColor: var(--rds-text-primary);
+    --headingSmallColor: var(--rds-text-primary);
+    --siteBackgroundColor: var(--rds-surface-brand-tint);
+  }
   html body [data-section-theme="black-bold"],
   html body [data-section-theme="white-bold"],
   html body [data-section-theme="light"],
-  html body [data-section-theme="white"] {
+  html body [data-section-theme="white"],
+  html body [data-section-theme="light-bold"] {
     --gradientHeaderBackgroundColor: var(--rds-surface-raised);
     --gradientHeaderBorderColor: var(--rds-border-default);
     --gradientHeaderNavigationColor: var(--rds-text-primary);
