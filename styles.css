@@ -352,3 +352,11 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 /* FAQ answers that link to a matching guide */
 .rds-faq__more { margin-top: var(--rds-space-8) !important; }
 .rds-faq__more .rds-link { font-weight: 700; text-underline-offset: 3px; }
+
+/* FAQs: questions and answers start on the same left edge as the page title, like the other pages
+   (Figma FAQs / Proposed: title and items both at 264 on the 1440 frame). The block keeps its
+   18-column width, so the text wraps the same and the section heights don't change.
+   Phones use Squarespace's own mobile layout and are not affected. */
+@media (min-width: 768px) {
+  .fe-block:has(.rds-faq) { grid-column: 2 / 20 !important; }
+}
