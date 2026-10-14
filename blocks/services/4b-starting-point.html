@@ -51,7 +51,7 @@
       <fieldset class="rds-sp__q">
         <legend>What would help most?</legend>
         <div class="rds-sp__chips">
-          <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="plate"><span>Get it off my plate</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="handoff"><span>Hand off the bookkeeping</span></label>
           <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="numbers" checked><span>Know what each property makes</span></label>
           <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="tax"><span>Be ready for tax time</span></label>
           <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="catchup"><span>Catch up on what&rsquo;s behind</span></label>
@@ -138,10 +138,10 @@
     size = size.join(" and ");
 
     var verdict, lede;
-    if (goal === "plate") {
-      verdict = "Then let’s take it off your plate.";
+    if (goal === "handoff") {
+      verdict = "Then we’ll take over the books.";
       lede = empty ? "Starting with the books set up right is the easiest time to hand them off. We’ll be ready when the first property is."
-                   : "At " + size + ", we take over the books and keep them current every month, so you don’t have to think about them.";
+                   : "At " + size + ", we take over the books and keep them current every month, so your time goes to your properties.";
     } else if (catchUp) {
       verdict = "Let’s get you caught up first.";
       lede = "When the books are behind, a cleanup comes before anything else. We look at where things stand and quote it as a one-time project.";
