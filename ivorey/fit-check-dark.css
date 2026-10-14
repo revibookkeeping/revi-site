@@ -1,0 +1,30 @@
+@media (prefers-color-scheme: dark){
+html,body{color-scheme:dark;background:transparent !important}
+html body #_builder-form .ghl-survey-form,html body .ghl-survey-form{background:#292829 !important;border-color:#3d3c3d !important;color:#f6f6f6 !important}
+html body #_builder-form .ghl-footer,html body .ghl-footer,html body .ghl-footer-buttons{background:#292829 !important;border-color:#3d3c3d !important}
+html body #_builder-form .heading-element h1,html body #_builder-form .heading-element h2,html body #_builder-form .heading-element h3{color:#f6f6f6 !important}
+html body #_builder-form .heading-element p,html body #_builder-form .heading-element p span{color:#b6b5b8 !important}
+html body #_builder-form .field-label,html body #_builder-form .item-description,html body #_builder-form label.field-label,html body #_builder-form .short-label,html body #_builder-form .form-builder--item label.label-alignment{color:#f6f6f6 !important}
+html body #_builder-form .field-label span,html body #_builder-form .form-builder--item label span{color:#c38cd7 !important}
+html body #_builder-form .form-builder--item input.form-control[type],html body #_builder-form .form-builder--item textarea.form-control,html body #_builder-form .form-control{background:#3d3c3d !important;border-color:#5b5a5b !important;color:#f6f6f6 !important}
+html body #_builder-form .form-builder--item input.form-control[type]::placeholder,html body #_builder-form .form-control::placeholder{color:#b6b5b8 !important}
+html body #_builder-form .form-builder--item input.form-control[type]:focus,html body #_builder-form .form-control:focus{border-color:#c38cd7 !important;box-shadow:0 0 0 3px #330a41 !important}
+html body #_builder-form .input-icon,html body #_builder-form .input-icon *{color:#b6b5b8 !important;stroke:#b6b5b8 !important}
+html body #_builder-form .bubble-option-container .bubble-label{background:#292829 !important;border-color:#5b5a5b !important;color:#f6f6f6 !important}
+html body #_builder-form .bubble-option-container .bubble-label:hover{border-color:#c38cd7 !important}
+html body #_builder-form .bubble-option-container .bubble-label:has(input:checked){background:#330a41 !important;border-color:#a553c2 !important;color:#e1c6eb !important}
+html body #_builder-form .bubble-option-container .bubble-label input.bubble-radio[type=radio]{background:#292829 !important;border-color:#7a797b !important}
+html body #_builder-form .bubble-option-container .bubble-label input.bubble-radio[type=radio]:checked{background:#c38cd7 !important;border-color:#c38cd7 !important;box-shadow:inset 0 0 0 4px #292829 !important}
+html body #_builder-form .bubble-option-container .bubble-label:has(input:focus-visible){outline-color:#c38cd7 !important}
+html body #_builder-form .custom-input-row input,html body #_builder-form .custom-option-container input[type=text]{background:#3d3c3d !important;border-color:#5b5a5b !important;color:#f6f6f6 !important}
+html body .ghl-footer .ghl-btn.ghl-footer-next,html body .ghl-footer .ghl-btn.ghl-submit-btn,html body .ghl-footer-next,html body .ghl-submit-btn{background:#a553c2 !important;color:#ffffff !important}
+html body .ghl-footer .ghl-btn.ghl-footer-next:hover,html body .ghl-footer .ghl-btn.ghl-submit-btn:hover,html body .ghl-footer-next:hover,html body .ghl-submit-btn:hover{background:#871aae !important}
+html body .ghl-footer .ghl-btn.ghl-footer-back,html body .ghl-footer .ghl-btn-placeholder,html body .ghl-footer-back,html body .ghl-btn-placeholder{background:#330a41 !important;color:#e1c6eb !important}
+html body .ghl-footer-back *,html body .ghl-footer-back-arrow{color:#e1c6eb !important;fill:#e1c6eb !important}
+html body .ghl-footer-back svg path{stroke:#e1c6eb !important}
+html body .submission-dialog-overlay{background:rgba(23,22,23,0.88) !important}
+html body .submission-dialog-popup{background:#292829 !important;border-color:#3d3c3d !important;box-shadow:0 12px 32px rgba(0,0,0,0.45) !important}
+html body .submission-dialog-popup,html body .submission-dialog-popup *{color:#f6f6f6 !important}
+html body .submission-dialog-popup .start-over-button{background:#292829 !important;border-color:#5b5a5b !important;color:#b6b5b8 !important}
+html body .submission-dialog-popup .continue-button{background:#a553c2 !important;border-color:#a553c2 !important;color:#ffffff !important}
+}

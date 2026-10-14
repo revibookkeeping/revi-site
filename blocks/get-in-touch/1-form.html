@@ -1,0 +1,79 @@
+<!-- Get in Touch · the Fit Check form with a loading state and a fallback.
+     One full-width code block on /revi-fit-form, replacing the current form embed block.
+     Happy path: Ivorey's form loads and sends "iframeLoaded", the loading note hides.
+     Not happy path: the embed script fails, or nothing comes back in 12 seconds, so the
+     fallback card shows with phone and email. If the form shows up late, it swaps back.
+     Styles: styles.css "Get in Touch" and dark.css. -->
+<div class="rds-container rds-in-sqs rds-gt" id="rds-gt">
+  <h1 class="rds-sr-only">Get in Touch</h1>
+
+  <div class="rds-gt__frame" data-gt="frame">
+    <div class="rds-gt__loading" data-gt="loading" role="status">
+      <span class="rds-gt__spinner" aria-hidden="true"></span>
+      <span>Loading the form&hellip;</span>
+    </div>
+    <iframe src="https://links.revibookkeeping.com/widget/survey/ArVYm2J5XvuuCThUihVc" style="border:none;width:100%;" scrolling="no" id="ArVYm2J5XvuuCThUihVc" title="Get in Touch form"></iframe>
+  </div>
+
+  <section class="rds-gt__fallback" data-gt="fallback" aria-labelledby="rds-gt-fallback-title" hidden>
+    <p class="rds-eyebrow">Get in touch</p>
+    <h2 class="rds-card-title" id="rds-gt-fallback-title">The form didn&rsquo;t load.</h2>
+    <p class="rds-lead">You can still reach us directly. Call, text or email, and we&rsquo;ll set up your discovery call.</p>
+    <div class="rds-gt__actions">
+      <a class="rds-button" href="tel:+19804698324">Call or text (980) 469-8324</a>
+      <a class="rds-button rds-button--secondary" href="mailto:julia@revibookkeeping.com?subject=Discovery%20call">Email julia@revibookkeeping.com</a>
+    </div>
+    <p class="rds-gt__note">Calls and texts Mon&ndash;Fri, 9am&ndash;5pm. Emails get a reply within 24 hours.</p>
+    <button type="button" class="rds-gt__retry" data-gt="retry">Try loading the form again</button>
+  </section>
+
+  <noscript>
+    <section class="rds-gt__fallback rds-gt__fallback--static">
+      <p class="rds-eyebrow">Get in touch</p>
+      <h2 class="rds-card-title">The form needs JavaScript to load.</h2>
+      <p class="rds-lead">You can still reach us directly. Call, text or email, and we&rsquo;ll set up your discovery call.</p>
+      <div class="rds-gt__actions">
+        <a class="rds-button" href="tel:+19804698324">Call or text (980) 469-8324</a>
+        <a class="rds-button rds-button--secondary" href="mailto:julia@revibookkeeping.com?subject=Discovery%20call">Email julia@revibookkeeping.com</a>
+      </div>
+    </section>
+    <style>#rds-gt .rds-gt__frame{display:none}</style>
+  </noscript>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById("rds-gt");
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = "1";
+  var frame = root.querySelector('[data-gt="frame"]');
+  var loading = root.querySelector('[data-gt="loading"]');
+  var fallback = root.querySelector('[data-gt="fallback"]');
+  var iframe = frame.querySelector("iframe");
+  var WAIT_MS = 12000;
+  var loaded = false, timer;
+
+  function showForm() {
+    loaded = true; clearTimeout(timer);
+    loading.hidden = true; frame.hidden = false; fallback.hidden = true;
+    root.classList.remove("is-failed");
+  }
+  function showFallback() {
+    if (loaded) return;
+    loading.hidden = true; frame.hidden = true; fallback.hidden = false;
+    root.classList.add("is-failed");
+  }
+  window.__rdsGtFail = showFallback;
+
+  window.addEventListener("message", function (e) {
+    if (e.source !== iframe.contentWindow) return;
+    var d = e.data;
+    if ((Array.isArray(d) && d[0] === "iframeLoaded") || (typeof d === "string" && d.indexOf("[iFrameSizer]") === 0)) showForm();
+  });
+
+  timer = setTimeout(showFallback, WAIT_MS);
+
+  root.querySelector('[data-gt="retry"]').addEventListener("click", function () { window.location.reload(); });
+})();
+</script>
+<script src="https://links.revibookkeeping.com/js/form_embed.js" onerror="window.__rdsGtFail && window.__rdsGtFail()"></script>

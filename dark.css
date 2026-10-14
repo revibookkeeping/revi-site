@@ -155,4 +155,11 @@
 
   /* Homepage portfolio panel: soften the shadow on a dark page */
   .rds-panel { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45); }
+
+  /* Legal pages (Privacy Policy, Terms of Use): their sections use a custom light tint
+     instead of a site theme, so the dark page color is set here */
+  html body section:has(.rds-legal) .section-background { background-color: var(--rds-surface-page) !important; }
+
+  /* Get in Touch: the fallback card shown when the form can't load */
+  .rds-gt__fallback { box-shadow: none; }
 }
