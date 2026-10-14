@@ -30,6 +30,8 @@
     --rds-brand-hover: #871aae;           /* purple/500 */
     --rds-brand-pressed: #651482;         /* purple/600 */
     --rds-icon-brand: #c38cd7;            /* purple/300 */
+    --rds-warn-surface: #362910; --rds-warn-border: #93702d; --rds-warn-text: #f3e4c6; --rds-warn-icon: #e2bb74;   /* amber 1000/700/200/400 */
+    --rds-ok-surface: #10271b;   --rds-ok-border: #2b6949;   --rds-ok-text: #c6e1d2;   --rds-ok-icon: #71b490;     /* green 1000/700/200/400 */
   }
   html, body { background-color: var(--rds-surface-page); }
 

@@ -1,0 +1,184 @@
+<!-- Services · Your starting point (interactive). One full-width code block, placed after Monthly Bookkeeping and before Start here.
+     Styles live in styles.css ("Your starting point") and dark.css. Figma: REVI SQS Website, Services / Readiness Check. -->
+<div class="rds-container rds-in-sqs rds-sp" id="rds-sp">
+  <p class="rds-eyebrow">Your starting point</p>
+  <h2 class="rds-section-title">Where do you stand <em>right now?</em></h2>
+  <p class="rds-lead rds-hero-copy">Move the sliders and change the answers. The card shows how much is on your plate and where we&rsquo;d start. Nothing to fill out and no email.</p>
+
+  <div class="rds-sp__grid">
+    <form class="rds-sp__controls" onsubmit="return false" aria-label="Your portfolio">
+      <fieldset class="rds-sp__q">
+        <legend>What are you investing in?</legend>
+        <div class="rds-sp__chips">
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-kind" value="flips"><span>Flips</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-kind" value="rentals"><span>Long-term rentals</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-kind" value="both" checked><span>Both</span></label>
+        </div>
+      </fieldset>
+
+      <div class="rds-sp__slider" data-sp="flips-wrap">
+        <div class="rds-sp__slider-head"><label for="rds-sp-flips">Flips per year</label><output for="rds-sp-flips" data-sp="flips-out">2</output></div>
+        <input type="range" id="rds-sp-flips" min="0" max="20" step="1" value="2">
+        <div class="rds-sp__ends" aria-hidden="true"><span>0</span><span>20+</span></div>
+      </div>
+
+      <div class="rds-sp__slider" data-sp="rentals-wrap">
+        <div class="rds-sp__slider-head"><label for="rds-sp-rentals">Rental properties</label><output for="rds-sp-rentals" data-sp="rentals-out">3</output></div>
+        <input type="range" id="rds-sp-rentals" min="0" max="15" step="1" value="3">
+        <div class="rds-sp__ends" aria-hidden="true"><span>0</span><span>15+</span></div>
+      </div>
+
+      <fieldset class="rds-sp__q">
+        <legend>Where the books live now</legend>
+        <div class="rds-sp__chips">
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-platform" value="qbo" checked><span>QuickBooks Online</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-platform" value="other"><span>Another platform</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-platform" value="sheets"><span>Spreadsheets</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-platform" value="none"><span>Nothing yet</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="rds-sp__q">
+        <legend>How current are they?</legend>
+        <div class="rds-sp__chips">
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-current" value="month" checked><span>Through last month</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-current" value="months"><span>A few months behind</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-current" value="year"><span>A year or more</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-current" value="never"><span>Never really done</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset class="rds-sp__q">
+        <legend>What would help most?</legend>
+        <div class="rds-sp__chips">
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="plate"><span>Get it off my plate</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="numbers" checked><span>Know what each property makes</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="tax"><span>Be ready for tax time</span></label>
+          <label class="rds-sp__chip"><input type="radio" name="rds-sp-goal" value="catchup"><span>Catch up on what&rsquo;s behind</span></label>
+        </div>
+      </fieldset>
+
+      <a class="rds-link rds-sp__jump" href="#rds-sp-card">See where we&rsquo;d start</a>
+    </form>
+
+    <section class="rds-sp__card" id="rds-sp-card" aria-label="Your starting point">
+      <div aria-live="polite">
+        <p class="rds-card-title rds-sp__verdict" data-sp="verdict"></p>
+        <p class="rds-body rds-sp__lede" data-sp="lede"></p>
+      </div>
+      <div class="rds-sp__meter" aria-hidden="true">
+        <p class="rds-sp__label">How much is on your plate</p>
+        <div class="rds-sp__lane"><div class="rds-sp__tip" data-sp="tip"><span class="rds-sp__pill" data-sp="tip-pill"></span><svg class="rds-sp__caret" viewBox="0 0 12 7"><path d="M0 0H12L6 7Z"/></svg></div></div>
+        <div class="rds-sp__track"><i></i><i></i><i></i></div>
+        <div class="rds-sp__legend"><span>Light</span><span>Building</span><span>Full</span></div>
+      </div>
+      <hr class="rds-sp__rule">
+      <div>
+        <p class="rds-sp__label">Where we&rsquo;d start</p>
+        <ol class="rds-sp__steps" data-sp="steps"></ol>
+      </div>
+      <div class="rds-sp__drivers" data-sp="drivers"></div>
+      <a class="rds-button rds-sp__cta" href="/revi-fit-form">Get in Touch</a>
+      <p class="rds-caption rds-sp__note">Answer some questions about your portfolio, then pick a time for your discovery call. A few of them repeat what you picked here, so we have your answers in writing.</p>
+    </section>
+  </div>
+
+  <p class="rds-caption rds-sp__fine">General guidance for house flippers and landlords, not individualized advice.</p>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById("rds-sp");
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = "1";
+  var form = root.querySelector("form");
+  var el = function (k) { return root.querySelector('[data-sp="' + k + '"]'); };
+  var flips = root.querySelector("#rds-sp-flips"), rentals = root.querySelector("#rds-sp-rentals");
+
+  var PLATFORM = {
+    qbo:    { pts: 0,  setup: "" },
+    other:  { pts: 5,  setup: "Your books move over to QuickBooks Online, set up by flip and by property." },
+    sheets: { pts: 10, setup: "Your spreadsheets move into QuickBooks Online, set up by flip and by property." },
+    none:   { pts: 10, setup: "QuickBooks Online gets set up from the start, by flip and by property." }
+  };
+  var CURRENT = { month: { pts: 0, behind: false }, months: { pts: 30, behind: true }, year: { pts: 40, behind: true }, never: { pts: 40, behind: true } };
+  var PER_FLIP = 18, PER_RENTAL = 12;
+
+  function val(name) { var i = form.querySelector('input[name="rds-sp-' + name + '"]:checked'); return i ? i.value : ""; }
+  function plural(n, one, many) { return n + " " + (n === 1 ? one : many); }
+  function esc(s) { return String(s).replace(/[&<>]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]; }); }
+
+  function paint() {
+    var kind = val("kind");
+    el("flips-wrap").hidden = kind === "rentals";
+    el("rentals-wrap").hidden = kind === "flips";
+    [[flips, "flips-out"], [rentals, "rentals-out"]].forEach(function (p) {
+      var i = p[0]; el(p[1]).textContent = i.value + (+i.value === +i.max ? "+" : "");
+      i.style.setProperty("--rds-sp-pct", (i.value / i.max * 100) + "%");
+    });
+
+    var f = kind === "rentals" ? 0 : +flips.value;
+    var r = kind === "flips" ? 0 : +rentals.value;
+    var pf = PLATFORM[val("platform")] || PLATFORM.qbo;
+    var cur = CURRENT[val("current")] || CURRENT.month;
+    var goal = val("goal");
+    var empty = f === 0 && r === 0;
+    var catchUp = cur.behind || goal === "catchup";
+    var score = Math.min(100, f * PER_FLIP + r * PER_RENTAL + pf.pts + cur.pts);
+    var zone = score >= 67 ? 2 : score >= 34 ? 1 : 0;
+
+    var tip = el("tip");
+    tip.style.gridColumn = String(zone + 1);
+    tip.className = "rds-sp__tip rds-sp__tip--" + ["light", "building", "full"][zone];
+    el("tip-pill").textContent = ["LIGHT", "BUILDING", "FULL"][zone];
+
+    var size = [];
+    if (f) size.push(plural(f, "flip a year", "flips a year"));
+    if (r) size.push(plural(r, "rental", "rentals"));
+    size = size.join(" and ");
+
+    var verdict, lede;
+    if (goal === "plate") {
+      verdict = "Then let’s take it off your plate.";
+      lede = empty ? "Starting with the books set up right is the easiest time to hand them off. We’ll be ready when the first property is."
+                   : "At " + size + ", we take over the books and keep them current every month, so you don’t have to think about them.";
+    } else if (catchUp) {
+      verdict = "Let’s get you caught up first.";
+      lede = "When the books are behind, a cleanup comes before anything else. We look at where things stand and quote it as a one-time project.";
+    } else if (empty) {
+      verdict = "Planning your first flip or rental?";
+      lede = "Before the first purchase is the easiest time to set up the books. Every cost lands in the right place from day one.";
+    } else if (zone === 2) {
+      verdict = "You’re at the point where this pays for itself.";
+      lede = "At " + size + ", there’s enough going on that the books need to stay current every month, not rebuilt once a year.";
+    } else if (zone === 1) {
+      verdict = "Your books are starting to take real time.";
+      lede = "At " + size + ", you can keep going on your own, or hand it off now while the setup is still simple.";
+    } else {
+      verdict = "Small enough to keep up with yourself.";
+      lede = "If you’d rather not, we work with portfolios this size too, and a clean setup now makes the next property easier.";
+    }
+    el("verdict").textContent = verdict;
+    el("lede").textContent = lede;
+
+    var steps = [];
+    if (catchUp) steps.push(["Cleanup", "We catch the books up and reconcile every account. Quoted as a one-time project after we look."]);
+    if (pf.setup) steps.push(["QuickBooks setup", pf.setup]);
+    steps.push(["Monthly bookkeeping", empty ? "Once you buy, every month is recorded and reconciled. Starts at $450 a month."
+                                             : "Every month recorded, reconciled and reported by property. Starts at $450 a month."]);
+    el("steps").innerHTML = steps.map(function (s) { return "<li><div><b>" + esc(s[0]) + "</b><span>" + esc(s[1]) + "</span></div></li>"; }).join("");
+
+    var rows = [];
+    if (f) rows.push(["Flips", "Each flip’s costs held against that property until it sells, so you see what it cleared."]);
+    if (r) rows.push(["Rentals", "Income and costs by property, with loan principal kept off the profit and loss."]);
+    if (goal === "tax") rows.push(["Tax time", "A year-end package your CPA can file from, ready in January."]);
+    var d = el("drivers");
+    d.innerHTML = rows.map(function (x) { return '<div class="rds-sp__driver"><b>' + esc(x[0]) + "</b><span>" + esc(x[1]) + "</span></div>"; }).join("");
+    d.hidden = rows.length === 0;
+  }
+
+  form.addEventListener("input", paint);
+  form.addEventListener("change", paint);
+  paint();
+})();
+</script>
