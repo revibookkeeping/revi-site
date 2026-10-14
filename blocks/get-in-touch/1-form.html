@@ -1,8 +1,9 @@
 <!-- Get in Touch · the Fit Check form with a loading state and a fallback.
      One full-width code block on /revi-fit-form, replacing the current form embed block.
      Happy path: Ivorey's form loads and sends "iframeLoaded", the loading note hides.
-     Not happy path: the embed script fails, or nothing comes back in 12 seconds, so the
-     fallback card shows with phone and email. If the form shows up late, it swaps back.
+     Not happy path: the embed script fails (fallback stays, since the form can't size itself
+     without it), or nothing comes back in 12 seconds. The fallback card shows phone and email.
+     If the script loaded and the form shows up late, it swaps back to the form.
      Styles: styles.css "Get in Touch" and dark.css. -->
 <div class="rds-container rds-in-sqs rds-gt" id="rds-gt">
   <h1 class="rds-sr-only">Get in Touch</h1>
@@ -51,24 +52,32 @@
   var fallback = root.querySelector('[data-gt="fallback"]');
   var iframe = frame.querySelector("iframe");
   var WAIT_MS = 12000;
-  var loaded = false, timer;
+  // The form counts as working only when both are true: Ivorey's embed script loaded
+  // (it sizes the form) and the form itself answered. A blocked script means the form
+  // can't size itself, so the fallback stays even if the form answers.
+  var scriptOk = false, frameOk = false, scriptFailed = false, shown = false, timer;
 
   function showForm() {
-    loaded = true; clearTimeout(timer);
+    shown = true; clearTimeout(timer);
     loading.hidden = true; frame.hidden = false; fallback.hidden = true;
     root.classList.remove("is-failed");
   }
   function showFallback() {
-    if (loaded) return;
+    if (shown) return;
     loading.hidden = true; frame.hidden = true; fallback.hidden = false;
     root.classList.add("is-failed");
   }
-  window.__rdsGtFail = showFallback;
+  function check() { if (scriptOk && frameOk && !scriptFailed) showForm(); }
+
+  window.__rdsGtScript = function (ok) {
+    if (ok) { scriptOk = true; check(); }
+    else { scriptFailed = true; clearTimeout(timer); showFallback(); }
+  };
 
   window.addEventListener("message", function (e) {
     if (e.source !== iframe.contentWindow) return;
     var d = e.data;
-    if ((Array.isArray(d) && d[0] === "iframeLoaded") || (typeof d === "string" && d.indexOf("[iFrameSizer]") === 0)) showForm();
+    if ((Array.isArray(d) && d[0] === "iframeLoaded") || (typeof d === "string" && d.indexOf("[iFrameSizer]") === 0)) { frameOk = true; check(); }
   });
 
   timer = setTimeout(showFallback, WAIT_MS);
@@ -76,4 +85,4 @@
   root.querySelector('[data-gt="retry"]').addEventListener("click", function () { window.location.reload(); });
 })();
 </script>
-<script src="https://links.revibookkeeping.com/js/form_embed.js" onerror="window.__rdsGtFail && window.__rdsGtFail()"></script>
+<script src="https://links.revibookkeeping.com/js/form_embed.js" onload="window.__rdsGtScript && window.__rdsGtScript(true)" onerror="window.__rdsGtScript && window.__rdsGtScript(false)"></script>
