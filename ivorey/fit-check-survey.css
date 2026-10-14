@@ -1,0 +1,61 @@
+/* REVI Fit Check survey: brand styles
+   Paste into Ivorey > Sites > Surveys > Fit Check > Styles & Options > Advanced > Custom CSS.
+   Only changes how the survey looks. Questions, logic and automations are untouched.
+   To undo, clear the Custom CSS box and save. */
+
+@import url("https://fonts.bunny.net/css?family=lato:400,700,900|lora:400i,600");
+
+/* Type: Lato for everything, Lora for headlines, same as the website */
+.ghl-survey-form, .ghl-survey-form *, .ghl-footer, .ghl-footer *,
+.bubble-label, .form-control, .field-label, .item-description,
+.continue-button, .start-over-button {
+  font-family: "Lato", "Helvetica Neue", Arial, sans-serif !important;
+}
+.heading-element h1, .heading-element h2, .heading-element h3 {
+  font-family: "Lora", Georgia, serif !important;
+  font-weight: 600 !important;
+  color: #3d3c3d !important;
+  letter-spacing: -0.01em;
+  line-height: 1.2 !important;
+}
+.heading-element p, .heading-element p span {
+  color: #5b5a5b !important; font-size: 16px !important; line-height: 1.5 !important;
+}
+
+/* Card */
+.ghl-survey-form { border-color: #e9e9e9 !important; color: #3d3c3d !important; }
+
+/* Question labels */
+.field-label, .item-description, label.field-label {
+  color: #3d3c3d !important; font-weight: 700 !important; font-size: 16px !important;
+}
+.field-label span { color: #871aae !important; }
+
+/* Text inputs */
+.form-control {
+  border: 1px solid #e2e2e2 !important; border-radius: 8px !important;
+  color: #3d3c3d !important; font-size: 16px !important;
+}
+.form-control::placeholder { color: #8a898b !important; }
+.form-control:focus { border-color: #a553c2 !important; box-shadow: 0 0 0 3px #f3e8f7 !important; outline: none !important; }
+
+/* Answer choices look like the chips on the Services page */
+.bubble-label {
+  border: 1px solid #e2e2e2 !important; border-radius: 999px !important;
+  color: #3d3c3d !important; font-size: 15px !important; background: #ffffff !important;
+  transition: border-color .15s, background-color .15s;
+}
+.bubble-label:hover { border-color: #c38cd7 !important; }
+.bubble-label:has(input:checked) {
+  background: #f3e8f7 !important; border-color: #871aae !important;
+  color: #651482 !important; font-weight: 700 !important;
+}
+.bubble-radio { accent-color: #871aae; }
+
+/* Next button */
+.ghl-footer-next, .ghl-btn.ghl-footer-next { background: #871aae !important; color: #ffffff !important; }
+.ghl-footer-next:hover { background: #651482 !important; }
+
+/* "Submission in progress" popup: the Continue button was white on white */
+.continue-button { background: #871aae !important; color: #ffffff !important; border-color: #871aae !important; }
+.start-over-button { color: #5b5a5b !important; }
