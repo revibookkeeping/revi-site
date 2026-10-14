@@ -55,6 +55,8 @@
 /* Next button */
 .ghl-footer-next, .ghl-btn.ghl-footer-next { background: #871aae !important; color: #ffffff !important; }
 .ghl-footer-next:hover { background: #651482 !important; }
+/* Back button: light tint so Next stays the main action */
+.ghl-footer-buttons button:not(.ghl-footer-next) { background: #f3e8f7 !important; color: #651482 !important; }
 
 /* "Submission in progress" popup: the Continue button was white on white */
 .continue-button { background: #871aae !important; color: #ffffff !important; border-color: #871aae !important; }
