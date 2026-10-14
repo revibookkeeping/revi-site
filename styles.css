@@ -436,3 +436,9 @@ body .header-menu .header-menu-nav-item a, body .header-menu .header-menu-cta a 
 @media (max-width: 520px) { .rds-sp__card { padding: var(--rds-space-24); } }
 @media (max-width: 400px) { .rds-sp__driver { grid-template-columns: 1fr; gap: 2px; } }
 @media (prefers-reduced-motion: reduce) { .rds-sp__chip span { transition: none; } }
+/* Squarespace hands the code block a fixed 31.8px line height, which every small label inherited.
+   Reset it so the pill, legend, slider ends and steps sit at their Figma sizes. */
+.rds-sp { line-height: 1.5; }
+.rds-sp__pill { display: block; line-height: 1.4; }
+.rds-sp__steps b { line-height: 1.4; }
+.rds-sp__steps span { display: block; margin-top: 2px; }
