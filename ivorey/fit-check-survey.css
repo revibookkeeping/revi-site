@@ -61,3 +61,14 @@
 /* "Submission in progress" popup: the Continue button was white on white */
 .continue-button { background: #871aae !important; color: #ffffff !important; border-color: #871aae !important; }
 .start-over-button { color: #5b5a5b !important; }
+/* Popup backdrop: a light veil instead of the dark gray scrim, and the popup
+   sits near the top of the form instead of the middle of a tall frame */
+.submission-dialog-overlay {
+  background: rgba(246, 246, 246, 0.88) !important;
+  -webkit-backdrop-filter: blur(2px) !important; backdrop-filter: blur(2px) !important;
+  align-items: flex-start !important; padding-top: 96px !important; box-sizing: border-box;
+}
+.submission-dialog-popup {
+  border: 1px solid #e9e9e9 !important; border-radius: 12px !important;
+  box-shadow: 0 12px 32px rgba(61, 60, 61, 0.16) !important; padding: 20px !important;
+}
