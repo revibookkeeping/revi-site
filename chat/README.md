@@ -64,3 +64,16 @@ const c=(await fetch(document.querySelector('script[src*="chat.js"]').src.replac
 let bad=[];for(const t of c){const g=await askrevi.ask(t.q);const ok=t.expect==='guide'?(g||'').startsWith('guide-'):g===t.expect;if(!ok)bad.push([t.q,g,t.expect]);}
 console.log(c.length-bad.length+'/'+c.length);console.table(bad);
 ```
+
+## Question log (private, in Notion)
+
+Every question typed into the chat can be saved to the "Ask REVI Log" database in Notion
+(Team REVI Bookkeeping > All Marketing Hub > Ask REVI: website chat questions). Nothing is stored in this repo.
+
+- The chat blanks out emails, phone numbers and long numbers in the browser, then posts the question to a
+  Google Apps Script web app (`logger/Code.gs`, deployed under julia@revibookkeeping.com).
+- The script holds the Notion key in its Script Properties and adds one row per question. It stops after
+  1,000 rows a day.
+- Logging is off until `LOG_URL` near the top of `chat.js` holds the web app URL. When it's on, the small
+  print under the chat box says questions are saved and links to the Ask REVI section of the Privacy Policy.
+- Setup steps and the privacy policy draft are on the Notion page.

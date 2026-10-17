@@ -13,6 +13,8 @@
   var script = document.currentScript || document.querySelector('script[src*="chat.js"]');
   var BASE = script ? script.src.replace(/[^\/?#]*([?#].*)?$/, "") : "";
   var PUBLIC = !!(script && script.getAttribute("data-public") === "true");
+  // Where questions are logged (Google Apps Script web app that writes to Notion). Empty = no logging.
+  var LOG_URL = "";
   var KEY = "askrevi-preview", STATE = "askrevi-state";
 
   function ls(fn) { try { return fn(window.localStorage); } catch (e) { return null; } }
@@ -40,7 +42,9 @@
     guide: "We have a guide on this.",
     thanks: "Glad to help.",
     placeholder: "Type your question",
-    foot: "General answers. Review your situation with your CPA."
+    foot: "General answers. Review your situation with your CPA.",
+    saved: "We save questions asked here to improve our answers.",
+    privacy: "Privacy Policy"
   };
 
   // ---------- Icons (Lucide, ISC license) and the REVI mark ----------
@@ -271,7 +275,8 @@
     '<form class="askrevi-composer" novalidate><label class="askrevi-sr" for="askrevi-input">Your question</label>' +
     '<input id="askrevi-input" class="askrevi-input" type="text" autocomplete="off" maxlength="300" enterkeyhint="send" placeholder="' + esc(COPY.placeholder) + '">' +
     '<button type="submit" class="askrevi-send" aria-label="Send" disabled>' + I.send + "</button></form>" +
-    '<p class="askrevi-foot">' + esc(COPY.foot) + "</p>";
+    '<p class="askrevi-foot">' + esc(COPY.foot) + (LOG_URL ? '<br>' + esc(COPY.saved) +
+      ' <a href="/privacy-policy#ask-revi" class="askrevi-foot-link">' + esc(COPY.privacy) + "</a>" : "") + "</p>";
   root.appendChild(panel);
   root.appendChild(launcher);
   (document.body || document.documentElement).appendChild(root);
@@ -285,6 +290,32 @@
   // ---------- Conversation state (kept for this tab, so it survives page changes) ----------
   var history = ss(function (s) { return JSON.parse(s.getItem(STATE) || "null"); }) || { open: false, turns: [] };
   function save() { ss(function (s) { s.setItem(STATE, JSON.stringify(history)); }); }
+  if (!history.visit) { history.visit = Math.random().toString(36).slice(2, 10); history.asked = 0; }
+
+  // ---------- Logging questions (private, to Notion) ----------
+  // Blank out anything that looks like an email, phone number, or account/ID number before it leaves the browser.
+  function blank(q) {
+    var out = q
+      .replace(/[^\s@]+@[^\s@]+\.[a-z]{2,}/gi, "[email]")
+      .replace(/(\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\b/g, "[phone]")
+      .replace(/\b\d{3}-\d{2}-\d{4}\b/g, "[number]")
+      .replace(/\d[\d\s-]{5,}\d/g, function (m) { return m.replace(/\D/g, "").length >= 6 ? "[number]" : m; });
+    return { text: out, blanked: out !== q };
+  }
+  function logQuestion(q, t) {
+    if (!LOG_URL) return;
+    try {
+      var b = blank(q), e = t.id && BYID[t.id];
+      var body = JSON.stringify({
+        v: 1, q: b.text, blanked: b.blanked,
+        result: e ? "answered" : t.kind === "welcome" ? "greeting" : t.kind === "thanks" ? "thanks" : "nomatch",
+        answerId: e ? e.id : "", answer: e ? e.q : "",
+        page: location.pathname, device: phone() ? "phone" : "desktop",
+        visit: history.visit, turn: ++history.asked, mode: PUBLIC ? "public" : "preview"
+      });
+      fetch(LOG_URL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain" }, body: body }).catch(function () {});
+    } catch (err) {}
+  }
 
   function scrollDown() { log.scrollTop = log.scrollHeight; }
   function botRow(content) {
@@ -395,6 +426,7 @@
     setTimeout(function () {
       dots.remove();
       var t = reply(q);
+      logQuestion(q, t);
       history.turns.push(t);
       if (history.turns.length > 60) history.turns = history.turns.slice(-60);
       save();

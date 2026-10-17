@@ -157,6 +157,7 @@
 .askrevi .askrevi-send { width: 44px; height: 44px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: var(--ar-brand); color: var(--ar-on-brand); flex: none; }
 .askrevi .askrevi-send:disabled { background: var(--ar-sunken); color: var(--ar-placeholder); cursor: default; }
 .askrevi .askrevi-send svg { width: 20px; height: 20px; }
+.askrevi-foot-link { color: inherit; text-decoration: underline !important; }
 .askrevi-foot { flex: none; padding: 0 16px 12px; text-align: center; font-size: 12px; line-height: 1.5; color: var(--ar-secondary); background: var(--ar-raised); }
 
 .askrevi-sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
