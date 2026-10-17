@@ -20,7 +20,7 @@ Plumbing diagram: Figma, REVI SQS Website, Website page, REVI / CHATBOT section.
 One line in Squarespace, Settings > Advanced > Code Injection > Footer:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/revibookkeeping/revi-site@main/chat/chat.js" defer></script>
+<script src="https://revibookkeeping.github.io/revi-site/chat/chat.js" defer></script>
 ```
 
 ### Preview mode (the default)
@@ -44,10 +44,10 @@ Delete the line from Code Injection. Nothing else depends on it.
 1. Change the copy in Figma, then in the block file under `blocks/`, then in Squarespace (same as any copy change).
 2. Run `python3 chat/build_answers.py` from the repo root.
 3. Commit and push.
-4. jsDelivr caches files from `@main`. To see changes right away, open these once:
-   - https://purge.jsdelivr.net/gh/revibookkeeping/revi-site@main/chat/answers.json
-   - https://purge.jsdelivr.net/gh/revibookkeeping/revi-site@main/chat/chat.js
-   - https://purge.jsdelivr.net/gh/revibookkeeping/revi-site@main/chat/chat.css
+4. GitHub Pages publishes within a minute or two, and browsers keep a copy for 10 minutes, so changes show up
+   on the site within about 15 minutes. Nothing to purge.
+
+Why not jsDelivr: it held the old `@main` files after a purge (Oct 17, 2026) and tells browsers to keep them for 7 days.
 
 New questions people ask in different words go in the `ask` list for that entry in `build_answers.py`,
 or in the `EXTRA` table near the bottom of that file.
