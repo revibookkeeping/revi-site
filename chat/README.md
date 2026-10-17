@@ -53,3 +53,14 @@ New questions people ask in different words go in the `ask` list for that entry 
 or in the `EXTRA` table near the bottom of that file.
 Topics the site doesn't cover (payroll, sales tax, short-term rentals, legal, loans) always go to the
 Get in Touch card instead of a near-miss answer; that list is `OFF_TOPIC` in `chat.js`.
+
+## Testing
+
+`tests/questions.json` holds 765 visitor questions with the answer each should get (`null` means it should go to
+the Get in Touch card). To run them on any page where the chat is loaded, paste this in the browser console:
+
+```js
+const c=(await fetch(document.querySelector('script[src*="chat.js"]').src.replace('chat.js','tests/questions.json')).then(r=>r.json())).cases;
+let bad=[];for(const t of c){const g=await askrevi.ask(t.q);const ok=t.expect==='guide'?(g||'').startsWith('guide-'):g===t.expect;if(!ok)bad.push([t.q,g,t.expect]);}
+console.log(c.length-bad.length+'/'+c.length);console.table(bad);
+```
