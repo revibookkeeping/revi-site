@@ -249,28 +249,35 @@ add("proc-diy", "Can I run the books myself after the cleanup?",
     "Home", "/", ["do I have to sign up for monthly", "cleanup only", "just a cleanup", "is monthly required"],
     ["myself", "only", "required", "contract"], ["svc-cleanup", "svc-monthly"])
 
-# Terms
+# Terms and Privacy Policy
+# These answers are written plainly instead of quoted, because the legal pages name the tools
+# we use behind the scenes. The chat keeps those private (see PRIVATE_TOOLS below).
+# Each answer still links to the exact spot on the page it comes from.
 T = "legal/terms-of-use.html"
-add("proc-free", "Is the discovery call free?",
-    [part(T, "Our Site uses Ivorey to allow visitors to schedule free consultation calls.", "calls."),
-     line(T, "Booking a consultation through our Site does not create")],
-    "Terms of Use", "/terms-of-use", ["does the call cost anything", "free consultation", "am I committing by booking"],
-    ["free", "commit", "obligation"], ["proc-call", "faq-start"])
-
-# Privacy
 PP = "legal/privacy-policy.html"
-add("priv-sell", "Do you sell my data?", part(PP, "We do not sell the personal information of Consumers.", "info@revibookkeeping.com."),
+def anchor(path, starts):
+    part(path, starts)  # fails the build if the page no longer has this text
+    return starts
+add("proc-free", "Is the discovery call free?",
+    ["Yes. The discovery call is free, and booking one doesn't sign you up for anything. Work starts only after a written engagement letter."],
+    "Terms of Use", "/terms-of-use", ["does the call cost anything", "free consultation", "am I committing by booking"],
+    ["free", "commit", "obligation"], ["proc-call", "faq-start"], source_text=anchor(T, "Booking a consultation through our Site does not create"))
+add("priv-sell", "Do you sell my data?",
+    ["No. We don't sell personal information. Questions about it can go to info@revibookkeeping.com."],
     "Privacy Policy", "/privacy-policy", ["do you share my information", "privacy"], ["sell", "share", "privacy", "data"],
-    ["priv-secure", "priv-delete"])
+    ["priv-secure", "priv-delete"], source_text=anchor(PP, "We do not sell the personal information of Consumers."))
 add("priv-secure", "Is my financial information secure?",
-    [line(PP, "As part of delivering Our bookkeeping services"), line(PP, "The security of Your Personal Data")],
+    ["The financial documents you share, like bank statements and transaction records, are used only to do your bookkeeping. Our Privacy Policy explains how we protect them."],
     "Privacy Policy", "/privacy-policy", ["is my data safe", "security", "bank statements safe"], ["secure", "security", "safe", "financial"],
-    ["priv-sell", "faq-software"])
-add("priv-delete", "How do I delete my data?", line(PP, "You have the right to request the deletion"),
+    ["priv-sell", "faq-software"], source_text=anchor(PP, "The security of Your Personal Data"))
+add("priv-delete", "How do I delete my data?",
+    ["Email info@revibookkeeping.com with the subject line \u201cRequest for Data Deletion.\u201d Include your name and the email address you used with us."],
     "Privacy Policy", "/privacy-policy", ["remove my information", "data deletion", "erase my data"], ["delete", "deletion", "remove", "erase"],
-    ["priv-sell", "contact"])
-add("priv-cookies", "Do you use cookies or tracking?", part(PP, "These Cookies are used to track information", "improve Our Service."),
-    "Privacy Policy", "/privacy-policy", ["google analytics", "do you track me"], ["cookies", "tracking", "analytics"], ["priv-sell"])
+    ["priv-sell", "contact"], source_text=anchor(PP, "You have the right to request the deletion"))
+add("priv-cookies", "Do you use cookies or tracking?",
+    ["Yes. The site uses cookies to see how visitors use it, so we can improve it. Our Privacy Policy has the details."],
+    "Privacy Policy", "/privacy-policy", ["do you track me", "analytics"], ["cookies", "tracking", "analytics"], ["priv-sell"],
+    source_text=anchor(PP, "These Cookies are used to track information"))
 
 # Guides (link out)
 guides = sorted(set(re.findall(r'href="(/guides/[a-z0-9-]+)"', "".join(p.read_text() for p in B.rglob("*.html")))))
@@ -295,7 +302,7 @@ EXTRA = {
     "faq-bookkeeper-cpa": (["what is the difference between bookkeeping and accounting", "are you accountants", "are you a cpa", "what does a bookkeeper do compared to a cpa"], ["accounting", "bookkeeper"]),
     "faq-work-cpa": (["can you work with my current cpa", "do you send my books to my cpa"], ["existing", "current", "coordinate", "send"]),
     "faq-taxes": (["can you file my schedule e", "do you prepare tax returns"], ["file", "filing", "prepare", "preparation", "return", "1040"]),
-    "faq-software": (["can you work in quickbooks desktop", "do I need to buy quickbooks", "do you use wave"], ["desktop", "wave", "xero", "freshbooks", "stessa", "baselane", "desktop version", "required", "require", "platform"]),
+    "faq-software": (["what tools do you use", "what programs do you use", "can you work in quickbooks desktop", "do I need to buy quickbooks", "do you use wave"], ["desktop", "wave", "xero", "freshbooks", "stessa", "baselane", "desktop version", "required", "require", "platform"]),
     "faq-start": (["how do I become a client", "what is the first step", "how do I hire you"], ["hire", "begin"]),
     "svc-overview": (["list your services", "what kind of services do you provide"], ["services", "service", "provide", "offer"]),
     "svc-qb-setup": (["help me set up quickbooks", "can you set up quickbooks for my new company"], []),
@@ -344,6 +351,15 @@ for e in entries:
         e["tags"] = list(e["tags"]) + [x for x in t if x not in e["tags"]]
 if EXTRA:
     raise SystemExit(f"EXTRA has unknown ids {list(EXTRA)}")
+
+# Tools we use behind the scenes stay out of the chat. QuickBooks Online is fine to name.
+# The build stops if any answer, or the page text it links to, would show one of these.
+PRIVATE_TOOLS = r"\b(Ivorey|Slack|Notion|Claude|Anthropic|ChatGPT|OpenAI|Gemini|Copilot|Google|Gmail|Squarespace|Intuit|Zoom|Calendly|DocuSign|Dropbox|Figma|Canva|Client ?Hub|Karbon|Canopy|TaxDome|Zapier|Loom|Fathom|Otter|Hubdoc|Dext|Gusto|Stripe|Plaid|Apps Script|GitHub)\b"
+for e in entries:
+    shown = json.dumps(e["a"], ensure_ascii=False) + " " + e["source"]["label"] + " " + e["source"]["url"]
+    hit = re.search(PRIVATE_TOOLS, shown, re.I)
+    if hit:
+        raise SystemExit(f"{e['id']} names a private tool: {hit.group(0)}")
 
 # Check related ids exist
 ids = {e["id"] for e in entries}

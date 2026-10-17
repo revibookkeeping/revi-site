@@ -77,3 +77,7 @@ Every question typed into the chat can be saved to the "Ask REVI Log" database i
 - `LOG_URL` near the top of `chat.js` holds the web app URL (deployed Oct 17, 2026). Empty it to stop logging. When it's on, the small
   print under the chat box says questions are saved and links to the Ask REVI section of the Privacy Policy.
 - Setup steps and the privacy policy draft are on the Notion page.
+
+## Tools we keep private
+
+The chat never names the tools we use behind the scenes (Ivorey, Slack, Notion, Claude, Google and so on). QuickBooks Online is the one exception, because the FAQs already name it. The list is `PRIVATE_TOOLS` in `build_answers.py`, and the build stops with an error if any answer would show one of them. Answers from the Terms of Use and Privacy Policy are written in plain words for this reason, and each one still links to the exact spot on the page. A question that asks about a private tool gets the "question for Julia" reply.

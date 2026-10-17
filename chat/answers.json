@@ -546,6 +546,8 @@
     "do you work with spreadsheets",
     "what if I use excel",
     "do you use xero",
+    "what tools do you use",
+    "what programs do you use",
     "can you work in quickbooks desktop",
     "do I need to buy quickbooks",
     "do you use wave"
@@ -1569,12 +1571,11 @@
     "first"
    ],
    "a": [
-    "Our Site uses Ivorey to allow visitors to schedule free consultation calls.",
-    "Booking a consultation through our Site does not create a client relationship, contractual obligation, or guarantee of services. Engagement of bookkeeping services is formalized exclusively through a separate written client engagement letter."
+    "Yes. The discovery call is free, and booking one doesn't sign you up for anything. Work starts only after a written engagement letter."
    ],
    "source": {
     "label": "From Terms of Use",
-    "url": "https://www.revibookkeeping.com/terms-of-use#:~:text=Our%20Site%20uses%20Ivorey%20to%20allow"
+    "url": "https://www.revibookkeeping.com/terms-of-use#:~:text=Booking%20a%20consultation%20through%20our%20Site"
    },
    "related": [
     "proc-call",
@@ -1602,7 +1603,7 @@
     "party"
    ],
    "a": [
-    "We do not sell the personal information of Consumers. If You have any questions about this, please contact Us at info@revibookkeeping.com."
+    "No. We don't sell personal information. Questions about it can go to info@revibookkeeping.com."
    ],
    "source": {
     "label": "From Privacy Policy",
@@ -1632,12 +1633,11 @@
     "protect"
    ],
    "a": [
-    "As part of delivering Our bookkeeping services, We may collect and process sensitive financial data, including bank statements, transaction records, payroll information, and other financial documents. This information is provided directly by You or Your authorized representative and is used solely to perform the services You have engaged Us to provide. This information is processed within QuickBooks Online and is subject to Intuit’s security and privacy practices.",
-    "The security of Your Personal Data is important to Us. We implement industry-standard technical and organizational security measures to protect Your Personal Data, including secure cloud storage through QuickBooks Online and encrypted communications. However, please be aware that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security."
+    "The financial documents you share, like bank statements and transaction records, are used only to do your bookkeeping. Our Privacy Policy explains how we protect them."
    ],
    "source": {
     "label": "From Privacy Policy",
-    "url": "https://www.revibookkeeping.com/privacy-policy#:~:text=As%20part%20of%20delivering%20Our%20bookkeeping"
+    "url": "https://www.revibookkeeping.com/privacy-policy#:~:text=The%20security%20of%20Your%20Personal%20Data"
    },
    "related": [
     "priv-sell",
@@ -1662,7 +1662,7 @@
     "erase"
    ],
    "a": [
-    "You have the right to request the deletion of Your personal data that We hold. To make this request, please send an email to info@revibookkeeping.com with the subject line “Request for Data Deletion.” In Your email, provide Your name and the email address associated with Your account to help Us verify and process Your request promptly."
+    "Email info@revibookkeeping.com with the subject line “Request for Data Deletion.” Include your name and the email address you used with us."
    ],
    "source": {
     "label": "From Privacy Policy",
@@ -1680,8 +1680,8 @@
    "id": "priv-cookies",
    "q": "Do you use cookies or tracking?",
    "ask": [
-    "google analytics",
-    "do you track me"
+    "do you track me",
+    "analytics"
    ],
    "tags": [
     "cookies",
@@ -1689,7 +1689,7 @@
     "analytics"
    ],
    "a": [
-    "These Cookies are used to track information about traffic to the Website and how users use the Website. We use Google Analytics to monitor and improve Our Service."
+    "Yes. The site uses cookies to see how visitors use it, so we can improve it. Our Privacy Policy has the details."
    ],
    "source": {
     "label": "From Privacy Policy",
