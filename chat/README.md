@@ -74,6 +74,6 @@ Every question typed into the chat can be saved to the "Ask REVI Log" database i
   Google Apps Script web app (`logger/Code.gs`, deployed under julia@revibookkeeping.com).
 - The script holds the Notion key in its Script Properties and adds one row per question. It stops after
   1,000 rows a day.
-- Logging is off until `LOG_URL` near the top of `chat.js` holds the web app URL. When it's on, the small
+- `LOG_URL` near the top of `chat.js` holds the web app URL (deployed Oct 17, 2026). Empty it to stop logging. When it's on, the small
   print under the chat box says questions are saved and links to the Ask REVI section of the Privacy Policy.
 - Setup steps and the privacy policy draft are on the Notion page.

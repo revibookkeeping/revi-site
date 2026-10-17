@@ -14,7 +14,7 @@
   var BASE = script ? script.src.replace(/[^\/?#]*([?#].*)?$/, "") : "";
   var PUBLIC = !!(script && script.getAttribute("data-public") === "true");
   // Where questions are logged (Google Apps Script web app that writes to Notion). Empty = no logging.
-  var LOG_URL = "";
+  var LOG_URL = "https://script.google.com/macros/s/AKfycbyPJKhNUrO0o_-r23VJ2NNwXsSrLOBq01Uu20TEe8tKeqWC5CDoBFKJBNETt6fFprZ7/exec";
   var KEY = "askrevi-preview", STATE = "askrevi-state";
 
   function ls(fn) { try { return fn(window.localStorage); } catch (e) { return null; } }
