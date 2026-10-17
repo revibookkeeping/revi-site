@@ -272,6 +272,9 @@
   }
   var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var phone = function () { return window.matchMedia && window.matchMedia("(max-width: 600px)").matches; };
+  // Touch screens: never move focus to the text field on our own, it pops the keyboard over the chat.
+  var touch = function () { return !!(window.matchMedia && window.matchMedia("(hover: none) and (pointer: coarse)").matches); };
+  function focusInput() { if (!touch()) input.focus({ preventScroll: true }); }
 
   // ---------- Styles ----------
   var css = document.createElement("link");
@@ -395,7 +398,7 @@
       var text = typeof q === "string" ? q : q.label;
       var btn = el("button", "askrevi-chip", esc(text));
       btn.type = "button";
-      btn.addEventListener("click", function () { onPick ? onPick(q) : ask(q); });
+      btn.addEventListener("click", function () { if (touch()) input.blur(); onPick ? onPick(q) : ask(q); });
       c.appendChild(btn);
     });
     w.appendChild(c);
@@ -490,7 +493,7 @@
     history.turns.push(t); save();
     renderTurn(t); followUps(); scrollDown();
     track("askrevi_visitor_type", { visitor_type: r.id });
-    input.focus({ preventScroll: true });
+    focusInput();
   }
   function reply(q) {
     if (/^\s*(thanks|thank you|thx|ty|great|perfect|awesome|got it|ok(ay)?|cool)\b[\s.!]*$/i.test(q)) return { role: "bot", kind: "thanks" };
@@ -555,7 +558,7 @@
     launcher.innerHTML = I.x + '<span class="askrevi-launcher-label">' + esc(COPY.launcher) + "</span>";
     if (phone()) document.documentElement.style.overflow = "hidden";
     history.open = true; save();
-    if (focus !== false) setTimeout(function () { input.focus({ preventScroll: true }); }, 50);
+    if (focus !== false) setTimeout(focusInput, 50);
     track("askrevi_open");
   }
   function close() {
@@ -580,7 +583,7 @@
     history = { open: true, turns: [{ role: "bot", kind: "welcome" }], visit: Math.random().toString(36).slice(2, 10), asked: 0 };
     save(); renderAll();
     input.value = ""; send.disabled = true;
-    input.focus({ preventScroll: true });
+    focusInput();
   }
   menuBtn.addEventListener("click", function () { showMenu(!menuOpen()); });
   menu.addEventListener("click", function (ev) {
