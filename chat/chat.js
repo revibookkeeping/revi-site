@@ -353,7 +353,7 @@
         result: e ? "answered" : t.kind === "welcome" ? "greeting" : t.kind === "thanks" ? "thanks" : "nomatch",
         answerId: e ? e.id : "", answer: e ? e.q : "",
         page: location.pathname, device: phone() ? "phone" : "desktop",
-        visit: history.visit, turn: t.n, mode: PUBLIC ? "public" : "preview",
+        visit: history.visit, turn: t.n, mode: PUBLIC && !preview ? "public" : "preview",
         visitor: history.persona && roleById(history.persona) ? roleById(history.persona).log : ""
       });
       post(body);
