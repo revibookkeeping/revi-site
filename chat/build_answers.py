@@ -261,7 +261,7 @@ def anchor(path, starts):
 add("proc-free", "Is the discovery call free?",
     ["Yes. The discovery call is free, and booking one doesn't sign you up for anything. Work starts only after a written engagement letter."],
     "Terms of Use", "/terms-of-use", ["does the call cost anything", "free consultation", "am I committing by booking"],
-    ["free", "commit", "obligation"], ["proc-call", "faq-start"], source_text=anchor(T, "Booking a consultation through our Site does not create"))
+    ["free", "commit", "obligation"], ["proc-call", "faq-start"], source_text=anchor(T, "Booking a consultation through our Site does not create"), cta=True)
 add("priv-sell", "Do you sell my data?",
     ["No. We don't sell personal information. Questions about it can go to info@revibookkeeping.com."],
     "Privacy Policy", "/privacy-policy", ["do you share my information", "privacy"], ["sell", "share", "privacy", "data"],

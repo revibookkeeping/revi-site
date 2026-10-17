@@ -1582,7 +1582,7 @@
     "faq-start"
    ],
    "kind": "answer",
-   "cta": false,
+   "cta": true,
    "avoid": []
   },
   {
