@@ -1,0 +1,1592 @@
+{
+ "version": 1,
+ "starters": [
+  "How does pricing work?",
+  "Do you file taxes?",
+  "Does a flip get depreciated?",
+  "Do you work directly with my CPA?",
+  "How do I get started?"
+ ],
+ "entries": [
+  {
+   "id": "faq-different",
+   "q": "How is real estate bookkeeping different from regular small business bookkeeping?",
+   "ask": [
+    "what makes real estate bookkeeping different",
+    "why do I need a real estate bookkeeper",
+    "can a regular bookkeeper do my books"
+   ],
+   "tags": [
+    "different",
+    "regular",
+    "small business",
+    "specialized"
+   ],
+   "a": [
+    "Real estate books are set up property by property and flip by flip. Rentals need income and expenses tracked for each property, loan principal split from interest, and depreciation. Flips hold their costs on the balance sheet until the sale, then move them to cost of goods sold. A standard small business setup isn't built for either, which is why every REVI file is set up around your flips and properties."
+   ],
+   "source": {
+    "label": "From FAQs: How is real estate bookkeeping different from regular small business bookkeeping?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=How%20is%20real%20estate%20bookkeeping%20different"
+   },
+   "related": [
+    "faq-flip-vs-rental",
+    "who-hero"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-depreciate",
+   "q": "Does a flip get depreciated?",
+   "ask": [
+    "do flips depreciate",
+    "can I depreciate a flip",
+    "depreciation on a flip"
+   ],
+   "tags": [
+    "depreciate",
+    "depreciation"
+   ],
+   "a": [
+    "No. Depreciation applies to property held to produce income. A flip is held for sale, so it doesn't depreciate. That's the reason flip books and rental books look nothing alike."
+   ],
+   "source": {
+    "label": "From FAQs: Does a flip get depreciated?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Does%20a%20flip%20get%20depreciated%3F"
+   },
+   "related": [
+    "faq-rehab-deductible",
+    "faq-balance-sheet"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-rehab-deductible",
+   "q": "Are rehab costs deductible when you pay them?",
+   "ask": [
+    "can I deduct rehab costs",
+    "are renovation costs deductible",
+    "write off rehab costs"
+   ],
+   "tags": [
+    "deduct",
+    "deductible",
+    "write off",
+    "rehab"
+   ],
+   "a": [
+    "Generally no. On a property held for sale, materials, labor, permits, and carrying costs get added to the cost of the property rather than deducted as paid. They come back as cost of goods sold when it sells."
+   ],
+   "source": {
+    "label": "From FAQs: Are rehab costs deductible when you pay them?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Are%20rehab%20costs%20deductible%20when%20you"
+   },
+   "related": [
+    "faq-balance-sheet",
+    "faq-depreciate"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-balance-sheet",
+   "q": "Why do flip costs sit on the balance sheet?",
+   "ask": [
+    "why are flip costs inventory",
+    "flip costs in inventory",
+    "why don't flip costs show on my p&l"
+   ],
+   "tags": [
+    "balance sheet",
+    "inventory",
+    "cost of goods sold"
+   ],
+   "a": [
+    "Because until it sells, the property is inventory. If those costs hit the profit and loss as they happened, every month before the sale would show a loss and the closing month would show a windfall that isn't real."
+   ],
+   "source": {
+    "label": "From FAQs: Why do flip costs sit on the balance sheet?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Why%20do%20flip%20costs%20sit%20on"
+   },
+   "related": [
+    "faq-rehab-deductible",
+    "faq-flip-vs-rental"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-1031-flip",
+   "q": "Does a 1031 exchange apply to a flip?",
+   "ask": [
+    "can I do a 1031 on a flip",
+    "1031 for flips"
+   ],
+   "tags": [
+    "1031",
+    "exchange"
+   ],
+   "a": [
+    "No. A 1031 applies to property held for investment or productive use. A flip is held for sale, which puts it outside the rules. 1031 exchange documentation is a landlord service."
+   ],
+   "source": {
+    "label": "From FAQs: Does a 1031 exchange apply to a flip?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Does%20a%201031%20exchange%20apply%20to"
+   },
+   "related": [
+    "svc-1031",
+    "faq-depreciate"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-flip-vs-rental",
+   "q": "What's the difference between bookkeeping for a flip and bookkeeping for a rental?",
+   "ask": [
+    "flip books vs rental books",
+    "how are flips and rentals booked differently"
+   ],
+   "tags": [
+    "difference",
+    "flip",
+    "rental"
+   ],
+   "a": [
+    "A rental produces income every month, so its books are a profit and loss with a depreciation schedule. A flip produces nothing until it sells, so costs build up on the balance sheet and release all at once at closing. Running flips through rental-style books misstates every month in between."
+   ],
+   "source": {
+    "label": "From FAQs: What's the difference between bookkeeping for a flip and bookkeeping for a rental?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=What%27s%20the%20difference%20between%20bookkeeping%20for"
+   },
+   "related": [
+    "faq-separate",
+    "who-both"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-principal",
+   "q": "Does loan principal show up on a rental's profit and loss?",
+   "ask": [
+    "is mortgage principal an expense",
+    "loan principal on p&l",
+    "mortgage payment split"
+   ],
+   "tags": [
+    "principal",
+    "interest",
+    "mortgage",
+    "loan payment"
+   ],
+   "a": [
+    "No, only the interest. Principal reduces the loan balance on the balance sheet. Splitting the payment wrong makes a property look less profitable than it is."
+   ],
+   "source": {
+    "label": "From FAQs: Does loan principal show up on a rental's profit and loss?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Does%20loan%20principal%20show%20up%20on"
+   },
+   "related": [
+    "faq-repair",
+    "who-landlords"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-repair",
+   "q": "What's the difference between a repair and a capital improvement?",
+   "ask": [
+    "repair vs improvement",
+    "is a new roof a repair",
+    "capital improvement"
+   ],
+   "tags": [
+    "repair",
+    "improvement",
+    "capital"
+   ],
+   "a": [
+    "A repair keeps the property in working condition and is deducted in the year it happens. An improvement adds value or extends useful life and gets depreciated over time."
+   ],
+   "source": {
+    "label": "From FAQs: What's the difference between a repair and a capital improvement?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=What%27s%20the%20difference%20between%20a%20repair"
+   },
+   "related": [
+    "faq-principal",
+    "faq-depreciate"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-separate",
+   "q": "Do I need separate books for flips and rentals?",
+   "ask": [
+    "should flips and rentals be separate",
+    "separate books for flipping and renting"
+   ],
+   "tags": [
+    "separate",
+    "both"
+   ],
+   "a": [
+    "Separate tracking at minimum. The two are taxed differently, and mixing them makes it harder to apply the right treatment to each. How far to take the separation, tracking versus separate entities, is a question for your CPA."
+   ],
+   "source": {
+    "label": "From FAQs: Do I need separate books for flips and rentals?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Do%20I%20need%20separate%20books%20for"
+   },
+   "related": [
+    "who-both",
+    "faq-flip-vs-rental"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-who-for",
+   "q": "Who is monthly bookkeeping built for?",
+   "ask": [
+    "is this for me",
+    "I only have one property",
+    "how many properties do I need",
+    "do you work with beginners",
+    "minimum number of properties"
+   ],
+   "tags": [
+    "who",
+    "one property",
+    "single",
+    "small"
+   ],
+   "a": [
+    "Flippers doing 2 or more flips a year, and landlords with 2 or more rentals. At that point there are enough transactions each month that the books stop being a once-a-year cleanup and start being something worth keeping current. With a single property, a spreadsheet and a good CPA at year end usually covers it."
+   ],
+   "source": {
+    "label": "From FAQs: Who is monthly bookkeeping built for?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Who%20is%20monthly%20bookkeeping%20built%20for%3F"
+   },
+   "related": [
+    "faq-when",
+    "who-hero"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-when",
+   "q": "When is the right time to bring in a bookkeeper?",
+   "ask": [
+    "do I need a bookkeeper",
+    "when should I hire a bookkeeper",
+    "is it time to get a bookkeeper"
+   ],
+   "tags": [
+    "time",
+    "when",
+    "hire"
+   ],
+   "a": [
+    "Usually around the second or third property, or the second flip running at the same time. One property you can track by hand. What changes is the number of transactions: more accounts, more contractor payments, draws, closing statements, and a year-end pile that stops being something you can reconstruct from memory in April."
+   ],
+   "source": {
+    "label": "From FAQs: When is the right time to bring in a bookkeeper?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=When%20is%20the%20right%20time%20to"
+   },
+   "related": [
+    "faq-who-for",
+    "faq-why-rental"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-why-rental",
+   "q": "Why hand off bookkeeping for rental properties?",
+   "ask": [
+    "why hire a bookkeeper for rentals",
+    "benefits of bookkeeping for landlords"
+   ],
+   "tags": [
+    "why",
+    "hand off",
+    "rental"
+   ],
+   "a": [
+    "Every rental adds work each month. Rent, repairs, and loan payments all need to be recorded and reconciled, with principal kept apart from interest, so you can see what each property actually makes. Kept current, the books give you NOI by property all year and a year-end package your CPA can file from."
+   ],
+   "source": {
+    "label": "From FAQs: Why hand off bookkeeping for rental properties?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Why%20hand%20off%20bookkeeping%20for%20rental"
+   },
+   "related": [
+    "who-landlords",
+    "faq-when"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-bookkeeper-cpa",
+   "q": "What's the difference between a bookkeeper and a CPA?",
+   "ask": [
+    "are you a cpa",
+    "are you an accountant",
+    "bookkeeper vs accountant",
+    "do I still need a cpa"
+   ],
+   "tags": [
+    "cpa",
+    "accountant",
+    "difference"
+   ],
+   "a": [
+    "Different jobs, and most investors need both. Bookkeeping is the month-to-month work, recording transactions, reconciling accounts, tracking costs by property, and producing the reports. A CPA takes those reports at year end, applies tax law, and files the return. The cleaner the books are, the less there is for the CPA to reconstruct."
+   ],
+   "source": {
+    "label": "From FAQs: What's the difference between a bookkeeper and a CPA?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=What%27s%20the%20difference%20between%20a%20bookkeeper"
+   },
+   "related": [
+    "faq-taxes",
+    "faq-work-cpa"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-work-cpa",
+   "q": "Do you work directly with my CPA?",
+   "ask": [
+    "will you talk to my accountant",
+    "do you coordinate with my cpa",
+    "send reports to my cpa",
+    "can you send my reports to my tax preparer"
+   ],
+   "tags": [
+    "cpa",
+    "accountant",
+    "coordinate"
+   ],
+   "a": [
+    "Yes. At year end, we put together a clean package for your CPA: Schedule E prep and depreciation schedules for rentals, per-flip cost breakdowns for sold flips, and the documentation behind the numbers."
+   ],
+   "source": {
+    "label": "From FAQs: Do you work directly with my CPA?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Do%20you%20work%20directly%20with%20my"
+   },
+   "related": [
+    "svc-yearend",
+    "faq-taxes"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-taxes",
+   "q": "Do you file taxes?",
+   "ask": [
+    "do you do taxes",
+    "can you do my tax return",
+    "do you prepare tax returns",
+    "tax preparation",
+    "do you file my taxes"
+   ],
+   "tags": [
+    "taxes",
+    "tax return",
+    "file"
+   ],
+   "a": [
+    "No. REVI is bookkeeping. The books, the monthly reports, and the year-end package come from us. The return is filed by your CPA."
+   ],
+   "source": {
+    "label": "From FAQs: Do you file taxes?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=Do%20you%20file%20taxes%3F"
+   },
+   "related": [
+    "faq-work-cpa",
+    "faq-bookkeeper-cpa"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": [
+    "sales tax",
+    "payroll tax",
+    "payroll taxes",
+    "property tax",
+    "property taxes",
+    "sales taxes"
+   ]
+  },
+  {
+   "id": "faq-pricing",
+   "q": "How does pricing work?",
+   "ask": [
+    "how much do you charge",
+    "what does it cost",
+    "how much is monthly bookkeeping",
+    "what are your fees",
+    "is it hourly",
+    "price"
+   ],
+   "tags": [
+    "price",
+    "cost",
+    "fee",
+    "charge",
+    "hourly",
+    "450"
+   ],
+   "a": [
+    "Flat monthly, no hourly billing, and no add-ons for reconciliation, 1099s, or year-end reporting. Monthly bookkeeping starts at $450. The exact number comes after a review of your QuickBooks file, since transaction volume and the state of the file are what drive it. Cleanup, if there's any, is quoted separately as a one-time project."
+   ],
+   "source": {
+    "label": "From FAQs: How does pricing work?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=How%20does%20pricing%20work%3F"
+   },
+   "related": [
+    "svc-cleanup-price",
+    "svc-monthly"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-software",
+   "q": "What software do you use?",
+   "ask": [
+    "do you use quickbooks",
+    "do I need quickbooks",
+    "do you work with spreadsheets",
+    "what if I use excel",
+    "do you use xero"
+   ],
+   "tags": [
+    "quickbooks",
+    "software",
+    "spreadsheet"
+   ],
+   "a": [
+    "QuickBooks Online. The setup is built around your flips and properties, which is what makes per-flip and property-level reporting possible. If you're on spreadsheets or another platform, moving over is part of the setup."
+   ],
+   "source": {
+    "label": "From FAQs: What software do you use?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=What%20software%20do%20you%20use%3F"
+   },
+   "related": [
+    "svc-qb-setup",
+    "faq-start"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "faq-start",
+   "q": "How do I get started?",
+   "ask": [
+    "how do I sign up",
+    "how do I hire you",
+    "next steps",
+    "how do I begin",
+    "I want to work with you",
+    "how do I book a call",
+    "schedule a call",
+    "book a discovery call"
+   ],
+   "tags": [
+    "start",
+    "sign up",
+    "begin"
+   ],
+   "a": [
+    "Use Get in Touch on any page. You'll answer some questions about your portfolio, your setup, and what you need, then book a discovery call where we go through your books together."
+   ],
+   "source": {
+    "label": "From FAQs: How do I get started?",
+    "url": "https://www.revibookkeeping.com/faqs#:~:text=How%20do%20I%20get%20started%3F"
+   },
+   "related": [
+    "proc-call",
+    "proc-steps"
+   ],
+   "kind": "answer",
+   "cta": true,
+   "avoid": []
+  },
+  {
+   "id": "svc-overview",
+   "q": "What services do you offer?",
+   "ask": [
+    "what do you do",
+    "services",
+    "how can you help",
+    "what can REVI do"
+   ],
+   "tags": [
+    "services",
+    "offer",
+    "help"
+   ],
+   "a": [
+    "A QuickBooks setup for new files, a one-time cleanup for books that are behind, and monthly bookkeeping to keep them current. We work with flippers and landlords nationwide."
+   ],
+   "source": {
+    "label": "From Services",
+    "url": "https://www.revibookkeeping.com/services#:~:text=A%20QuickBooks%20setup%20for%20new%20files%2C"
+   },
+   "related": [
+    "svc-cleanup",
+    "svc-monthly"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-qb-setup",
+   "q": "What is QuickBooks Setup?",
+   "ask": [
+    "can you set up quickbooks",
+    "new quickbooks file",
+    "I'm moving off spreadsheets",
+    "start from scratch"
+   ],
+   "tags": [
+    "setup",
+    "set up",
+    "new file",
+    "spreadsheet"
+   ],
+   "a": [
+    "For flippers and landlords just getting started with QuickBooks, or moving off spreadsheets. We set up a brand new QuickBooks file with the right settings and a chart of accounts built around your flips and properties."
+   ],
+   "source": {
+    "label": "From Services",
+    "url": "https://www.revibookkeeping.com/services#:~:text=For%20flippers%20and%20landlords%20just%20getting"
+   },
+   "related": [
+    "faq-software",
+    "svc-overview"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-cleanup",
+   "q": "What is a cleanup?",
+   "ask": [
+    "my books are behind",
+    "I'm months behind on my books",
+    "I haven't done my books in months",
+    "can you catch up my books",
+    "my books are a mess",
+    "I'm behind on my bookkeeping",
+    "catch up bookkeeping",
+    "fix my quickbooks"
+   ],
+   "tags": [
+    "cleanup",
+    "clean up",
+    "behind",
+    "catch up",
+    "mess",
+    "backlog"
+   ],
+   "a": [
+    "For flippers and landlords whose books are behind. We enter every missing month, correct what's already entered, and rebuild the file around your flips and properties. The price is quoted once, after we look at your books, and our FAQs explain how it's set."
+   ],
+   "source": {
+    "label": "From Services",
+    "url": "https://www.revibookkeeping.com/services#:~:text=For%20flippers%20and%20landlords%20whose%20books"
+   },
+   "related": [
+    "svc-cleanup-price",
+    "proc-cleanup-time"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-cleanup-price",
+   "q": "How much does a cleanup cost?",
+   "ask": [
+    "cleanup price",
+    "how is a cleanup priced",
+    "catch up cost",
+    "what does a cleanup cost"
+   ],
+   "tags": [
+    "cleanup",
+    "price",
+    "cost",
+    "quote"
+   ],
+   "a": [
+    "A one-time price, set after we look at your books. There’s no set rate, because no two files are in the same shape.",
+    {
+     "heading": "What we look at when we price a cleanup",
+     "list": [
+      "How many transactions run through your accounts each month",
+      "How many months are behind",
+      "How many bank, credit card, loan, and escrow accounts",
+      "How many properties or flip projects",
+      "Whether the file needs rebuilding around your properties"
+     ]
+    },
+    "You’ll see both numbers before anything is billed."
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=A%20one-time%20price%2C%20set%20after%20we"
+   },
+   "related": [
+    "faq-pricing",
+    "proc-quote"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-monthly",
+   "q": "What is monthly bookkeeping?",
+   "ask": [
+    "do you do ongoing bookkeeping",
+    "monthly service",
+    "keep my books current"
+   ],
+   "tags": [
+    "monthly",
+    "ongoing",
+    "current"
+   ],
+   "a": [
+    "Once the books are caught up, we keep them current. Pricing starts at $450 a month and depends on the transactions and properties you're running."
+   ],
+   "source": {
+    "label": "From Services",
+    "url": "https://www.revibookkeeping.com/services#:~:text=Once%20the%20books%20are%20caught%20up%2C"
+   },
+   "related": [
+    "svc-included",
+    "faq-pricing"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-included",
+   "q": "What does monthly bookkeeping include?",
+   "ask": [
+    "what's included",
+    "what do I get every month",
+    "what reports do I get",
+    "what do you do each month"
+   ],
+   "tags": [
+    "included",
+    "include",
+    "reports",
+    "every month"
+   ],
+   "a": [
+    "Once your books are caught up, this is what arrives every month. Flat pricing, no hourly billing, and no add-ons for reconciliation, 1099s, or year-end reporting.",
+    {
+     "list": [
+      "Transaction Recording & Categorization",
+      "Monthly Bank & Account Reconciliations",
+      "Per-Flip and Property-Level P&Ls",
+      "NOI & Cash Flow Tracking",
+      "1099 Preparation & Filing",
+      "Year-End Tax Package"
+     ]
+    }
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=Once%20your%20books%20are%20caught%20up%2C"
+   },
+   "related": [
+    "svc-yearend",
+    "svc-reconcile"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-reconcile",
+   "q": "Do you reconcile my accounts?",
+   "ask": [
+    "bank reconciliation",
+    "do you reconcile credit cards",
+    "escrow accounts"
+   ],
+   "tags": [
+    "reconcile",
+    "reconciliation",
+    "bank",
+    "credit card",
+    "escrow"
+   ],
+   "a": [
+    "Every bank, credit card, loan, and escrow account reconciled each month."
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=Every%20bank%2C%20credit%20card%2C%20loan%2C%20and"
+   },
+   "related": [
+    "svc-included",
+    "svc-cleanup"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-1099",
+   "q": "Do you file 1099s?",
+   "ask": [
+    "1099 for contractors",
+    "contractor 1099s",
+    "do you handle 1099s"
+   ],
+   "tags": [
+    "1099",
+    "contractor",
+    "contractors"
+   ],
+   "a": [
+    "Contractor payments tracked all year, with 1099s prepared and filed every January."
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=Contractor%20payments%20tracked%20all%20year%2C%20with"
+   },
+   "related": [
+    "svc-included",
+    "faq-taxes"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-yearend",
+   "q": "What's in the year-end tax package?",
+   "ask": [
+    "year end package",
+    "what do you give my cpa",
+    "schedule e",
+    "tax season"
+   ],
+   "tags": [
+    "year-end",
+    "year end",
+    "schedule e",
+    "package"
+   ],
+   "a": [
+    "CPA-ready package: Schedule E prep and depreciation schedules for rentals, per-flip cost breakdowns for sold flips, and all supporting documentation."
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=CPA-ready%20package%3A%20Schedule%20E%20prep%20and"
+   },
+   "related": [
+    "faq-work-cpa",
+    "faq-taxes"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-1031",
+   "q": "Do you help with 1031 exchanges?",
+   "ask": [
+    "1031 documentation",
+    "1031 exchange records"
+   ],
+   "tags": [
+    "1031",
+    "exchange"
+   ],
+   "a": [
+    "1031 exchange documentation, with asset basis records kept current"
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=1031%20exchange%20documentation%2C%20with%20asset%20basis"
+   },
+   "related": [
+    "faq-1031-flip",
+    "who-landlords"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-llc",
+   "q": "Do you handle multiple LLCs?",
+   "ask": [
+    "I have several llcs",
+    "multiple entities",
+    "more than one llc"
+   ],
+   "tags": [
+    "llc",
+    "llcs",
+    "entity",
+    "entities"
+   ],
+   "a": [
+    "Multi-LLC bookkeeping, with a combined view and reports for each entity"
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=Multi-LLC%20bookkeeping%2C%20with%20a%20combined%20view"
+   },
+   "related": [
+    "faq-separate",
+    "who-landlords"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-draws",
+   "q": "Do you reconcile hard money draws?",
+   "ask": [
+    "hard money loan",
+    "construction draws",
+    "draw reconciliation"
+   ],
+   "tags": [
+    "hard money",
+    "draw",
+    "draws",
+    "lender"
+   ],
+   "a": [
+    "Hard money draws matched against what was spent"
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=Hard%20money%20draws%20matched%20against%20what"
+   },
+   "related": [
+    "who-flippers",
+    "svc-costbasis"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "svc-costbasis",
+   "q": "Can you give me cost basis reports?",
+   "ask": [
+    "reports for my lender",
+    "refinance reports"
+   ],
+   "tags": [
+    "cost basis",
+    "refinance",
+    "lender"
+   ],
+   "a": [
+    "Cost basis reports ready for your lender or next refinance"
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=Cost%20basis%20reports%20ready%20for%20your"
+   },
+   "related": [
+    "svc-draws",
+    "who-flippers"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "who-hero",
+   "q": "Who do you work with?",
+   "ask": [
+    "who are your clients",
+    "do you work outside charlotte",
+    "do you work nationwide",
+    "which states do you serve",
+    "do you work with small businesses"
+   ],
+   "tags": [
+    "who",
+    "clients",
+    "nationwide",
+    "states",
+    "anywhere"
+   ],
+   "a": [
+    "We work with house flippers and long-term rental landlords anywhere in the US, and with investors who do both. Every file we keep is a real estate file, so the books are set up around your flips and properties from the start."
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=We%20work%20with%20house%20flippers%20and"
+   },
+   "related": [
+    "who-flippers",
+    "who-landlords"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "who-flippers",
+   "q": "Do you work with house flippers?",
+   "ask": [
+    "bookkeeping for flippers",
+    "I flip houses",
+    "fix and flip bookkeeping",
+    "brrrr"
+   ],
+   "tags": [
+    "flipper",
+    "flippers",
+    "flip",
+    "flips",
+    "brrrr"
+   ],
+   "a": [
+    "Flips move fast, with contractor payments, draws, and closings running on several at once. We keep every cost with its flip, so you can see what each one has cost so far and what it cleared when it sold. We work best with flippers doing 2 or more flips a year, including BRRRR investors with rehab work and flippers using hard money."
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=Flips%20move%20fast%2C%20with%20contractor%20payments%2C"
+   },
+   "related": [
+    "svc-draws",
+    "faq-balance-sheet"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "who-landlords",
+   "q": "Do you work with landlords?",
+   "ask": [
+    "bookkeeping for rentals",
+    "I own rental properties",
+    "long term rentals",
+    "multifamily"
+   ],
+   "tags": [
+    "landlord",
+    "landlords",
+    "rental",
+    "rentals",
+    "multifamily"
+   ],
+   "a": [
+    "We build your books around your properties, so you can see what each one makes every month. We work best with landlords who own 2 or more rentals, from single-family and small multifamily to buy-and-hold and BRRRR, including owners with several LLCs."
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=We%20build%20your%20books%20around%20your"
+   },
+   "related": [
+    "svc-llc",
+    "faq-principal"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "who-both",
+   "q": "I flip and hold rentals. Can you do both?",
+   "ask": [
+    "flips and rentals together",
+    "I do both",
+    "I flip and have rentals",
+    "I flip and also own rentals",
+    "flipper and landlord"
+   ],
+   "tags": [
+    "both"
+   ],
+   "a": [
+    "If you flip and hold rentals, both sides live in one QuickBooks file and are kept apart, so each follows its own rules. You see what each flip cleared and what each rental made, next to the total for the whole portfolio."
+   ],
+   "source": {
+    "label": "From Who We Serve",
+    "url": "https://www.revibookkeeping.com/who-we-serve#:~:text=If%20you%20flip%20and%20hold%20rentals%2C"
+   },
+   "related": [
+    "faq-separate",
+    "faq-flip-vs-rental"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "about-julia",
+   "q": "Who is Julia?",
+   "ask": [
+    "who runs revi",
+    "who is the bookkeeper",
+    "who will do my books",
+    "where are you located",
+    "are you in charlotte",
+    "about you"
+   ],
+   "tags": [
+    "julia",
+    "founder",
+    "about",
+    "located",
+    "charlotte",
+    "background"
+   ],
+   "a": [
+    "Hi, I'm Julia Kachula, the bookkeeper and founder of REVI Bookkeeping, based in Charlotte, NC. My focus is bookkeeping for flippers and long-term rental landlords, and because everything runs in the cloud, I work with investors anywhere in the US.",
+    "My background is in accounting and financial reporting. I started REVI because real estate books rarely look like a typical business's. Flips hold their costs until they sell, rentals need numbers by property, and some investors run both."
+   ],
+   "source": {
+    "label": "From About",
+    "url": "https://www.revibookkeeping.com/about#:~:text=Hi%2C%20I%27m%20Julia%20Kachula%2C%20the%20bookkeeper"
+   },
+   "related": [
+    "contact",
+    "who-hero"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "contact",
+   "q": "How can I contact you?",
+   "ask": [
+    "phone number",
+    "email address",
+    "can I call you",
+    "talk to a person",
+    "talk to julia",
+    "speak to someone"
+   ],
+   "tags": [
+    "contact",
+    "phone",
+    "email",
+    "call",
+    "text",
+    "person",
+    "human"
+   ],
+   "a": [
+    {
+     "contacts": [
+      {
+       "label": "(980) 469-8324",
+       "href": "tel:+19804698324",
+       "note": "Call or text Mon–Fri, 9am–5pm"
+      },
+      {
+       "label": "julia@revibookkeeping.com",
+       "href": "mailto:julia@revibookkeeping.com",
+       "note": "We reply within 24 hours"
+      }
+     ]
+    }
+   ],
+   "source": {
+    "label": "From About",
+    "url": "https://www.revibookkeeping.com/about#:~:text=Have%20a%20question%2C%20send%20a%20message"
+   },
+   "related": [
+    "faq-start",
+    "proc-call"
+   ],
+   "kind": "answer",
+   "cta": true,
+   "avoid": []
+  },
+  {
+   "id": "proc-steps",
+   "q": "What happens after I get in touch?",
+   "ask": [
+    "what is the process",
+    "how does it work",
+    "what are the steps",
+    "onboarding"
+   ],
+   "tags": [
+    "process",
+    "steps",
+    "how it works",
+    "after"
+   ],
+   "a": [
+    "Four steps from the first call to clean books, and monthly bookkeeping to keep them current.",
+    {
+     "steps": [
+      {
+       "num": "01",
+       "title": "Discovery call",
+       "meta": "30 minutes",
+       "text": "We go through your portfolio, your books, and what the work looks like for you."
+      },
+      {
+       "num": "02",
+       "title": "Proposal",
+       "meta": "After we see the file",
+       "text": "An exact quote for the work you need, not a range."
+      },
+      {
+       "num": "03",
+       "title": "Cleanup",
+       "meta": "Timing depends on the file",
+       "text": "Backlog entered, every account reconciled, rehab costs put where they belong, and the chart of accounts rebuilt around your properties. For plenty of clients this is the whole job."
+      },
+      {
+       "num": "04",
+       "title": "Monthly bookkeeping",
+       "meta": "Ongoing",
+       "text": "Per-flip costs, property-level P&Ls, and a portfolio summary every month. Some clients take the clean file from here and run it themselves."
+      }
+     ]
+    }
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=Four%20steps%20from%20the%20first%20call"
+   },
+   "related": [
+    "proc-call",
+    "proc-quote"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "proc-call",
+   "q": "What happens on the discovery call?",
+   "ask": [
+    "how long is the call",
+    "discovery call",
+    "consultation",
+    "first call",
+    "intro call"
+   ],
+   "tags": [
+    "call",
+    "discovery",
+    "consultation",
+    "minutes"
+   ],
+   "a": [
+    {
+     "steps": [
+      {
+       "num": "01",
+       "title": "Discovery call",
+       "meta": "30 minutes",
+       "text": "We go through your portfolio, your books, and what the work looks like for you."
+      }
+     ]
+    },
+    "Tell us where your books stand right now. We’ll go through it together on a call, and you’ll leave knowing what the work looks like and what it costs."
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=We%20go%20through%20your%20portfolio%2C%20your"
+   },
+   "related": [
+    "proc-free",
+    "faq-start"
+   ],
+   "kind": "answer",
+   "cta": true,
+   "avoid": []
+  },
+  {
+   "id": "proc-quote",
+   "q": "Will I get an exact quote?",
+   "ask": [
+    "do you give a quote",
+    "proposal",
+    "estimate",
+    "price range"
+   ],
+   "tags": [
+    "quote",
+    "proposal",
+    "estimate",
+    "exact"
+   ],
+   "a": [
+    {
+     "steps": [
+      {
+       "num": "02",
+       "title": "Proposal",
+       "meta": "After we see the file",
+       "text": "An exact quote for the work you need, not a range."
+      }
+     ]
+    }
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=An%20exact%20quote%20for%20the%20work"
+   },
+   "related": [
+    "svc-cleanup-price",
+    "faq-pricing"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "proc-cleanup-time",
+   "q": "How long does a cleanup take?",
+   "ask": [
+    "cleanup timeline",
+    "how long to catch up",
+    "turnaround",
+    "how fast can you catch me up",
+    "how quickly can you clean up my books"
+   ],
+   "tags": [
+    "long",
+    "timeline",
+    "take",
+    "turnaround"
+   ],
+   "a": [
+    {
+     "steps": [
+      {
+       "num": "03",
+       "title": "Cleanup",
+       "meta": "Timing depends on the file",
+       "text": "Backlog entered, every account reconciled, rehab costs put where they belong, and the chart of accounts rebuilt around your properties. For plenty of clients this is the whole job."
+      }
+     ]
+    }
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=Backlog%20entered%2C%20every%20account%20reconciled%2C%20rehab"
+   },
+   "related": [
+    "svc-cleanup",
+    "svc-cleanup-price"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "proc-diy",
+   "q": "Can I run the books myself after the cleanup?",
+   "ask": [
+    "do I have to sign up for monthly",
+    "cleanup only",
+    "just a cleanup",
+    "is monthly required"
+   ],
+   "tags": [
+    "myself",
+    "only",
+    "required",
+    "contract"
+   ],
+   "a": [
+    {
+     "steps": [
+      {
+       "num": "03",
+       "title": "Cleanup",
+       "meta": "Timing depends on the file",
+       "text": "Backlog entered, every account reconciled, rehab costs put where they belong, and the chart of accounts rebuilt around your properties. For plenty of clients this is the whole job."
+      },
+      {
+       "num": "04",
+       "title": "Monthly bookkeeping",
+       "meta": "Ongoing",
+       "text": "Per-flip costs, property-level P&Ls, and a portfolio summary every month. Some clients take the clean file from here and run it themselves."
+      }
+     ]
+    }
+   ],
+   "source": {
+    "label": "From Home",
+    "url": "https://www.revibookkeeping.com/#:~:text=Backlog%20entered%2C%20every%20account%20reconciled%2C%20rehab"
+   },
+   "related": [
+    "svc-cleanup",
+    "svc-monthly"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "proc-free",
+   "q": "Is the discovery call free?",
+   "ask": [
+    "does the call cost anything",
+    "free consultation",
+    "am I committing by booking"
+   ],
+   "tags": [
+    "free",
+    "commit",
+    "obligation"
+   ],
+   "a": [
+    "Our Site uses Ivorey to allow visitors to schedule free consultation calls.",
+    "Booking a consultation through our Site does not create a client relationship, contractual obligation, or guarantee of services. Engagement of bookkeeping services is formalized exclusively through a separate written client engagement letter."
+   ],
+   "source": {
+    "label": "From Terms of Use",
+    "url": "https://www.revibookkeeping.com/terms-of-use#:~:text=Our%20Site%20uses%20Ivorey%20to%20allow"
+   },
+   "related": [
+    "proc-call",
+    "faq-start"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "priv-sell",
+   "q": "Do you sell my data?",
+   "ask": [
+    "do you share my information",
+    "privacy"
+   ],
+   "tags": [
+    "sell",
+    "share",
+    "privacy",
+    "data"
+   ],
+   "a": [
+    "We do not sell the personal information of Consumers. If You have any questions about this, please contact Us at info@revibookkeeping.com."
+   ],
+   "source": {
+    "label": "From Privacy Policy",
+    "url": "https://www.revibookkeeping.com/privacy-policy#:~:text=We%20do%20not%20sell%20the%20personal"
+   },
+   "related": [
+    "priv-secure",
+    "priv-delete"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "priv-secure",
+   "q": "Is my financial information secure?",
+   "ask": [
+    "is my data safe",
+    "security",
+    "bank statements safe"
+   ],
+   "tags": [
+    "secure",
+    "security",
+    "safe",
+    "financial"
+   ],
+   "a": [
+    "As part of delivering Our bookkeeping services, We may collect and process sensitive financial data, including bank statements, transaction records, payroll information, and other financial documents. This information is provided directly by You or Your authorized representative and is used solely to perform the services You have engaged Us to provide. This information is processed within QuickBooks Online and is subject to Intuit’s security and privacy practices.",
+    "The security of Your Personal Data is important to Us. We implement industry-standard technical and organizational security measures to protect Your Personal Data, including secure cloud storage through QuickBooks Online and encrypted communications. However, please be aware that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While We strive to use commercially acceptable means to protect Your Personal Data, We cannot guarantee its absolute security."
+   ],
+   "source": {
+    "label": "From Privacy Policy",
+    "url": "https://www.revibookkeeping.com/privacy-policy#:~:text=As%20part%20of%20delivering%20Our%20bookkeeping"
+   },
+   "related": [
+    "priv-sell",
+    "faq-software"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "priv-delete",
+   "q": "How do I delete my data?",
+   "ask": [
+    "remove my information",
+    "data deletion",
+    "erase my data"
+   ],
+   "tags": [
+    "delete",
+    "deletion",
+    "remove",
+    "erase"
+   ],
+   "a": [
+    "You have the right to request the deletion of Your personal data that We hold. To make this request, please send an email to info@revibookkeeping.com with the subject line “Request for Data Deletion.” In Your email, provide Your name and the email address associated with Your account to help Us verify and process Your request promptly."
+   ],
+   "source": {
+    "label": "From Privacy Policy",
+    "url": "https://www.revibookkeeping.com/privacy-policy#:~:text=You%20have%20the%20right%20to%20request"
+   },
+   "related": [
+    "priv-sell",
+    "contact"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "priv-cookies",
+   "q": "Do you use cookies or tracking?",
+   "ask": [
+    "google analytics",
+    "do you track me"
+   ],
+   "tags": [
+    "cookies",
+    "tracking",
+    "analytics"
+   ],
+   "a": [
+    "These Cookies are used to track information about traffic to the Website and how users use the Website. We use Google Analytics to monitor and improve Our Service."
+   ],
+   "source": {
+    "label": "From Privacy Policy",
+    "url": "https://www.revibookkeeping.com/privacy-policy#:~:text=These%20Cookies%20are%20used%20to%20track"
+   },
+   "related": [
+    "priv-sell"
+   ],
+   "kind": "answer",
+   "cta": false,
+   "avoid": []
+  },
+  {
+   "id": "guide-do-i-still-need-my-own-books-if-i-have-a",
+   "q": "Do I still need my own books if I have a property manager?",
+   "ask": [],
+   "tags": [
+    "guide"
+   ],
+   "a": [],
+   "source": {
+    "label": "Read the guide",
+    "url": "https://www.revibookkeeping.com/guides/do-i-still-need-my-own-books-if-i-have-a-property-manager"
+   },
+   "related": [],
+   "kind": "guide",
+   "cta": false
+  },
+  {
+   "id": "guide-how-do-i-figure-out-how-much-profit-i-ac",
+   "q": "How do I figure out how much profit I actually made on a house flip?",
+   "ask": [],
+   "tags": [
+    "guide"
+   ],
+   "a": [],
+   "source": {
+    "label": "Read the guide",
+    "url": "https://www.revibookkeeping.com/guides/how-do-i-figure-out-how-much-profit-i-actually-made-on-a-house-flip"
+   },
+   "related": [],
+   "kind": "guide",
+   "cta": false
+  },
+  {
+   "id": "guide-how-do-i-know-if-my-rental-properties-ar",
+   "q": "How do I know if my rental properties are actually making money?",
+   "ask": [],
+   "tags": [
+    "guide"
+   ],
+   "a": [],
+   "source": {
+    "label": "Read the guide",
+    "url": "https://www.revibookkeeping.com/guides/how-do-i-know-if-my-rental-properties-are-actually-making-money"
+   },
+   "related": [],
+   "kind": "guide",
+   "cta": false
+  },
+  {
+   "id": "guide-should-i-hire-a-bookkeeper-for-my-rental",
+   "q": "Should I hire a bookkeeper for my rental properties or keep using a spreadsheet?",
+   "ask": [],
+   "tags": [
+    "guide"
+   ],
+   "a": [],
+   "source": {
+    "label": "Read the guide",
+    "url": "https://www.revibookkeeping.com/guides/should-i-hire-a-bookkeeper-for-my-rental-properties-or-keep-using-a-spreadsheet"
+   },
+   "related": [],
+   "kind": "guide",
+   "cta": false
+  },
+  {
+   "id": "guide-whats-the-best-way-to-track-rehab-costs-",
+   "q": "What's the best way to track rehab costs for each flip or BRRRR property?",
+   "ask": [],
+   "tags": [
+    "guide"
+   ],
+   "a": [],
+   "source": {
+    "label": "Read the guide",
+    "url": "https://www.revibookkeeping.com/guides/whats-the-best-way-to-track-rehab-costs-for-each-flip-or-brrrr-property"
+   },
+   "related": [],
+   "kind": "guide",
+   "cta": false
+  }
+ ]
+}

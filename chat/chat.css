@@ -1,0 +1,169 @@
+/* Ask REVI, the website FAQ chat.
+   Mirrors the Web/Chat components in the REVI Design System (Figma).
+   Colors come from the site tokens in styles.css and dark.css, with the same
+   values as fallbacks, so the chat follows the site in light and dark mode.
+   Every class starts with "askrevi-" so nothing here touches the rest of the site. */
+
+.askrevi {
+  --ar-brand: var(--rds-brand, #871aae);
+  --ar-brand-hover: var(--rds-brand-hover, #651482);
+  --ar-on-brand: var(--rds-text-on-brand, #ffffff);
+  --ar-on-brand-muted: var(--rds-text-on-brand-muted, #d6d6d6);
+  --ar-raised: var(--rds-surface-raised, #ffffff);
+  --ar-sunken: var(--rds-surface-sunken, #e9e9e9);
+  --ar-tint: var(--rds-surface-brand-tint, #f3e8f7);
+  --ar-text: var(--rds-text-primary, #3d3c3d);
+  --ar-secondary: var(--rds-text-secondary, #5b5a5b);
+  --ar-accent: var(--rds-text-accent, #651482);
+  --ar-border-subtle: var(--rds-border-subtle, #e9e9e9);
+  --ar-border-default: var(--rds-border-default, #e2e2e2);
+  --ar-border-brand: var(--rds-border-brand, #871aae);
+  --ar-border-brand-subtle: var(--rds-border-brand-subtle, #c38cd7);
+  --ar-focus: var(--rds-border-focus, #a553c2);
+  --ar-icon-brand: var(--rds-icon-brand, #871aae);
+  --ar-placeholder: #b6b5b8;            /* color/text/placeholder */
+  --ar-header: #651482;                 /* color/surface/brand, light: purple/600 */
+  --ar-sans: var(--rds-sans, "Lato", "Helvetica Neue", Arial, sans-serif);
+  --ar-serif: var(--rds-serif, "Lora", Georgia, serif);
+  --ar-shadow-overlay: 0 16px 48px rgba(34, 7, 44, 0.16), 0 2px 8px rgba(34, 7, 44, 0.08);
+  --ar-shadow-launcher: 0 8px 24px rgba(101, 20, 130, 0.32), 0 2px 6px rgba(34, 7, 44, 0.12);
+}
+@media (prefers-color-scheme: dark) {
+  .askrevi {
+    --ar-placeholder: #7a797b;          /* color/text/placeholder, dark */
+    --ar-header: #330a41;               /* color/surface/brand, dark: purple/800 */
+    --ar-secondary: var(--rds-text-secondary, #b6b5b8);
+    --ar-shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Reset inside the widget so Squarespace's global styles don't leak in */
+.askrevi, .askrevi * { box-sizing: border-box; }
+.askrevi p, .askrevi ul, .askrevi ol, .askrevi li, .askrevi h2 { margin: 0; padding: 0; }
+.askrevi button { font: inherit; letter-spacing: normal; text-transform: none; margin: 0; border: 0; background: none; color: inherit; cursor: pointer; -webkit-appearance: none; appearance: none; line-height: 1; }
+.askrevi svg { display: block; flex: none; }
+.askrevi a { text-decoration: none; }
+.askrevi :focus-visible { outline: 2px solid var(--ar-focus); outline-offset: 2px; }
+
+/* ---------- Launcher (Web/Chat launcher) ---------- */
+.askrevi .askrevi-launcher {
+  position: fixed; right: 24px; bottom: 24px; z-index: 2147482000;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 56px; padding: 0 24px 0 20px; border-radius: 999px;
+  background: var(--ar-brand); color: var(--ar-on-brand); box-shadow: var(--ar-shadow-launcher);
+  font-family: var(--ar-sans); font-weight: 600; font-size: 16px; line-height: 1;
+  transition: background-color .15s ease, transform .15s ease;
+}
+.askrevi .askrevi-launcher:hover { background: var(--ar-brand-hover); }
+.askrevi .askrevi-launcher:active { transform: scale(0.97); }
+.askrevi .askrevi-launcher svg { width: 24px; height: 24px; }
+.askrevi .askrevi-launcher.is-icon { width: 60px; height: 60px; padding: 0; }
+.askrevi .askrevi-launcher.is-icon .askrevi-launcher-label { display: none; }
+
+/* ---------- Panel ---------- */
+.askrevi-panel {
+  position: fixed; right: 24px; bottom: 100px; z-index: 2147482001;
+  width: 400px; height: 640px; max-height: calc(100vh - 124px); max-height: calc(100dvh - 124px);
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--ar-raised); color: var(--ar-text);
+  border: 1px solid var(--ar-border-subtle); border-radius: 16px; box-shadow: var(--ar-shadow-overlay);
+  font-family: var(--ar-sans);
+  opacity: 0; transform: translateY(12px); visibility: hidden;
+  transition: opacity .18s ease, transform .18s ease, visibility 0s linear .18s;
+}
+.askrevi-panel.is-open { opacity: 1; transform: none; visibility: visible; transition: opacity .18s ease, transform .18s ease; }
+
+/* Header (Web/Chat header) */
+.askrevi-header { display: flex; align-items: center; gap: 12px; padding: 16px 16px 16px 20px; background: var(--ar-header); color: var(--ar-on-brand); flex: none; }
+.askrevi-avatar { display: inline-flex; align-items: center; justify-content: center; flex: none; border-radius: 999px; background: var(--ar-brand); color: #ffffff; }
+.askrevi-avatar.is-lg { width: 40px; height: 40px; }
+.askrevi-avatar.is-sm { width: 28px; height: 28px; }
+.askrevi-avatar.is-lg svg { width: 22px; height: 14.3px; }
+.askrevi-avatar.is-sm svg { width: 16px; height: 10.4px; }
+.askrevi-titles { flex: 1; min-width: 0; }
+.askrevi-title { font-family: var(--ar-serif); font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--ar-on-brand); }
+.askrevi-subtitle { font-size: 12px; line-height: 1.5; color: var(--ar-on-brand-muted); }
+.askrevi .askrevi-close { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; color: var(--ar-on-brand); }
+.askrevi .askrevi-close:hover { background: rgba(255, 255, 255, 0.14); }
+.askrevi .askrevi-close svg { width: 20px; height: 20px; }
+
+/* Messages */
+.askrevi-log { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 16px; display: flex; flex-direction: column; gap: 16px; -webkit-overflow-scrolling: touch; }
+.askrevi-row { display: flex; align-items: flex-end; gap: 8px; }
+.askrevi-row.is-visitor { justify-content: flex-end; }
+.askrevi-bubble { font-size: 16px; line-height: 1.4; padding: 12px 16px; border-radius: 16px; overflow-wrap: anywhere; }
+.askrevi-row.is-bot .askrevi-bubble { background: var(--ar-tint); color: var(--ar-text); border-bottom-left-radius: 4px; max-width: 300px; display: flex; flex-direction: column; gap: 8px; }
+.askrevi-row.is-visitor .askrevi-bubble { background: var(--ar-brand); color: var(--ar-on-brand); border-bottom-right-radius: 4px; max-width: 268px; }
+.askrevi-bubble p { font-size: 16px; line-height: 1.4; color: inherit; }
+.askrevi-bubble strong { font-weight: 700; }
+.askrevi-list { display: flex; flex-direction: column; gap: 4px; padding-left: 18px !important; list-style: disc; }
+.askrevi-list li { font-size: 15px; line-height: 1.45; color: inherit; }
+.askrevi-steps { display: flex; flex-direction: column; gap: 10px; list-style: none; }
+.askrevi-step-head { font-weight: 700; font-size: 15px; line-height: 1.4; }
+.askrevi-step-meta { font-weight: 400; color: var(--ar-accent); }
+.askrevi-step-text { font-size: 15px; line-height: 1.45; }
+.askrevi-contacts { display: flex; flex-direction: column; gap: 8px; list-style: none; }
+.askrevi .askrevi-contact { color: var(--ar-accent); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.askrevi-contact-note { display: block; font-size: 14px; color: var(--ar-text); }
+
+/* Source link (Web/Chat source) */
+.askrevi .askrevi-source { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; font-size: 12px; line-height: 1.4; font-weight: 700; color: var(--ar-accent); }
+.askrevi .askrevi-source:hover { text-decoration: underline; text-underline-offset: 2px; }
+.askrevi-source svg { width: 16px; height: 16px; color: var(--ar-icon-brand); }
+
+/* Suggestions (Web/Chat suggestion) */
+.askrevi-suggest { padding-left: 36px; display: flex; flex-direction: column; gap: 8px; }
+.askrevi-suggest-label { font-size: 12px; line-height: 1.5; color: var(--ar-secondary); }
+.askrevi-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.askrevi .askrevi-chip {
+  display: inline-flex; align-items: center; text-align: left; max-width: 100%;
+  padding: 8px 16px; border-radius: 999px; border: 1px solid var(--ar-border-brand-subtle);
+  background: var(--ar-raised); color: var(--ar-accent); font-size: 14px; line-height: 1.5;
+}
+.askrevi .askrevi-chip:hover { background: var(--ar-tint); border-color: var(--ar-border-brand); }
+
+/* Typing indicator (Web/Chat typing) */
+.askrevi-typing { display: inline-flex; gap: 4px; padding: 12px 16px; background: var(--ar-tint); border-radius: 16px 16px 16px 4px; }
+.askrevi-typing span { width: 8px; height: 8px; border-radius: 999px; background: var(--ar-icon-brand); animation: askrevi-dot 1s infinite ease-in-out; }
+.askrevi-typing span:nth-child(2) { animation-delay: .15s; }
+.askrevi-typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes askrevi-dot { 0%, 100% { opacity: .3; } 50% { opacity: 1; } }
+
+/* Hand-off card (Web/CTA card) */
+.askrevi-handoff { margin-left: 36px; background: var(--ar-raised); border: 1px solid var(--ar-border-subtle); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.askrevi-handoff-title { font-family: var(--ar-serif); font-weight: 600; font-size: 22px; line-height: 1.2; color: var(--ar-text); }
+.askrevi-handoff-body { font-size: 16px; line-height: 1.4; color: var(--ar-text); }
+.askrevi .askrevi-button { display: inline-flex; align-items: center; justify-content: center; height: 41px; padding: 10px 16px; border-radius: 6px; background: var(--ar-brand); color: var(--ar-on-brand); font-family: var(--ar-sans); font-weight: 600; font-size: 14px; line-height: 1.5; }
+.askrevi .askrevi-button:hover { background: var(--ar-brand-hover); }
+
+/* Composer (Web/Chat composer) */
+.askrevi-composer { flex: none; display: flex; align-items: center; gap: 8px; padding: 12px 16px 12px; border-top: 1px solid var(--ar-border-subtle); background: var(--ar-raised); }
+.askrevi .askrevi-input {
+  flex: 1; min-width: 0; height: 46px; padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--ar-border-default); background: var(--ar-raised); color: var(--ar-text);
+  font-family: var(--ar-sans); font-size: 16px; line-height: 1.5; outline: none; box-shadow: none; margin: 0;
+}
+.askrevi .askrevi-input::placeholder { color: var(--ar-placeholder); opacity: 1; }
+.askrevi .askrevi-input:focus { border-color: var(--ar-focus); box-shadow: inset 0 0 0 1px var(--ar-focus); }
+.askrevi .askrevi-send { width: 44px; height: 44px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: var(--ar-brand); color: var(--ar-on-brand); flex: none; }
+.askrevi .askrevi-send:disabled { background: var(--ar-sunken); color: var(--ar-placeholder); cursor: default; }
+.askrevi .askrevi-send svg { width: 20px; height: 20px; }
+.askrevi-foot { flex: none; padding: 0 16px 12px; text-align: center; font-size: 12px; line-height: 1.5; color: var(--ar-secondary); background: var(--ar-raised); }
+
+.askrevi-sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* ---------- Phones ---------- */
+@media (max-width: 600px) {
+  .askrevi .askrevi-launcher { right: 16px; bottom: 16px; }
+  .askrevi .askrevi-launcher, .askrevi .askrevi-launcher.is-icon { width: 56px; height: 56px; padding: 0; }
+  .askrevi .askrevi-launcher .askrevi-launcher-label { display: none; }
+  .askrevi-panel { inset: 0; right: 0; bottom: 0; width: 100%; height: 100%; max-height: none; border-radius: 0; border: 0; padding-bottom: env(safe-area-inset-bottom); }
+  .askrevi-header { padding-top: max(16px, env(safe-area-inset-top)); }
+  .askrevi.is-open .askrevi-launcher { display: none !important; }
+  .askrevi-row.is-bot .askrevi-bubble { max-width: calc(100% - 36px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .askrevi-panel, .askrevi-panel.is-open, .askrevi-launcher { transition: none; }
+  .askrevi-typing span { animation: none; opacity: .7; }
+}
