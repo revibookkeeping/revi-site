@@ -154,7 +154,7 @@
 
   function norm(s) {
     s = String(s); if (s.normalize) s = s.normalize("NFKC");
-    s = (" " + s.toLowerCase().replace(/[’']/g, "") + " ");
+    s = (" " + s.toLowerCase().replace(/[\u2019']/g, "") + " ");
     PHRASES.forEach(function (p) { s = s.replace(p[0], p[1]); });
     return s.replace(/[^a-z0-9]+/g, " ").trim();
   }
@@ -232,7 +232,7 @@
   var UNKNOWN_W = 0.6;
   function match(q) {
     var nq = norm(q);
-    var raw = (String(q).normalize ? String(q).normalize("NFKC") : String(q)).toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]+/g, " ");
+    var raw = (String(q).normalize ? String(q).normalize("NFKC") : String(q)).toLowerCase().replace(/[\u2019']/g, "").replace(/[^a-z0-9]+/g, " ");
     if (OFF_TOPIC.test(nq) || OFF_TOPIC.test(raw)) return null;
     if (EXACT[nq]) return EXACT[nq];
     var qt = tokens(q), uniq = [];
@@ -306,8 +306,8 @@
     '<form class="askrevi-composer" novalidate><div class="askrevi-field"><label class="askrevi-sr" for="askrevi-input">Your question</label>' +
     '<input id="askrevi-input" class="askrevi-input" type="text" autocomplete="off" maxlength="300" enterkeyhint="send" placeholder="' + esc(COPY.placeholder) + '">' +
     '<button type="submit" class="askrevi-send" aria-label="Send" disabled>' + I.up + "</button></div></form>" +
-    '<p class="askrevi-foot"><span>' + esc(COPY.foot) + "</span><br><span>" + (LOG_URL ? esc(COPY.saved) + " " : "") +
-      '<a href="/privacy-policy" class="askrevi-foot-link">' + esc(COPY.privacy) + '</a> · <a href="/terms-of-use" class="askrevi-foot-link">' + esc(COPY.terms) + "</a></span></p>";
+    '<p class="askrevi-foot">' + esc(COPY.foot) + ' <a href="/privacy-policy" class="askrevi-foot-link">' + esc(COPY.privacy) +
+      '</a> &middot; <a href="/terms-of-use" class="askrevi-foot-link">' + esc(COPY.terms) + "</a></p>";
   root.appendChild(panel);
   root.appendChild(launcher);
   (document.body || document.documentElement).appendChild(root);
@@ -414,7 +414,7 @@
   function intro() {
     log.appendChild(el("div", "askrevi-intro",
       '<span class="askrevi-avatar is-xl">' + I.mark + '</span><p class="askrevi-intro-title">' + esc(COPY.title) +
-      '</p><p class="askrevi-intro-text">' + esc(COPY.introSources) + "</p>"));
+      '</p><p class="askrevi-intro-text">' + esc(COPY.introSources) + (LOG_URL ? " " + esc(COPY.saved) : "") + "</p>"));
   }
   function feedback(t) {
     var e = BYID[t.id];
