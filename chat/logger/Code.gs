@@ -38,7 +38,7 @@ function doPost(e) {
       method: "post",
       contentType: "application/json",
       headers: {
-        Authorization: "Bearer " + PropertiesService.getScriptProperties().getProperty("NOTION_TOKEN"),
+        Authorization: "Bearer " + token(),
         "Notion-Version": "2022-06-28"
       },
       payload: JSON.stringify({ parent: { database_id: DATABASE_ID }, properties: props }),
@@ -66,6 +66,14 @@ function underCap() {
     store.setProperty(key, String(n + 1));
     return true;
   } finally { lock.releaseLock(); }
+}
+
+function token() { return String(PropertiesService.getScriptProperties().getProperty("NOTION_TOKEN") || "").trim(); }
+
+// Says whether the saved key looks right, without printing it.
+function checkKey() {
+  var t = token();
+  console.log("Key saved: " + (t ? "yes" : "no") + ", length " + t.length + ", starts like a Notion key: " + /^(ntn_|secret_)/.test(t));
 }
 
 function clip(s, n) { s = String(s); return s.length > n ? s.slice(0, n) : s; }
