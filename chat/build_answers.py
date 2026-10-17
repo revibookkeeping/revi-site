@@ -281,12 +281,69 @@ TITLES = {
     "how-do-i-figure-out-how-much-profit-i-actually-made-on-a-house-flip": "How do I figure out how much profit I actually made on a house flip?",
     "do-i-still-need-my-own-books-if-i-have-a-property-manager": "Do I still need my own books if I have a property manager?",
 }
+
+# Extra phrasings and keywords found by the 500-question test (Oct 17, 2026)
+EXTRA = {
+    "faq-different": (["why do real estate investors need a specialized bookkeeper", "what makes bookkeeping for investors different"], ["specialized", "specialist", "investor", "investors"]),
+    "faq-depreciate": (["can a flip be depreciated", "is depreciation allowed on a flip", "does depreciation apply to a flip"], []),
+    "faq-rehab-deductible": (["can I deduct rehab right away", "do I get to write off the rehab now"], ["immediately", "now", "spend", "spending", "spent"]),
+    "faq-balance-sheet": (["where do flip costs go", "why dont my flip costs show as expenses"], ["inventory"]),
+    "faq-repair": (["is a new hvac a repair or an improvement", "is a water heater a capital improvement"], ["hvac", "roof", "flooring", "floors", "heater", "appliance", "appliances", "furnace", "replace", "replacing", "replacement"]),
+    "faq-separate": (["do I need two sets of books", "can flips and rentals share one set of books"], ["together", "same", "combine"]),
+    "faq-when": (["how many properties before I need a bookkeeper", "how do I know it is time for a bookkeeper"], ["ready", "time", "point", "hire", "early"]),
+    "faq-why-rental": (["why outsource bookkeeping for my rentals", "why hire a bookkeeper for rental properties"], ["outsource", "benefit"]),
+    "faq-bookkeeper-cpa": (["what is the difference between bookkeeping and accounting", "are you accountants", "are you a cpa", "what does a bookkeeper do compared to a cpa"], ["accounting", "bookkeeper"]),
+    "faq-work-cpa": (["can you work with my current cpa", "do you send my books to my cpa"], ["existing", "current", "coordinate", "send"]),
+    "faq-taxes": (["can you file my schedule e", "do you prepare tax returns"], ["file", "filing", "prepare", "preparation", "return", "1040"]),
+    "faq-software": (["can you work in quickbooks desktop", "do I need to buy quickbooks", "do you use wave"], ["desktop", "wave", "xero", "freshbooks", "stessa", "baselane", "desktop version", "required", "require", "platform"]),
+    "faq-start": (["how do I become a client", "what is the first step", "how do I hire you"], ["hire", "begin"]),
+    "svc-overview": (["list your services", "what kind of services do you provide"], ["services", "service", "provide", "offer"]),
+    "svc-qb-setup": (["help me set up quickbooks", "can you set up quickbooks for my new company"], []),
+    "svc-monthly": (["do you offer monthly bookkeeping", "do you do ongoing bookkeeping"], ["ongoing", "recurring", "plan", "books"]),
+    "svc-included": (["what comes with monthly bookkeeping", "what do I get every month"], ["include", "included", "includes", "reports", "deliverables"]),
+    "svc-1099": (["do you prepare 1099 forms"], ["forms", "contractors", "contractor"]),
+    "svc-1031": (["do you track 1031 exchanges", "do you do 1031s", "1031", "1031 exchange"], ["track", "documentation", "document"]),
+    "svc-llc": (["I have several llcs can you help", "can you do books for more than one llc"], ["several", "multiple", "more", "different", "each"]),
+    "svc-costbasis": (["do you track cost basis by property"], ["track"]),
+    "who-hero": (["what kind of clients do you have", "who do you help", "do you work outside north carolina"], ["clients", "client", "serve", "help", "work", "only", "live"]),
+    "faq-who-for": (["who should use monthly bookkeeping", "who is the monthly service for"], ["fit", "right", "should"]),
+    "who-flippers": (["do you help house flippers", "is this good for flippers", "I am a flipper", "im a flipper", "do you work with flip investors"], []),
+    "who-landlords": (["do you help landlords", "do you work with rental property owners", "buy and hold", "I am a landlord", "im a landlord"], ["owner", "owners", "portfolio", "investors", "long"]),
+    "about-julia": (["who owns the company", "who runs the business", "who will I be working with", "who does the bookkeeping"], ["runs", "bookkeeper"]),
+    "contact": (["contact info", "contact information", "how do I get in touch", "can I call you"], ["touch", "speak", "talk"]),
+    "proc-steps": (["walk me through the process", "what happens next", "what are the next steps"], ["process", "onboarding", "next", "steps", "works"]),
+    "proc-call": (["what do you ask on the discovery call", "what is the discovery call", "what do we cover on the call", "what should I expect on the call"], ["discovery", "expect", "cover", "intro", "talk", "discuss", "ask", "questions"]),
+    "proc-cleanup-time": (["how many weeks does a cleanup take"], ["weeks", "days", "months"]),
+    "proc-diy": (["can I take over the books after the cleanup"], ["take", "over", "myself", "own"]),
+    "proc-free": (["do you charge for the first call", "is there a fee for the discovery call"], ["first"]),
+    "priv-sell": (["do you give my information to third parties"], ["share", "third", "parties", "party"]),
+    "priv-secure": ([], ["protect"]),
+    "svc-reconcile": ([], ["loan", "loans", "statements"]),
+    "svc-yearend": ([], ["reports"]),
+    "svc-cleanup": (["I need my books cleaned up", "I havent touched my books in years"], ["year", "years", "months", "touched", "cleaned"]),
+    "who-both": ([], ["mix", "mixed"]),
+}
+GUIDE_TAGS = {
+    "do-i-still-need-my-own-books-if-i-have-a-property-manager": ["property", "manager", "management", "statement", "statements", "owner"],
+    "how-do-i-figure-out-how-much-profit-i-actually-made-on-a-house-flip": ["profit", "calculate", "made", "flip", "net", "real", "actual"],
+    "how-do-i-know-if-my-rental-properties-are-actually-making-money": ["profitable", "profit", "money", "cash", "flow", "cashflow", "rental"],
+    "should-i-hire-a-bookkeeper-for-my-rental-properties-or-keep-using-a-spreadsheet": ["spreadsheet", "excel", "enough", "rental"],
+    "whats-the-best-way-to-track-rehab-costs-for-each-flip-or-brrrr-property": ["track", "rehab", "brrrr", "per", "each", "cost"],
+}
 for g in guides:
     slug = g.split("/")[-1]
     if slug not in TITLES:
         raise SystemExit(f"Guide title missing for {slug}")
-    entries.append({"id": "guide-" + slug[:40], "q": TITLES[slug], "ask": [], "tags": ["guide"],
+    entries.append({"id": "guide-" + slug[:40], "q": TITLES[slug], "ask": [], "tags": ["guide"] + GUIDE_TAGS.get(slug, []),
                     "a": [], "source": {"label": "Read the guide", "url": SITE + g}, "related": [], "kind": "guide", "cta": False})
+
+for e in entries:
+    if e["id"] in EXTRA:
+        a, t = EXTRA.pop(e["id"])
+        e["ask"] = list(e["ask"]) + [x for x in a if x not in e["ask"]]
+        e["tags"] = list(e["tags"]) + [x for x in t if x not in e["tags"]]
+if EXTRA:
+    raise SystemExit(f"EXTRA has unknown ids {list(EXTRA)}")
 
 # Check related ids exist
 ids = {e["id"] for e in entries}

@@ -14,13 +14,18 @@
    "ask": [
     "what makes real estate bookkeeping different",
     "why do I need a real estate bookkeeper",
-    "can a regular bookkeeper do my books"
+    "can a regular bookkeeper do my books",
+    "why do real estate investors need a specialized bookkeeper",
+    "what makes bookkeeping for investors different"
    ],
    "tags": [
     "different",
     "regular",
     "small business",
-    "specialized"
+    "specialized",
+    "specialist",
+    "investor",
+    "investors"
    ],
    "a": [
     "Real estate books are set up property by property and flip by flip. Rentals need income and expenses tracked for each property, loan principal split from interest, and depreciation. Flips hold their costs on the balance sheet until the sale, then move them to cost of goods sold. A standard small business setup isn't built for either, which is why every REVI file is set up around your flips and properties."
@@ -43,7 +48,10 @@
    "ask": [
     "do flips depreciate",
     "can I depreciate a flip",
-    "depreciation on a flip"
+    "depreciation on a flip",
+    "can a flip be depreciated",
+    "is depreciation allowed on a flip",
+    "does depreciation apply to a flip"
    ],
    "tags": [
     "depreciate",
@@ -70,13 +78,20 @@
    "ask": [
     "can I deduct rehab costs",
     "are renovation costs deductible",
-    "write off rehab costs"
+    "write off rehab costs",
+    "can I deduct rehab right away",
+    "do I get to write off the rehab now"
    ],
    "tags": [
     "deduct",
     "deductible",
     "write off",
-    "rehab"
+    "rehab",
+    "immediately",
+    "now",
+    "spend",
+    "spending",
+    "spent"
    ],
    "a": [
     "Generally no. On a property held for sale, materials, labor, permits, and carrying costs get added to the cost of the property rather than deducted as paid. They come back as cost of goods sold when it sells."
@@ -99,7 +114,9 @@
    "ask": [
     "why are flip costs inventory",
     "flip costs in inventory",
-    "why don't flip costs show on my p&l"
+    "why don't flip costs show on my p&l",
+    "where do flip costs go",
+    "why dont my flip costs show as expenses"
    ],
    "tags": [
     "balance sheet",
@@ -209,12 +226,25 @@
    "ask": [
     "repair vs improvement",
     "is a new roof a repair",
-    "capital improvement"
+    "capital improvement",
+    "is a new hvac a repair or an improvement",
+    "is a water heater a capital improvement"
    ],
    "tags": [
     "repair",
     "improvement",
-    "capital"
+    "capital",
+    "hvac",
+    "roof",
+    "flooring",
+    "floors",
+    "heater",
+    "appliance",
+    "appliances",
+    "furnace",
+    "replace",
+    "replacing",
+    "replacement"
    ],
    "a": [
     "A repair keeps the property in working condition and is deducted in the year it happens. An improvement adds value or extends useful life and gets depreciated over time."
@@ -236,11 +266,16 @@
    "q": "Do I need separate books for flips and rentals?",
    "ask": [
     "should flips and rentals be separate",
-    "separate books for flipping and renting"
+    "separate books for flipping and renting",
+    "do I need two sets of books",
+    "can flips and rentals share one set of books"
    ],
    "tags": [
     "separate",
-    "both"
+    "both",
+    "together",
+    "same",
+    "combine"
    ],
    "a": [
     "Separate tracking at minimum. The two are taxed differently, and mixing them makes it harder to apply the right treatment to each. How far to take the separation, tracking versus separate entities, is a question for your CPA."
@@ -265,13 +300,18 @@
     "I only have one property",
     "how many properties do I need",
     "do you work with beginners",
-    "minimum number of properties"
+    "minimum number of properties",
+    "who should use monthly bookkeeping",
+    "who is the monthly service for"
    ],
    "tags": [
     "who",
     "one property",
     "single",
-    "small"
+    "small",
+    "fit",
+    "right",
+    "should"
    ],
    "a": [
     "Flippers doing 2 or more flips a year, and landlords with 2 or more rentals. At that point there are enough transactions each month that the books stop being a once-a-year cleanup and start being something worth keeping current. With a single property, a spreadsheet and a good CPA at year end usually covers it."
@@ -294,12 +334,17 @@
    "ask": [
     "do I need a bookkeeper",
     "when should I hire a bookkeeper",
-    "is it time to get a bookkeeper"
+    "is it time to get a bookkeeper",
+    "how many properties before I need a bookkeeper",
+    "how do I know it is time for a bookkeeper"
    ],
    "tags": [
     "time",
     "when",
-    "hire"
+    "hire",
+    "ready",
+    "point",
+    "early"
    ],
    "a": [
     "Usually around the second or third property, or the second flip running at the same time. One property you can track by hand. What changes is the number of transactions: more accounts, more contractor payments, draws, closing statements, and a year-end pile that stops being something you can reconstruct from memory in April."
@@ -321,12 +366,16 @@
    "q": "Why hand off bookkeeping for rental properties?",
    "ask": [
     "why hire a bookkeeper for rentals",
-    "benefits of bookkeeping for landlords"
+    "benefits of bookkeeping for landlords",
+    "why outsource bookkeeping for my rentals",
+    "why hire a bookkeeper for rental properties"
    ],
    "tags": [
     "why",
     "hand off",
-    "rental"
+    "rental",
+    "outsource",
+    "benefit"
    ],
    "a": [
     "Every rental adds work each month. Rent, repairs, and loan payments all need to be recorded and reconciled, with principal kept apart from interest, so you can see what each property actually makes. Kept current, the books give you NOI by property all year and a year-end package your CPA can file from."
@@ -350,12 +399,17 @@
     "are you a cpa",
     "are you an accountant",
     "bookkeeper vs accountant",
-    "do I still need a cpa"
+    "do I still need a cpa",
+    "what is the difference between bookkeeping and accounting",
+    "are you accountants",
+    "what does a bookkeeper do compared to a cpa"
    ],
    "tags": [
     "cpa",
     "accountant",
-    "difference"
+    "difference",
+    "accounting",
+    "bookkeeper"
    ],
    "a": [
     "Different jobs, and most investors need both. Bookkeeping is the month-to-month work, recording transactions, reconciling accounts, tracking costs by property, and producing the reports. A CPA takes those reports at year end, applies tax law, and files the return. The cleaner the books are, the less there is for the CPA to reconstruct."
@@ -379,12 +433,17 @@
     "will you talk to my accountant",
     "do you coordinate with my cpa",
     "send reports to my cpa",
-    "can you send my reports to my tax preparer"
+    "can you send my reports to my tax preparer",
+    "can you work with my current cpa",
+    "do you send my books to my cpa"
    ],
    "tags": [
     "cpa",
     "accountant",
-    "coordinate"
+    "coordinate",
+    "existing",
+    "current",
+    "send"
    ],
    "a": [
     "Yes. At year end, we put together a clean package for your CPA: Schedule E prep and depreciation schedules for rentals, per-flip cost breakdowns for sold flips, and the documentation behind the numbers."
@@ -409,12 +468,18 @@
     "can you do my tax return",
     "do you prepare tax returns",
     "tax preparation",
-    "do you file my taxes"
+    "do you file my taxes",
+    "can you file my schedule e"
    ],
    "tags": [
     "taxes",
     "tax return",
-    "file"
+    "file",
+    "filing",
+    "prepare",
+    "preparation",
+    "return",
+    "1040"
    ],
    "a": [
     "No. REVI is bookkeeping. The books, the monthly reports, and the year-end package come from us. The return is filed by your CPA."
@@ -480,12 +545,25 @@
     "do I need quickbooks",
     "do you work with spreadsheets",
     "what if I use excel",
-    "do you use xero"
+    "do you use xero",
+    "can you work in quickbooks desktop",
+    "do I need to buy quickbooks",
+    "do you use wave"
    ],
    "tags": [
     "quickbooks",
     "software",
-    "spreadsheet"
+    "spreadsheet",
+    "desktop",
+    "wave",
+    "xero",
+    "freshbooks",
+    "stessa",
+    "baselane",
+    "desktop version",
+    "required",
+    "require",
+    "platform"
    ],
    "a": [
     "QuickBooks Online. The setup is built around your flips and properties, which is what makes per-flip and property-level reporting possible. If you're on spreadsheets or another platform, moving over is part of the setup."
@@ -513,12 +591,15 @@
     "I want to work with you",
     "how do I book a call",
     "schedule a call",
-    "book a discovery call"
+    "book a discovery call",
+    "how do I become a client",
+    "what is the first step"
    ],
    "tags": [
     "start",
     "sign up",
-    "begin"
+    "begin",
+    "hire"
    ],
    "a": [
     "Use Get in Touch on any page. You'll answer some questions about your portfolio, your setup, and what you need, then book a discovery call where we go through your books together."
@@ -542,12 +623,16 @@
     "what do you do",
     "services",
     "how can you help",
-    "what can REVI do"
+    "what can REVI do",
+    "list your services",
+    "what kind of services do you provide"
    ],
    "tags": [
     "services",
     "offer",
-    "help"
+    "help",
+    "service",
+    "provide"
    ],
    "a": [
     "A QuickBooks setup for new files, a one-time cleanup for books that are behind, and monthly bookkeeping to keep them current. We work with flippers and landlords nationwide."
@@ -571,7 +656,9 @@
     "can you set up quickbooks",
     "new quickbooks file",
     "I'm moving off spreadsheets",
-    "start from scratch"
+    "start from scratch",
+    "help me set up quickbooks",
+    "can you set up quickbooks for my new company"
    ],
    "tags": [
     "setup",
@@ -605,7 +692,9 @@
     "my books are a mess",
     "I'm behind on my bookkeeping",
     "catch up bookkeeping",
-    "fix my quickbooks"
+    "fix my quickbooks",
+    "I need my books cleaned up",
+    "I havent touched my books in years"
    ],
    "tags": [
     "cleanup",
@@ -613,7 +702,12 @@
     "behind",
     "catch up",
     "mess",
-    "backlog"
+    "backlog",
+    "year",
+    "years",
+    "months",
+    "touched",
+    "cleaned"
    ],
    "a": [
     "For flippers and landlords whose books are behind. We enter every missing month, correct what's already entered, and rebuild the file around your flips and properties. The price is quoted once, after we look at your books, and our FAQs explain how it's set."
@@ -677,12 +771,16 @@
    "ask": [
     "do you do ongoing bookkeeping",
     "monthly service",
-    "keep my books current"
+    "keep my books current",
+    "do you offer monthly bookkeeping"
    ],
    "tags": [
     "monthly",
     "ongoing",
-    "current"
+    "current",
+    "recurring",
+    "plan",
+    "books"
    ],
    "a": [
     "Once the books are caught up, we keep them current. Pricing starts at $450 a month and depends on the transactions and properties you're running."
@@ -706,13 +804,16 @@
     "what's included",
     "what do I get every month",
     "what reports do I get",
-    "what do you do each month"
+    "what do you do each month",
+    "what comes with monthly bookkeeping"
    ],
    "tags": [
     "included",
     "include",
     "reports",
-    "every month"
+    "every month",
+    "includes",
+    "deliverables"
    ],
    "a": [
     "Once your books are caught up, this is what arrives every month. Flat pricing, no hourly billing, and no add-ons for reconciliation, 1099s, or year-end reporting.",
@@ -752,7 +853,10 @@
     "reconciliation",
     "bank",
     "credit card",
-    "escrow"
+    "escrow",
+    "loan",
+    "loans",
+    "statements"
    ],
    "a": [
     "Every bank, credit card, loan, and escrow account reconciled each month."
@@ -775,12 +879,14 @@
    "ask": [
     "1099 for contractors",
     "contractor 1099s",
-    "do you handle 1099s"
+    "do you handle 1099s",
+    "do you prepare 1099 forms"
    ],
    "tags": [
     "1099",
     "contractor",
-    "contractors"
+    "contractors",
+    "forms"
    ],
    "a": [
     "Contractor payments tracked all year, with 1099s prepared and filed every January."
@@ -810,7 +916,8 @@
     "year-end",
     "year end",
     "schedule e",
-    "package"
+    "package",
+    "reports"
    ],
    "a": [
     "CPA-ready package: Schedule E prep and depreciation schedules for rentals, per-flip cost breakdowns for sold flips, and all supporting documentation."
@@ -832,11 +939,18 @@
    "q": "Do you help with 1031 exchanges?",
    "ask": [
     "1031 documentation",
-    "1031 exchange records"
+    "1031 exchange records",
+    "do you track 1031 exchanges",
+    "do you do 1031s",
+    "1031",
+    "1031 exchange"
    ],
    "tags": [
     "1031",
-    "exchange"
+    "exchange",
+    "track",
+    "documentation",
+    "document"
    ],
    "a": [
     "1031 exchange documentation, with asset basis records kept current"
@@ -859,13 +973,20 @@
    "ask": [
     "I have several llcs",
     "multiple entities",
-    "more than one llc"
+    "more than one llc",
+    "I have several llcs can you help",
+    "can you do books for more than one llc"
    ],
    "tags": [
     "llc",
     "llcs",
     "entity",
-    "entities"
+    "entities",
+    "several",
+    "multiple",
+    "more",
+    "different",
+    "each"
    ],
    "a": [
     "Multi-LLC bookkeeping, with a combined view and reports for each entity"
@@ -916,12 +1037,14 @@
    "q": "Can you give me cost basis reports?",
    "ask": [
     "reports for my lender",
-    "refinance reports"
+    "refinance reports",
+    "do you track cost basis by property"
    ],
    "tags": [
     "cost basis",
     "refinance",
-    "lender"
+    "lender",
+    "track"
    ],
    "a": [
     "Cost basis reports ready for your lender or next refinance"
@@ -946,14 +1069,23 @@
     "do you work outside charlotte",
     "do you work nationwide",
     "which states do you serve",
-    "do you work with small businesses"
+    "do you work with small businesses",
+    "what kind of clients do you have",
+    "who do you help",
+    "do you work outside north carolina"
    ],
    "tags": [
     "who",
     "clients",
     "nationwide",
     "states",
-    "anywhere"
+    "anywhere",
+    "client",
+    "serve",
+    "help",
+    "work",
+    "only",
+    "live"
    ],
    "a": [
     "We work with house flippers and long-term rental landlords anywhere in the US, and with investors who do both. Every file we keep is a real estate file, so the books are set up around your flips and properties from the start."
@@ -977,7 +1109,12 @@
     "bookkeeping for flippers",
     "I flip houses",
     "fix and flip bookkeeping",
-    "brrrr"
+    "brrrr",
+    "do you help house flippers",
+    "is this good for flippers",
+    "I am a flipper",
+    "im a flipper",
+    "do you work with flip investors"
    ],
    "tags": [
     "flipper",
@@ -1008,14 +1145,24 @@
     "bookkeeping for rentals",
     "I own rental properties",
     "long term rentals",
-    "multifamily"
+    "multifamily",
+    "do you help landlords",
+    "do you work with rental property owners",
+    "buy and hold",
+    "I am a landlord",
+    "im a landlord"
    ],
    "tags": [
     "landlord",
     "landlords",
     "rental",
     "rentals",
-    "multifamily"
+    "multifamily",
+    "owner",
+    "owners",
+    "portfolio",
+    "investors",
+    "long"
    ],
    "a": [
     "We build your books around your properties, so you can see what each one makes every month. We work best with landlords who own 2 or more rentals, from single-family and small multifamily to buy-and-hold and BRRRR, including owners with several LLCs."
@@ -1043,7 +1190,9 @@
     "flipper and landlord"
    ],
    "tags": [
-    "both"
+    "both",
+    "mix",
+    "mixed"
    ],
    "a": [
     "If you flip and hold rentals, both sides live in one QuickBooks file and are kept apart, so each follows its own rules. You see what each flip cleared and what each rental made, next to the total for the whole portfolio."
@@ -1069,7 +1218,11 @@
     "who will do my books",
     "where are you located",
     "are you in charlotte",
-    "about you"
+    "about you",
+    "who owns the company",
+    "who runs the business",
+    "who will I be working with",
+    "who does the bookkeeping"
    ],
    "tags": [
     "julia",
@@ -1077,7 +1230,9 @@
     "about",
     "located",
     "charlotte",
-    "background"
+    "background",
+    "runs",
+    "bookkeeper"
    ],
    "a": [
     "Hi, I'm Julia Kachula, the bookkeeper and founder of REVI Bookkeeping, based in Charlotte, NC. My focus is bookkeeping for flippers and long-term rental landlords, and because everything runs in the cloud, I work with investors anywhere in the US.",
@@ -1104,7 +1259,10 @@
     "can I call you",
     "talk to a person",
     "talk to julia",
-    "speak to someone"
+    "speak to someone",
+    "contact info",
+    "contact information",
+    "how do I get in touch"
    ],
    "tags": [
     "contact",
@@ -1113,7 +1271,10 @@
     "call",
     "text",
     "person",
-    "human"
+    "human",
+    "touch",
+    "speak",
+    "talk"
    ],
    "a": [
     {
@@ -1150,13 +1311,19 @@
     "what is the process",
     "how does it work",
     "what are the steps",
-    "onboarding"
+    "onboarding",
+    "walk me through the process",
+    "what happens next",
+    "what are the next steps"
    ],
    "tags": [
     "process",
     "steps",
     "how it works",
-    "after"
+    "after",
+    "onboarding",
+    "next",
+    "works"
    ],
    "a": [
     "Four steps from the first call to clean books, and monthly bookkeeping to keep them current.",
@@ -1209,13 +1376,24 @@
     "discovery call",
     "consultation",
     "first call",
-    "intro call"
+    "intro call",
+    "what do you ask on the discovery call",
+    "what is the discovery call",
+    "what do we cover on the call",
+    "what should I expect on the call"
    ],
    "tags": [
     "call",
     "discovery",
     "consultation",
-    "minutes"
+    "minutes",
+    "expect",
+    "cover",
+    "intro",
+    "talk",
+    "discuss",
+    "ask",
+    "questions"
    ],
    "a": [
     {
@@ -1289,13 +1467,17 @@
     "how long to catch up",
     "turnaround",
     "how fast can you catch me up",
-    "how quickly can you clean up my books"
+    "how quickly can you clean up my books",
+    "how many weeks does a cleanup take"
    ],
    "tags": [
     "long",
     "timeline",
     "take",
-    "turnaround"
+    "turnaround",
+    "weeks",
+    "days",
+    "months"
    ],
    "a": [
     {
@@ -1328,13 +1510,17 @@
     "do I have to sign up for monthly",
     "cleanup only",
     "just a cleanup",
-    "is monthly required"
+    "is monthly required",
+    "can I take over the books after the cleanup"
    ],
    "tags": [
     "myself",
     "only",
     "required",
-    "contract"
+    "contract",
+    "take",
+    "over",
+    "own"
    ],
    "a": [
     {
@@ -1372,12 +1558,15 @@
    "ask": [
     "does the call cost anything",
     "free consultation",
-    "am I committing by booking"
+    "am I committing by booking",
+    "do you charge for the first call",
+    "is there a fee for the discovery call"
    ],
    "tags": [
     "free",
     "commit",
-    "obligation"
+    "obligation",
+    "first"
    ],
    "a": [
     "Our Site uses Ivorey to allow visitors to schedule free consultation calls.",
@@ -1400,13 +1589,17 @@
    "q": "Do you sell my data?",
    "ask": [
     "do you share my information",
-    "privacy"
+    "privacy",
+    "do you give my information to third parties"
    ],
    "tags": [
     "sell",
     "share",
     "privacy",
-    "data"
+    "data",
+    "third",
+    "parties",
+    "party"
    ],
    "a": [
     "We do not sell the personal information of Consumers. If You have any questions about this, please contact Us at info@revibookkeeping.com."
@@ -1435,7 +1628,8 @@
     "secure",
     "security",
     "safe",
-    "financial"
+    "financial",
+    "protect"
    ],
    "a": [
     "As part of delivering Our bookkeeping services, We may collect and process sensitive financial data, including bank statements, transaction records, payroll information, and other financial documents. This information is provided directly by You or Your authorized representative and is used solely to perform the services You have engaged Us to provide. This information is processed within QuickBooks Online and is subject to Intuit’s security and privacy practices.",
@@ -1513,7 +1707,13 @@
    "q": "Do I still need my own books if I have a property manager?",
    "ask": [],
    "tags": [
-    "guide"
+    "guide",
+    "property",
+    "manager",
+    "management",
+    "statement",
+    "statements",
+    "owner"
    ],
    "a": [],
    "source": {
@@ -1529,7 +1729,14 @@
    "q": "How do I figure out how much profit I actually made on a house flip?",
    "ask": [],
    "tags": [
-    "guide"
+    "guide",
+    "profit",
+    "calculate",
+    "made",
+    "flip",
+    "net",
+    "real",
+    "actual"
    ],
    "a": [],
    "source": {
@@ -1545,7 +1752,14 @@
    "q": "How do I know if my rental properties are actually making money?",
    "ask": [],
    "tags": [
-    "guide"
+    "guide",
+    "profitable",
+    "profit",
+    "money",
+    "cash",
+    "flow",
+    "cashflow",
+    "rental"
    ],
    "a": [],
    "source": {
@@ -1561,7 +1775,11 @@
    "q": "Should I hire a bookkeeper for my rental properties or keep using a spreadsheet?",
    "ask": [],
    "tags": [
-    "guide"
+    "guide",
+    "spreadsheet",
+    "excel",
+    "enough",
+    "rental"
    ],
    "a": [],
    "source": {
@@ -1577,7 +1795,13 @@
    "q": "What's the best way to track rehab costs for each flip or BRRRR property?",
    "ask": [],
    "tags": [
-    "guide"
+    "guide",
+    "track",
+    "rehab",
+    "brrrr",
+    "per",
+    "each",
+    "cost"
    ],
    "a": [],
    "source": {

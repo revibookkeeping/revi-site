@@ -48,17 +48,26 @@
 /* ---------- Launcher (Web/Chat launcher) ---------- */
 .askrevi .askrevi-launcher {
   position: fixed; right: 24px; bottom: 24px; z-index: 2147482000;
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  height: 56px; padding: 0 24px 0 20px; border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: flex-start;
+  height: 60px; min-width: 60px; padding: 0 18px; border-radius: 999px;
   background: var(--ar-brand); color: var(--ar-on-brand); box-shadow: var(--ar-shadow-launcher);
-  font-family: var(--ar-sans); font-weight: 600; font-size: 16px; line-height: 1;
-  transition: background-color .15s ease, transform .15s ease;
+  font-family: var(--ar-sans); font-weight: 600; font-size: 16px; line-height: 1; white-space: nowrap;
+  transition: background-color .15s ease, transform .15s ease, padding .25s ease;
 }
 .askrevi .askrevi-launcher:hover { background: var(--ar-brand-hover); }
 .askrevi .askrevi-launcher:active { transform: scale(0.97); }
-.askrevi .askrevi-launcher svg { width: 24px; height: 24px; }
-.askrevi .askrevi-launcher.is-icon { width: 60px; height: 60px; padding: 0; }
-.askrevi .askrevi-launcher.is-icon .askrevi-launcher-label { display: none; }
+.askrevi .askrevi-launcher svg { flex: none; width: 24px; height: 24px; }
+/* Icon by default; the label slides out on hover or keyboard focus (mouse and trackpad only) */
+.askrevi .askrevi-launcher-label {
+  display: inline-block; max-width: 0; margin-left: 0; opacity: 0; overflow: hidden;
+  transition: max-width .25s ease, margin-left .25s ease, opacity .2s ease;
+}
+@media (hover: hover) {
+  .askrevi:not(.is-open) .askrevi-launcher:hover,
+  .askrevi:not(.is-open) .askrevi-launcher:focus-visible { padding-right: 24px; }
+  .askrevi:not(.is-open) .askrevi-launcher:hover .askrevi-launcher-label,
+  .askrevi:not(.is-open) .askrevi-launcher:focus-visible .askrevi-launcher-label { max-width: 160px; margin-left: 10px; opacity: 1; }
+}
 
 /* ---------- Panel ---------- */
 .askrevi-panel {
@@ -155,7 +164,7 @@
 /* ---------- Phones ---------- */
 @media (max-width: 600px) {
   .askrevi .askrevi-launcher { right: 16px; bottom: 16px; }
-  .askrevi .askrevi-launcher, .askrevi .askrevi-launcher.is-icon { width: 56px; height: 56px; padding: 0; }
+  .askrevi .askrevi-launcher { width: 56px; min-width: 56px; height: 56px; padding: 0; justify-content: center; }
   .askrevi .askrevi-launcher .askrevi-launcher-label { display: none; }
   .askrevi-panel { inset: 0; right: 0; bottom: 0; width: 100%; height: 100%; max-height: none; border-radius: 0; border: 0; padding-bottom: env(safe-area-inset-bottom); }
   .askrevi-header { padding-top: max(16px, env(safe-area-inset-top)); }
@@ -164,6 +173,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .askrevi-panel, .askrevi-panel.is-open, .askrevi-launcher { transition: none; }
+  .askrevi-panel, .askrevi-panel.is-open, .askrevi-launcher, .askrevi-launcher-label { transition: none; }
   .askrevi-typing span { animation: none; opacity: .7; }
 }

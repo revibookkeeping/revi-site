@@ -13,7 +13,7 @@
   var script = document.currentScript || document.querySelector('script[src*="chat.js"]');
   var BASE = script ? script.src.replace(/[^\/?#]*([?#].*)?$/, "") : "";
   var PUBLIC = !!(script && script.getAttribute("data-public") === "true");
-  var KEY = "askrevi-preview", SEEN = "askrevi-seen", STATE = "askrevi-state";
+  var KEY = "askrevi-preview", STATE = "askrevi-state";
 
   function ls(fn) { try { return fn(window.localStorage); } catch (e) { return null; } }
   function ss(fn) { try { return fn(window.sessionStorage); } catch (e) { return null; } }
@@ -59,9 +59,12 @@
   var STOP = ("a an the is are am was were be been do does did doing i im me my mine we us our ours you your yours to of for and or " +
     "in on at it its this that these those there their they them if as by from about any have has had get got can could would " +
     "should will shall what whats how when where why who whom which with just so not no yes please also than then into out up " +
-    "much many some more most very really need want like know tell explain anyone someone thing things way ok okay hi hello hey thanks thank house houses home homes also").split(" ");
-  var STOPSET = {}; STOP.forEach(function (w) { STOPSET[w] = 1; });
+    "much many some more most very really need want like know tell explain anyone someone thing things way ok okay hi hello hey thanks thank house houses home homes also guy guys too able gonna going yall all revi book books bookkeeping").split(" ");
+  function dict() { return Object.create(null); }  // no inherited keys like "constructor"
+  var STOPSET = dict(); STOP.forEach(function (w) { STOPSET[w] = 1; });
   var PHRASES = [
+    [/\b(pricing|prices?|fees?) (set ?up|structured?|works?)\b/g, " price "], [/\bcertified public accountants?\b/g, " cpa "],
+    [/\breach (out to )?(julia|you|someone|somebody|a person)\b/g, " contact "],
     [/\bhow much\b/g, " price "], [/\bfix (and|&|n) flip\w*/g, " flip "], [/\bp ?& ?l'?s?\b|\bp and l\b|\bpnl\b|\bprofit (and|&) loss\b/g, " pnl "],
     [/\bquick ?books\b|\bqbo\b|\bqb\b/g, " quickbooks "], [/\bset ?up\b/g, " setup "], [/\bclean ?up\b|\bcatch ?up\b|\bcaught up\b/g, " cleanup "],
     [/\byear ?end\b/g, " yearend "], [/\bhard money\b/g, " hardmoney "], [/\breal estate\b/g, " realestate "], [/\bsmall business\b/g, " smallbusiness "],
@@ -69,40 +72,59 @@
     [/\bbalance sheet\b/g, " balancesheet "], [/\bcost of goods( sold)?\b|\bcogs\b/g, " cogs "], [/\bschedule e\b/g, " schedulee "],
     [/\bcost basis\b/g, " costbasis "], [/\bbuy (and|&) hold\b/g, " rental "], [/\b1099s?\b/g, " 1099 "], [/\b1031s?\b/g, " 1031 "],
     [/\bcapital improvements?\b/g, " improvement "], [/\bprincipal\b/g, " principal "],
-    [/\btax (guy|gal|person|preparer|pro|professional|advisor)\b/g, " cpa "],
+    [/\btax (guy|gal|person|preparer|pro|professional|advisor|accountant)\b/g, " cpa "],
+    [/\bhand(ing)? off (my |the |your )?(books|bookkeeping)\b|\boutsourc\w*/g, " outsource bookkeeping "],
+    [/\b(two|2|one|1|same|different) sets? of books\b/g, " separate books "],
+    [/\bcontact info(rmation)?\b|\bget in touch\b|\bcall (you|julia|revi)\b|\bphone number\b/g, " contact "],
+    [/\b(talk|speak|chat) (to|with) (someone|somebody|a person|a human|a real person|julia|you|anyone)\b/g, " contact "],
+    [/\bwho (owns|runs|started|founded|is behind|am i working with|will i (be )?work(ing)? with)\b/g, " julia "],
+    [/\bcomes? with\b/g, " include "],
+    [/\bsetting up\b/g, " setup "], [/\bbest way to\b/g, " "], [/\bfirst step\b|\bbecome a client\b/g, " start "],
+    [/\b(every|each|per|a) month\b/g, " monthly "],
+    [/\bwhat (will|would|does|do) (it|this|that) cost\b|\bcost (me|per)\b|\bballpark\b|\bprice list\b|\bset pricing\b|\bdo you cost\b/g, " price "],
+    [/\b(different|separate|two|2) (books|quickbooks( files?)?)\b/g, " separate books "],
+    [/\btrack(ing)? (me|visitors|users|people)\b/g, " cookies "],
+    [/\bget going\b|\bget the ball rolling\b|\bonboard(ed)?\b/g, " start "],
+    [/\bthird part(y|ies)\b/g, " share "],
+    [/\bcash ?flow(ing)?\b|\bmaking money\b|\bprofitable\b/g, " profitable "],
     [/\b(alabama|alaska|arizona|arkansas|california|colorado|connecticut|delaware|florida|georgia|hawaii|idaho|illinois|indiana|iowa|kansas|kentucky|louisiana|maine|maryland|massachusetts|michigan|minnesota|mississippi|missouri|montana|nebraska|nevada|new hampshire|new jersey|new mexico|new york|north carolina|north dakota|ohio|oklahoma|oregon|pennsylvania|rhode island|south carolina|south dakota|tennessee|texas|utah|vermont|virginia|washington|west virginia|wisconsin|wyoming|out of state|another state|other states?)\b/g, " nationwide "]
   ];
-  var CANON = {};
+  var CANON = dict();
   function group(canon, words) { words.split(" ").forEach(function (w) { CANON[w] = canon; }); }
   group("rehab", "rehab rehabs renovation renovations renovate remodel remodeling construction");
   group("flip", "flip flips flipper flippers flipping flipped");
-  group("rental", "rental rentals landlord landlords rent renting tenant tenants ltr ltrs");
+  group("rental", "rental rentals landlord landlords rent renting tenant tenants ltr ltrs door doors");
   group("price", "price prices pricing priced fee fees charge charges rate rates expensive cheap afford affordable budget");
   group("cost", "cost costs");
   group("taxes", "tax taxes irs");
   group("cpa", "cpa cpas accountant accountants");
-  group("quickbooks", "quickbooks software program app");
+  group("quickbooks", "quickbooks software program app xero wave freshbooks stessa baselane");
   group("spreadsheet", "spreadsheet spreadsheets excel");
   group("llc", "llc llcs entity entities");
   group("depreciate", "depreciate depreciated depreciation depreciating depreciable");
   group("deduct", "deduct deductible deduction deductions expense expensed");
-  group("call", "call calls consultation consult meeting discovery");
-  group("contact", "contact reach phone email number human person");
+  group("call", "call calls consultation consult meeting");
+  group("contact", "contact reach phone email number human person touch");
   group("delete", "delete deletion remove erase");
   group("secure", "secure security safe protected");
   group("data", "data information info");
-  group("cleanup", "cleanup behind mess messy backlog");
+  group("cleanup", "cleanup behind mess messy backlog disaster wreck neglected");
+  group("reconcile", "reconcile reconciled reconciles reconciling reconciliation reconciliations match matching matched");
   group("monthly", "month monthly");
   group("julia", "julia founder owner");
   group("nationwide", "nationwide state states anywhere remote remotely country");
   group("located", "located location based charlotte local locally nearby");
-  group("long", "long fast quick quickly soon turnaround timeline");
+  group("long", "long fast quick quickly soon turnaround timeline weeks week days");
   group("both", "both");
   group("draw", "draw draws");
   group("separate", "separate separately split");
+  group("different", "different difference differences differ");
+  group("services", "service services offer offers offering provide provides");
+  group("client", "client clients customer customers");
 
   function norm(s) {
-    s = (" " + String(s).toLowerCase().replace(/[’']/g, "") + " ");
+    s = String(s); if (s.normalize) s = s.normalize("NFKC");
+    s = (" " + s.toLowerCase().replace(/[’']/g, "") + " ");
     PHRASES.forEach(function (p) { s = s.replace(p[0], p[1]); });
     return s.replace(/[^a-z0-9]+/g, " ").trim();
   }
@@ -111,9 +133,12 @@
     if (w.length > 5 && /ing$/.test(w)) w = w.slice(0, -3);
     else if (w.length > 4 && /ed$/.test(w)) w = w.slice(0, -2);
     else if (w.length > 3 && /s$/.test(w) && !/ss$/.test(w)) w = w.slice(0, -1);
-    return CANON[w] || w;
+    if (CANON[w]) return CANON[w];
+    if (CANON[w + "e"]) return CANON[w + "e"];
+    if (w.length > 4 && /e$/.test(w)) w = w.slice(0, -1);
+    return w;
   }
-  var KEEPNUM = { "1099": 1, "1031": 1, "450": 1 };
+  var KEEPNUM = dict(); ["1099", "1031", "450", "1040"].forEach(function (n) { KEEPNUM[n] = 1; });
   function tokens(s) {
     var out = [];
     norm(s).split(" ").forEach(function (w) {
@@ -143,13 +168,13 @@
     return t.join(" ");
   }
 
-  var DATA = null, INDEX = [], IDF = {}, VOCAB = [], BYID = {}, EXACT = {};
+  var DATA = null, INDEX = [], IDF = dict(), VOCAB = [], BYID = dict(), EXACT = dict();
   function buildIndex(d) {
-    DATA = d; INDEX = []; BYID = {};
-    var df = {};
+    DATA = d; INDEX = []; BYID = dict(); EXACT = dict(); IDF = dict();
+    var df = dict();
     d.entries.forEach(function (e) {
       BYID[e.id] = e;
-      var f = {};
+      var f = dict();
       function put(list, w) { list.forEach(function (t) { if (!f[t] || f[t] < w) f[t] = w; }); }
       put(tokens(e.a.map(blockText).join(" ")), 0.3);
       put(tokens(e.tags.join(" ")), 0.8);
@@ -157,17 +182,28 @@
       var keys = [e.q].concat(e.ask).map(function (x) { return tokens(x).join(" "); });
       [e.q].concat(e.ask).forEach(function (x) { EXACT[norm(x)] = e; });
       INDEX.push({ e: e, f: f, keys: keys });
-      Object.keys(f).forEach(function (t) { df[t] = (df[t] || 0) + 1; });
+      Object.keys(f).forEach(function (t) { df[t] = (df[t] || 0) + (f[t] >= 0.8 ? 1 : 0.25); });
     });
     var N = d.entries.length;
     Object.keys(df).forEach(function (t) { IDF[t] = Math.log(1 + N / df[t]); });
     VOCAB = Object.keys(df);
   }
   // Topics the site doesn't cover. These always go to Julia instead of a near-miss answer.
-  var OFF_TOPIC = /\b(sales tax(es)?|payroll|property tax(es)?|short term rentals?|airbnb|vrbo|legal advice|lawyer|attorney|get (me )?a loan|lend me|financing|mortgage broker)\b/;
+  var OFF_TOPIC = new RegExp("\\b(" + [
+    "sales tax(es)?", "payroll", "property tax(es)?", "short term rentals?", "airbnb", "vrbo", "legal advice", "lawyer", "attorney",
+    "get (me )?a loan", "lend me", "financing", "mortgage broker",
+    "sell (my |your )?(house|home|propert(y|ies)|houses|homes)", "(do you )?sell houses", "realtor", "real estate agent",
+    "what is an? (llc|brrrr|cap rate|hard money loan)", "(form|start|create|open) an llc", "valuations?", "appraisals?", "audit(s|ed|ing)?",
+    "what time is it", "are you (an? )?(human|real( person)?|bot|robot|ai|chatgpt)", "is this (an? )?(bot|robot|ai|chatgpt)", "how much rent", "rent (should|to) (i )?charge",
+    "(find|get|hire|recommend|know) (me )?an? (good )?(contractor|realtor|lender|agent|cpa|property manager)",
+    "are you hiring", "job (openings?|applications?)", "looking for (a )?job", "careers?", "internships?", "work for you",
+    "evict(ion)?", "buy( \\w+){0,2} (house|houses|home|homes|property|properties|rentals?|flips?)", "mortgage (loans?|rates?)", "insurance", "(how (do i|to)|want to|should i) invest", "get (me )?an? (hard money |construction |fix and flip )?loan", "(start|get into|begin) flipping", "how (to|do i) (start )?flip", "represent(ation)?", "cancel", "best (city|cities|market|markets|area|place)", "property management", "tenant screening", "manage my propert(y|ies)", "stock market", "stocks", "bitcoin", "crypto"
+  ].join("|") + ")\\b");
+  var UNKNOWN_W = 0.6;
   function match(q) {
     var nq = norm(q);
-    if (OFF_TOPIC.test(nq)) return null;
+    var raw = (String(q).normalize ? String(q).normalize("NFKC") : String(q)).toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]+/g, " ");
+    if (OFF_TOPIC.test(nq) || OFF_TOPIC.test(raw)) return null;
     if (EXACT[nq]) return EXACT[nq];
     var qt = tokens(q), uniq = [];
     qt.forEach(function (t) { if (uniq.indexOf(t) < 0) uniq.push(t); });
@@ -180,7 +216,7 @@
       return t;
     });
     var maxIdf = 0; for (var k in IDF) if (IDF[k] > maxIdf) maxIdf = IDF[k];
-    var denom = 0; mapped.forEach(function (t) { denom += IDF[t] || maxIdf; });
+    var denom = 0; mapped.forEach(function (t) { denom += IDF[t] || maxIdf * UNKNOWN_W; });
     var qkey = mapped.join(" ");
     var best = null;
     INDEX.forEach(function (it) {
@@ -222,7 +258,6 @@
   launcher.setAttribute("aria-label", COPY.title);
   launcher.setAttribute("aria-controls", "askrevi-panel");
   launcher.setAttribute("aria-expanded", "false");
-  if (ls(function (s) { return s.getItem(SEEN); })) launcher.classList.add("is-icon");
 
   var panel = el("div", "askrevi-panel");
   panel.id = "askrevi-panel";
@@ -395,8 +430,6 @@
     launcher.setAttribute("aria-expanded", "true");
     launcher.setAttribute("aria-label", "Close chat");
     launcher.innerHTML = I.x + '<span class="askrevi-launcher-label">' + esc(COPY.launcher) + "</span>";
-    launcher.classList.add("is-icon");
-    ls(function (s) { s.setItem(SEEN, "1"); });
     if (phone()) document.documentElement.style.overflow = "hidden";
     history.open = true; save();
     if (focus !== false) setTimeout(function () { input.focus({ preventScroll: true }); }, 50);

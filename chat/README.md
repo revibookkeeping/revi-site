@@ -49,6 +49,7 @@ Delete the line from Code Injection. Nothing else depends on it.
    - https://purge.jsdelivr.net/gh/revibookkeeping/revi-site@main/chat/chat.js
    - https://purge.jsdelivr.net/gh/revibookkeeping/revi-site@main/chat/chat.css
 
-New questions people ask in different words go in the `ask` list for that entry in `build_answers.py`.
+New questions people ask in different words go in the `ask` list for that entry in `build_answers.py`,
+or in the `EXTRA` table near the bottom of that file.
 Topics the site doesn't cover (payroll, sales tax, short-term rentals, legal, loans) always go to the
 Get in Touch card instead of a near-miss answer; that list is `OFF_TOPIC` in `chat.js`.
