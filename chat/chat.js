@@ -31,10 +31,11 @@
     title: "Ask REVI",
     subtitle: "Answers from our website",
     launcher: "Ask a question",
-    welcome: "Ask about bookkeeping for flips and rentals, or about working with REVI. Which describes you best?",
     welcomeBack: "Ask about bookkeeping for flips and rentals, or about working with REVI.",
     introSources: "Answers come from our FAQs, Services page, and guides.",
     roleThanks: "Thanks. What can I help you with?",
+    pickTitle: "Which describes you best?",
+    pickSub: "We'll suggest questions to start with.",
     helpful: "Helpful",
     notHelpful: "Not helpful",
     feedbackThanks: "Thanks for letting us know.",
@@ -57,13 +58,13 @@
   };
   // "Which describes you best?" Each choice gets its own first questions.
   var ROLES = [
-    { id: "flip", label: "I flip houses", log: "Flipper",
+    { id: "flip", label: "I flip houses", log: "Flipper", icon: "hammer",
       starters: ["Does a flip get depreciated?", "Are rehab costs deductible when you pay them?", "How does pricing work?"] },
-    { id: "rental", label: "I own rentals", log: "Landlord",
+    { id: "rental", label: "I own rentals", log: "Landlord", icon: "house",
       starters: ["Does loan principal show up on a rental's profit and loss?", "What's the difference between a repair and a capital improvement?", "How does pricing work?"] },
-    { id: "both", label: "I do both", log: "Both",
+    { id: "both", label: "I do both", log: "Both", icon: "layers",
       starters: ["Do I need separate books for flips and rentals?", "What's the difference between bookkeeping for a flip and bookkeeping for a rental?", "How does pricing work?"] },
-    { id: "looking", label: "Just looking", log: "Just looking", starters: null }
+    { id: "looking", label: "Just looking", log: "Just looking", icon: "eye", starters: null }
   ];
   function roleById(id) { for (var i = 0; i < ROLES.length; i++) if (ROLES[i].id === id) return ROLES[i]; return null; }
 
@@ -82,6 +83,11 @@
     more: svg('<circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>', 20),
     restart: svg('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>', 20),
     link: svg('<path d="M7 7h10v10"/><path d="M7 17 17 7"/>', 20),
+    hammer: svg('<path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/>', 20),
+    house: svg('<path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>', 20),
+    layers: svg('<path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/>', 20),
+    eye: svg('<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/>', 20),
+    chevron: svg('<path d="m9 18 6-6-6-6"/>', 20),
     mark: '<svg viewBox="0 0 224 145" fill="currentColor" aria-hidden="true" focusable="false"><path d="M157.87 116.728C154.059 116.728 151.01 113.681 151.01 109.872V88.9638C151.01 85.1547 154.059 82.1074 157.87 82.1074H210.719C211.227 81.007 211.227 73.3888 211.227 70.1722C211.227 66.9556 211.227 59.5067 210.042 58.0677L120.943 58.4063V103.269C120.943 109.448 116.878 114.612 110.865 116.135C104.852 117.659 98.8382 115.035 95.8739 109.533L86.4728 92.1804C84.779 89.0485 85.7953 85.2394 88.7596 83.2925C100.617 75.4203 107.392 61.8768 107.392 46.2172C107.392 16.4215 84.5249 0.338593 63.0125 0.338593H0V143.9C2.54083 145 10.7562 145 14.9062 145C19.0562 145 27.3562 145 29.8971 143.9V98.9521C29.8971 95.143 32.9461 92.0958 36.7573 92.0958H53.0186C55.6441 92.0958 57.9309 93.5348 59.1166 95.8202L78.8504 134.588C83.0286 141.529 90.7076 145 101.887 145H221.814C223.085 142.799 223.085 134.504 223.085 130.864C223.085 126.632 223.085 117.998 221.645 116.389L157.955 116.728H157.87ZM57.338 64.3316H36.7573C32.9461 64.3316 29.8971 61.2843 29.8971 57.4752V35.2131C29.8971 31.404 32.9461 28.3567 36.7573 28.3567H57.338C67.3319 28.3567 75.4626 36.3981 75.4626 46.3018C75.4626 56.2055 67.3319 64.2469 57.338 64.2469V64.3316Z"/><path d="M223 14.3053C223 10.1576 223 1.60829 221.56 0L120.943 0.423234V28.6106H222.322C223 27.2563 223 18.5377 223 14.39V14.3053Z"/></svg>'
   };
 
@@ -404,6 +410,21 @@
     w.appendChild(c);
     log.appendChild(w);
   }
+  // First step: "Which describes you best?" as one card (Web/Chat question card)
+  function pickCard() {
+    var w = el("div", "askrevi-suggest askrevi-qcard");
+    w.setAttribute("role", "group"); w.setAttribute("aria-labelledby", "askrevi-qcard-title");
+    w.innerHTML = '<p class="askrevi-qcard-title" id="askrevi-qcard-title">' + esc(COPY.pickTitle) + '</p><p class="askrevi-qcard-sub">' + esc(COPY.pickSub) + "</p>";
+    var list = el("div", "askrevi-choices");
+    ROLES.forEach(function (r) {
+      var btn = el("button", "askrevi-choice", '<span class="askrevi-choice-icon">' + I[r.icon] + '</span><span class="askrevi-choice-label">' + esc(r.label) + "</span>" + I.chevron);
+      btn.type = "button";
+      btn.addEventListener("click", function () { if (touch()) input.blur(); pickRole(r); });
+      list.appendChild(btn);
+    });
+    w.appendChild(list);
+    log.appendChild(w);
+  }
   function clearChips() { Array.prototype.forEach.call(log.querySelectorAll(".askrevi-suggest"), function (n) { n.remove(); }); }
   function handoff() {
     var card = el("div", "askrevi-handoff",
@@ -442,7 +463,7 @@
   }
   function renderTurn(t) {
     if (t.role === "visitor") { visitorRow(t.text); return; }
-    if (t.kind === "welcome") { botRow("<p>" + esc(history.persona ? COPY.welcomeBack : COPY.welcome) + "</p>"); return; }
+    if (t.kind === "welcome") { if (history.persona) botRow("<p>" + esc(COPY.welcomeBack) + "</p>"); return; }  // no type yet: the question card shows instead
     if (t.kind === "role") { botRow("<p>" + esc(COPY.roleThanks) + "</p>"); return; }
     if (t.kind === "thanks") { botRow("<p>" + esc(COPY.thanks) + "</p>"); return; }
     if (t.kind === "nomatch") { botRow("<p>" + esc(COPY.noMatch) + "</p>"); handoff(); return; }
@@ -461,7 +482,7 @@
     clearChips();
     var last = history.turns[history.turns.length - 1];
     if (!last || last.kind === "welcome") {
-      if (!history.persona) { chips(ROLES, null, pickRole); return; }
+      if (!history.persona) { pickCard(); return; }
       chips(DATA.starters, COPY.starters); return;
     }
     if (last.kind === "role") {
