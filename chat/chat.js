@@ -315,7 +315,7 @@
     '<form class="askrevi-composer" novalidate><div class="askrevi-field"><label class="askrevi-sr" for="askrevi-input">Your question</label>' +
     '<input id="askrevi-input" class="askrevi-input" type="text" autocomplete="off" maxlength="300" enterkeyhint="send" placeholder="' + esc(COPY.placeholder) + '">' +
     '<button type="submit" class="askrevi-send" aria-label="Send" disabled>' + I.up + "</button></div></form>" +
-    '<p class="askrevi-foot">' + esc(COPY.foot) + ' <a href="/privacy-policy" class="askrevi-foot-link">' + esc(COPY.privacy) +
+    '<p class="askrevi-foot">' + esc(COPY.foot) + ' <a href="/privacy-policy#website-chat" class="askrevi-foot-link">' + esc(COPY.privacy) +
       '</a> &middot; <a href="/terms-of-use" class="askrevi-foot-link">' + esc(COPY.terms) + "</a></p>";
   root.appendChild(panel);
   root.appendChild(launcher);
