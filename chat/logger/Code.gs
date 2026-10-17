@@ -70,6 +70,15 @@ function underCap() {
 
 function token() { return String(PropertiesService.getScriptProperties().getProperty("NOTION_TOKEN") || "").trim(); }
 
+// One-time setup if the Script Properties screen won't save: paste the Notion key between the quotes,
+// run saveKey once, then put the placeholder back.
+function saveKey() {
+  var key = "PASTE_KEY_HERE";
+  if (key === "PASTE_KEY_HERE") throw new Error("Paste the Notion key between the quotes first.");
+  PropertiesService.getScriptProperties().setProperty("NOTION_TOKEN", key.trim());
+  checkKey();
+}
+
 // Says whether the saved key looks right, without printing it.
 function checkKey() {
   var t = token();
