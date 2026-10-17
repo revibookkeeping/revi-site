@@ -31,7 +31,15 @@
     title: "Ask REVI",
     subtitle: "Answers from our website",
     launcher: "Ask a question",
-    welcome: "Ask about bookkeeping for flips and rentals, or about working with REVI. Answers come from our FAQs, Services page, and guides.",
+    welcome: "Ask about bookkeeping for flips and rentals, or about working with REVI. Which describes you best?",
+    welcomeBack: "Ask about bookkeeping for flips and rentals, or about working with REVI.",
+    introSources: "Answers come from our FAQs, Services page, and guides.",
+    roleThanks: "Thanks. What can I help you with?",
+    helpful: "Helpful",
+    notHelpful: "Not helpful",
+    feedbackThanks: "Thanks for letting us know.",
+    menu: "More options",
+    startOver: "Start over",
     starters: "Common questions",
     related: "Related",
     noMatch: "That one isn't covered on our site, so it's a question for Julia. She can go through it with you on a discovery call.",
@@ -43,9 +51,21 @@
     thanks: "Glad to help.",
     placeholder: "Type your question",
     foot: "General answers. Review your situation with your CPA.",
-    saved: "We save questions asked here to improve our answers.",
-    privacy: "Privacy Policy"
+    saved: "We save questions to improve our answers.",
+    privacy: "Privacy",
+    terms: "Terms"
   };
+  // "Which describes you best?" Each choice gets its own first questions.
+  var ROLES = [
+    { id: "flip", label: "I flip houses", log: "Flipper",
+      starters: ["Does a flip get depreciated?", "Are rehab costs deductible when you pay them?", "How does pricing work?"] },
+    { id: "rental", label: "I own rentals", log: "Landlord",
+      starters: ["Does loan principal show up on a rental's profit and loss?", "What's the difference between a repair and a capital improvement?", "How does pricing work?"] },
+    { id: "both", label: "I do both", log: "Both",
+      starters: ["Do I need separate books for flips and rentals?", "What's the difference between bookkeeping for a flip and bookkeeping for a rental?", "How does pricing work?"] },
+    { id: "looking", label: "Just looking", log: "Just looking", starters: null }
+  ];
+  function roleById(id) { for (var i = 0; i < ROLES.length; i++) if (ROLES[i].id === id) return ROLES[i]; return null; }
 
   // ---------- Icons (Lucide, ISC license) and the REVI mark ----------
   function svg(paths, size) {
@@ -56,6 +76,12 @@
     x: svg('<path d="M18 6 6 18"/><path d="m6 6 12 12"/>', 24),
     send: svg('<path d="M3.714 3.048a.498.498 0 0 0-.683.627l2.843 7.627a2 2 0 0 1 0 1.396l-2.842 7.627a.498.498 0 0 0 .682.627l18-8.5a.5.5 0 0 0 0-.904z"/><path d="M6 12h16"/>', 20),
     arrow: svg('<path d="M7 7h10v10"/><path d="M7 17 17 7"/>', 16),
+    up: svg('<path d="m5 12 7-7 7 7"/><path d="M12 19V5"/>', 20),
+    thumbUp: svg('<path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/>', 20),
+    thumbDown: svg('<path d="M17 14V2"/><path d="M9 18.12 10 14H4.17a2 2 0 0 1-1.92-2.56l2.33-8A2 2 0 0 1 6.5 2H20a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.76a2 2 0 0 0-1.79 1.11L12 22a3.13 3.13 0 0 1-3-3.88Z"/>', 20),
+    more: svg('<circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/>', 20),
+    restart: svg('<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>', 20),
+    link: svg('<path d="M7 7h10v10"/><path d="M7 17 17 7"/>', 20),
     mark: '<svg viewBox="0 0 224 145" fill="currentColor" aria-hidden="true" focusable="false"><path d="M157.87 116.728C154.059 116.728 151.01 113.681 151.01 109.872V88.9638C151.01 85.1547 154.059 82.1074 157.87 82.1074H210.719C211.227 81.007 211.227 73.3888 211.227 70.1722C211.227 66.9556 211.227 59.5067 210.042 58.0677L120.943 58.4063V103.269C120.943 109.448 116.878 114.612 110.865 116.135C104.852 117.659 98.8382 115.035 95.8739 109.533L86.4728 92.1804C84.779 89.0485 85.7953 85.2394 88.7596 83.2925C100.617 75.4203 107.392 61.8768 107.392 46.2172C107.392 16.4215 84.5249 0.338593 63.0125 0.338593H0V143.9C2.54083 145 10.7562 145 14.9062 145C19.0562 145 27.3562 145 29.8971 143.9V98.9521C29.8971 95.143 32.9461 92.0958 36.7573 92.0958H53.0186C55.6441 92.0958 57.9309 93.5348 59.1166 95.8202L78.8504 134.588C83.0286 141.529 90.7076 145 101.887 145H221.814C223.085 142.799 223.085 134.504 223.085 130.864C223.085 126.632 223.085 117.998 221.645 116.389L157.955 116.728H157.87ZM57.338 64.3316H36.7573C32.9461 64.3316 29.8971 61.2843 29.8971 57.4752V35.2131C29.8971 31.404 32.9461 28.3567 36.7573 28.3567H57.338C67.3319 28.3567 75.4626 36.3981 75.4626 46.3018C75.4626 56.2055 67.3319 64.2469 57.338 64.2469V64.3316Z"/><path d="M223 14.3053C223 10.1576 223 1.60829 221.56 0L120.943 0.423234V28.6106H222.322C223 27.2563 223 18.5377 223 14.39V14.3053Z"/></svg>'
   };
 
@@ -270,13 +296,18 @@
   panel.innerHTML =
     '<div class="askrevi-header"><span class="askrevi-avatar is-lg">' + I.mark + '</span>' +
     '<div class="askrevi-titles"><p class="askrevi-title">' + esc(COPY.title) + '</p><p class="askrevi-subtitle">' + esc(COPY.subtitle) + "</p></div>" +
-    '<button type="button" class="askrevi-close" aria-label="Close chat">' + I.x + "</button></div>" +
+    '<button type="button" class="askrevi-icon-btn askrevi-menu-btn" aria-label="' + esc(COPY.menu) + '" aria-haspopup="menu" aria-expanded="false" aria-controls="askrevi-menu">' + I.more + "</button>" +
+    '<button type="button" class="askrevi-icon-btn askrevi-close" aria-label="Close chat">' + I.x + "</button>" +
+    '<div class="askrevi-menu" id="askrevi-menu" role="menu" hidden>' +
+      '<button type="button" class="askrevi-menu-item" role="menuitem" data-act="restart">' + I.restart + "<span>" + esc(COPY.startOver) + "</span></button>" +
+      '<a class="askrevi-menu-item" role="menuitem" href="' + esc(COPY.handoffUrl) + '" data-act="touch">' + I.link + "<span>" + esc(COPY.handoffButton) + "</span></a>" +
+    "</div></div>" +
     '<div class="askrevi-log" role="log" aria-live="polite" aria-relevant="additions"></div>' +
-    '<form class="askrevi-composer" novalidate><label class="askrevi-sr" for="askrevi-input">Your question</label>' +
+    '<form class="askrevi-composer" novalidate><div class="askrevi-field"><label class="askrevi-sr" for="askrevi-input">Your question</label>' +
     '<input id="askrevi-input" class="askrevi-input" type="text" autocomplete="off" maxlength="300" enterkeyhint="send" placeholder="' + esc(COPY.placeholder) + '">' +
-    '<button type="submit" class="askrevi-send" aria-label="Send" disabled>' + I.send + "</button></form>" +
-    '<p class="askrevi-foot">' + esc(COPY.foot) + (LOG_URL ? '<br>' + esc(COPY.saved) +
-      ' <a href="/privacy-policy#ask-revi" class="askrevi-foot-link">' + esc(COPY.privacy) + "</a>" : "") + "</p>";
+    '<button type="submit" class="askrevi-send" aria-label="Send" disabled>' + I.up + "</button></div></form>" +
+    '<p class="askrevi-foot"><span>' + esc(COPY.foot) + "</span><br><span>" + (LOG_URL ? esc(COPY.saved) + " " : "") +
+      '<a href="/privacy-policy" class="askrevi-foot-link">' + esc(COPY.privacy) + '</a> · <a href="/terms-of-use" class="askrevi-foot-link">' + esc(COPY.terms) + "</a></span></p>";
   root.appendChild(panel);
   root.appendChild(launcher);
   (document.body || document.documentElement).appendChild(root);
@@ -286,6 +317,8 @@
   var input = panel.querySelector(".askrevi-input");
   var send = panel.querySelector(".askrevi-send");
   var closeBtn = panel.querySelector(".askrevi-close");
+  var menuBtn = panel.querySelector(".askrevi-menu-btn");
+  var menu = panel.querySelector(".askrevi-menu");
 
   // ---------- Conversation state (kept for this tab, so it survives page changes) ----------
   var history = ss(function (s) { return JSON.parse(s.getItem(STATE) || "null"); }) || { open: false, turns: [] };
@@ -311,10 +344,15 @@
         result: e ? "answered" : t.kind === "welcome" ? "greeting" : t.kind === "thanks" ? "thanks" : "nomatch",
         answerId: e ? e.id : "", answer: e ? e.q : "",
         page: location.pathname, device: phone() ? "phone" : "desktop",
-        visit: history.visit, turn: ++history.asked, mode: PUBLIC ? "public" : "preview"
+        visit: history.visit, turn: t.n, mode: PUBLIC ? "public" : "preview",
+        visitor: history.persona && roleById(history.persona) ? roleById(history.persona).log : ""
       });
-      fetch(LOG_URL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain" }, body: body }).catch(function () {});
+      post(body);
     } catch (err) {}
+  }
+  function post(body) {
+    if (!LOG_URL) return;
+    try { fetch(LOG_URL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain" }, body: body }).catch(function () {}); } catch (err) {}
   }
 
   function scrollDown() { log.scrollTop = log.scrollHeight; }
@@ -348,15 +386,16 @@
   function sourceLink(e) {
     return '<a class="askrevi-source" data-id="' + esc(e.id) + '" href="' + esc(e.source.url) + '">' + I.arrow + "<span>" + esc(e.source.label) + "</span></a>";
   }
-  function chips(list, label) {
+  function chips(list, label, onPick) {
     if (!list.length) return;
     var w = el("div", "askrevi-suggest");
     if (label) w.appendChild(el("p", "askrevi-suggest-label", esc(label)));
     var c = el("div", "askrevi-chips");
     list.forEach(function (q) {
-      var btn = el("button", "askrevi-chip", esc(q));
+      var text = typeof q === "string" ? q : q.label;
+      var btn = el("button", "askrevi-chip", esc(text));
       btn.type = "button";
-      btn.addEventListener("click", function () { ask(q); });
+      btn.addEventListener("click", function () { onPick ? onPick(q) : ask(q); });
       c.appendChild(btn);
     });
     w.appendChild(c);
@@ -369,25 +408,63 @@
       '<a class="askrevi-button" href="' + esc(COPY.handoffUrl) + '">' + esc(COPY.handoffButton) + "</a>");
     card.querySelector("a").addEventListener("click", function () { track("askrevi_handoff_click"); });
     log.appendChild(card);
+    return card;
   }
 
+  function intro() {
+    log.appendChild(el("div", "askrevi-intro",
+      '<span class="askrevi-avatar is-xl">' + I.mark + '</span><p class="askrevi-intro-title">' + esc(COPY.title) +
+      '</p><p class="askrevi-intro-text">' + esc(COPY.introSources) + "</p>"));
+  }
+  function feedback(t) {
+    var e = BYID[t.id];
+    var w = el("div", "askrevi-feedback");
+    function paint() {
+      w.innerHTML =
+        '<button type="button" class="askrevi-thumb" data-v="up" aria-label="' + esc(COPY.helpful) + '" aria-pressed="' + (t.fb === "up") + '"' + (t.fb ? " disabled" : "") + ">" + I.thumbUp + "</button>" +
+        '<button type="button" class="askrevi-thumb" data-v="down" aria-label="' + esc(COPY.notHelpful) + '" aria-pressed="' + (t.fb === "down") + '"' + (t.fb ? " disabled" : "") + ">" + I.thumbDown + "</button>" +
+        (t.fb ? '<span class="askrevi-feedback-thanks" role="status">' + esc(COPY.feedbackThanks) + "</span>" : "");
+    }
+    paint();
+    w.addEventListener("click", function (ev) {
+      var b = ev.target.closest && ev.target.closest(".askrevi-thumb");
+      if (!b || t.fb) return;
+      t.fb = b.getAttribute("data-v"); save(); paint();
+      w.querySelector('[data-v="' + t.fb + '"]').focus({ preventScroll: true });
+      track("askrevi_feedback", { answer_id: e ? e.id : "", helpful: t.fb === "up" ? "yes" : "no" });
+      if (t.n) post(JSON.stringify({ v: 1, type: "feedback", visit: history.visit, turn: t.n, helpful: t.fb === "up" }));
+      if (t.fb === "down" && !(e && e.cta)) { var card = handoff(); w.parentNode.insertBefore(card, w.nextSibling); }
+    });
+    log.appendChild(w);
+  }
   function renderTurn(t) {
     if (t.role === "visitor") { visitorRow(t.text); return; }
-    if (t.kind === "welcome") { botRow("<p>" + esc(COPY.welcome) + "</p>"); return; }
+    if (t.kind === "welcome") { botRow("<p>" + esc(history.persona ? COPY.welcomeBack : COPY.welcome) + "</p>"); return; }
+    if (t.kind === "role") { botRow("<p>" + esc(COPY.roleThanks) + "</p>"); return; }
     if (t.kind === "thanks") { botRow("<p>" + esc(COPY.thanks) + "</p>"); return; }
     if (t.kind === "nomatch") { botRow("<p>" + esc(COPY.noMatch) + "</p>"); handoff(); return; }
     var e = BYID[t.id]; if (!e) return;
     if (e.kind === "guide") {
       botRow("<p>" + esc(COPY.guide) + "</p><p><strong>" + esc(e.q) + "</strong></p>" + sourceLink(e));
+      feedback(t);
+      if (t.fb === "down") handoff();
       return;
     }
     botRow(e.a.map(renderBlock).join("") + sourceLink(e));
-    if (e.cta) handoff();
+    feedback(t);
+    if (e.cta || t.fb === "down") handoff();
   }
   function followUps() {
     clearChips();
     var last = history.turns[history.turns.length - 1];
-    if (!last || last.kind === "welcome") { chips(DATA.starters, COPY.starters); return; }
+    if (!last || last.kind === "welcome") {
+      if (!history.persona) { chips(ROLES, null, pickRole); return; }
+      chips(DATA.starters, COPY.starters); return;
+    }
+    if (last.kind === "role") {
+      var r = roleById(history.persona);
+      chips((r && r.starters) || DATA.starters, COPY.starters); return;
+    }
     if (last.id && BYID[last.id]) {
       var rel = BYID[last.id].related.map(function (r) { return BYID[r] && BYID[r].q; }).filter(Boolean).slice(0, 2);
       chips(rel, COPY.related);
@@ -395,6 +472,7 @@
   }
   function renderAll() {
     log.innerHTML = "";
+    intro();
     history.turns.forEach(renderTurn);
     followUps();
     scrollDown();
@@ -402,6 +480,18 @@
 
   // ---------- Asking ----------
   var busy = false;
+  function pickRole(r) {
+    if (busy) return;
+    clearChips();
+    history.persona = r.id;
+    history.turns.push({ role: "visitor", text: r.label });
+    visitorRow(r.label);
+    var t = { role: "bot", kind: "role" };
+    history.turns.push(t); save();
+    renderTurn(t); followUps(); scrollDown();
+    track("askrevi_visitor_type", { visitor_type: r.id });
+    input.focus({ preventScroll: true });
+  }
   function reply(q) {
     if (/^\s*(thanks|thank you|thx|ty|great|perfect|awesome|got it|ok(ay)?|cool)\b[\s.!]*$/i.test(q)) return { role: "bot", kind: "thanks" };
     if (/^\s*(hi|hello|hey|hiya|good (morning|afternoon|evening))\b[\s.!,]*$/i.test(q)) return { role: "bot", kind: "welcome" };
@@ -426,6 +516,7 @@
     setTimeout(function () {
       dots.remove();
       var t = reply(q);
+      t.n = ++history.asked;
       logQuestion(q, t);
       history.turns.push(t);
       if (history.turns.length > 60) history.turns = history.turns.slice(-60);
@@ -468,6 +559,7 @@
     track("askrevi_open");
   }
   function close() {
+    showMenu(false);
     root.classList.remove("is-open");
     panel.classList.remove("is-open");
     launcher.setAttribute("aria-expanded", "false");
@@ -478,9 +570,43 @@
     launcher.focus({ preventScroll: true });
   }
 
+  function menuOpen() { return !menu.hidden; }
+  function showMenu(on) {
+    menu.hidden = !on;
+    menuBtn.setAttribute("aria-expanded", on ? "true" : "false");
+    if (on) menu.querySelector(".askrevi-menu-item").focus({ preventScroll: true });
+  }
+  function startOver() {
+    history = { open: true, turns: [{ role: "bot", kind: "welcome" }], visit: Math.random().toString(36).slice(2, 10), asked: 0 };
+    save(); renderAll();
+    input.value = ""; send.disabled = true;
+    input.focus({ preventScroll: true });
+  }
+  menuBtn.addEventListener("click", function () { showMenu(!menuOpen()); });
+  menu.addEventListener("click", function (ev) {
+    var item = ev.target.closest && ev.target.closest(".askrevi-menu-item");
+    if (!item) return;
+    showMenu(false);
+    if (item.getAttribute("data-act") === "restart") startOver();
+    else track("askrevi_handoff_click");
+  });
+  menu.addEventListener("keydown", function (ev) {
+    var items = Array.prototype.slice.call(menu.querySelectorAll(".askrevi-menu-item"));
+    var i = items.indexOf(document.activeElement);
+    if (ev.key === "ArrowDown") { ev.preventDefault(); items[(i + 1) % items.length].focus(); }
+    if (ev.key === "ArrowUp") { ev.preventDefault(); items[(i - 1 + items.length) % items.length].focus(); }
+    if (ev.key === "Tab") showMenu(false);
+  });
+  document.addEventListener("click", function (ev) {
+    if (menuOpen() && !menu.contains(ev.target) && !menuBtn.contains(ev.target)) showMenu(false);
+  });
   launcher.addEventListener("click", function () { panel.classList.contains("is-open") ? close() : open(); });
   closeBtn.addEventListener("click", close);
-  panel.addEventListener("keydown", function (ev) { if (ev.key === "Escape") { ev.preventDefault(); close(); } });
+  panel.addEventListener("keydown", function (ev) {
+    if (ev.key !== "Escape") return;
+    ev.preventDefault();
+    if (menuOpen()) { showMenu(false); menuBtn.focus(); } else close();
+  });
   input.addEventListener("input", function () { send.disabled = !input.value.trim(); });
   form.addEventListener("submit", function (ev) { ev.preventDefault(); ask(input.value); });
   log.addEventListener("click", function (ev) {

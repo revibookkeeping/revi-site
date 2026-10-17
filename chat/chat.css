@@ -21,6 +21,7 @@
   --ar-border-brand-subtle: var(--rds-border-brand-subtle, #c38cd7);
   --ar-focus: var(--rds-border-focus, #a553c2);
   --ar-icon-brand: var(--rds-icon-brand, #871aae);
+  --ar-icon: #7a797b;                   /* color/icon/default */
   --ar-placeholder: #b6b5b8;            /* color/text/placeholder */
   --ar-header: #651482;                 /* color/surface/brand, light: purple/600 */
   --ar-sans: var(--rds-sans, "Lato", "Helvetica Neue", Arial, sans-serif);
@@ -31,6 +32,7 @@
 @media (prefers-color-scheme: dark) {
   .askrevi {
     --ar-placeholder: #7a797b;          /* color/text/placeholder, dark */
+    --ar-icon: #b6b5b8;                 /* color/icon/default, dark */
     --ar-header: #330a41;               /* color/surface/brand, dark: purple/800 */
     --ar-secondary: var(--rds-text-secondary, #b6b5b8);
     --ar-shadow-overlay: 0 16px 48px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.3);
@@ -83,18 +85,45 @@
 .askrevi-panel.is-open { opacity: 1; transform: none; visibility: visible; transition: opacity .18s ease, transform .18s ease; }
 
 /* Header (Web/Chat header) */
-.askrevi-header { display: flex; align-items: center; gap: 12px; padding: 16px 16px 16px 20px; background: var(--ar-header); color: var(--ar-on-brand); flex: none; }
+.askrevi-header { position: relative; display: flex; align-items: center; gap: 4px; padding: 16px 16px 16px 20px; background: var(--ar-header); color: var(--ar-on-brand); flex: none; }
 .askrevi-avatar { display: inline-flex; align-items: center; justify-content: center; flex: none; border-radius: 999px; background: var(--ar-brand); color: #ffffff; }
 .askrevi-avatar.is-lg { width: 40px; height: 40px; }
 .askrevi-avatar.is-sm { width: 28px; height: 28px; }
 .askrevi-avatar.is-lg svg { width: 22px; height: 14.3px; }
 .askrevi-avatar.is-sm svg { width: 16px; height: 10.4px; }
-.askrevi-titles { flex: 1; min-width: 0; }
+.askrevi-avatar.is-xl { width: 56px; height: 56px; }
+.askrevi-avatar.is-xl svg { width: 31px; height: 20px; }
+.askrevi-titles { flex: 1; min-width: 0; margin-left: 8px; }
 .askrevi-title { font-family: var(--ar-serif); font-weight: 600; font-size: 17px; line-height: 1.3; color: var(--ar-on-brand); }
 .askrevi-subtitle { font-size: 12px; line-height: 1.5; color: var(--ar-on-brand-muted); }
-.askrevi .askrevi-close { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; color: var(--ar-on-brand); }
-.askrevi .askrevi-close:hover { background: rgba(255, 255, 255, 0.14); }
-.askrevi .askrevi-close svg { width: 20px; height: 20px; }
+.askrevi .askrevi-icon-btn { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; color: var(--ar-on-brand); flex: none; }
+.askrevi .askrevi-icon-btn:hover, .askrevi .askrevi-icon-btn[aria-expanded="true"] { background: rgba(255, 255, 255, 0.14); }
+.askrevi .askrevi-icon-btn svg { width: 20px; height: 20px; }
+
+/* Menu (Web/Chat menu) */
+.askrevi-menu { position: absolute; top: calc(100% - 8px); right: 16px; z-index: 2; min-width: 200px; padding: 6px; display: flex; flex-direction: column; gap: 2px;
+  background: var(--ar-raised); border: 1px solid var(--ar-border-subtle); border-radius: 12px; box-shadow: var(--ar-shadow-overlay); }
+.askrevi-menu[hidden] { display: none; }
+.askrevi .askrevi-menu-item { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 12px; border-radius: 6px; color: var(--ar-text);
+  font-family: var(--ar-sans); font-size: 14px; line-height: 1.5; text-align: left; }
+.askrevi .askrevi-menu-item svg { width: 20px; height: 20px; color: var(--ar-icon); }
+.askrevi .askrevi-menu-item:hover, .askrevi .askrevi-menu-item:focus-visible { background: var(--ar-sunken); }
+
+/* Intro at the top of a conversation (Web/Chat intro) */
+.askrevi-intro { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 8px 8px 0; text-align: center; }
+.askrevi-intro-title { font-family: var(--ar-serif); font-weight: 600; font-size: 18px; line-height: 1.3; color: var(--ar-text); }
+.askrevi-intro-text { font-size: 14px; line-height: 1.5; color: var(--ar-secondary); }
+
+/* Was this helpful? (Web/Chat feedback) */
+.askrevi-feedback { display: flex; align-items: center; gap: 6px; margin: -8px 0 0 36px; }
+.askrevi .askrevi-thumb { width: 32px; height: 32px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--ar-border-subtle); color: var(--ar-icon); }
+.askrevi .askrevi-thumb svg { width: 18px; height: 18px; }
+.askrevi .askrevi-thumb:hover:not(:disabled) { border-color: var(--ar-border-brand); color: var(--ar-icon-brand); }
+.askrevi .askrevi-thumb[aria-pressed="true"] { background: var(--ar-tint); border-color: var(--ar-border-brand); color: var(--ar-icon-brand); }
+.askrevi .askrevi-thumb:disabled { cursor: default; }
+.askrevi .askrevi-thumb:disabled[aria-pressed="false"] { opacity: .5; }
+.askrevi-feedback-thanks { margin-left: 4px; font-size: 12px; line-height: 1.5; color: var(--ar-secondary); }
 
 /* Messages */
 .askrevi-log { flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: 16px; display: flex; flex-direction: column; gap: 16px; -webkit-overflow-scrolling: touch; }
@@ -146,19 +175,21 @@
 .askrevi .askrevi-button:hover { background: var(--ar-brand-hover); }
 
 /* Composer (Web/Chat composer) */
-.askrevi-composer { flex: none; display: flex; align-items: center; gap: 8px; padding: 12px 16px 12px; border-top: 1px solid var(--ar-border-subtle); background: var(--ar-raised); }
+.askrevi-composer { flex: none; padding: 12px 16px; border-top: 1px solid var(--ar-border-subtle); background: var(--ar-raised); }
+.askrevi-field { display: flex; align-items: center; gap: 8px; padding: 6px 6px 6px 16px; border: 1px solid var(--ar-border-default); border-radius: 999px; background: var(--ar-raised); }
+.askrevi-field:focus-within { border-color: var(--ar-focus); box-shadow: inset 0 0 0 1px var(--ar-focus); }
 .askrevi .askrevi-input {
-  flex: 1; min-width: 0; height: 46px; padding: 10px 12px; border-radius: 8px;
-  border: 1px solid var(--ar-border-default); background: var(--ar-raised); color: var(--ar-text);
+  flex: 1; min-width: 0; height: 36px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--ar-text);
   font-family: var(--ar-sans); font-size: 16px; line-height: 1.5; outline: none; box-shadow: none; margin: 0;
 }
 .askrevi .askrevi-input::placeholder { color: var(--ar-placeholder); opacity: 1; }
-.askrevi .askrevi-input:focus { border-color: var(--ar-focus); box-shadow: inset 0 0 0 1px var(--ar-focus); }
-.askrevi .askrevi-send { width: 44px; height: 44px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; background: var(--ar-brand); color: var(--ar-on-brand); flex: none; }
+.askrevi .askrevi-input:focus { outline: none; box-shadow: none; }
+.askrevi .askrevi-send { width: 36px; height: 36px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: var(--ar-brand); color: var(--ar-on-brand); flex: none; transition: background-color .15s ease; }
+.askrevi .askrevi-send:hover:not(:disabled) { background: var(--ar-brand-hover); }
 .askrevi .askrevi-send:disabled { background: var(--ar-sunken); color: var(--ar-placeholder); cursor: default; }
 .askrevi .askrevi-send svg { width: 20px; height: 20px; }
 .askrevi-foot-link { color: inherit; text-decoration: underline !important; }
-.askrevi-foot { flex: none; padding: 0 16px 12px; text-align: center; font-size: 12px; line-height: 1.5; color: var(--ar-secondary); background: var(--ar-raised); }
+.askrevi-foot { flex: none; padding: 0 16px 12px; margin-top: -4px; text-align: center; font-size: 12px; line-height: 1.5; color: var(--ar-secondary); background: var(--ar-raised); }
 
 .askrevi-sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 
@@ -174,6 +205,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .askrevi-panel, .askrevi-panel.is-open, .askrevi-launcher, .askrevi-launcher-label { transition: none; }
+  .askrevi-panel, .askrevi-panel.is-open, .askrevi-launcher, .askrevi-launcher-label, .askrevi .askrevi-send { transition: none; }
   .askrevi-typing span { animation: none; opacity: .7; }
 }

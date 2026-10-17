@@ -13,10 +13,41 @@ var DAILY_CAP = 1000;   // stop writing after this many rows in a day (protects 
 var MAX_LEN = 300;      // the chat never sends longer questions than this
 
 var RESULTS = { answered: "Answered", nomatch: "No match", greeting: "Greeting", thanks: "Thanks" };
+var VISITORS = { "Flipper": 1, "Landlord": 1, "Both": 1, "Just looking": 1 };
+
+function notion(method, path, body) {
+  var res = UrlFetchApp.fetch("https://api.notion.com/v1/" + path, {
+    method: method, contentType: "application/json", muteHttpExceptions: true,
+    headers: { Authorization: "Bearer " + token(), "Notion-Version": "2022-06-28" },
+    payload: body ? JSON.stringify(body) : undefined
+  });
+  if (res.getResponseCode() >= 300) { console.error(res.getContentText()); return null; }
+  return JSON.parse(res.getContentText());
+}
+
+// Thumbs up or down: find the row for this visit and question number, then set Helpful.
+function saveFeedback(d) {
+  if (typeof d.visit !== "string" || !d.visit || typeof d.turn !== "number" || typeof d.helpful !== "boolean") return "skip";
+  if (!underCap()) return "cap";
+  var q = { filter: { and: [
+    { property: "Visit", rich_text: { equals: clip(d.visit, 40) } },
+    { property: "Turn", number: { equals: d.turn } }
+  ] }, page_size: 1 };
+  for (var attempt = 0; attempt < 3; attempt++) {
+    var found = notion("post", "databases/" + DATABASE_ID + "/query", q);
+    if (found && found.results && found.results.length) {
+      notion("patch", "pages/" + found.results[0].id, { properties: { "Helpful": { select: { name: d.helpful ? "Yes" : "No" } } } });
+      return "ok";
+    }
+    Utilities.sleep(1500); // the question row may still be on its way
+  }
+  return "missing";
+}
 
 function doPost(e) {
   try {
     var d = JSON.parse((e && e.postData && e.postData.contents) || "{}");
+    if (d.v === 1 && d.type === "feedback") return reply(saveFeedback(d));
     if (d.v !== 1 || typeof d.q !== "string" || !d.q.trim()) return reply("skip");
     if (!RESULTS[d.result]) return reply("skip");
     if (!underCap()) return reply("cap");
@@ -33,6 +64,7 @@ function doPost(e) {
       "Blanked": { checkbox: !!d.blanked }
     };
     if (d.answer) props["Answer"] = { select: { name: clip(d.answer, 100).replace(/,/g, "") } };
+    if (VISITORS[d.visitor]) props["Visitor"] = { select: { name: d.visitor } };
 
     var res = UrlFetchApp.fetch("https://api.notion.com/v1/pages", {
       method: "post",
@@ -88,11 +120,16 @@ function checkKey() {
 function clip(s, n) { s = String(s); return s.length > n ? s.slice(0, n) : s; }
 function reply(t) { return ContentService.createTextOutput(t).setMimeType(ContentService.MimeType.TEXT); }
 
+// Run testLog, then testFeedback, from the editor to check the Notion connection.
+function testFeedback() {
+  console.log(saveFeedback({ v: 1, type: "feedback", visit: "test", turn: 1, helpful: true }));
+}
+
 // Run this once from the editor (select testLog, click Run) to check the Notion connection.
 function testLog() {
   var out = doPost({ postData: { contents: JSON.stringify({
     v: 1, q: "Test from the Apps Script editor", result: "answered", answerId: "faq-pricing",
-    answer: "How does pricing work?", page: "/", device: "desktop", visit: "test", turn: 1, mode: "preview"
+    answer: "How does pricing work?", page: "/", device: "desktop", visit: "test", turn: 1, mode: "preview", visitor: "Flipper"
   }) } });
   console.log(out.getContent());
 }
