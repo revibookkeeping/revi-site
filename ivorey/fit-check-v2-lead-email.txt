@@ -1,4 +1,4 @@
-Lead email for Fit Check v2 (draft, not live yet)
+Lead email for Fit Check v2 (live Nov 4 2026)
 Goes in a copy of workflow "00 | Notify Julia by email when a Fit Check is submitted",
 named "00b | Notify Julia by email when a Fit Check v2 is submitted", trigger: Survey is Fit Check v2.
 Subject stays the same so the Gmail LEADS/Fit Check filter and the Notion lead log keep working:
