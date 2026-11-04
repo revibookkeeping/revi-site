@@ -1,0 +1,33 @@
+Lead email for Fit Check v2 (draft, not live yet)
+Goes in a copy of workflow "00 | Notify Julia by email when a Fit Check is submitted",
+named "00b | Notify Julia by email when a Fit Check v2 is submitted", trigger: Survey is Fit Check v2.
+Subject stays the same so the Gmail LEADS/Fit Check filter and the Notion lead log keep working:
+
+Subject: New Fit Check: {{contact.name}}
+
+A new Fit Check just came in from the website.
+
+Name: {{contact.name}}
+Email: {{contact.email}}
+Phone: {{contact.phone}}
+Business name: {{contact.company_name}}
+Website: {{contact.website}}
+
+Kind of business: {{contact.fit_v2_kind_of_business}}
+What the business does: {{contact.fit_v2_what_does_your_business_do}}
+Services they want: {{contact.fit_v2_services}}
+Uses QuickBooks Online: {{contact.fit_v2_using_qbo}}
+Current books tool: {{contact.fit_v2_current_books_tool}} {{contact.fit_v2_current_books_tool_other}}
+Where the books stand: {{contact.fit_v2_books_stand}}
+Where their taxes stand: {{contact.fit_v2_taxes}}
+Other things in the same accounts: {{contact.fit_v2_shared_accounts}}
+Flips per year: {{contact.fit_v2_flips_per_year}}
+Total fixed assets: {{contact.fit_v2_fixed_assets}}
+Payroll: {{contact.fit_v2_payroll}}
+Transactions per month: {{contact.fit_v2_transactions_per_month}}
+What's driving them to look now: {{contact.fit_v2_driver_real_estate}}{{contact.fit_v2_driver_other_business}}
+The one number they want: {{contact.fit_v2_one_number_real_estate}}{{contact.fit_v2_one_number_other_business}}
+How they found REVI: {{contact.fit_v2_lead_source}}
+Referred by: {{contact.fit_10_referral_name}}
+
+The full record is in Ivorey under Contacts.
