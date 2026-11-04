@@ -1,0 +1,407 @@
+<!-- Fit Check preview: REVI-built version of Ivorey's Fit Check v2, for design testing only.
+     One full-width code block on the unlisted test page /fit-check-preview. Nothing is sent anywhere:
+     the last step shows a thank-you screen. Same questions, wording and required fields as v2 (Nov 4 2026).
+     Show/hide rules approximate v2's conditional logic. Uses the site tokens from styles.css and dark.css. -->
+<div class="rfc" id="rfc">
+  <p class="rfc-banner">Preview only. Answers aren't sent anywhere.</p>
+
+  <div class="rfc-card">
+    <div class="rfc-progress" aria-hidden="true"><span class="rfc-progress__bar"></span></div>
+    <p class="rfc-step-count" data-rfc="count"></p>
+
+    <form novalidate data-rfc="form">
+
+      <!-- Step 0: intro -->
+      <section class="rfc-step" data-step="0">
+        <h1 class="rfc-title">Tell me about your portfolio and your books</h1>
+        <p class="rfc-lead">Answer what you know, there are no wrong answers.</p>
+        <p class="rfc-lead">It takes a couple of minutes, and if it looks like I can help, you can book a call with me at the end.</p>
+      </section>
+
+      <!-- Step 1: about you -->
+      <section class="rfc-step" data-step="1" hidden>
+        <h2 class="rfc-h2">About you</h2>
+        <div class="rfc-row">
+          <div class="rfc-field" data-req>
+            <label for="rfc-first">First Name</label>
+            <input id="rfc-first" name="first_name" type="text" autocomplete="given-name" placeholder="Enter your first name">
+          </div>
+          <div class="rfc-field" data-req>
+            <label for="rfc-last">Last Name</label>
+            <input id="rfc-last" name="last_name" type="text" autocomplete="family-name" placeholder="Enter your last name">
+          </div>
+        </div>
+        <div class="rfc-field" data-req>
+          <label for="rfc-email">Email</label>
+          <input id="rfc-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com">
+        </div>
+        <div class="rfc-field">
+          <label for="rfc-phone">Phone <span class="rfc-opt">Optional</span></label>
+          <input id="rfc-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="rfc-field" data-req>
+          <label for="rfc-biz">Business name</label>
+          <input id="rfc-biz" name="organization" type="text" autocomplete="organization" placeholder="Your own name is fine if you don't have one">
+        </div>
+        <div class="rfc-field">
+          <label for="rfc-web">Website <span class="rfc-opt">Optional</span></label>
+          <input id="rfc-web" name="website" type="url" inputmode="url" autocomplete="url" placeholder="https://yourwebsite.com">
+        </div>
+      </section>
+
+      <!-- Step 2: your business -->
+      <section class="rfc-step" data-step="2" hidden>
+        <h2 class="rfc-h2">Your business</h2>
+        <fieldset class="rfc-field" data-req>
+          <legend>What kind of business do you run?</legend>
+          <div class="rfc-options" data-name="kind" data-type="radio">
+            <span>Long-term rentals</span><span>Fix and flip</span><span>Both rentals and flips</span>
+            <span>Other real estate, like short-term rentals, wholesaling, or commercial</span>
+            <span>A service business, like consulting, contracting, cleaning, or a salon</span>
+            <span>A business that sells products, online or in a store</span><span>Something else</span>
+          </div>
+        </fieldset>
+        <div class="rfc-field" data-req data-show="other-biz" hidden>
+          <label for="rfc-what">What does your business do?</label>
+          <input id="rfc-what" name="what_business_does" type="text">
+        </div>
+        <fieldset class="rfc-field" data-req>
+          <legend>Which services are you interested in?</legend>
+          <p class="rfc-help">Check all that apply.</p>
+          <div class="rfc-options" data-name="services" data-type="checkbox">
+            <span>Cleanup or catch-up</span><span>Monthly bookkeeping</span><span>QuickBooks setup</span><span>Not sure yet</span>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- Step 3: your books -->
+      <section class="rfc-step" data-step="3" hidden>
+        <h2 class="rfc-h2">Your books</h2>
+        <fieldset class="rfc-field" data-req>
+          <legend>REVI runs exclusively on QuickBooks Online. Are you currently using it, or open to switching?</legend>
+          <div class="rfc-options" data-name="qbo" data-type="radio">
+            <span>I already use QuickBooks Online</span><span>Not yet, but I'm open to switching</span>
+            <span>I'd like to understand what's involved</span><span>No, I want to stay on my current tool</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req data-show="not-qbo" hidden>
+          <legend>What do you use for your books now?</legend>
+          <div class="rfc-options" data-name="tool" data-type="radio">
+            <span>QuickBooks Desktop</span><span>Xero</span><span>Wave</span><span>FreshBooks</span>
+            <span>A real estate app, like Stessa, REI Hub, or Baselane</span><span>Spreadsheets</span>
+            <span>Nothing formal yet</span><span>Something else</span>
+          </div>
+        </fieldset>
+        <div class="rfc-field" data-req data-show="tool-other" hidden>
+          <label for="rfc-tool-other">Which one?</label>
+          <input id="rfc-tool-other" name="tool_other" type="text">
+        </div>
+      </section>
+
+      <!-- Step 4: where things stand -->
+      <section class="rfc-step" data-step="4" hidden>
+        <h2 class="rfc-h2">Where things stand</h2>
+        <fieldset class="rfc-field" data-req>
+          <legend>Where do your books stand right now?</legend>
+          <div class="rfc-options" data-name="books" data-type="radio">
+            <span>Up to date through last month</span><span>This year is partly done, a few months to catch up</span>
+            <span>This year hasn't been started yet</span><span>Last year or earlier still needs catching up too</span>
+            <span>Honestly, I'm not sure</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req>
+          <legend>Where do your taxes stand?</legend>
+          <div class="rfc-options" data-name="taxes" data-type="radio">
+            <span>All past years are filed</span><span>Last year is on extension</span>
+            <span>One or more past years haven't been filed yet</span><span>Not sure, my CPA handles it</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req>
+          <legend>Does anything besides your main business run through the same bank accounts?</legend>
+          <p class="rfc-help">Check all that apply.</p>
+          <div class="rfc-options" data-name="shared" data-type="checkbox">
+            <span>No, just this business</span><span>Yes, some personal spending</span>
+            <span>Yes, other real estate work, like rentals, flips, commissions, or property management</span>
+            <span>Yes, another business outside real estate</span>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- Step 5: size -->
+      <section class="rfc-step" data-step="5" hidden>
+        <h2 class="rfc-h2">How big it is</h2>
+        <fieldset class="rfc-field" data-req data-show="flips" hidden>
+          <legend>On average, how many fix-and-flip properties does the business purchase per year?</legend>
+          <div class="rfc-options rfc-options--chips" data-name="flips" data-type="radio">
+            <span>1-3</span><span>4-8</span><span>9-12</span><span>12+</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req>
+          <legend>How many fixed assets does the business own in total? Include rental properties, vehicles, and any large equipment.</legend>
+          <div class="rfc-options rfc-options--chips" data-name="assets" data-type="radio">
+            <span>0</span><span>1-5</span><span>6-11</span><span>12-17</span><span>18-24</span><span>25+</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req data-show="other-biz" hidden>
+          <legend>Do you have employees on payroll?</legend>
+          <div class="rfc-options rfc-options--chips" data-name="payroll" data-type="radio">
+            <span>Yes</span><span>No</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req>
+          <legend>Roughly how many transactions flow through your business bank accounts, credit cards, and lines of credit in a typical month?</legend>
+          <p class="rfc-help">A rough guess is fine, I just need a general range.</p>
+          <div class="rfc-options rfc-options--chips" data-name="transactions" data-type="radio">
+            <span>0-100</span><span>101-200</span><span>201-300</span><span>301-400</span><span>401-500</span><span>More than 500</span>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- Step 6: last few -->
+      <section class="rfc-step" data-step="6" hidden>
+        <h2 class="rfc-h2">Last few</h2>
+        <fieldset class="rfc-field" data-show="real-estate" hidden>
+          <legend>What's driving you to look for a bookkeeper now? <span class="rfc-opt">Optional</span></legend>
+          <div class="rfc-options" data-name="driver_re" data-type="radio">
+            <span>Tax time is coming and I want to be ready</span><span>I can't see how each property or flip is actually performing</span>
+            <span>The books fell behind and I need cleanup</span><span>I'm growing and want this off my plate</span>
+            <span>A lender, CPA, or partner needs clean books</span><span>Something else</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-show="other-biz" hidden>
+          <legend>What's driving you to look for a bookkeeper now? <span class="rfc-opt">Optional</span></legend>
+          <div class="rfc-options" data-name="driver_other" data-type="radio">
+            <span>Tax time is coming and I want to be ready</span><span>I can't see how the business is actually doing</span>
+            <span>The books fell behind and I need cleanup</span><span>I'm growing and want this off my plate</span>
+            <span>A lender, CPA, or partner needs clean books</span><span>Something else</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-show="real-estate" hidden>
+          <legend>If you could see one number or report clearly, which would it be? <span class="rfc-opt">Optional</span></legend>
+          <p class="rfc-help">Pick the one that matters most.</p>
+          <div class="rfc-options" data-name="number_re" data-type="radio">
+            <span>Profit per property or per flip</span><span>Cash flow, what's actually coming in and going out</span>
+            <span>How each property is performing against the others</span><span>True cost basis and rehab spend on a flip</span>
+            <span>Whether I'm ready for tax time</span><span>My overall financial position across the portfolio</span><span>Something else</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-show="other-biz" hidden>
+          <legend>If you could see one number or report clearly, which would it be? <span class="rfc-opt">Optional</span></legend>
+          <p class="rfc-help">Pick the one that matters most.</p>
+          <div class="rfc-options" data-name="number_other" data-type="radio">
+            <span>Profit, what the business actually makes</span><span>Cash flow, what's actually coming in and going out</span>
+            <span>Where my money is going</span><span>Whether I'm ready for tax time</span>
+            <span>My overall financial position</span><span>Something else</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req>
+          <legend>How did you find REVI Bookkeeping?</legend>
+          <div class="rfc-options rfc-options--chips" data-name="source" data-type="radio">
+            <span>Referral</span><span>Search engine</span><span>Website</span><span>LinkedIn</span><span>Facebook</span>
+            <span>AI tool (ChatGPT, Claude, Gemini, Copilot, etc.)</span><span>Other</span>
+          </div>
+        </fieldset>
+        <div class="rfc-field" data-show="referral" hidden>
+          <label for="rfc-ref">Who can we thank? <span class="rfc-opt">Optional</span></label>
+          <input id="rfc-ref" name="referral_name" type="text" autocomplete="off">
+        </div>
+      </section>
+
+      <!-- Done -->
+      <section class="rfc-step rfc-done" data-step="7" hidden>
+        <span class="rfc-done__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+        </span>
+        <h2 class="rfc-title" data-rfc="done-title">Thanks, that's everything</h2>
+        <p class="rfc-lead">The next step is a 30 minute discovery call with me. We'll go through your portfolio, where your books stand today, and what the work would look like for you.</p>
+        <p class="rfc-note">In the live version, your calendar would open here.</p>
+      </section>
+
+      <div class="rfc-nav" data-rfc="nav">
+        <button type="button" class="rfc-btn rfc-btn--ghost" data-rfc="back" aria-label="Go back">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="rfc-btn rfc-btn--primary" data-rfc="next">Get started</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.rfc { --rfc-gap: 20px; font-family: var(--rds-sans, "Lato", "Helvetica Neue", Arial, sans-serif); color: var(--rds-text-primary, #3d3c3d); max-width: 640px; margin: 0 auto; padding: 8px 0 32px; -webkit-text-size-adjust: 100%; }
+.rfc *, .rfc *::before, .rfc *::after { box-sizing: border-box; }
+.rfc-banner { margin: 0 0 12px; padding: 8px 12px; border-radius: var(--rds-radius-md, 8px); background: var(--rds-warn-surface, #fbf6ec); border: 1px solid var(--rds-warn-border, #ecd1a0); color: var(--rds-warn-text, #362910); font-size: 13px; text-align: center; }
+.rfc-card { background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-subtle, #e9e9e9); border-radius: 16px; padding: 28px 28px 0; position: relative; box-shadow: 0 12px 32px rgba(61,60,61,.08); }
+.rfc-progress { position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--rds-surface-sunken, #e9e9e9); border-radius: 16px 16px 0 0; overflow: hidden; }
+.rfc-progress__bar { display: block; height: 100%; width: 0; background: var(--rds-brand, #871aae); transition: width .3s ease; }
+.rfc-step-count { margin: 0 0 6px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--rds-text-accent, #651482); min-height: 18px; }
+.rfc-title { font-family: var(--rds-serif, "Lora", Georgia, serif); font-weight: 600; font-size: 30px; line-height: 1.2; margin: 0 0 14px; color: var(--rds-text-primary, #3d3c3d); letter-spacing: -.01em; }
+.rfc-h2 { font-family: var(--rds-serif, "Lora", Georgia, serif); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 0 0 var(--rfc-gap); color: var(--rds-text-primary, #3d3c3d); }
+.rfc-lead { font-size: 17px; line-height: 1.55; margin: 0 0 12px; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc-note { font-size: 14px; color: var(--rds-text-secondary, #5b5a5b); margin: 16px 0 0; font-style: italic; }
+.rfc-step { padding-bottom: 8px; }
+.rfc-step:focus { outline: none; }
+.rfc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.rfc-field { border: 0; margin: 0 0 var(--rfc-gap); padding: 0; min-width: 0; }
+.rfc-field > label, .rfc-field > legend { display: block; font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0 0 8px; padding: 0; color: var(--rds-text-primary, #3d3c3d); }
+.rfc-field[data-req] > label::after, .rfc-field[data-req] > legend::after { content: " *"; color: var(--rds-brand, #871aae); }
+.rfc-opt { font-weight: 400; font-size: 13px; color: var(--rds-text-secondary, #5b5a5b); margin-left: 4px; }
+.rfc-help { margin: -4px 0 10px; font-size: 14px; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc input[type=text], .rfc input[type=email], .rfc input[type=tel], .rfc input[type=url] {
+  width: 100%; height: 52px; padding: 0 16px; font: inherit; font-size: 16px; color: var(--rds-text-primary, #3d3c3d);
+  background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: var(--rds-radius-md, 8px);
+  -webkit-appearance: none; appearance: none; transition: border-color .15s, box-shadow .15s; }
+.rfc input::placeholder { color: var(--rds-text-secondary, #5b5a5b); opacity: .7; }
+.rfc input:focus { outline: none; border-color: var(--rds-border-focus, #a553c2); box-shadow: 0 0 0 3px var(--rds-surface-brand-tint, #f3e8f7); }
+.rfc-options { display: grid; gap: 8px; }
+.rfc-options--chips { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.rfc-choice { position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 12px; background: var(--rds-surface-raised, #fff); font-size: 16px; line-height: 1.35; cursor: pointer; transition: border-color .15s, background-color .15s; -webkit-tap-highlight-color: transparent; user-select: none; }
+.rfc-options--chips .rfc-choice { justify-content: center; text-align: center; padding: 12px 10px; }
+.rfc-options--chips .rfc-mark { display: none; }
+.rfc-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.rfc-mark { flex: 0 0 22px; width: 22px; height: 22px; border: 1.5px solid var(--rds-border-strong, #b6b5b8); background: var(--rds-surface-raised, #fff); display: grid; place-items: center; transition: all .15s; }
+.rfc-choice[data-type=radio] .rfc-mark { border-radius: 50%; }
+.rfc-choice[data-type=checkbox] .rfc-mark { border-radius: 6px; }
+.rfc-mark svg { opacity: 0; }
+@media (hover: hover) { .rfc-choice:hover { border-color: var(--rds-border-brand-subtle, #c38cd7); } }
+.rfc-choice:has(input:checked) { border-color: var(--rds-border-brand, #871aae); background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-text-accent, #651482); font-weight: 700; }
+.rfc-choice:has(input:checked) .rfc-mark { border-color: var(--rds-brand, #871aae); background: var(--rds-brand, #871aae); }
+.rfc-choice[data-type=radio]:has(input:checked) .rfc-mark { box-shadow: inset 0 0 0 4px var(--rds-surface-raised, #fff); }
+.rfc-choice[data-type=checkbox]:has(input:checked) .rfc-mark svg { opacity: 1; }
+.rfc-choice:has(input:focus-visible) { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
+.rfc-error { margin: 6px 0 0; font-size: 14px; color: #b3261e; font-weight: 700; }
+.rfc-field.is-invalid input, .rfc-field.is-invalid .rfc-choice { border-color: #b3261e; }
+.rfc-nav { position: sticky; bottom: 0; display: flex; gap: 10px; margin: 8px -28px 0; padding: 16px 28px calc(16px + env(safe-area-inset-bottom)); background: var(--rds-surface-raised, #fff); border-top: 1px solid var(--rds-border-subtle, #e9e9e9); border-radius: 0 0 16px 16px; z-index: 2; }
+.rfc-btn { height: 52px; border-radius: var(--rds-radius-md, 8px); font: inherit; font-size: 16px; font-weight: 700; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; }
+.rfc-btn--primary { flex: 1; background: var(--rds-brand, #871aae); color: var(--rds-text-on-brand, #fff); }
+.rfc-btn--primary:active { background: var(--rds-brand-pressed, #440d57); }
+@media (hover: hover) { .rfc-btn--primary:hover { background: var(--rds-brand-hover, #651482); } }
+.rfc-btn--ghost { width: 52px; flex: 0 0 52px; background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-text-accent, #651482); }
+.rfc-btn:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
+.rfc-btn[hidden], .rfc-nav[hidden] { display: none; }
+.rfc-done { text-align: left; }
+.rfc-done__icon { display: inline-grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-brand, #871aae); margin-bottom: 16px; }
+@media (max-width: 560px) {
+  .rfc { padding-top: 0; }
+  .rfc-card { border-radius: 0; border-left: 0; border-right: 0; box-shadow: none; padding: 24px 20px 0; margin: 0 -16px; }
+  .rfc-progress { border-radius: 0; }
+  .rfc-nav { margin: 8px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); border-radius: 0; }
+  .rfc-row { grid-template-columns: 1fr; gap: 0; }
+  .rfc-title { font-size: 26px; }
+  .rfc-h2 { font-size: 23px; }
+  .rfc-options--chips { grid-template-columns: repeat(2, 1fr); }
+}
+@media (prefers-color-scheme: dark) {
+  .rfc-card { box-shadow: none; }
+  .rfc-error { color: #f2b8b5; }
+  .rfc-field.is-invalid input, .rfc-field.is-invalid .rfc-choice { border-color: #f2b8b5; }
+}
+</style>
+
+<script>
+(function () {
+  var root = document.getElementById("rfc");
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = "1";
+  var form = root.querySelector('[data-rfc="form"]');
+  var steps = [].slice.call(root.querySelectorAll(".rfc-step"));
+  var nextBtn = root.querySelector('[data-rfc="next"]');
+  var backBtn = root.querySelector('[data-rfc="back"]');
+  var nav = root.querySelector('[data-rfc="nav"]');
+  var count = root.querySelector('[data-rfc="count"]');
+  var bar = root.querySelector(".rfc-progress__bar");
+  var LAST_Q = 6, DONE = 7, cur = 0;
+  var check = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+
+  // Turn each option list into tappable cards with real inputs underneath
+  root.querySelectorAll(".rfc-options").forEach(function (box) {
+    var name = box.dataset.name, type = box.dataset.type;
+    [].slice.call(box.children).forEach(function (span, i) {
+      var text = span.textContent;
+      var label = document.createElement("label");
+      label.className = "rfc-choice"; label.dataset.type = type;
+      label.innerHTML = '<input type="' + type + '" name="' + name + '"><span class="rfc-mark">' + (type === "checkbox" ? check : "") + '</span><span class="rfc-text"></span>';
+      label.querySelector("input").value = text;
+      label.querySelector(".rfc-text").textContent = text;
+      box.replaceChild(label, span);
+    });
+  });
+
+  function val(name) { var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ""; }
+  var RE = ["Long-term rentals", "Fix and flip", "Both rentals and flips", "Other real estate, like short-term rentals, wholesaling, or commercial"];
+
+  function applyRules() {
+    var kind = val("kind");
+    var rules = {
+      "other-biz": kind !== "" && RE.indexOf(kind) === -1,
+      "real-estate": RE.indexOf(kind) !== -1 || kind === "",
+      "flips": kind === "Fix and flip" || kind === "Both rentals and flips",
+      "not-qbo": val("qbo") !== "" && val("qbo") !== "I already use QuickBooks Online",
+      "tool-other": val("tool") === "Something else",
+      "referral": val("source") === "Referral"
+    };
+    root.querySelectorAll("[data-show]").forEach(function (f) {
+      var on = !!rules[f.dataset.show];
+      if (on === !f.hidden) return;
+      f.hidden = !on;
+      if (!on) { f.querySelectorAll("input").forEach(function (i) { if (i.type === "radio" || i.type === "checkbox") i.checked = false; else i.value = ""; }); clearError(f); }
+    });
+  }
+
+  function clearError(f) { f.classList.remove("is-invalid"); var e = f.querySelector(".rfc-error"); if (e) e.remove(); }
+  function setError(f, msg) {
+    clearError(f); f.classList.add("is-invalid");
+    var p = document.createElement("p"); p.className = "rfc-error"; p.textContent = msg; f.appendChild(p);
+  }
+
+  function validate(step) {
+    var first = null;
+    step.querySelectorAll(".rfc-field[data-req]").forEach(function (f) {
+      if (f.hidden) return;
+      var ok = true, msg = "Please answer this one.";
+      var choice = f.querySelector(".rfc-options");
+      if (choice) ok = !!f.querySelector("input:checked");
+      else {
+        var input = f.querySelector("input"); var v = input.value.trim();
+        ok = v !== "";
+        if (ok && input.type === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { ok = false; msg = "That email doesn't look right."; }
+        if (!ok && v === "") msg = "Please fill this in.";
+      }
+      if (ok) clearError(f); else { setError(f, msg); if (!first) first = f; }
+    });
+    if (first) { first.scrollIntoView({ behavior: "smooth", block: "center" }); var fi = first.querySelector("input"); if (fi && fi.type !== "radio" && fi.type !== "checkbox") fi.focus({ preventScroll: true }); }
+    return !first;
+  }
+
+  function show(n) {
+    cur = n;
+    steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
+    applyRules();
+    backBtn.hidden = n === 0 || n === DONE;
+    nav.hidden = n === DONE;
+    nextBtn.textContent = n === 0 ? "Get started" : n === 1 ? "Let's find out" : n === LAST_Q ? "Send my details" : "Next";
+    count.textContent = n === 0 || n === DONE ? "" : "Step " + n + " of " + LAST_Q;
+    bar.style.width = (n === DONE ? 100 : Math.round((n / LAST_Q) * 100)) + "%";
+    if (n === DONE) {
+      var fn = (form.querySelector("#rfc-first").value || "").trim();
+      root.querySelector('[data-rfc="done-title"]').textContent = fn ? "Thanks, " + fn + ". That's everything." : "Thanks, that's everything.";
+    }
+    var top = root.getBoundingClientRect().top + window.pageYOffset - 90;
+    if (window.pageYOffset > top) window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+  }
+
+  nextBtn.addEventListener("click", function () {
+    if (cur > 0 && !validate(steps[cur])) return;
+    show(cur === LAST_Q ? DONE : cur + 1);
+  });
+  backBtn.addEventListener("click", function () { if (cur > 0) show(cur - 1); });
+  form.addEventListener("change", function (e) {
+    applyRules();
+    var f = e.target.closest(".rfc-field"); if (f && f.classList.contains("is-invalid")) clearError(f);
+  });
+  form.addEventListener("input", function (e) { var f = e.target.closest(".rfc-field"); if (f && f.classList.contains("is-invalid") && e.target.value.trim()) clearError(f); });
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+  form.addEventListener("keydown", function (e) { if (e.key === "Enter" && e.target.tagName === "INPUT" && e.target.type !== "radio" && e.target.type !== "checkbox") { e.preventDefault(); nextBtn.click(); } });
+  show(0);
+})();
+</script>
