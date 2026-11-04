@@ -1,0 +1,3 @@
+<!-- Nov 4 2026: stop the phone keyboard from opening on dropdowns. Ivorey's dropdowns hide a search box inside, and tapping focuses it. Read-only keeps the list working without the keyboard. -->
+<style>#_builder-form .multiselect__input[readonly]{caret-color:transparent !important;cursor:pointer !important}</style>
+<script>(function(){function fix(){document.querySelectorAll('#_builder-form .multiselect__input').forEach(function(i){if(i.getAttribute('data-revi-nokb'))return;i.setAttribute('data-revi-nokb','1');i.setAttribute('readonly','readonly');i.setAttribute('inputmode','none');});}fix();new MutationObserver(fix).observe(document.documentElement,{childList:true,subtree:true});})();</script>
