@@ -1,0 +1,542 @@
+<!-- Book a Call: the four-screen questionnaire and Julia's calendar, built from Figma "REVI HQ" page 18
+     Book a Call flow (Julia signed off Nov 5, 2026; option C, the calendar built in). One full-width code
+     block. It talks to the REVI Booking web app (data-endpoint below); with no endpoint it runs on sample
+     times and books nothing, for design checks. Links from the emails open the same block:
+       ?move=<token>    07 Move your call
+       ?cancel=<token>  08 Cancel your call
+     Times are shown in Eastern unless the visitor changes it. Uses the site tokens from styles.css and dark.css.
+     Replaces 1-form.html (the older Fit Check copy) on /book-a-call-preview, then moves to /book-a-call on launch day. -->
+<div class="rfc rbc" id="rbc" data-endpoint="">
+  <div class="rfc-card">
+    <div class="rfc-progress" aria-hidden="true"><span class="rfc-progress__bar"></span></div>
+    <p class="rfc-step-count" data-rbc="count"></p>
+
+    <form novalidate data-rbc="form">
+      <!-- Not for people: bots fill it, the booking service ignores anything that does. -->
+      <div class="rbc-hp" aria-hidden="true"><label>Company website <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
+
+      <!-- 01 About you -->
+      <section class="rfc-step" data-step="1" tabindex="-1">
+        <h1 class="rfc-title">Book a call with Julia</h1>
+        <p class="rfc-lead">A few quick questions, then you pick a time that works for you. It takes about a minute.</p>
+        <div class="rfc-field" data-req="name"><label for="rbc-first">First name</label><input id="rbc-first" name="firstName" type="text" autocomplete="given-name"></div>
+        <div class="rfc-field" data-req="name"><label for="rbc-last">Last name</label><input id="rbc-last" name="lastName" type="text" autocomplete="family-name"></div>
+        <div class="rfc-field" data-req="email"><label for="rbc-email">Email</label><input id="rbc-email" name="email" type="email" autocomplete="email" inputmode="email"></div>
+        <div class="rfc-field" data-check="phone"><label for="rbc-phone">Phone <span class="rbc-opt">(optional)</span></label><input id="rbc-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+        <div class="rfc-field"><label for="rbc-business">Business name <span class="rbc-opt">(optional)</span></label><input id="rbc-business" name="business" type="text" autocomplete="organization"></div>
+      </section>
+
+      <!-- 02 Your business -->
+      <section class="rfc-step" data-step="2" tabindex="-1" hidden>
+        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What best describes your business?</legend>
+          <div class="rfc-options" data-name="kind" data-type="radio">
+            <span data-value="Landlord">Long-term rentals</span>
+            <span data-value="Flipper">Fix and flip</span>
+            <span data-value="Both">Both rentals and flips</span>
+            <span data-value="Other real estate">Other real estate, like short-term rentals, wholesaling, or commercial</span>
+            <span data-value="Service">A service business, like consulting, contracting, cleaning, or a salon</span>
+            <span data-value="Products">A business that sells products, online or in a store</span>
+            <span data-value="Something else">Something else</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What services are you interested in?</legend>
+          <p class="rfc-help">Pick any that apply.</p>
+          <div class="rfc-options" data-name="services" data-type="checkbox">
+            <span>Cleanup or catch-up</span><span>Monthly bookkeeping</span><span>QuickBooks setup</span><span>Not sure yet</span>
+          </div>
+        </fieldset>
+      </section>
+
+      <!-- 03 Your books -->
+      <section class="rfc-step" data-step="3" tabindex="-1" hidden>
+        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What do you use for your books now?</legend>
+          <div class="rfc-options rfc-options--chips" data-name="software" data-type="radio">
+            <span>QuickBooks Online</span><span>QuickBooks Desktop</span><span>Xero</span><span>Wave</span><span>Something else</span><span>Nothing yet</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">About how many transactions go through your business bank accounts, credit cards, and lines of credit each month?</legend>
+          <p class="rfc-help">A rough guess is fine, I just need a general range.</p>
+          <div class="rfc-options rfc-options--chips" data-name="txRange" data-type="radio">
+            <span>0-100</span><span>101-200</span><span>201-300</span><span>301-400</span><span>401-500</span><span>Over 500</span>
+          </div>
+        </fieldset>
+        <div class="rfc-field"><label for="rbc-else" class="rbc-q">Anything else I should know? <span class="rbc-opt">(optional)</span></label><textarea id="rbc-else" name="anythingElse" rows="3"></textarea></div>
+      </section>
+
+      <!-- 04 What brought you here -->
+      <section class="rfc-step" data-step="4" tabindex="-1" hidden>
+        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What's driving you to look for a bookkeeper now?</legend>
+          <div class="rfc-options" data-name="driver" data-type="radio">
+            <span>Tax time is coming and I want to be ready</span>
+            <span>I can’t see how the business is actually doing</span>
+            <span>The books fell behind and I need cleanup</span>
+            <span>I’m growing and want this off my plate</span>
+            <span>A lender, CPA, or partner needs clean books</span>
+            <span>Something else</span>
+          </div>
+        </fieldset>
+        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">How did you find us?</legend>
+          <div class="rfc-options rfc-options--chips" data-name="source" data-type="radio">
+            <span>Referral</span><span>Search engine</span><span>Website</span><span>LinkedIn</span><span>Facebook</span><span data-value="AI tool">AI tool, like ChatGPT</span><span>Other</span>
+          </div>
+        </fieldset>
+        <div class="rfc-field" data-show="referral" hidden><label for="rbc-thank">Who can we thank? <span class="rbc-opt">(optional)</span></label><input id="rbc-thank" name="referredBy" type="text"></div>
+      </section>
+
+      <!-- 05 Pick a time (also 07 Move your call, and a new time after cancelling) -->
+      <section class="rfc-step" data-step="5" tabindex="-1" hidden>
+        <p class="rbc-eyebrow" data-rbc="move-eyebrow" hidden>Move your call</p>
+        <h2 class="rfc-title" data-rbc="pick-title">Pick a time</h2>
+        <p class="rfc-lead" data-rbc="pick-lead">30 minutes with Julia</p>
+        <fieldset class="rfc-field"><legend class="rbc-q">How do you want to meet?</legend>
+          <div class="rfc-options rbc-meet" data-name="callKind" data-type="radio">
+            <span>Google Meet</span><span>Phone call</span>
+          </div>
+          <p class="rfc-help rbc-after" data-rbc="meet-note">We email you a Google Meet link before the call.</p>
+        </fieldset>
+        <div class="rfc-field" data-rbc="phone-field" data-check="callphone" hidden>
+          <label for="rbc-callphone">Your phone number</label>
+          <input id="rbc-callphone" name="callPhone" type="tel" autocomplete="tel" inputmode="tel">
+          <p class="rfc-help rbc-after" data-rbc="phone-help">Filled in from step 1. Change it if a different number is better.</p>
+        </div>
+        <div class="rfc-field" data-rbc="when" data-req="time">
+          <div class="rbc-cal" data-rbc="cal" aria-live="polite">
+            <div class="rbc-cal__head">
+              <button type="button" class="rbc-icon-btn" data-rbc="prev" aria-label="Previous month"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <p class="rbc-cal__month" data-rbc="month"></p>
+              <button type="button" class="rbc-icon-btn" data-rbc="next-month" aria-label="Next month"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <div class="rbc-cal__grid" role="grid" data-rbc="grid"></div>
+          </div>
+          <p class="rbc-day" data-rbc="day-title"></p>
+          <div class="rbc-times" data-rbc="times"></div>
+          <p class="rfc-help rbc-loading" data-rbc="loading">Loading Julia’s open times…</p>
+          <p class="rfc-help rbc-zone">Times are in <span data-rbc="zone-name">Eastern</span> Time. <button type="button" class="rbc-link" data-rbc="zone-change">Change</button></p>
+          <select class="rbc-zone-select" data-rbc="zone" aria-label="Time zone" hidden>
+            <option value="America/New_York">Eastern Time</option><option value="America/Chicago">Central Time</option><option value="America/Denver">Mountain Time</option><option value="America/Phoenix">Arizona Time</option><option value="America/Los_Angeles">Pacific Time</option><option value="America/Anchorage">Alaska Time</option><option value="Pacific/Honolulu">Hawaii Time</option>
+          </select>
+        </div>
+        <p class="rbc-alert" role="alert" data-rbc="pick-alert" hidden></p>
+      </section>
+
+      <!-- 06 You're booked -->
+      <section class="rfc-step rbc-center" data-step="6" tabindex="-1" hidden>
+        <span class="rbc-art" aria-hidden="true"><svg viewBox="0 0 64 64" width="64" height="64" fill="none"><rect x="10" y="14" width="44" height="40" rx="6" stroke="currentColor" stroke-width="3"/><path d="M10 24h44" stroke="currentColor" stroke-width="3"/><path d="M22 9v10M42 9v10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="38" r="9" fill="#2e9e5b"/><path d="M27.5 38.2l3 3 6-6.2" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2 class="rfc-title" data-rbc="booked-title">You're booked</h2>
+        <div class="rbc-box"><p class="rbc-box__day" data-rbc="booked-day"></p><p class="rbc-box__line" data-rbc="booked-line"></p></div>
+        <p class="rfc-lead" data-rbc="booked-note"></p>
+        <div class="rbc-pair">
+          <a class="rfc-btn rbc-btn--outline" data-rbc="gcal" target="_blank" rel="noopener">Google Calendar</a>
+          <button type="button" class="rfc-btn rbc-btn--outline" data-rbc="ics">Other calendar</button>
+        </div>
+      </section>
+
+      <!-- 08 Cancel your call -->
+      <section class="rfc-step" data-step="8" tabindex="-1" hidden>
+        <h2 class="rfc-title">Cancel your call?</h2>
+        <div class="rbc-box"><p class="rbc-box__day" data-rbc="cancel-day"></p><p class="rbc-box__line" data-rbc="cancel-line"></p></div>
+        <p class="rfc-lead">The time opens back up, and Julia gets a note that you cancelled. If a different week works better, you can move the call instead.</p>
+        <div class="rfc-field"><label for="rbc-note">Anything you want Julia to know? <span class="rbc-opt">(optional)</span></label><textarea id="rbc-note" name="cancelNote" rows="3"></textarea></div>
+      </section>
+
+      <!-- 09 Call cancelled -->
+      <section class="rfc-step" data-step="9" tabindex="-1" hidden>
+        <h2 class="rfc-title">Your call is cancelled</h2>
+        <p class="rfc-lead" data-rbc="cancelled-note"></p>
+      </section>
+
+      <!-- Link no longer works, or the service is down -->
+      <section class="rfc-step" data-step="10" tabindex="-1" hidden>
+        <h2 class="rfc-title" data-rbc="problem-title">We couldn’t find that booking</h2>
+        <p class="rfc-lead" data-rbc="problem-note">The link may be old. You can book a new time, or email julia@revibookkeeping.com.</p>
+      </section>
+
+      <div class="rfc-nav" data-rbc="nav">
+        <button type="button" class="rfc-btn rbc-btn--back" data-rbc="back">Back</button>
+        <button type="button" class="rfc-btn rfc-btn--primary" data-rbc="go">Next</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+.rfc { --rfc-gap: 20px; font-family: var(--rds-sans, "Lato", "Helvetica Neue", Arial, sans-serif); color: var(--rds-text-primary, #3d3c3d); max-width: 640px; margin: 0 auto; padding: 8px 0 32px; -webkit-text-size-adjust: 100%; }
+.rfc *, .rfc *::before, .rfc *::after { box-sizing: border-box; }
+.rfc-card { background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-subtle, #e9e9e9); border-radius: 16px; padding: 32px 28px 0; position: relative; overflow: clip; box-shadow: 0 12px 32px rgba(61,60,61,.08); }
+.rfc-progress { position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--rds-surface-brand-tint, #f3e8f7); transition: opacity .2s ease; }
+.rfc-progress.is-off { opacity: 0; }
+.rfc-progress__bar { display: block; height: 100%; width: 0; background: var(--rds-brand, #871aae); border-radius: 0 6px 6px 0; transition: width .3s ease; }
+.rfc-step-count { margin: 0 0 6px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--rds-text-accent, #651482); min-height: 18px; }
+.rfc-title { font-family: var(--rds-serif, "Lora", Georgia, serif); font-weight: 600; font-size: 30px; line-height: 1.2; margin: 0 0 14px; color: var(--rds-text-primary, #3d3c3d); letter-spacing: -.01em; }
+.rfc-lead { font-size: 17px; line-height: 1.55; margin: 0 0 18px; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc-step { padding-bottom: 8px; }
+.rfc-step:focus { outline: none; }
+.rfc-field { border: 0; margin: 0 0 var(--rfc-gap); padding: 0; min-width: 0; }
+.rfc-field > label, .rfc-field > legend { display: block; font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0 0 8px; padding: 0; color: var(--rds-text-primary, #3d3c3d); }
+.rbc-q { font-size: 17px !important; }
+.rbc-opt { font-weight: 700; }
+.rfc-help { margin: -2px 0 10px; font-size: 14px; line-height: 1.45; color: var(--rds-text-secondary, #5b5a5b); }
+.rbc-after { margin: 10px 0 0; }
+.rfc input[type=text], .rfc input[type=email], .rfc input[type=tel], .rfc textarea, .rbc-zone-select {
+  width: 100%; min-height: 52px; padding: 0 16px; font: inherit; font-size: 16px; color: var(--rds-text-primary, #3d3c3d);
+  background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: var(--rds-radius-md, 8px);
+  -webkit-appearance: none; appearance: none; transition: border-color .15s, box-shadow .15s; }
+.rfc textarea { padding: 14px 16px; line-height: 1.45; resize: vertical; min-height: 96px; }
+.rfc input:focus, .rfc textarea:focus, .rbc-zone-select:focus { outline: none; border-color: var(--rds-border-focus, #a553c2); box-shadow: 0 0 0 3px var(--rds-surface-brand-tint, #f3e8f7); }
+.rfc-options { display: grid; gap: 8px; }
+.rfc-options--chips { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.rbc-meet { grid-template-columns: 1fr 1fr; }
+.rfc-choice { position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 12px; background: var(--rds-surface-raised, #fff); font-size: 16px; line-height: 1.35; cursor: pointer; transition: border-color .15s, background-color .15s; -webkit-tap-highlight-color: transparent; user-select: none; }
+.rfc-options--chips .rfc-choice { justify-content: center; text-align: center; padding: 12px 10px; }
+.rfc-options--chips .rfc-mark { display: none; }
+.rfc-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.rfc-mark { flex: 0 0 22px; width: 22px; height: 22px; border: 1.5px solid var(--rds-border-strong, #b6b5b8); background: var(--rds-surface-raised, #fff); display: grid; place-items: center; transition: all .15s; }
+.rfc-choice[data-type=radio] .rfc-mark { border-radius: 50%; }
+.rfc-choice[data-type=checkbox] .rfc-mark { border-radius: 6px; }
+.rfc-mark svg { opacity: 0; }
+@media (hover: hover) { .rfc-choice:hover { border-color: var(--rds-border-brand-subtle, #c38cd7); } }
+.rfc-choice:has(input:checked) { border-color: var(--rds-border-brand, #871aae); background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-text-accent, #651482); font-weight: 700; }
+.rfc-choice:has(input:checked) .rfc-mark { border-color: var(--rds-brand, #871aae); background: var(--rds-brand, #871aae); }
+.rfc-choice[data-type=radio]:has(input:checked) .rfc-mark { box-shadow: inset 0 0 0 4px var(--rds-surface-raised, #fff); }
+.rfc-choice[data-type=checkbox]:has(input:checked) .rfc-mark svg { opacity: 1; }
+.rfc-choice:has(input:focus-visible) { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
+.rfc-error { display: flex; align-items: flex-start; gap: 6px; margin: 6px 0 0; font-size: 14px; line-height: 1.4; color: var(--rds-error-strong, #c44747); font-weight: 700; }
+.rfc-error svg { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--rds-error-icon, #c44747); }
+.rfc-field.is-invalid input, .rfc-field.is-invalid .rfc-choice { border-color: var(--rds-error-strong, #c44747); }
+.rfc-nav { position: sticky; bottom: 0; display: flex; gap: 10px; margin: 8px -28px 0; padding: 16px 28px calc(16px + env(safe-area-inset-bottom)); background: var(--rds-surface-raised, #fff); border-top: 1px solid var(--rds-border-subtle, #e9e9e9); border-radius: 0 0 16px 16px; z-index: 2; }
+.rfc-btn { height: 52px; padding: 0 18px; border-radius: var(--rds-radius-md, 8px); font: inherit; font-size: 16px; font-weight: 700; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; -webkit-tap-highlight-color: transparent; }
+.rfc-btn--primary { flex: 1; background: var(--rds-brand, #871aae); color: var(--rds-text-on-brand, #fff); }
+.rfc-btn--primary:active { background: var(--rds-brand-pressed, #440d57); }
+@media (hover: hover) { .rfc-btn--primary:hover { background: var(--rds-brand-hover, #651482); } }
+.rfc-btn--primary[aria-busy=true] { opacity: .7; cursor: progress; }
+.rbc-btn--back, .rbc-btn--outline { background: var(--rds-surface-raised, #fff); color: var(--rds-text-primary, #3d3c3d); border: 1px solid var(--rds-border-default, #e2e2e2); }
+.rbc-btn--back { flex: 0 0 auto; min-width: 88px; }
+@media (hover: hover) { .rbc-btn--back:hover, .rbc-btn--outline:hover { border-color: var(--rds-border-brand-subtle, #c38cd7); } }
+.rfc-btn:focus-visible, .rbc-link:focus-visible, .rbc-icon-btn:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
+.rfc-btn[hidden], .rfc-nav[hidden] { display: none; }
+.rbc-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.rbc-eyebrow { margin: 0 0 6px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--rds-text-accent, #651482); }
+/* Calendar (Figma 05): open days are tinted, the picked day is solid purple, other days are gray. */
+.rbc-cal { margin: 4px 0 18px; }
+.rbc-cal__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.rbc-cal__month { margin: 0; font-size: 17px; font-weight: 700; }
+.rbc-icon-btn { width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--rds-radius-md, 8px); border: 1px solid var(--rds-border-default, #e2e2e2); background: var(--rds-surface-raised, #fff); color: var(--rds-text-primary, #3d3c3d); cursor: pointer; }
+.rbc-icon-btn:disabled { opacity: .35; cursor: default; }
+.rbc-cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px 4px; text-align: center; }
+.rbc-cal__dow { font-size: 13px; font-weight: 700; color: var(--rds-text-secondary, #5b5a5b); padding: 4px 0; }
+.rbc-cal__day { justify-self: center; width: 40px; height: 40px; border-radius: 50%; border: 0; background: none; font: inherit; font-size: 15px; color: var(--rds-text-secondary, #9a999b); cursor: default; padding: 0; }
+.rbc-cal__day.is-open { background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-text-accent, #651482); font-weight: 700; cursor: pointer; }
+.rbc-cal__day.is-picked { background: var(--rds-brand, #871aae); color: #fff; }
+.rbc-cal__day:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
+.rbc-day { margin: 0 0 10px; font-size: 16px; font-weight: 700; }
+.rbc-day:empty { display: none; }
+.rbc-times { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+.rbc-time { height: 48px; border-radius: var(--rds-radius-md, 8px); border: 1px solid var(--rds-border-brand-subtle, #c38cd7); background: var(--rds-surface-raised, #fff); color: var(--rds-text-accent, #651482); font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
+.rbc-time[aria-pressed=true] { background: var(--rds-brand, #871aae); border-color: var(--rds-brand, #871aae); color: #fff; }
+.rbc-time:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
+.rbc-zone { margin: 0; }
+.rbc-link { background: none; border: 0; padding: 0; font: inherit; color: var(--rds-text-accent, #651482); text-decoration: underline; cursor: pointer; }
+.rbc-zone-select { margin-top: 10px; padding: 0 12px; }
+.rbc-loading[hidden] { display: none; }
+.rbc-alert { margin: 0 0 16px; padding: 12px 14px; border-radius: var(--rds-radius-md, 8px); background: #fdf1f1; color: var(--rds-error-strong, #c44747); font-size: 15px; font-weight: 700; }
+.rbc-box { margin: 0 0 18px; padding: 16px 18px; border-radius: 12px; background: var(--rds-surface-sunken, #f4f4f4); border: 1px solid var(--rds-border-subtle, #e9e9e9); text-align: left; }
+.rbc-box__day { margin: 0 0 4px; font-size: 18px; font-weight: 700; }
+.rbc-box__line { margin: 0; font-size: 16px; color: var(--rds-text-secondary, #5b5a5b); }
+.rbc-art { display: grid; place-items: center; width: 112px; height: 96px; border-radius: 48px; margin-left: auto !important; margin-right: auto !important; background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-brand, #871aae); margin: 4px 0 20px; }
+.rbc-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+@media (max-width: 560px) {
+  .rfc { padding-top: 0; }
+  .rfc-card { border-radius: 0; border-left: 0; border-right: 0; box-shadow: none; padding: 28px 20px 0; margin: 0 -16px; overflow: visible; }
+  .rfc-nav { margin: 8px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); border-radius: 0; }
+  .rfc-title { font-size: 26px; }
+  .rfc-options--chips { grid-template-columns: repeat(2, 1fr); }
+  .rbc-cal__day { width: 36px; height: 36px; }
+}
+@media (prefers-color-scheme: dark) { .rfc-card { box-shadow: none; } .rbc-alert { background: transparent; border: 1px solid var(--rds-error-strong, #d47776); } }
+</style>
+
+<script>
+(function () {
+  var root = document.getElementById("rbc");
+  if (!root || root.dataset.ready) return;
+  root.dataset.ready = "1";
+  var ENDPOINT = root.dataset.endpoint || "";
+  var $ = function (k) { return root.querySelector('[data-rbc="' + k + '"]'); };
+  var form = $("form"), nav = $("nav"), back = $("back"), go = $("go"), count = $("count");
+  var bar = root.querySelector(".rfc-progress__bar"), prog = root.querySelector(".rfc-progress");
+  var steps = [].slice.call(root.querySelectorAll(".rfc-step"));
+  var CHECK = '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+  var ERR_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+  var ZONES = { "America/New_York": "Eastern", "America/Chicago": "Central", "America/Denver": "Mountain", "America/Phoenix": "Arizona", "America/Los_Angeles": "Pacific", "America/Anchorage": "Alaska", "Pacific/Honolulu": "Hawaii" };
+  var REVI_LINE = "(980) 469-8324";
+  var params = new URLSearchParams(location.search);
+  var state = { step: 1, mode: "book", token: params.get("move") || params.get("cancel") || "", booking: null, days: [], zone: "America/New_York", month: null, day: null, time: null, busy: false };
+
+  // Option lists become tappable cards with real inputs (same pattern as the earlier preview form).
+  root.querySelectorAll(".rfc-options").forEach(function (box) {
+    var name = box.dataset.name, type = box.dataset.type;
+    [].slice.call(box.children).forEach(function (span) {
+      var label = document.createElement("label");
+      label.className = "rfc-choice"; label.dataset.type = type;
+      label.innerHTML = '<input type="' + type + '" name="' + name + '"><span class="rfc-mark">' + (type === "checkbox" ? CHECK : "") + '</span><span class="rfc-text"></span>';
+      label.querySelector("input").value = span.dataset.value || span.textContent;
+      label.querySelector(".rfc-text").textContent = span.textContent;
+      box.replaceChild(label, span);
+    });
+  });
+  root.querySelector('input[name="callKind"][value="Google Meet"]').checked = true;
+
+  function val(n) { var el = form.elements[n]; if (!el) return ""; if (el.length !== undefined && !el.tagName) { for (var i = 0; i < el.length; i++) if (el[i].checked) return el[i].value; return ""; } return (el.value || "").trim(); }
+  function vals(n) { return [].slice.call(form.querySelectorAll('input[name="' + n + '"]:checked')).map(function (i) { return i.value; }); }
+
+  // ---------- errors (Figma 01b, REVI Design System Web/Form field State=Error) ----------
+  var errSeq = 0;
+  function target(f) { return f.tagName === "FIELDSET" ? f : f.querySelector("input, textarea"); }
+  function clearError(f) {
+    f.classList.remove("is-invalid");
+    var e = f.querySelector(".rfc-error"); var t = target(f);
+    f.querySelectorAll("input").forEach(function (i) { i.removeAttribute("aria-invalid"); });
+    if (e) { if (t) { var ids = (t.getAttribute("aria-describedby") || "").split(" ").filter(function (x) { return x && x !== e.id; }); if (ids.length) t.setAttribute("aria-describedby", ids.join(" ")); else t.removeAttribute("aria-describedby"); } e.remove(); }
+  }
+  function setError(f, msg) {
+    clearError(f); f.classList.add("is-invalid");
+    var p = document.createElement("p"); p.className = "rfc-error"; p.id = "rbc-err-" + (++errSeq);
+    p.innerHTML = ERR_ICON; var s = document.createElement("span"); s.textContent = msg; p.appendChild(s); f.appendChild(p);
+    f.querySelectorAll("input").forEach(function (i) { i.setAttribute("aria-invalid", "true"); });
+    var t = target(f); if (t) t.setAttribute("aria-describedby", ((t.getAttribute("aria-describedby") || "") + " " + p.id).trim());
+  }
+  var EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[^\s@.]{2,}$/;
+  function digits(v) { return v.replace(/\D/g, "").length; }
+  function check(f) {
+    var kind = f.dataset.req, c = f.dataset.check, input = f.querySelector("input, textarea");
+    if (kind === "name" && !input.value.trim()) return "Please fill this in.";
+    if (kind === "email") { if (!input.value.trim()) return "Please fill this in."; if (!EMAIL.test(input.value.trim())) return "That email doesn't look right."; }
+    if (kind === "pick" && !f.querySelector("input:checked")) return f.querySelector('[data-type=checkbox]') ? "Pick at least one." : "Pick one.";
+    if (kind === "time" && !state.time) return "Pick a day and a time.";
+    if (c === "phone" && input.value.trim() && (digits(input.value) < 10 || digits(input.value) > 15)) return "That phone number doesn't look right.";
+    if (c === "callphone" && !f.hidden) { if (!input.value.trim()) return "Add the number Julia should call."; if (digits(input.value) < 10 || digits(input.value) > 15) return "That phone number doesn't look right."; }
+    return "";
+  }
+  function validate(sec) {
+    var first = null;
+    sec.querySelectorAll(".rfc-field[data-req], .rfc-field[data-check]").forEach(function (f) {
+      if (f.hidden) return;
+      var msg = check(f);
+      if (msg) { setError(f, msg); if (!first) first = f; } else clearError(f);
+    });
+    if (first) { first.scrollIntoView({ behavior: "smooth", block: "center" }); var t = first.querySelector("input, textarea, button.rbc-cal__day.is-open, button.rbc-time"); if (t) t.focus({ preventScroll: true }); }
+    return !first;
+  }
+  form.addEventListener("input", function (e) { var f = e.target.closest(".rfc-field"); if (f && f.classList.contains("is-invalid") && !check(f)) clearError(f); });
+  form.addEventListener("change", function (e) {
+    var f = e.target.closest(".rfc-field"); if (f && f.classList.contains("is-invalid") && !check(f)) clearError(f);
+    if (e.target.name === "source") root.querySelector('[data-show="referral"]').hidden = val("source") !== "Referral";
+    if (e.target.name === "callKind") meetKind();
+  });
+  form.addEventListener("submit", function (e) { e.preventDefault(); });
+  form.addEventListener("keydown", function (e) { if (e.key === "Enter" && e.target.tagName === "INPUT" && e.target.type !== "radio" && e.target.type !== "checkbox") { e.preventDefault(); go.click(); } });
+
+  // ---------- screens ----------
+  var LABELS = { 1: "Next", 2: "Next", 3: "Next", 4: "Next: pick a time", 5: "Book my call", 6: "Done", 8: "Cancel my call", 9: "Pick a new time", 10: "Book a call" };
+  function show(n) {
+    state.step = n;
+    steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
+    var q = state.mode === "book" && n <= 5;
+    count.textContent = q ? "Step " + n + " of 5" : "";
+    count.hidden = !q;
+    prog.classList.toggle("is-off", !q);
+    bar.style.width = q ? (n / 5 * 100) + "%" : "0";
+    back.hidden = !(q && n > 1) && !(state.mode === "move" && n === 5) && n !== 8;
+    back.textContent = state.mode === "move" && n === 5 ? "Keep my time" : n === 8 ? "Move it instead" : "Back";
+    go.textContent = state.mode === "move" && n === 5 ? "Move my call" : state.mode === "rebook" && n === 5 ? "Book my call" : LABELS[n] || "Next";
+    nav.hidden = false;
+    var sec = steps.filter(function (s) { return Number(s.dataset.step) === n; })[0];
+    if (sec) sec.focus({ preventScroll: true });
+    root.scrollIntoView({ block: "start" });
+    if (n === 5) { meetKind(); loadTimes(); }
+  }
+
+  function meetKind() {
+    var phone = val("callKind") === "Phone call";
+    $("meet-note").textContent = phone ? "Julia calls you from the REVI line, " + REVI_LINE + "." : "We email you a Google Meet link before the call.";
+    var pf = $("phone-field"); pf.hidden = !phone;
+    var cp = form.elements.callPhone;
+    if (phone && !cp.value) cp.value = state.booking ? state.booking.phone : val("phone");
+    $("phone-help").hidden = !(val("phone") && state.mode === "book");
+  }
+
+  // ---------- times ----------
+  function fmt(iso, o) { return new Intl.DateTimeFormat("en-US", Object.assign({ timeZone: state.zone }, o)).format(new Date(iso)); }
+  function dayKey(iso) { var p = {}; new Intl.DateTimeFormat("en-US", { timeZone: state.zone, year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(new Date(iso)).forEach(function (x) { p[x.type] = x.value; }); return p.year + "-" + p.month + "-" + p.day; }
+  function byDay() { var m = {}; state.days.forEach(function (d) { d.times.forEach(function (t) { var k = dayKey(t); (m[k] = m[k] || []).push(t); }); }); return m; }
+  function loadTimes() {
+    $("loading").hidden = false; $("loading").textContent = "Loading Julia’s open times…"; $("times").innerHTML = ""; $("day-title").textContent = "";
+    api("times", { token: state.mode === "book" ? "" : state.token }).then(function (r) {
+      if (!r.ok) throw new Error(r.error);
+      state.days = r.days || [];
+      $("loading").hidden = state.days.length > 0;
+      if (!state.days.length) $("loading").textContent = "Julia’s calendar is full for the next few weeks. Email julia@revibookkeeping.com and she’ll find a time.";
+      var keys = Object.keys(byDay()).sort();
+      if (!state.month && keys.length) state.month = keys[0].slice(0, 7);
+      if (state.day && !byDay()[state.day]) { state.day = null; state.time = null; }
+      if (!state.day && keys.length) state.day = keys[0];
+      drawCal(); drawTimes();
+    }).catch(function () { $("loading").textContent = "We couldn’t load Julia’s calendar. Check your connection and try again in a minute."; });
+  }
+  function drawCal() {
+    var open = byDay(), grid = $("grid"), ym = state.month.split("-").map(Number);
+    var first = new Date(Date.UTC(ym[0], ym[1] - 1, 1)), days = new Date(Date.UTC(ym[0], ym[1], 0)).getUTCDate();
+    $("month").textContent = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" }).format(first);
+    var keys = Object.keys(open).sort();
+    $("prev").disabled = !keys.length || keys[0].slice(0, 7) >= state.month;
+    $("next-month").disabled = !keys.length || keys[keys.length - 1].slice(0, 7) <= state.month;
+    var html = ["S", "M", "T", "W", "T", "F", "S"].map(function (d, i) { return '<span class="rbc-cal__dow" aria-hidden="true">' + d + "</span>"; }).join("");
+    for (var i = 0; i < first.getUTCDay(); i++) html += "<span></span>";
+    for (var d = 1; d <= days; d++) {
+      var k = state.month + "-" + String(d).padStart(2, "0"), is = !!open[k], picked = k === state.day;
+      var label = new Intl.DateTimeFormat("en-US", { weekday: "long", month: "long", day: "numeric", timeZone: "UTC" }).format(new Date(Date.UTC(ym[0], ym[1] - 1, d)));
+      html += '<button type="button" class="rbc-cal__day' + (is ? " is-open" : "") + (picked ? " is-picked" : "") + '" data-day="' + k + '"' + (is ? "" : " disabled") + ' aria-label="' + label + (is ? ", open times" : ", no times") + '"' + (picked ? ' aria-pressed="true"' : "") + ">" + d + "</button>";
+    }
+    grid.innerHTML = html;
+  }
+  function drawTimes() {
+    var list = byDay()[state.day] || [];
+    $("day-title").textContent = state.day ? fmt(list[0], { weekday: "long", month: "long", day: "numeric" }) : "";
+    $("times").innerHTML = list.map(function (t) { return '<button type="button" class="rbc-time" data-time="' + t + '" aria-pressed="' + (t === state.time) + '">' + fmt(t, { hour: "numeric", minute: "2-digit" }) + "</button>"; }).join("");
+    $("zone-name").textContent = ZONES[state.zone] || state.zone;
+  }
+  $("grid").addEventListener("click", function (e) { var b = e.target.closest(".rbc-cal__day.is-open"); if (!b) return; state.day = b.dataset.day; state.time = null; drawCal(); drawTimes(); var t = $("times").querySelector(".rbc-time"); if (t) t.focus(); });
+  $("times").addEventListener("click", function (e) { var b = e.target.closest(".rbc-time"); if (!b) return; state.time = b.dataset.time; drawTimes(); clearError($("when")); $("pick-alert").hidden = true; });
+  $("prev").addEventListener("click", function () { var d = new Date(state.month + "-01T12:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 1); state.month = d.toISOString().slice(0, 7); drawCal(); });
+  $("next-month").addEventListener("click", function () { var d = new Date(state.month + "-01T12:00:00Z"); d.setUTCMonth(d.getUTCMonth() + 1); state.month = d.toISOString().slice(0, 7); drawCal(); });
+  $("zone-change").addEventListener("click", function () { var s = $("zone"); s.hidden = false; s.value = state.zone; s.focus(); });
+  $("zone").addEventListener("change", function () { state.zone = this.value; state.day = state.time ? dayKey(state.time) : null; state.month = null; var keys = Object.keys(byDay()).sort(); state.month = (state.day || keys[0] || "").slice(0, 7); if (!state.day) state.day = keys[0]; drawCal(); drawTimes(); });
+
+  // ---------- talking to REVI Booking ----------
+  function api(action, data) {
+    if (!ENDPOINT) return demo(action, data);
+    return fetch(ENDPOINT, { method: "POST", body: JSON.stringify(Object.assign({ action: action }, data)) }).then(function (r) { return r.json(); });
+  }
+  function busy(on) { state.busy = on; go.setAttribute("aria-busy", on ? "true" : "false"); go.disabled = on; }
+  function answers() {
+    return {
+      firstName: val("firstName"), lastName: val("lastName"), email: val("email"), phone: val("callKind") === "Phone call" ? val("callPhone") : val("phone"), business: val("business"),
+      kind: val("kind"), services: vals("services"), software: val("software"), txRange: val("txRange"), anythingElse: val("anythingElse"),
+      driver: val("driver"), source: val("source"), referredBy: val("referredBy"), callKind: val("callKind"), callAt: state.time, timeZone: state.zone,
+      referrer: document.referrer || "", company_website: val("company_website"),
+    };
+  }
+  function pickFailed(r) {
+    if (r && r.taken) { state.time = null; loadTimes(); }
+    var a = $("pick-alert"); a.textContent = (r && r.error) || "Something went wrong on our side. Please try again in a minute."; a.hidden = false; a.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+  function submitPick() {
+    if (!validate(steps[4])) return;
+    busy(true);
+    var req = state.mode === "book" ? api("book", { booking: answers() }) : api("move", { token: state.token, callAt: state.time, callKind: val("callKind"), phone: val("callPhone") });
+    req.then(function (r) {
+      busy(false);
+      if (!r.ok) { if (r.errors && r.errors.callAt) state.time = null; return pickFailed(r); }
+      if (!r.booking) return pickFailed({ error: "Thanks. Julia will be in touch." });
+      state.booking = r.booking; state.token = r.booking.token; booked();
+    }).catch(function () { busy(false); pickFailed(); });
+  }
+
+  // ---------- 06 You're booked ----------
+  function longDay(iso) { return fmt(iso, { weekday: "long", month: "long", day: "numeric" }); }
+  function line(b) { return fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + " · " + (b.callKind === "Phone call" ? "30 minute phone call" : "30 minutes on Google Meet"); }
+  function booked() {
+    var b = state.booking;
+    $("booked-title").textContent = "You're booked, " + b.firstName;
+    $("booked-day").textContent = longDay(b.callAt);
+    $("booked-line").textContent = line(b);
+    $("booked-note").textContent = b.callKind === "Phone call"
+      ? "Julia will call you at " + b.phone + " from the REVI line, " + REVI_LINE + ". Your confirmation is on the way to " + b.email + "."
+      : "Your confirmation and Google Meet link are on the way to " + b.email + ". If the time stops working, you can move it from that email.";
+    $("gcal").href = b.googleCalendarUrl;
+    history.replaceState(null, "", location.pathname);
+    state.mode = "done";
+    show(6);
+  }
+  $("ics").addEventListener("click", function () {
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob([state.booking.ics], { type: "text/calendar" }));
+    a.download = "discovery-call-with-julia.ics"; document.body.appendChild(a); a.click(); a.remove();
+  });
+
+  // ---------- 08 and 09 ----------
+  function showCancel() {
+    var b = state.booking;
+    $("cancel-day").textContent = longDay(b.callAt); $("cancel-line").textContent = line(b);
+    show(8);
+  }
+  function submitCancel() {
+    busy(true);
+    api("cancel", { token: state.token, note: val("cancelNote") }).then(function (r) {
+      busy(false);
+      if (!r.ok) return problem(r);
+      state.booking = r.booking;
+      $("cancelled-note").textContent = "Julia has your note, and a cancellation email is on the way to " + r.booking.email + ". If you want to talk another time, pick a new time whenever you’re ready.";
+      state.mode = "rebook"; show(9);
+    }).catch(function () { busy(false); problem(); });
+  }
+  function problem(r) {
+    $("problem-title").textContent = r && r.notFound ? "We couldn’t find that booking" : "Something went wrong";
+    $("problem-note").textContent = r && r.notFound ? "The link may be old. You can book a new time, or email julia@revibookkeeping.com." : "Please try again in a minute, or email julia@revibookkeeping.com.";
+    state.mode = "problem"; show(10);
+  }
+  function startMove(b) {
+    state.mode = state.mode === "rebook" || b.status === "cancelled" ? "rebook" : "move";
+    var move = state.mode === "move";
+    $("move-eyebrow").hidden = !move;
+    $("pick-title").textContent = move ? "Pick a new time" : "Pick a time";
+    $("pick-lead").textContent = move ? "Your call now: " + longDay(b.callAt) + " at " + fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + ". Pick a new day and time below." : "30 minutes with Julia";
+    root.querySelector('input[name="callKind"][value="' + (b.callKind === "Phone call" ? "Phone call" : "Google Meet") + '"]').checked = true;
+    form.elements.callPhone.value = b.phone || "";
+    state.day = null; state.time = null; state.month = null;
+    show(5);
+  }
+
+  // ---------- buttons ----------
+  go.addEventListener("click", function () {
+    if (state.busy) return;
+    var n = state.step;
+    if (n >= 1 && n <= 4) { if (validate(steps[n - 1])) show(n + 1); return; }
+    if (n === 5) return submitPick();
+    if (n === 6) { location.href = "/"; return; }
+    if (n === 8) return submitCancel();
+    if (n === 9) return startMove(state.booking);
+    if (n === 10) { location.href = location.pathname; return; }
+  });
+  back.addEventListener("click", function () {
+    var n = state.step;
+    if (state.mode === "move" && n === 5) { booked(); return; }
+    if (n === 8) { startMove(state.booking); return; }
+    if (n > 1 && n <= 5) show(n - 1);
+  });
+
+  // ---------- start ----------
+  if (state.token) {
+    api("lookup", { token: state.token }).then(function (r) {
+      if (!r.ok) return problem(r);
+      state.booking = r.booking;
+      if (r.booking.status === "cancelled") { state.mode = "rebook"; $("cancelled-note").textContent = "This call was cancelled. If you want to talk another time, pick a new time whenever you’re ready."; show(9); return; }
+      if (params.get("cancel")) { state.mode = "cancel"; showCancel(); } else startMove(r.booking);
+    }).catch(function () { problem(); });
+  } else show(1);
+
+  // ---------- sample data, only when no endpoint is set (design checks) ----------
+  function demo(action, data) {
+    var now = Date.now(), days = [];
+    for (var i = 2; i < 20; i++) {
+      var d = new Date(now + i * 86400000), wd = d.getDay(); if (wd === 0 || wd === 6 || i % 5 === 0) continue;
+      var y = d.getFullYear(), m = d.getMonth(), dd = d.getDate(), times = [];
+      [[15, 0], [15, 30], [17, 30], [19, 0], [19, 30], [21, 0]].forEach(function (h) { times.push(new Date(Date.UTC(y, m, dd, h[0], h[1])).toISOString()); });
+      days.push({ date: y + "-" + String(m + 1).padStart(2, "0") + "-" + String(dd).padStart(2, "0"), times: wd === 5 ? times.slice(0, 2) : times });
+    }
+    var sample = { token: "demo", firstName: (data && data.booking && data.booking.firstName) || "Marcus", email: (data && data.booking && data.booking.email) || "marcus@reedhomesolutions.com", phone: (data && (data.phone || (data.booking && data.booking.phone))) || "(704) 555-0142", callAt: (data && (data.callAt || (data.booking && data.booking.callAt))) || days[1].times[1], callKind: (data && (data.callKind || (data.booking && data.booking.callKind))) || "Google Meet", status: "booked", googleCalendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE", ics: "BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n" };
+    var res = action === "times" ? { ok: true, days: days } : action === "cancel" ? { ok: true, booking: Object.assign(sample, { status: "cancelled" }) } : { ok: true, booking: sample };
+    return new Promise(function (ok) { setTimeout(function () { ok(res); }, 300); });
+  }
+})();
+</script>
