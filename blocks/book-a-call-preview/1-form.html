@@ -270,8 +270,11 @@
 .rfc-choice[data-type=radio]:has(input:checked) .rfc-mark { box-shadow: inset 0 0 0 4px var(--rds-surface-raised, #fff); }
 .rfc-choice[data-type=checkbox]:has(input:checked) .rfc-mark svg { opacity: 1; }
 .rfc-choice:has(input:focus-visible) { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
-.rfc-error { margin: 6px 0 0; font-size: 14px; color: #b3261e; font-weight: 700; }
-.rfc-field.is-invalid input, .rfc-field.is-invalid .rfc-choice { border-color: #b3261e; }
+/* Errors (Figma, REVI Design System, Web/Form field State=Error): red border, then an icon and a message under
+   the field, so the error never rests on color alone. The message is linked to the field with aria-describedby. */
+.rfc-error { display: flex; align-items: flex-start; gap: 6px; margin: 6px 0 0; font-size: 14px; line-height: 1.4; color: var(--rds-error-strong, #c44747); font-weight: 700; }
+.rfc-error svg { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--rds-error-icon, #c44747); }
+.rfc-field.is-invalid input, .rfc-field.is-invalid .rfc-choice { border-color: var(--rds-error-strong, #c44747); }
 .rfc-nav { position: sticky; bottom: 0; display: flex; gap: 10px; margin: 8px -28px 0; padding: 16px 28px calc(16px + env(safe-area-inset-bottom)); background: var(--rds-surface-raised, #fff); border-top: 1px solid var(--rds-border-subtle, #e9e9e9); border-radius: 0 0 16px 16px; z-index: 2; }
 .rfc-btn { height: 52px; border-radius: var(--rds-radius-md, 8px); font: inherit; font-size: 16px; font-weight: 700; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; }
 .rfc-btn--primary { flex: 1; background: var(--rds-brand, #871aae); color: var(--rds-text-on-brand, #fff); }
@@ -293,8 +296,6 @@
 }
 @media (prefers-color-scheme: dark) {
   .rfc-card { box-shadow: none; }
-  .rfc-error { color: #f2b8b5; }
-  .rfc-field.is-invalid input, .rfc-field.is-invalid .rfc-choice { border-color: #f2b8b5; }
 }
 </style>
 
@@ -348,10 +349,30 @@
     });
   }
 
-  function clearError(f) { f.classList.remove("is-invalid"); var e = f.querySelector(".rfc-error"); if (e) e.remove(); }
+  // Lucide alert-circle, the same icon as the dashboard's field errors.
+  var ERR_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+  var errSeq = 0;
+  // The message hangs off the text box, or off the whole group for choice questions. aria-invalid goes on the
+  // inputs themselves, since a group (fieldset) can't carry it.
+  function errTarget(f) { return f.tagName === "FIELDSET" ? f : f.querySelector("input"); }
+  function markInvalid(f, on) { f.querySelectorAll("input").forEach(function (i) { if (on) i.setAttribute("aria-invalid", "true"); else i.removeAttribute("aria-invalid"); }); }
+  function clearError(f) {
+    f.classList.remove("is-invalid");
+    var e = f.querySelector(".rfc-error"), t = errTarget(f);
+    markInvalid(f, false);
+    if (t) {
+      if (e) { var ids = (t.getAttribute("aria-describedby") || "").split(" ").filter(function (x) { return x && x !== e.id; }); if (ids.length) t.setAttribute("aria-describedby", ids.join(" ")); else t.removeAttribute("aria-describedby"); }
+    }
+    if (e) e.remove();
+  }
   function setError(f, msg) {
     clearError(f); f.classList.add("is-invalid");
-    var p = document.createElement("p"); p.className = "rfc-error"; p.textContent = msg; f.appendChild(p);
+    var p = document.createElement("p"); p.className = "rfc-error"; p.id = "rfc-err-" + (++errSeq);
+    p.innerHTML = ERR_ICON; var s = document.createElement("span"); s.textContent = msg; p.appendChild(s);
+    f.appendChild(p);
+    var t = errTarget(f);
+    markInvalid(f, true);
+    if (t) { t.setAttribute("aria-describedby", ((t.getAttribute("aria-describedby") || "") + " " + p.id).trim()); }
   }
 
   function validate(step) {
@@ -369,7 +390,7 @@
       }
       if (ok) clearError(f); else { setError(f, msg); if (!first) first = f; }
     });
-    if (first) { first.scrollIntoView({ behavior: "smooth", block: "center" }); var fi = first.querySelector("input"); if (fi && fi.type !== "radio" && fi.type !== "checkbox") fi.focus({ preventScroll: true }); }
+    if (first) { first.scrollIntoView({ behavior: "smooth", block: "center" }); var fi = first.querySelector("input"); if (fi) fi.focus({ preventScroll: true }); }
     return !first;
   }
 

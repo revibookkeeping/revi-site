@@ -25,6 +25,8 @@
   --rds-brand-hover: #651482;
   --rds-brand-pressed: #440d57;
   --rds-icon-brand: #871aae;
+  --rds-error-strong: #c44747;   /* color/status/error/strong, red/500 */
+  --rds-error-icon: #c44747;     /* color/status/error/icon, red/500 */
 
   /* Space */
   --rds-space-4: 4px;
