@@ -369,8 +369,11 @@ form[data-rbc=form] { margin: 0; }
     go.textContent = state.mode === "move" && n === 5 ? "Move my call" : state.mode === "rebook" && n === 5 ? "Book my call" : LABELS[n] || "Next";
     nav.hidden = false;
     var sec = steps.filter(function (s) { return Number(s.dataset.step) === n; })[0];
-    if (sec) sec.focus({ preventScroll: true });
-    root.scrollIntoView({ block: "start" });
+    if (sec && state.shown) sec.focus({ preventScroll: true });
+    // Only when moving between screens, and only if the top of the form is out of view (the site header is ~90px).
+    var top = root.getBoundingClientRect().top;
+    if (state.shown && top < 0) window.scrollBy({ top: top - 96, behavior: "smooth" });
+    state.shown = true;
     if (n === 5) { meetKind(); loadTimes(); }
   }
 
