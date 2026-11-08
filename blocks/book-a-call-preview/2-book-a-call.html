@@ -199,7 +199,12 @@ form[data-rbc=form] { margin: 0; }
 .rfc input:focus, .rfc textarea:focus, .rbc-zone-select:focus { outline: none; border-color: var(--rds-border-focus, #a553c2); box-shadow: 0 0 0 3px var(--rds-surface-brand-tint, #f3e8f7); }
 /* Choice cards (Web/Choice card): 46 tall, 12 radius, 15px text, 20px mark */
 .rfc-options { display: grid; gap: 8px; }
-.rfc-options--two { grid-template-columns: 1fr 1fr; }
+.rfc-options--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.rfc-text { overflow-wrap: anywhere; }
+/* Short phones (320 wide): the service cards, Google Meet / Phone call and the two calendar buttons stack in one column so nothing runs off the card. */
+@media (max-width: 359px) {
+  .rfc-options--two:not(.rfc-options--chips), .rfc-options.rbc-meet, .rfc .rbc-pair { grid-template-columns: minmax(0, 1fr); }
+}
 .rbc-meet { grid-template-columns: 1fr 1fr; gap: 10px; }
 .rfc-choice { position: relative; display: flex; align-items: center; gap: 12px; min-height: 46px; margin: 0; padding: 12px 14px; border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 12px; background: var(--rds-surface-raised, #fff); font-size: 15px; font-weight: 400; line-height: 1.3; color: var(--rds-text-primary, #3d3c3d); cursor: pointer; transition: border-color .15s, background-color .15s; -webkit-tap-highlight-color: transparent; user-select: none; }
 .rfc-options--chips .rfc-choice { justify-content: center; text-align: center; }
@@ -222,7 +227,7 @@ form[data-rbc=form] { margin: 0; }
 .rfc-field.is-invalid input, .rfc-field.is-invalid textarea, .rfc-field.is-invalid .rfc-choice { border: 1.5px solid var(--rds-error-strong, #c44747); }
 /* Footer buttons: 40 tall, 6 radius, 14px semibold */
 .rfc-nav { position: sticky; bottom: 0; display: flex; gap: 10px; margin: 0; padding: 14px 22px calc(18px + env(safe-area-inset-bottom)); background: var(--rds-surface-raised, #fff); border-top: 1px solid var(--rds-border-subtle, #e9e9e9); z-index: 2; }
-.rfc .rfc-btn { height: 40px; margin: 0; padding: 10px 16px; border-radius: 6px; font: inherit; font-size: 14px; font-weight: 600; line-height: 1.5; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; letter-spacing: 0; text-transform: none; -webkit-tap-highlight-color: transparent; }
+.rfc .rfc-btn { height: 40px; margin: 0; padding: 10px 16px; white-space: nowrap; border-radius: 6px; font: inherit; font-size: 14px; font-weight: 600; line-height: 1.5; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; letter-spacing: 0; text-transform: none; -webkit-tap-highlight-color: transparent; }
 .rfc .rfc-btn--primary { flex: 1; background: var(--rds-brand, #871aae); color: var(--rds-text-on-brand, #fff); }
 .rfc-btn--primary:active { background: var(--rds-brand-pressed, #440d57); }
 @media (hover: hover) { .rfc .rfc-btn--primary:hover { background: var(--rds-brand-hover, #651482); } }
@@ -232,6 +237,11 @@ form[data-rbc=form] { margin: 0; }
 @media (hover: hover) { .rfc .rbc-btn--back:hover, .rfc .rbc-btn--outline:hover { border-color: var(--rds-border-brand-subtle, #c38cd7); } }
 .rfc-btn:focus-visible, .rbc-link:focus-visible, .rbc-icon-btn:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
 .rfc-btn[hidden], .rfc-nav[hidden] { display: none; }
+/* When two buttons can't fit side by side (320 wide phones), they wrap: the main button on top, both full width.
+   The main button's huge grow keeps the left one at its own width when the pair fits on one row, as in Figma. */
+.rfc-nav { flex-wrap: wrap-reverse; row-gap: 8px; }
+.rfc-nav .rbc-btn--back, .rfc-nav .rbc-btn--outline { flex: 1 0 auto; }
+.rfc-nav .rfc-btn--primary { flex: 9999 1 auto; }
 .rbc-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .rfc .rbc-eyebrow { font-size: 13px; font-weight: 700; line-height: 1.35; letter-spacing: .008em; text-transform: uppercase; color: var(--rds-text-accent, #651482); }
 /* Calendar (Figma 05): 32px nav buttons, 38px days, 44px time slots */
@@ -267,7 +277,7 @@ form[data-rbc=form] { margin: 0; }
 .rfc .rbc-box--sm .rbc-box__line { font-size: 15px; }
 .rbc-art { display: flex; justify-content: center; height: 150px; }
 .rbc-art svg { width: 200px; height: 150px; }
-.rbc-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.rbc-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 @media (max-width: 560px) {
   .rfc { padding: 16px 0 24px; }
 }
