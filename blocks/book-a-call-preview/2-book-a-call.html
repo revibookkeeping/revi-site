@@ -28,7 +28,7 @@
 
       <!-- 02 Your business -->
       <section class="rfc-step" data-step="2" tabindex="-1" hidden>
-        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What best describes your business?</legend>
+        <fieldset class="rfc-field" data-req="pick"><legend>What best describes your business?</legend>
           <div class="rfc-options" data-name="kind" data-type="radio">
             <span data-value="Landlord">Long-term rentals</span>
             <span data-value="Flipper">Fix and flip</span>
@@ -39,9 +39,9 @@
             <span data-value="Something else">Something else</span>
           </div>
         </fieldset>
-        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What services are you interested in?</legend>
+        <fieldset class="rfc-field" data-req="pick"><legend>What services are you interested in?</legend>
           <p class="rfc-help">Pick any that apply.</p>
-          <div class="rfc-options" data-name="services" data-type="checkbox">
+          <div class="rfc-options rfc-options--two" data-name="services" data-type="checkbox">
             <span>Cleanup or catch-up</span><span>Monthly bookkeeping</span><span>QuickBooks setup</span><span>Not sure yet</span>
           </div>
         </fieldset>
@@ -49,23 +49,23 @@
 
       <!-- 03 Your books -->
       <section class="rfc-step" data-step="3" tabindex="-1" hidden>
-        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What do you use for your books now?</legend>
-          <div class="rfc-options rfc-options--chips" data-name="software" data-type="radio">
+        <fieldset class="rfc-field" data-req="pick"><legend>What do you use for your books now?</legend>
+          <div class="rfc-options rfc-options--chips rfc-options--two" data-name="software" data-type="radio">
             <span>QuickBooks Online</span><span>QuickBooks Desktop</span><span>Xero</span><span>Wave</span><span>Something else</span><span>Nothing yet</span>
           </div>
         </fieldset>
-        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">About how many transactions go through your business bank accounts, credit cards, and lines of credit each month?</legend>
+        <fieldset class="rfc-field" data-req="pick"><legend>About how many transactions go through your business bank accounts, credit cards, and lines of credit each month?</legend>
           <p class="rfc-help">A rough guess is fine, I just need a general range.</p>
-          <div class="rfc-options rfc-options--chips" data-name="txRange" data-type="radio">
+          <div class="rfc-options rfc-options--chips rfc-options--two" data-name="txRange" data-type="radio">
             <span>0-100</span><span>101-200</span><span>201-300</span><span>301-400</span><span>401-500</span><span>Over 500</span>
           </div>
         </fieldset>
-        <div class="rfc-field"><label for="rbc-else" class="rbc-q">Anything else I should know? <span class="rbc-opt">(optional)</span></label><textarea id="rbc-else" name="anythingElse" rows="3"></textarea></div>
+        <div class="rfc-field"><label for="rbc-else">Anything else I should know? <span class="rbc-opt">(optional)</span></label><textarea id="rbc-else" name="anythingElse" rows="3"></textarea></div>
       </section>
 
       <!-- 04 What brought you here -->
       <section class="rfc-step" data-step="4" tabindex="-1" hidden>
-        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">What's driving you to look for a bookkeeper now?</legend>
+        <fieldset class="rfc-field" data-req="pick"><legend>What's driving you to look for a bookkeeper now?</legend>
           <div class="rfc-options" data-name="driver" data-type="radio">
             <span>Tax time is coming and I want to be ready</span>
             <span>I can’t see how the business is actually doing</span>
@@ -75,8 +75,8 @@
             <span>Something else</span>
           </div>
         </fieldset>
-        <fieldset class="rfc-field" data-req="pick"><legend class="rbc-q">How did you find us?</legend>
-          <div class="rfc-options rfc-options--chips" data-name="source" data-type="radio">
+        <fieldset class="rfc-field" data-req="pick"><legend>How did you find us?</legend>
+          <div class="rfc-options rfc-options--chips rfc-options--two" data-name="source" data-type="radio">
             <span>Referral</span><span>Search engine</span><span>Website</span><span>LinkedIn</span><span>Facebook</span><span data-value="AI tool">AI tool, like ChatGPT</span><span>Other</span>
           </div>
         </fieldset>
@@ -86,20 +86,20 @@
       <!-- 05 Pick a time (also 07 Move your call, and a new time after cancelling) -->
       <section class="rfc-step" data-step="5" tabindex="-1" hidden>
         <p class="rbc-eyebrow" data-rbc="move-eyebrow" hidden>Move your call</p>
-        <h2 class="rfc-title" data-rbc="pick-title">Pick a time</h2>
-        <p class="rfc-lead" data-rbc="pick-lead">30 minutes with Julia</p>
-        <fieldset class="rfc-field"><legend class="rbc-q">How do you want to meet?</legend>
+        <h2 class="rfc-title rbc-title--pick" data-rbc="pick-title">Pick a time</h2>
+        <p class="rfc-lead rbc-lead--sm" data-rbc="pick-lead">30 minutes with Julia</p>
+        <fieldset class="rfc-field"><legend class="rbc-q--sm">How do you want to meet?</legend>
           <div class="rfc-options rbc-meet" data-name="callKind" data-type="radio">
             <span>Google Meet</span><span>Phone call</span>
           </div>
-          <p class="rfc-help rbc-after" data-rbc="meet-note">We email you a Google Meet link before the call.</p>
+          <p class="rbc-after" data-rbc="meet-note">We email you a Google Meet link before the call.</p>
         </fieldset>
         <div class="rfc-field" data-rbc="phone-field" data-check="callphone" hidden>
           <label for="rbc-callphone">Your phone number</label>
           <input id="rbc-callphone" name="callPhone" type="tel" autocomplete="tel" inputmode="tel">
-          <p class="rfc-help rbc-after" data-rbc="phone-help">Filled in from step 1. Change it if a different number is better.</p>
+          <p class="rbc-after rbc-after--phone" data-rbc="phone-help">Filled in from step 1. Change it if a different number is better.</p>
         </div>
-        <div class="rfc-field" data-rbc="when" data-req="time">
+        <div class="rfc-field rbc-when" data-rbc="when" data-req="time">
           <div class="rbc-cal" data-rbc="cal" aria-live="polite">
             <div class="rbc-cal__head">
               <button type="button" class="rbc-icon-btn" data-rbc="prev" aria-label="Previous month"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
@@ -110,8 +110,8 @@
           </div>
           <p class="rbc-day" data-rbc="day-title"></p>
           <div class="rbc-times" data-rbc="times"></div>
-          <p class="rfc-help rbc-loading" data-rbc="loading">Loading Julia’s open times…</p>
-          <p class="rfc-help rbc-zone">Times are in <span data-rbc="zone-name">Eastern</span> Time. <button type="button" class="rbc-link" data-rbc="zone-change">Change</button></p>
+          <p class="rbc-after rbc-loading" data-rbc="loading">Loading Julia’s open times…</p>
+          <p class="rbc-zone">Times are in <span data-rbc="zone-name">Eastern</span> Time. <button type="button" class="rbc-link" data-rbc="zone-change">Change</button></p>
           <select class="rbc-zone-select" data-rbc="zone" aria-label="Time zone" hidden>
             <option value="America/New_York">Eastern Time</option><option value="America/Chicago">Central Time</option><option value="America/Denver">Mountain Time</option><option value="America/Phoenix">Arizona Time</option><option value="America/Los_Angeles">Pacific Time</option><option value="America/Anchorage">Alaska Time</option><option value="Pacific/Honolulu">Hawaii Time</option>
           </select>
@@ -120,11 +120,11 @@
       </section>
 
       <!-- 06 You're booked -->
-      <section class="rfc-step rbc-center" data-step="6" tabindex="-1" hidden>
-        <span class="rbc-art" aria-hidden="true"><svg viewBox="0 0 64 64" width="64" height="64" fill="none"><rect x="10" y="14" width="44" height="40" rx="6" stroke="currentColor" stroke-width="3"/><path d="M10 24h44" stroke="currentColor" stroke-width="3"/><path d="M22 9v10M42 9v10" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="38" r="9" fill="#2e9e5b"/><path d="M27.5 38.2l3 3 6-6.2" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <section class="rfc-step" data-step="6" tabindex="-1" hidden>
+        <div class="rbc-art"><svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M31.7 76.7C26.7 48.3 50 21.7 83.3 18.3C108.3 15.8 121.7 28.3 145 26.7C171.7 25 188.3 45 185 71.7C181.7 100 156.7 116.7 126.7 120C93.3 123.3 76.7 113.3 53.3 111.7C28.3 110 35 96.7 31.7 76.7Z" fill="#F3E8F7"/><path d="M133.3 33.3H66.7C62.1 33.3 58.3 37.1 58.3 41.7V106.7C58.3 111.3 62.1 115 66.7 115H133.3C137.9 115 141.7 111.3 141.7 106.7V41.7C141.7 37.1 137.9 33.3 133.3 33.3Z" fill="white" stroke="#871AAE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M66.7 33.3H133.3C135.5 33.3 137.7 34.2 139.2 35.8C140.8 37.3 141.7 39.5 141.7 41.7V53.3H58.3V41.7C58.3 39.5 59.2 37.3 60.8 35.8C62.3 34.2 64.5 33.3 66.7 33.3Z" fill="#871AAE"/><path d="M80.8 29.2C80.8 27.8 79.7 26.7 78.3 26.7C77 26.7 75.8 27.8 75.8 29.2V37.5C75.8 38.9 77 40 78.3 40C79.7 40 80.8 38.9 80.8 37.5V29.2Z" fill="#651482"/><path d="M124.2 29.2C124.2 27.8 123 26.7 121.7 26.7C120.3 26.7 119.2 27.8 119.2 29.2V37.5C119.2 38.9 120.3 40 121.7 40C123 40 124.2 38.9 124.2 37.5V29.2Z" fill="#651482"/><path d="M75 71.3C76.6 71.3 77.9 69.9 77.9 68.3C77.9 66.7 76.6 65.4 75 65.4C73.4 65.4 72.1 66.7 72.1 68.3C72.1 69.9 73.4 71.3 75 71.3Z" fill="#E1C6EB"/><path d="M75 87.1C76.6 87.1 77.9 85.8 77.9 84.2C77.9 82.6 76.6 81.3 75 81.3C73.4 81.3 72.1 82.6 72.1 84.2C72.1 85.8 73.4 87.1 75 87.1Z" fill="#E1C6EB"/><path d="M75 102.9C76.6 102.9 77.9 101.6 77.9 100C77.9 98.4 76.6 97.1 75 97.1C73.4 97.1 72.1 98.4 72.1 100C72.1 101.6 73.4 102.9 75 102.9Z" fill="#E1C6EB"/><path d="M91.7 71.3C93.3 71.3 94.6 69.9 94.6 68.3C94.6 66.7 93.3 65.4 91.7 65.4C90.1 65.4 88.8 66.7 88.8 68.3C88.8 69.9 90.1 71.3 91.7 71.3Z" fill="#E1C6EB"/><path d="M91.7 87.1C93.3 87.1 94.6 85.8 94.6 84.2C94.6 82.6 93.3 81.3 91.7 81.3C90.1 81.3 88.8 82.6 88.8 84.2C88.8 85.8 90.1 87.1 91.7 87.1Z" fill="#E1C6EB"/><path d="M91.7 102.9C93.3 102.9 94.6 101.6 94.6 100C94.6 98.4 93.3 97.1 91.7 97.1C90.1 97.1 88.8 98.4 88.8 100C88.8 101.6 90.1 102.9 91.7 102.9Z" fill="#E1C6EB"/><path d="M108.3 71.3C109.9 71.3 111.3 69.9 111.3 68.3C111.3 66.7 109.9 65.4 108.3 65.4C106.7 65.4 105.4 66.7 105.4 68.3C105.4 69.9 106.7 71.3 108.3 71.3Z" fill="#E1C6EB"/><path d="M108.3 102.9C109.9 102.9 111.3 101.6 111.3 100C111.3 98.4 109.9 97.1 108.3 97.1C106.7 97.1 105.4 98.4 105.4 100C105.4 101.6 106.7 102.9 108.3 102.9Z" fill="#E1C6EB"/><path d="M125 71.3C126.6 71.3 127.9 69.9 127.9 68.3C127.9 66.7 126.6 65.4 125 65.4C123.4 65.4 122.1 66.7 122.1 68.3C122.1 69.9 123.4 71.3 125 71.3Z" fill="#E1C6EB"/><path d="M125 87.1C126.6 87.1 127.9 85.8 127.9 84.2C127.9 82.6 126.6 81.3 125 81.3C123.4 81.3 122.1 82.6 122.1 84.2C122.1 85.8 123.4 87.1 125 87.1Z" fill="#E1C6EB"/><path d="M125 102.9C126.6 102.9 127.9 101.6 127.9 100C127.9 98.4 126.6 97.1 125 97.1C123.4 97.1 122.1 98.4 122.1 100C122.1 101.6 123.4 102.9 125 102.9Z" fill="#E1C6EB"/><path d="M108.3 94.2C113.9 94.2 118.3 89.7 118.3 84.2C118.3 78.6 113.9 74.2 108.3 74.2C102.8 74.2 98.3 78.6 98.3 84.2C98.3 89.7 102.8 94.2 108.3 94.2Z" fill="#3F9A6B"/><path d="M104.1 84.4L107.1 87.4L112.6 81.9" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M45 30.8C45 34.7 46.9 36.7 50.8 36.7C46.9 36.7 45 38.6 45 42.5C45 38.6 43.1 36.7 39.2 36.7C43.1 36.7 45 34.7 45 30.8Z" fill="#A553C2"/><path d="M158.3 44.2C158.3 46.9 159.7 48.3 162.5 48.3C159.7 48.3 158.3 49.7 158.3 52.5C158.3 49.7 156.9 48.3 154.2 48.3C156.9 48.3 158.3 46.9 158.3 44.2Z" fill="#C38CD7"/><path d="M155 101.7C155 105 156.7 106.7 160 106.7C156.7 106.7 155 108.3 155 111.7C155 108.3 153.3 106.7 150 106.7C153.3 106.7 155 105 155 101.7Z" fill="#A553C2"/><path d="M42.4 93.3L38.8 91.2C38.2 90.9 37.5 91.1 37.1 91.7C36.8 92.3 37 93 37.6 93.4L41.2 95.5C41.8 95.8 42.5 95.6 42.9 95C43.2 94.4 43 93.6 42.4 93.3Z" fill="#9FCDB5"/><path d="M164.3 74.4L160.9 76.8C160.3 77.2 160.2 78 160.6 78.6C161 79.1 161.8 79.3 162.3 78.9L165.8 76.5C166.3 76.1 166.5 75.3 166.1 74.8C165.7 74.2 164.9 74.1 164.3 74.4Z" fill="#C38CD7"/><path d="M51.5 114.8L47.6 116.2C47 116.4 46.6 117.2 46.9 117.8C47.1 118.5 47.8 118.8 48.5 118.6L52.4 117.1C53 116.9 53.4 116.2 53.1 115.5C52.9 114.9 52.2 114.5 51.5 114.8Z" fill="#C38CD7"/><path d="M151.7 29.2C153 29.2 154.2 28 154.2 26.7C154.2 25.3 153 24.2 151.7 24.2C150.3 24.2 149.2 25.3 149.2 26.7C149.2 28 150.3 29.2 151.7 29.2Z" fill="#9FCDB5"/><path d="M36.7 65C38.5 65 40 63.5 40 61.7C40 59.8 38.5 58.3 36.7 58.3C34.8 58.3 33.3 59.8 33.3 61.7C33.3 63.5 34.8 65 36.7 65Z" stroke="#C38CD7" stroke-width="2"/><path d="M166.7 118.8C167.8 118.8 168.8 117.8 168.8 116.7C168.8 115.5 167.8 114.6 166.7 114.6C165.5 114.6 164.6 115.5 164.6 116.7C164.6 117.8 165.5 118.8 166.7 118.8Z" fill="#A553C2"/></svg></div>
         <h2 class="rfc-title" data-rbc="booked-title">You're booked</h2>
         <div class="rbc-box"><p class="rbc-box__day" data-rbc="booked-day"></p><p class="rbc-box__line" data-rbc="booked-line"></p></div>
-        <p class="rfc-lead" data-rbc="booked-note"></p>
+        <p class="rbc-note" data-rbc="booked-note"></p>
         <div class="rbc-pair">
           <a class="rfc-btn rbc-btn--outline" data-rbc="gcal" target="_blank" rel="noopener">Google Calendar</a>
           <button type="button" class="rfc-btn rbc-btn--outline" data-rbc="ics">Other calendar</button>
@@ -134,21 +134,21 @@
       <!-- 08 Cancel your call -->
       <section class="rfc-step" data-step="8" tabindex="-1" hidden>
         <h2 class="rfc-title">Cancel your call?</h2>
-        <div class="rbc-box"><p class="rbc-box__day" data-rbc="cancel-day"></p><p class="rbc-box__line" data-rbc="cancel-line"></p></div>
-        <p class="rfc-lead">The time opens back up, and Julia gets a note that you cancelled. If a different week works better, you can move the call instead.</p>
-        <div class="rfc-field"><label for="rbc-note">Anything you want Julia to know? <span class="rbc-opt">(optional)</span></label><textarea id="rbc-note" name="cancelNote" rows="3"></textarea></div>
+        <div class="rbc-box rbc-box--sm"><p class="rbc-box__day" data-rbc="cancel-day"></p><p class="rbc-box__line" data-rbc="cancel-line"></p></div>
+        <p class="rbc-note">The time opens back up, and Julia gets a note that you cancelled. If a different week works better, you can move the call instead.</p>
+        <div class="rfc-field"><label for="rbc-note">Anything you want Julia to know? <span class="rbc-opt">(optional)</span></label><input id="rbc-note" name="cancelNote" type="text"></div>
       </section>
 
       <!-- 09 Call cancelled -->
       <section class="rfc-step" data-step="9" tabindex="-1" hidden>
         <h2 class="rfc-title">Your call is cancelled</h2>
-        <p class="rfc-lead" data-rbc="cancelled-note"></p>
+        <p class="rbc-note" data-rbc="cancelled-note"></p>
       </section>
 
       <!-- Link no longer works, or the service is down -->
       <section class="rfc-step" data-step="10" tabindex="-1" hidden>
         <h2 class="rfc-title" data-rbc="problem-title">We couldn’t find that booking</h2>
-        <p class="rfc-lead" data-rbc="problem-note">The link may be old. You can book a new time, or email julia@revibookkeeping.com.</p>
+        <p class="rbc-note" data-rbc="problem-note">The link may be old. You can book a new time, or email julia@revibookkeeping.com.</p>
       </section>
 
       <div class="rfc-nav" data-rbc="nav">
@@ -160,99 +160,117 @@
 </div>
 
 <style>
-.rfc { --rfc-gap: 20px; font-family: var(--rds-sans, "Lato", "Helvetica Neue", Arial, sans-serif); color: var(--rds-text-primary, #3d3c3d); max-width: 640px; margin: 0 auto; padding: 8px 0 32px; -webkit-text-size-adjust: 100%; }
+/* Every value below is read from Figma REVI HQ page 18 (Book a Call flow) and the REVI Design System tokens.
+   Figma sizes are for a 390 wide phone; the card keeps them at every width, up to 640 wide. */
+.rfc { font-family: var(--rds-sans, "Lato", "Helvetica Neue", Arial, sans-serif); color: var(--rds-text-primary, #3d3c3d); max-width: 640px; margin: 0 auto; padding: 16px 0 24px; -webkit-text-size-adjust: 100%; }
 .rfc *, .rfc *::before, .rfc *::after { box-sizing: border-box; }
-.rfc-card { background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-subtle, #e9e9e9); border-radius: 16px; padding: 32px 28px 0; position: relative; overflow: clip; box-shadow: 0 12px 32px rgba(61,60,61,.08); }
-.rfc-progress { position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--rds-surface-brand-tint, #f3e8f7); transition: opacity .2s ease; }
-.rfc-progress.is-off { opacity: 0; }
+.rfc-card { background: var(--rds-surface-raised, #fff); border: 0; border-radius: 16px; position: relative; overflow: clip; box-shadow: 0 2px 12px rgba(0,0,0,.08); }
+.rfc-progress { height: 6px; background: var(--rds-surface-brand-tint, #f3e8f7); }
+.rfc-progress.is-off { display: none; }
 .rfc-progress__bar { display: block; height: 100%; width: 0; background: var(--rds-brand, #871aae); border-radius: 0 6px 6px 0; transition: width .3s ease; }
-.rfc-step-count { margin: 0 0 6px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--rds-text-accent, #651482); min-height: 18px; }
-.rfc-title { font-family: var(--rds-serif, "Lora", Georgia, serif); font-weight: 600; font-size: 30px; line-height: 1.2; margin: 0 0 14px; color: var(--rds-text-primary, #3d3c3d); letter-spacing: -.01em; }
-.rfc-lead { font-size: 17px; line-height: 1.55; margin: 0 0 18px; color: var(--rds-text-secondary, #5b5a5b); }
-.rfc-step { padding-bottom: 8px; }
+.rfc-step-count { margin: 0; padding: 24px 22px 0; font-size: 13px; font-weight: 700; line-height: 1.35; letter-spacing: .008em; text-transform: uppercase; color: var(--rds-text-accent, #651482); }
+.rfc-step-count[hidden] { display: none; }
+form[data-rbc=form] { margin: 0; }
+.rfc-step { padding: 24px 22px; display: flex; flex-direction: column; gap: 16px; }
+.rfc-step-count:not([hidden]) + form .rfc-step { padding-top: 16px; }
+.rfc-step[hidden] { display: none; }
 .rfc-step:focus { outline: none; }
-.rfc-field { border: 0; margin: 0 0 var(--rfc-gap); padding: 0; min-width: 0; }
-.rfc-field > label, .rfc-field > legend { display: block; font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0 0 8px; padding: 0; color: var(--rds-text-primary, #3d3c3d); }
-.rbc-q { font-size: 17px !important; }
-.rbc-opt { font-weight: 700; }
-.rfc-help { margin: -2px 0 10px; font-size: 14px; line-height: 1.45; color: var(--rds-text-secondary, #5b5a5b); }
-.rbc-after { margin: 10px 0 0; }
-.rfc input[type=text], .rfc input[type=email], .rfc input[type=tel], .rfc textarea, .rbc-zone-select {
-  width: 100%; min-height: 52px; padding: 0 16px; font: inherit; font-size: 16px; color: var(--rds-text-primary, #3d3c3d);
-  background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: var(--rds-radius-md, 8px);
+.rfc-step > * { margin: 0; }
+.rfc .rfc-title { font-family: var(--rds-serif, "Lora", Georgia, serif); font-weight: 600; font-size: 26px; line-height: 1.2; margin: 0; color: var(--rds-text-primary, #3d3c3d); letter-spacing: 0; }
+.rfc .rbc-title--pick { font-size: 22px; line-height: 1.25; }
+.rfc .rfc-lead { font-size: 16px; line-height: 1.5; margin: 0; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc .rbc-lead--sm { font-size: 14px; line-height: 1.35; }
+.rfc .rbc-note { font-size: 14px; line-height: 1.45; margin: 0; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc-field { border: 0; margin: 0; padding: 0; min-width: 0; display: flex; flex-direction: column; gap: 8px; }
+.rfc-field[hidden] { display: none; }
+.rfc-field > label { display: block; font-size: 14px; font-weight: 600; line-height: 1.5; margin: 0; color: var(--rds-text-primary, #3d3c3d); }
+.rfc-field > legend { display: block; float: left; width: 100%; font-size: 16px; font-weight: 700; line-height: 1.35; margin: 0 0 8px; padding: 0; color: var(--rds-text-primary, #3d3c3d); }
+.rfc-field > legend + * { clear: both; }
+.rfc .rbc-q--sm { font-size: 15px; }
+.rfc .rfc-help { margin: -4px 0 0; font-size: 14px; line-height: 1.35; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc .rbc-after { margin: 0; font-size: 13px; line-height: 1.35; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc .rbc-after--phone { font-size: 12px; line-height: 1.5; color: var(--rds-text-primary, #3d3c3d); }
+.rfc input[type=text], .rfc input[type=email], .rfc input[type=tel], .rfc textarea {
+  width: 100%; height: 46px; margin: 0; padding: 10px 12px; font: inherit; font-size: 16px; line-height: 1.5; color: var(--rds-text-primary, #3d3c3d);
+  background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 8px; box-shadow: none;
   -webkit-appearance: none; appearance: none; transition: border-color .15s, box-shadow .15s; }
-.rfc textarea { padding: 14px 16px; line-height: 1.45; resize: vertical; min-height: 96px; }
+.rfc textarea { height: 94px; resize: vertical; }
 .rfc input:focus, .rfc textarea:focus, .rbc-zone-select:focus { outline: none; border-color: var(--rds-border-focus, #a553c2); box-shadow: 0 0 0 3px var(--rds-surface-brand-tint, #f3e8f7); }
+/* Choice cards (Web/Choice card): 46 tall, 12 radius, 15px text, 20px mark */
 .rfc-options { display: grid; gap: 8px; }
-.rfc-options--chips { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-.rbc-meet { grid-template-columns: 1fr 1fr; }
-.rfc-choice { position: relative; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 12px 16px; border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 12px; background: var(--rds-surface-raised, #fff); font-size: 16px; line-height: 1.35; cursor: pointer; transition: border-color .15s, background-color .15s; -webkit-tap-highlight-color: transparent; user-select: none; }
-.rfc-options--chips .rfc-choice { justify-content: center; text-align: center; padding: 12px 10px; }
+.rfc-options--two { grid-template-columns: 1fr 1fr; }
+.rbc-meet { grid-template-columns: 1fr 1fr; gap: 10px; }
+.rfc-choice { position: relative; display: flex; align-items: center; gap: 12px; min-height: 46px; margin: 0; padding: 12px 14px; border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 12px; background: var(--rds-surface-raised, #fff); font-size: 15px; font-weight: 400; line-height: 1.3; color: var(--rds-text-primary, #3d3c3d); cursor: pointer; transition: border-color .15s, background-color .15s; -webkit-tap-highlight-color: transparent; user-select: none; }
+.rfc-options--chips .rfc-choice { justify-content: center; text-align: center; }
+.rbc-meet .rfc-choice { justify-content: center; white-space: nowrap; padding: 12px 10px; }
 .rfc-options--chips .rfc-mark { display: none; }
 .rfc-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
-.rfc-mark { flex: 0 0 22px; width: 22px; height: 22px; border: 1.5px solid var(--rds-border-strong, #b6b5b8); background: var(--rds-surface-raised, #fff); display: grid; place-items: center; transition: all .15s; }
-.rfc-choice[data-type=radio] .rfc-mark { border-radius: 50%; }
-.rfc-choice[data-type=checkbox] .rfc-mark { border-radius: 6px; }
+.rfc-mark { flex: 0 0 20px; width: 20px; height: 20px; border: 1.5px solid var(--rds-border-strong, #b6b5b8); background: var(--rds-surface-raised, #fff); display: grid; place-items: center; transition: all .15s; }
+.rfc-choice[data-type=radio] .rfc-mark { border-radius: 10px; }
+.rfc-choice[data-type=checkbox] .rfc-mark { border-radius: 5px; }
 .rfc-mark svg { opacity: 0; }
 @media (hover: hover) { .rfc-choice:hover { border-color: var(--rds-border-brand-subtle, #c38cd7); } }
 .rfc-choice:has(input:checked) { border-color: var(--rds-border-brand, #871aae); background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-text-accent, #651482); font-weight: 700; }
-.rfc-choice:has(input:checked) .rfc-mark { border-color: var(--rds-brand, #871aae); background: var(--rds-brand, #871aae); }
-.rfc-choice[data-type=radio]:has(input:checked) .rfc-mark { box-shadow: inset 0 0 0 4px var(--rds-surface-raised, #fff); }
+.rfc-choice:has(input:checked) .rfc-mark { border-color: var(--rds-border-brand, #871aae); background: var(--rds-brand, #871aae); }
+.rfc-choice[data-type=radio]:has(input:checked) .rfc-mark { background: radial-gradient(circle, var(--rds-surface-raised, #fff) 3.5px, var(--rds-brand, #871aae) 4px); }
 .rfc-choice[data-type=checkbox]:has(input:checked) .rfc-mark svg { opacity: 1; }
 .rfc-choice:has(input:focus-visible) { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
-.rfc-error { display: flex; align-items: flex-start; gap: 6px; margin: 6px 0 0; font-size: 14px; line-height: 1.4; color: var(--rds-error-strong, #c44747); font-weight: 700; }
-.rfc-error svg { flex: none; width: 16px; height: 16px; margin-top: 2px; color: var(--rds-error-icon, #c44747); }
-.rfc-field.is-invalid input, .rfc-field.is-invalid .rfc-choice { border-color: var(--rds-error-strong, #c44747); }
-.rfc-nav { position: sticky; bottom: 0; display: flex; gap: 10px; margin: 8px -28px 0; padding: 16px 28px calc(16px + env(safe-area-inset-bottom)); background: var(--rds-surface-raised, #fff); border-top: 1px solid var(--rds-border-subtle, #e9e9e9); border-radius: 0 0 16px 16px; z-index: 2; }
-.rfc-btn { height: 52px; padding: 0 18px; border-radius: var(--rds-radius-md, 8px); font: inherit; font-size: 16px; font-weight: 700; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; -webkit-tap-highlight-color: transparent; }
-.rfc-btn--primary { flex: 1; background: var(--rds-brand, #871aae); color: var(--rds-text-on-brand, #fff); }
+/* Errors (Figma 01b): 1.5 red border, 12px message with a 12px alert icon */
+.rfc .rfc-error { display: flex; align-items: flex-start; gap: 4px; margin: 0; font-size: 12px; line-height: 1.5; font-weight: 400; color: var(--rds-error-strong, #c44747); }
+.rfc-error svg { flex: none; width: 12px; height: 12px; margin-top: 3px; color: var(--rds-error-icon, #c44747); }
+.rfc-field.is-invalid input, .rfc-field.is-invalid textarea, .rfc-field.is-invalid .rfc-choice { border: 1.5px solid var(--rds-error-strong, #c44747); }
+/* Footer buttons: 40 tall, 6 radius, 14px semibold */
+.rfc-nav { position: sticky; bottom: 0; display: flex; gap: 10px; margin: 0; padding: 14px 22px calc(18px + env(safe-area-inset-bottom)); background: var(--rds-surface-raised, #fff); border-top: 1px solid var(--rds-border-subtle, #e9e9e9); z-index: 2; }
+.rfc .rfc-btn { height: 40px; margin: 0; padding: 10px 16px; border-radius: 6px; font: inherit; font-size: 14px; font-weight: 600; line-height: 1.5; border: 0; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; letter-spacing: 0; text-transform: none; -webkit-tap-highlight-color: transparent; }
+.rfc .rfc-btn--primary { flex: 1; background: var(--rds-brand, #871aae); color: var(--rds-text-on-brand, #fff); }
 .rfc-btn--primary:active { background: var(--rds-brand-pressed, #440d57); }
-@media (hover: hover) { .rfc-btn--primary:hover { background: var(--rds-brand-hover, #651482); } }
+@media (hover: hover) { .rfc .rfc-btn--primary:hover { background: var(--rds-brand-hover, #651482); } }
 .rfc-btn--primary[aria-busy=true] { opacity: .7; cursor: progress; }
-.rbc-btn--back, .rbc-btn--outline { background: var(--rds-surface-raised, #fff); color: var(--rds-text-primary, #3d3c3d); border: 1px solid var(--rds-border-default, #e2e2e2); }
-.rbc-btn--back { flex: 0 0 auto; min-width: 88px; }
-@media (hover: hover) { .rbc-btn--back:hover, .rbc-btn--outline:hover { border-color: var(--rds-border-brand-subtle, #c38cd7); } }
+.rfc .rbc-btn--back, .rfc .rbc-btn--outline { background: var(--rds-surface-raised, #fff); color: var(--rds-text-primary, #3d3c3d); border: 1px solid var(--rds-border-default, #e2e2e2); }
+.rbc-btn--back { flex: 0 0 auto; }
+@media (hover: hover) { .rfc .rbc-btn--back:hover, .rfc .rbc-btn--outline:hover { border-color: var(--rds-border-brand-subtle, #c38cd7); } }
 .rfc-btn:focus-visible, .rbc-link:focus-visible, .rbc-icon-btn:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
 .rfc-btn[hidden], .rfc-nav[hidden] { display: none; }
 .rbc-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.rbc-eyebrow { margin: 0 0 6px; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--rds-text-accent, #651482); }
-/* Calendar (Figma 05): open days are tinted, the picked day is solid purple, other days are gray. */
-.rbc-cal { margin: 4px 0 18px; }
-.rbc-cal__head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
-.rbc-cal__month { margin: 0; font-size: 17px; font-weight: 700; }
-.rbc-icon-btn { width: 40px; height: 40px; display: grid; place-items: center; border-radius: var(--rds-radius-md, 8px); border: 1px solid var(--rds-border-default, #e2e2e2); background: var(--rds-surface-raised, #fff); color: var(--rds-text-primary, #3d3c3d); cursor: pointer; }
+.rfc .rbc-eyebrow { font-size: 13px; font-weight: 700; line-height: 1.35; letter-spacing: .008em; text-transform: uppercase; color: var(--rds-text-accent, #651482); }
+/* Calendar (Figma 05): 32px nav buttons, 38px days, 44px time slots */
+.rbc-cal { display: flex; flex-direction: column; gap: 16px; }
+.rbc-cal__head { display: flex; align-items: center; justify-content: space-between; height: 32px; }
+.rfc .rbc-cal__month { margin: 0; font-size: 16px; font-weight: 700; line-height: 1.35; }
+.rfc .rbc-icon-btn { width: 32px; height: 32px; padding: 0; display: grid; place-items: center; border-radius: 6px; border: 1px solid var(--rds-border-default, #e2e2e2); background: var(--rds-surface-raised, #fff); color: var(--rds-text-primary, #3d3c3d); cursor: pointer; }
 .rbc-icon-btn:disabled { opacity: .35; cursor: default; }
-.rbc-cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px 4px; text-align: center; }
-.rbc-cal__dow { font-size: 13px; font-weight: 700; color: var(--rds-text-secondary, #5b5a5b); padding: 4px 0; }
-.rbc-cal__day { justify-self: center; width: 40px; height: 40px; border-radius: 50%; border: 0; background: none; font: inherit; font-size: 15px; color: var(--rds-text-secondary, #9a999b); cursor: default; padding: 0; }
-.rbc-cal__day.is-open { background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-text-accent, #651482); font-weight: 700; cursor: pointer; }
-.rbc-cal__day.is-picked { background: var(--rds-brand, #871aae); color: #fff; }
+.rbc-cal__grid { display: grid; grid-template-columns: repeat(7, 1fr); row-gap: 4px; text-align: center; }
+.rbc-cal__dow { font-size: 12px; font-weight: 700; line-height: 20px; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc .rbc-cal__day { justify-self: center; width: 38px; height: 38px; margin: 0; padding: 0; border-radius: 19px; border: 0; background: none; font: inherit; font-size: 15px; font-weight: 400; line-height: 1.3; color: var(--rds-text-disabled, #b6b5b8); cursor: default; }
+.rfc .rbc-cal__day.is-open { background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-text-accent, #651482); font-weight: 700; cursor: pointer; }
+.rfc .rbc-cal__day.is-picked { background: var(--rds-brand, #871aae); color: var(--rds-text-on-brand, #fff); font-weight: 700; }
 .rbc-cal__day:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
-.rbc-day { margin: 0 0 10px; font-size: 16px; font-weight: 700; }
+.rfc .rbc-day { margin: 0; font-size: 15px; font-weight: 700; line-height: 1.35; }
 .rbc-day:empty { display: none; }
-.rbc-times { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-.rbc-time { height: 48px; border-radius: var(--rds-radius-md, 8px); border: 1px solid var(--rds-border-brand-subtle, #c38cd7); background: var(--rds-surface-raised, #fff); color: var(--rds-text-accent, #651482); font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; }
-.rbc-time[aria-pressed=true] { background: var(--rds-brand, #871aae); border-color: var(--rds-brand, #871aae); color: #fff; }
+.rbc-times { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.rbc-times:empty { display: none; }
+.rfc .rbc-time { height: 44px; margin: 0; padding: 0; border-radius: 8px; border: 1px solid var(--rds-border-brand-subtle, #c38cd7); background: var(--rds-surface-raised, #fff); color: var(--rds-text-accent, #651482); font: inherit; font-size: 15px; font-weight: 700; line-height: 1.3; cursor: pointer; }
+.rfc .rbc-time[aria-pressed=true] { background: var(--rds-brand, #871aae); border-color: var(--rds-border-brand, #871aae); color: var(--rds-text-on-brand, #fff); }
 .rbc-time:focus-visible { outline: 2px solid var(--rds-border-focus, #a553c2); outline-offset: 2px; }
-.rbc-zone { margin: 0; }
-.rbc-link { background: none; border: 0; padding: 0; font: inherit; color: var(--rds-text-accent, #651482); text-decoration: underline; cursor: pointer; }
-.rbc-zone-select { margin-top: 10px; padding: 0 12px; }
-.rbc-loading[hidden] { display: none; }
-.rbc-alert { margin: 0 0 16px; padding: 12px 14px; border-radius: var(--rds-radius-md, 8px); background: #fdf1f1; color: var(--rds-error-strong, #c44747); font-size: 15px; font-weight: 700; }
-.rbc-box { margin: 0 0 18px; padding: 16px 18px; border-radius: 12px; background: var(--rds-surface-sunken, #f4f4f4); border: 1px solid var(--rds-border-subtle, #e9e9e9); text-align: left; }
-.rbc-box__day { margin: 0 0 4px; font-size: 18px; font-weight: 700; }
-.rbc-box__line { margin: 0; font-size: 16px; color: var(--rds-text-secondary, #5b5a5b); }
-.rbc-art { display: grid; place-items: center; width: 112px; height: 96px; border-radius: 48px; margin-left: auto !important; margin-right: auto !important; background: var(--rds-surface-brand-tint, #f3e8f7); color: var(--rds-brand, #871aae); margin: 4px 0 20px; }
-.rbc-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px; }
+.rbc-when { display: flex; flex-direction: column; gap: 16px; }
+.rfc .rbc-zone { margin: 0; font-size: 13px; line-height: 1.35; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc .rbc-link { background: none; border: 0; padding: 0; font: inherit; color: var(--rds-text-accent, #651482); text-decoration: underline; cursor: pointer; }
+.rbc-zone-select { width: 100%; height: 46px; padding: 0 12px; font: inherit; font-size: 16px; color: var(--rds-text-primary, #3d3c3d); background: var(--rds-surface-raised, #fff); border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 8px; }
+.rbc-zone-select[hidden], .rbc-loading[hidden] { display: none; }
+.rfc .rbc-alert { margin: 0; padding: 12px 14px; border-radius: 8px; background: var(--rds-error-surface, #f9eded); color: var(--rds-error-strong, #c44747); font-size: 14px; line-height: 1.45; font-weight: 700; }
+/* The call box (Figma "When"): page gray, default border, 12 radius. 20/18 on You're booked, 17/15 on Cancel. */
+.rbc-box { margin: 0; padding: 16px; display: flex; flex-direction: column; gap: 4px; border-radius: 12px; background: var(--rds-surface-page, #f6f6f6); border: 1px solid var(--rds-border-default, #e2e2e2); text-align: left; }
+.rfc .rbc-box__day { margin: 0; font-size: 20px; font-weight: 700; line-height: 1.35; color: var(--rds-text-primary, #3d3c3d); }
+.rfc .rbc-box__line { margin: 0; font-size: 18px; font-weight: 400; line-height: 1.35; color: var(--rds-text-secondary, #5b5a5b); }
+.rfc .rbc-box--sm .rbc-box__day { font-size: 17px; }
+.rfc .rbc-box--sm .rbc-box__line { font-size: 15px; }
+.rbc-art { display: flex; justify-content: center; height: 150px; }
+.rbc-art svg { width: 200px; height: 150px; }
+.rbc-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 @media (max-width: 560px) {
-  .rfc { padding-top: 0; }
-  .rfc-card { border-radius: 0; border-left: 0; border-right: 0; box-shadow: none; padding: 28px 20px 0; margin: 0 -16px; overflow: visible; }
-  .rfc-nav { margin: 8px -20px 0; padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); border-radius: 0; }
-  .rfc-title { font-size: 26px; }
-  .rfc-options--chips { grid-template-columns: repeat(2, 1fr); }
-  .rbc-cal__day { width: 36px; height: 36px; }
+  .rfc { padding: 16px 0 24px; }
 }
-@media (prefers-color-scheme: dark) { .rfc-card { box-shadow: none; } .rbc-alert { background: transparent; border: 1px solid var(--rds-error-strong, #d47776); } }
+@media (prefers-color-scheme: dark) { .rfc-card { box-shadow: none; border: 1px solid var(--rds-border-subtle, #3d3c3d); } }
 </style>
 
 <script>

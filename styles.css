@@ -27,6 +27,8 @@
   --rds-icon-brand: #871aae;
   --rds-error-strong: #c44747;   /* color/status/error/strong, red/500 */
   --rds-error-icon: #c44747;     /* color/status/error/icon, red/500 */
+  --rds-error-surface: #f9eded;  /* color/status/error/surface, red/100 */
+  --rds-text-disabled: #b6b5b8;  /* color/text/disabled, gray/400 */
 
   /* Space */
   --rds-space-4: 4px;
