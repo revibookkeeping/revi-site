@@ -552,6 +552,8 @@ form[data-rbc=form] { margin: 0; }
     api("lookup", { token: state.token }).then(function (r) {
       if (!r.ok) return problem(r);
       state.booking = r.booking;
+      // Marked a no-show: the 03e email's "Reschedule your Call" opens straight on Pick a time.
+      if (r.booking.status === "no-show") { state.mode = "rebook"; startMove(r.booking); return; }
       if (r.booking.status === "cancelled") { state.mode = "rebook"; $("cancelled-note").textContent = "This call was cancelled. If you want to talk another time, pick a new time whenever you’re ready."; show(9); return; }
       if (params.get("cancel")) { state.mode = "cancel"; showCancel(); } else startMove(r.booking);
     }).catch(function () { problem(); });
