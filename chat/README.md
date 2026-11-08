@@ -29,6 +29,9 @@ The chat stays hidden for everyone until a browser opens the site with `?askrevi
 `https://www.revibookkeeping.com/?askrevi=on`. That browser remembers it on every page after that.
 `?askrevi=off` hides it again. Visitors never see it.
 
+The chat never shows on the Book a Call pages (`/book-a-call-preview`, `/book-a-call`), the old fit form or the
+store pages, so the bubble can't cover a form's buttons on a phone. The list is near the top of `chat.js`.
+
 ### Going public
 
 Add `data-public="true"` to the same line. GA4 events start only in public mode:

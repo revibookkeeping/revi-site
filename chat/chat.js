@@ -24,7 +24,9 @@
   if (qp === "off") ls(function (s) { s.removeItem(KEY); });
   var preview = qp === "on" || ls(function (s) { return s.getItem(KEY) === "1"; }) === true;
   if (!PUBLIC && !preview) return;
-  if (/^\/(revi-fit-form|cart|checkout|commerce)/.test(location.pathname)) return;
+  // Pages where the bubble would sit on top of a form's buttons: the old fit form, the Book a Call pages
+  // (/book-a-call-preview now, /book-a-call at launch) and the store pages.
+  if (/^\/(revi-fit-form|book-a-call|cart|checkout|commerce)/.test(location.pathname)) return;
 
   // ---------- Copy ----------
   var COPY = {
