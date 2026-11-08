@@ -1,0 +1,90 @@
+<!-- Book a Call loader: the only thing pasted into the Squarespace code block (/book-a-call-preview, later /book-a-call).
+     It loads the form from GitHub Pages (blocks/book-a-call-preview/2-book-a-call.html), so GitHub is the
+     source of truth and a fix there goes live without pasting. GitHub Pages caches for up to 10 minutes.
+     Same loading note and fallback card as Get in Touch (blocks/get-in-touch/1-form.html, Nov 5):
+       Happy path: the form arrives and starts, the loading note hides.
+       Failed: GitHub doesn't answer, answers with an error, or the form doesn't start. The fallback card shows.
+       Slow: nothing in 12 seconds, the fallback card shows; if the form turns up later, it swaps back.
+     Styles: styles.css "Get in Touch" (rds-gt) and dark.css. -->
+<div class="rds-container rds-in-sqs rds-gt" id="rbc-mount">
+  <div class="rds-gt__loading" data-gt="loading" role="status">
+    <span class="rds-gt__spinner" aria-hidden="true"></span>
+    <span>Loading the form&hellip;</span>
+  </div>
+  <div data-gt="frame"></div>
+
+  <section class="rds-gt__fallback" data-gt="fallback" aria-labelledby="rbc-fallback-title" hidden>
+    <p class="rds-eyebrow">Book a call</p>
+    <h2 class="rds-card-title" id="rbc-fallback-title">The form didn&rsquo;t load.</h2>
+    <p class="rds-lead">You can still reach us directly. Call, text or email, and we&rsquo;ll set up your discovery call.</p>
+    <div class="rds-gt__actions">
+      <a class="rds-button" href="tel:+19804698324">Call or text (980) 469-8324</a>
+      <a class="rds-button rds-button--secondary" href="mailto:julia@revibookkeeping.com?subject=Discovery%20call">Email julia@revibookkeeping.com</a>
+    </div>
+    <p class="rds-gt__note">Calls and texts Mon&ndash;Fri, 9am&ndash;5pm. Emails get a reply within 24 hours.</p>
+    <button type="button" class="rds-gt__retry" data-gt="retry">Try loading the form again</button>
+  </section>
+
+  <noscript>
+    <section class="rds-gt__fallback rds-gt__fallback--static">
+      <p class="rds-eyebrow">Book a call</p>
+      <h2 class="rds-card-title">The form needs JavaScript to load.</h2>
+      <p class="rds-lead">You can still reach us directly. Call, text or email, and we&rsquo;ll set up your discovery call.</p>
+      <div class="rds-gt__actions">
+        <a class="rds-button" href="tel:+19804698324">Call or text (980) 469-8324</a>
+        <a class="rds-button rds-button--secondary" href="mailto:julia@revibookkeeping.com?subject=Discovery%20call">Email julia@revibookkeeping.com</a>
+      </div>
+    </section>
+    <style>#rbc-mount .rds-gt__loading{display:none}</style>
+  </noscript>
+</div>
+
+<script>
+(function () {
+  var mount = document.getElementById("rbc-mount");
+  if (!mount || mount.dataset.ready) return;
+  mount.dataset.ready = "1";
+  var SRC = "https://revibookkeeping.github.io/revi-site/blocks/book-a-call-preview/2-book-a-call.html";
+  var WAIT_MS = 12000;
+  var loading = mount.querySelector('[data-gt="loading"]');
+  var frame = mount.querySelector('[data-gt="frame"]');
+  var fallback = mount.querySelector('[data-gt="fallback"]');
+  var shown = false, failed = false, timer;
+
+  function showFallback() {
+    if (shown) return;
+    loading.hidden = true; frame.hidden = true; fallback.hidden = false;
+    mount.classList.add("is-failed");
+  }
+  function showForm() {
+    shown = true; clearTimeout(timer);
+    loading.hidden = true; frame.hidden = false; fallback.hidden = true;
+    mount.classList.remove("is-failed");
+  }
+  // Puts the form's markup and styles in place, then runs its script (scripts added as text don't run on their own).
+  function start(html) {
+    var tpl = document.createElement("template");
+    tpl.innerHTML = html;
+    var scripts = [].slice.call(tpl.content.querySelectorAll("script"));
+    scripts.forEach(function (s) { s.parentNode.removeChild(s); });
+    frame.appendChild(tpl.content);
+    scripts.forEach(function (old) {
+      var s = document.createElement("script");
+      s.textContent = old.textContent;
+      frame.appendChild(s);
+    });
+    var form = document.getElementById("rbc");
+    if (form && form.dataset.ready === "1") showForm();
+    else { failed = true; clearTimeout(timer); showFallback(); }
+  }
+
+  timer = setTimeout(showFallback, WAIT_MS);
+  // A new address every 10 minutes, so a fix reaches visitors without waiting on old browser copies.
+  fetch(SRC + "?v=" + Math.floor(Date.now() / 600000), { cache: "no-cache" })
+    .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.text(); })
+    .then(function (html) { if (!failed) start(html); })
+    .catch(function () { failed = true; clearTimeout(timer); showFallback(); });
+
+  mount.querySelector('[data-gt="retry"]').addEventListener("click", function () { window.location.reload(); });
+})();
+</script>
