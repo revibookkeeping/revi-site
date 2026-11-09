@@ -604,7 +604,7 @@
     "hire"
    ],
    "a": [
-    "Use Get in Touch on any page. You'll answer some questions about your portfolio, your setup, and what you need, then book a discovery call where we go through your books together."
+    "Use Book a Call on any page. You'll answer a few quick questions about your portfolio, your setup, and what you need, then pick a time for a discovery call where we go through your books together."
    ],
    "source": {
     "label": "From FAQs: How do I get started?",
@@ -1308,7 +1308,7 @@
   },
   {
    "id": "proc-steps",
-   "q": "What happens after I get in touch?",
+   "q": "What happens after I book a call?",
    "ask": [
     "what is the process",
     "how does it work",

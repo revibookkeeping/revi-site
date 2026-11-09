@@ -55,12 +55,12 @@ Why not jsDelivr: it held the old `@main` files after a purge (Oct 17, 2026) and
 New questions people ask in different words go in the `ask` list for that entry in `build_answers.py`,
 or in the `EXTRA` table near the bottom of that file.
 Topics the site doesn't cover (payroll, sales tax, short-term rentals, legal, loans) always go to the
-Get in Touch card instead of a near-miss answer; that list is `OFF_TOPIC` in `chat.js`.
+Book a Call card instead of a near-miss answer; that list is `OFF_TOPIC` in `chat.js`.
 
 ## Testing
 
 `tests/questions.json` holds 765 visitor questions with the answer each should get (`null` means it should go to
-the Get in Touch card). To run them on any page where the chat is loaded, paste this in the browser console:
+the Book a Call card). To run them on any page where the chat is loaded, paste this in the browser console:
 
 ```js
 const c=(await fetch(document.querySelector('script[src*="chat.js"]').src.replace('chat.js','tests/questions.json')).then(r=>r.json())).cases;
