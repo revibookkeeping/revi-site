@@ -16,4 +16,34 @@
 <script>
 (function(){document.querySelectorAll('details.rds-transcript').forEach(function(d){if(d.dataset.rdsAnim)return;d.dataset.rdsAnim='1';var s=d.querySelector('summary'),c=d.querySelector('.rds-transcript__content'),busy=false;s.addEventListener('click',function(e){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!c.animate)return;e.preventDefault();if(busy)return;busy=true;if(d.open){var h=c.offsetHeight;d.classList.add('is-closing');var a=c.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:280,easing:'ease-in-out'});a.onfinish=function(){d.open=false;d.classList.remove('is-closing');busy=false;};}else{d.open=true;var h2=c.offsetHeight;var b=c.animate([{height:'0px',opacity:0},{height:h2+'px',opacity:1}],{duration:340,easing:'ease-in-out'});b.onfinish=function(){busy=false;};}});});})();
 </script>
+<style>
+.sqs-block-video .rds-video-swap .native-video-player,.sqs-block-video .rds-video-swap .plyr{display:none!important}
+.rds-video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000;object-fit:contain}
+</style>
+<script>
+/* Homepage video: Squarespace's own player spins forever on iPhones (Nov 2026), while the same stream plays fine on its own.
+   This plays the video block's stream in a plain video element instead. It reads the stream from the block, so a re-upload keeps working.
+   iPhones (no MediaSource) play the stream natively, the way it played in Safari on its own; every other browser uses hls.js. */
+(function(){
+  function swap(){
+    var host=document.querySelector('.sqs-block-video .sqs-native-video');
+    if(!host||host.classList.contains('rds-video-swap'))return;
+    var cfg;try{cfg=JSON.parse(host.getAttribute('data-config-video'))}catch(e){return}
+    if(!cfg||!cfg.alexandriaUrl)return;
+    var src=cfg.alexandriaUrl.replace('{variant}','playlist.m3u8');
+    var v=document.createElement('video');
+    v.className='rds-video';v.controls=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='none';
+    v.poster=cfg.alexandriaUrl.replace('{variant}','thumbnail');
+    v.setAttribute('aria-label','How it works, a short REVI Bookkeeping video');
+    host.classList.add('rds-video-swap');
+    var wrap=host.parentNode;wrap.appendChild(v);
+    if(!window.MediaSource){v.src=src;return}
+    var s=document.createElement('script');
+    s.src='https://cdn.jsdelivr.net/npm/hls.js@1.5.20/dist/hls.min.js';
+    s.onload=function(){if(window.Hls&&window.Hls.isSupported()){var h=new window.Hls();h.loadSource(src);h.attachMedia(v)}else{v.src=src}};
+    document.head.appendChild(s);
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',swap);else swap();
+})();
+</script>
 </div>
