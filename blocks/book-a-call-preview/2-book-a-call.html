@@ -4,6 +4,7 @@
      times and books nothing, for design checks. Links from the emails open the same block:
        ?move=<token>    07 Move your call
        ?cancel=<token>  08 Cancel your call
+       ?onboard=<token> 13 Book your onboarding call (step 6, from the 02a or 02b email; Figma 18, screens 13 to 17)
      Times are shown in Eastern unless the visitor changes it. Uses the site tokens from styles.css and dark.css.
      Loaded by 0-loader.html, which is what sits in the Squarespace code block, so edits here go live from
      GitHub Pages without pasting (allow up to 10 minutes). It still works pasted on its own. -->
@@ -89,8 +90,8 @@
         <p class="rbc-eyebrow" data-rbc="move-eyebrow" hidden>Move your call</p>
         <h2 class="rfc-title rbc-title--pick" data-rbc="pick-title">Pick a time</h2>
         <p class="rfc-lead rbc-lead--sm" data-rbc="pick-lead">30 minutes with Julia</p>
-        <fieldset class="rfc-field"><legend class="rbc-q--sm">How do you want to meet?</legend>
-          <div class="rfc-options rbc-meet" data-name="callKind" data-type="radio">
+        <fieldset class="rfc-field"><legend class="rbc-q--sm" data-rbc="meet-legend">How do you want to meet?</legend>
+          <div class="rfc-options rbc-meet" data-name="callKind" data-type="radio" data-rbc="meet-options">
             <span>Google Meet</span><span>Phone call</span>
           </div>
           <p class="rbc-after" data-rbc="meet-note">We email you a Google Meet link before the call.</p>
@@ -208,6 +209,11 @@ form[data-rbc=form] { margin: 0; }
 .rfc-choice { position: relative; display: flex; align-items: center; gap: 12px; min-height: 46px; margin: 0; padding: 12px 14px; border: 1px solid var(--rds-border-default, #e2e2e2); border-radius: 12px; background: var(--rds-surface-raised, #fff); font-size: 15px; font-weight: 400; line-height: 1.3; color: var(--rds-text-primary, #3d3c3d); cursor: pointer; transition: border-color .15s, background-color .15s; -webkit-tap-highlight-color: transparent; user-select: none; }
 .rfc-options--chips .rfc-choice { justify-content: center; text-align: center; }
 .rbc-meet .rfc-choice { justify-content: center; white-space: nowrap; padding: 12px 10px; }
+.rfc-choice[hidden] { display: none; }
+.rbc .rbc-sr { position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+/* The onboarding call (Figma 18, screen 13): Google Meet only, one full-width choice, no question above it. */
+.rfc-options.rbc-meet.rbc-meet--one { grid-template-columns: minmax(0, 1fr); }
+.rbc-meet--one .rfc-choice { justify-content: flex-start; padding: 12px 14px; }
 .rfc-options--chips .rfc-mark { display: none; }
 .rfc-choice input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
 .rfc-mark { flex: 0 0 20px; width: 20px; height: 20px; border: 1.5px solid var(--rds-border-strong, #b6b5b8); background: var(--rds-surface-raised, #fff); display: grid; place-items: center; transition: all .15s; }
@@ -302,7 +308,7 @@ form[data-rbc=form] { margin: 0; }
   var ZONES = { "America/New_York": "Eastern", "America/Chicago": "Central", "America/Denver": "Mountain", "America/Phoenix": "Arizona", "America/Los_Angeles": "Pacific", "America/Anchorage": "Alaska", "Pacific/Honolulu": "Hawaii" };
   var REVI_LINE = "(980) 469-8324";
   var params = new URLSearchParams(location.search);
-  var state = { step: 1, mode: "book", token: params.get("move") || params.get("cancel") || "", booking: null, days: [], zone: "America/New_York", month: null, day: null, time: null, busy: false };
+  var state = { step: 1, mode: "book", token: params.get("onboard") || params.get("move") || params.get("cancel") || "", booking: null, days: [], zone: "America/New_York", month: null, day: null, time: null, busy: false };
 
   // Option lists become tappable cards with real inputs (same pattern as the earlier preview form).
   root.querySelectorAll(".rfc-options").forEach(function (box) {
@@ -479,13 +485,15 @@ form[data-rbc=form] { margin: 0; }
 
   // ---------- 06 You're booked ----------
   function longDay(iso) { return fmt(iso, { weekday: "long", month: "long", day: "numeric" }); }
-  function line(b) { return fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + " · " + (b.callKind === "Phone call" ? "30 minute phone call" : "30 minutes on Google Meet"); }
+  function line(b) { return fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + " · " + (onboarding() ? "about an hour on Google Meet" : b.callKind === "Phone call" ? "30 minute phone call" : "30 minutes on Google Meet"); }
   function booked() {
     var b = state.booking;
     $("booked-title").textContent = "You're booked, " + b.firstName;
     $("booked-day").textContent = longDay(b.callAt);
     $("booked-line").textContent = line(b);
-    $("booked-note").textContent = b.callKind === "Phone call"
+    $("booked-note").textContent = onboarding()
+      ? "Your confirmation and Google Meet link are on the way to " + b.email + ", with what to have ready for the call."
+      : b.callKind === "Phone call"
       ? "Julia will call you at " + b.phone + " from the REVI line, " + REVI_LINE + ". Your confirmation is on the way to " + b.email + "."
       : "Your confirmation and Google Meet link are on the way to " + b.email + ". If the time stops working, you can move it from that email.";
     $("gcal").href = b.googleCalendarUrl;
@@ -496,16 +504,19 @@ form[data-rbc=form] { margin: 0; }
   $("ics").addEventListener("click", function () {
     var a = document.createElement("a");
     a.href = URL.createObjectURL(new Blob([state.booking.ics], { type: "text/calendar" }));
-    a.download = "discovery-call-with-julia.ics"; document.body.appendChild(a); a.click(); a.remove();
+    a.download = ((state.booking && state.booking.call) || "discovery") + "-call-with-julia.ics"; document.body.appendChild(a); a.click(); a.remove();
   });
 
   // ---------- 08 and 09 ----------
-  // The proposal call's links (Figma 18, screens 10 to 12) use the same screens with its own words.
+  // The proposal call's links (Figma 18, screens 10 to 12) and the onboarding call's (screens 13 to 17)
+  // use the same screens with their own words. The onboarding call is always Google Meet, about an hour.
   function proposal() { return !!(state.booking && state.booking.call === "proposal"); }
+  function onboarding() { return !!(state.booking && state.booking.call === "onboarding"); }
+  function callName() { return proposal() ? "proposal call" : onboarding() ? "onboarding call" : "call"; }
   function showCancel() {
     var b = state.booking;
-    $("cancel-title").textContent = proposal() ? "Cancel your proposal call?" : "Cancel your call?";
-    $("cancel-help").textContent = "The time opens back up, and Julia gets a note that you cancelled. If a different " + (proposal() ? "day" : "week") + " works better, you can move the call instead.";
+    $("cancel-title").textContent = "Cancel your " + callName() + "?";
+    $("cancel-help").textContent = "The time opens back up, and Julia gets a note that you cancelled. If a different " + (proposal() || onboarding() ? "day" : "week") + " works better, you can move the call instead.";
     $("cancel-day").textContent = longDay(b.callAt); $("cancel-line").textContent = line(b);
     show(8);
   }
@@ -515,8 +526,8 @@ form[data-rbc=form] { margin: 0; }
       busy(false);
       if (!r.ok) return problem(r);
       state.booking = r.booking;
-      $("cancelled-title").textContent = proposal() ? "Your proposal call is cancelled" : "Your call is cancelled";
-      $("cancelled-note").textContent = "Julia has your note, and a cancellation email is on the way to " + r.booking.email + ". " + (proposal() ? "If you still want to go through your proposal together, pick a new time whenever you’re ready." : "If you want to talk another time, pick a new time whenever you’re ready.");
+      $("cancelled-title").textContent = "Your " + callName() + " is cancelled";
+      $("cancelled-note").textContent = "Julia has your note, and a cancellation email is on the way to " + r.booking.email + ". " + (proposal() ? "If you still want to go through your proposal together, pick a new time whenever you’re ready." : onboarding() ? "When you’re ready, pick a new time for your onboarding call." : "If you want to talk another time, pick a new time whenever you’re ready.");
       state.mode = "rebook"; show(9);
     }).catch(function () { busy(false); problem(); });
   }
@@ -526,13 +537,21 @@ form[data-rbc=form] { margin: 0; }
     state.mode = "problem"; show(10);
   }
   function startMove(b) {
-    state.mode = state.mode === "rebook" || b.status === "cancelled" ? "rebook" : "move";
-    var move = state.mode === "move";
-    $("move-eyebrow").hidden = !move;
-    $("move-eyebrow").textContent = proposal() ? "Move your proposal call" : "Move your call";
+    state.mode = state.mode === "rebook" || b.status === "cancelled" || !b.status ? "rebook" : "move";
+    var move = state.mode === "move", ob = onboarding();
+    $("move-eyebrow").hidden = !move && !ob;
+    $("move-eyebrow").textContent = move ? "Move your " + callName() : "Book your onboarding call";
     $("pick-title").textContent = move ? "Pick a new time" : "Pick a time";
-    $("pick-lead").textContent = move ? (proposal() ? "Your proposal call now: " : "Your call now: ") + longDay(b.callAt) + " at " + fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + ". Pick a new day and time below." : "30 minutes with Julia";
-    root.querySelector('input[name="callKind"][value="' + (b.callKind === "Phone call" ? "Phone call" : "Google Meet") + '"]').checked = true;
+    $("pick-lead").textContent = move
+      ? "Your " + callName() + " now: " + longDay(b.callAt) + " at " + fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + ". Pick a new " + (ob ? "time" : "day and time") + " below."
+      : ob ? "About an hour on Google Meet with Julia, to connect your bank, credit card, and loan accounts." : "30 minutes with Julia";
+    // Screen sharing: no phone option for the onboarding call.
+    var phoneChoice = root.querySelector('input[name="callKind"][value="Phone call"]').closest(".rfc-choice");
+    phoneChoice.hidden = ob;
+    $("meet-options").classList.toggle("rbc-meet--one", ob);
+    $("meet-legend").classList.toggle("rbc-sr", ob);
+    $("meet-note").hidden = ob;
+    root.querySelector('input[name="callKind"][value="' + (!ob && b.callKind === "Phone call" ? "Phone call" : "Google Meet") + '"]').checked = true;
     form.elements.callPhone.value = b.phone || "";
     state.day = null; state.time = null; state.month = null;
     show(5);
@@ -563,8 +582,10 @@ form[data-rbc=form] { margin: 0; }
       state.booking = r.booking;
       // Marked a no-show: the 03e email's "Reschedule your Call" opens straight on Pick a time.
       if (r.booking.status === "no-show") { state.mode = "rebook"; startMove(r.booking); return; }
-      // A cancelled proposal call: 04.3d's "Book a new time" opens straight on Pick a time.
-      if (r.booking.status === "cancelled" && r.booking.call === "proposal") { state.mode = "rebook"; startMove(r.booking); return; }
+      // A cancelled proposal or onboarding call: 04.3d's and 05d's "Book a new time" open straight on Pick a time.
+      if (r.booking.status === "cancelled" && (r.booking.call === "proposal" || r.booking.call === "onboarding")) { state.mode = "rebook"; startMove(r.booking); return; }
+      // The onboarding call before it's booked: 02a or 02b's "Book your onboarding call" (screen 13).
+      if (!r.booking.status) { state.mode = "rebook"; startMove(r.booking); return; }
       if (r.booking.status === "cancelled") { state.mode = "rebook"; $("cancelled-note").textContent = "This call was cancelled. If you want to talk another time, pick a new time whenever you’re ready."; show(9); return; }
       if (params.get("cancel")) { state.mode = "cancel"; showCancel(); } else startMove(r.booking);
     }).catch(function () { problem(); });
@@ -579,7 +600,7 @@ form[data-rbc=form] { margin: 0; }
       [[15, 0], [15, 30], [17, 30], [19, 0], [19, 30], [21, 0]].forEach(function (h) { times.push(new Date(Date.UTC(y, m, dd, h[0], h[1])).toISOString()); });
       days.push({ date: y + "-" + String(m + 1).padStart(2, "0") + "-" + String(dd).padStart(2, "0"), times: wd === 5 ? times.slice(0, 2) : times });
     }
-    var sample = { token: "demo", firstName: (data && data.booking && data.booking.firstName) || "Marcus", email: (data && data.booking && data.booking.email) || "marcus@reedhomesolutions.com", phone: (data && (data.phone || (data.booking && data.booking.phone))) || "(704) 555-0142", callAt: (data && (data.callAt || (data.booking && data.booking.callAt))) || days[1].times[1], callKind: (data && (data.callKind || (data.booking && data.booking.callKind))) || "Google Meet", call: params.get("demo") === "proposal" ? "proposal" : "discovery", status: "booked", googleCalendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE", ics: "BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n" };
+    var sample = { token: "demo", firstName: (data && data.booking && data.booking.firstName) || "Marcus", email: (data && data.booking && data.booking.email) || "marcus@reedhomesolutions.com", phone: (data && (data.phone || (data.booking && data.booking.phone))) || "(704) 555-0142", callAt: (data && (data.callAt || (data.booking && data.booking.callAt))) || days[1].times[1], callKind: (data && (data.callKind || (data.booking && data.booking.callKind))) || "Google Meet", call: params.get("demo") === "proposal" || params.get("demo") === "onboarding" ? params.get("demo") : "discovery", status: action === "lookup" && params.get("onboard") ? "" : "booked", minutes: params.get("demo") === "onboarding" ? 60 : 30, googleCalendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE", ics: "BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n" };
     var res = action === "times" ? { ok: true, days: days } : action === "cancel" ? { ok: true, booking: Object.assign(sample, { status: "cancelled" }) } : { ok: true, booking: sample };
     return new Promise(function (ok) { setTimeout(function () { ok(res); }, 300); });
   }
