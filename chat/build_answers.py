@@ -230,7 +230,7 @@ STEPS = [{"num": n, "title": html.unescape(t).strip(), "meta": html.unescape(m),
          for n, t, m, x in re.findall(r'rds-step__num">(\d+)</span><div><p class="rds-step__title">(.*?)<span class="rds-tag">(.*?)</span></p><p class="rds-body-sm">(.*?)</p>', _ph)]
 if len(STEPS) != 4:
     raise SystemExit("Process steps not parsed")
-add("proc-steps", "What happens after I get in touch?",
+add("proc-steps", "What happens after I book a call?",
     [line("home/4-process-a-left.html", "Four steps from the first call"), {"steps": STEPS}],
     "Home", "/", ["what is the process", "how does it work", "what are the steps", "onboarding"],
     ["process", "steps", "how it works", "after"], ["proc-call", "proc-quote"])
