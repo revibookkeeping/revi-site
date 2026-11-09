@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REVI HQ</title>
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-title" content="REVI HQ">
+<meta name="theme-color" content="#871AAE">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="../styles.css">
+<script>
+  // REVI HQ home screen launcher (Dan, Nov 9 2026). REVI HQ runs inside Google's Apps Script page,
+  // which an iPhone can't read a home screen icon from. This page carries the icon. Opened from the
+  // home screen it goes straight to REVI HQ; opened in Safari the first time, it shows how to add it.
+  var HQ = 'https://script.google.com/a/macros/revibookkeeping.com/s/AKfycbx_iXuyvZE_gXlQsRLf4xplvuJzoeIUse-l13X1PNw4TNHjweVGPaUDhiXKothU9P9t8w/exec';
+  var setup = /[?&]setup\b/.test(location.search);
+  var standalone = window.navigator.standalone === true || (window.matchMedia && matchMedia('(display-mode: standalone)').matches);
+  var seen = false;
+  try { seen = localStorage.getItem('revi-hq-launcher') === '1'; localStorage.setItem('revi-hq-launcher', '1'); } catch (e) {}
+  if (!setup && (standalone || seen)) location.replace(HQ);
+</script>
+<style>
+  body { margin: 0; background: var(--rds-surface-page); color: var(--rds-text-primary); font-family: var(--rds-sans); }
+  main { max-width: 420px; margin: 0 auto; padding: var(--rds-space-48) var(--rds-space-16); display: flex; flex-direction: column; gap: var(--rds-space-24); }
+  .icon { width: 96px; height: 96px; border-radius: 22px; }
+  h1 { font-family: var(--rds-serif); font-weight: 600; font-size: 32px; line-height: 1.2; margin: 0; }
+  ol { margin: 0; padding-left: 1.25em; display: flex; flex-direction: column; gap: var(--rds-space-8); font-size: 17px; line-height: 1.5; }
+  p { margin: 0; font-size: 15px; line-height: 1.5; color: var(--rds-text-secondary); }
+  a.open { display: block; text-align: center; padding: 14px var(--rds-space-24); border-radius: var(--rds-radius-pill); background: var(--rds-brand); color: var(--rds-text-on-brand); font-weight: 700; font-size: 17px; text-decoration: none; }
+  a.open:hover { background: var(--rds-brand-hover); }
+  a.open:focus-visible { outline: 3px solid var(--rds-border-focus); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="icon-180.png" alt="">
+  <h1>Add REVI HQ to your Home Screen</h1>
+  <ol>
+    <li>Tap the Share button in Safari.</li>
+    <li>Tap Add to Home Screen, then Add.</li>
+  </ol>
+  <p>From then on, the REVI HQ icon opens REVI HQ directly.</p>
+  <a class="open" id="open" href="#">Open REVI HQ</a>
+</main>
+<script>document.getElementById('open').href = HQ;</script>
+</body>
+</html>
