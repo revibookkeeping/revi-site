@@ -134,15 +134,15 @@
 
       <!-- 08 Cancel your call -->
       <section class="rfc-step" data-step="8" tabindex="-1" hidden>
-        <h2 class="rfc-title">Cancel your call?</h2>
+        <h2 class="rfc-title" data-rbc="cancel-title">Cancel your call?</h2>
         <div class="rbc-box rbc-box--sm"><p class="rbc-box__day" data-rbc="cancel-day"></p><p class="rbc-box__line" data-rbc="cancel-line"></p></div>
-        <p class="rbc-note">The time opens back up, and Julia gets a note that you cancelled. If a different week works better, you can move the call instead.</p>
+        <p class="rbc-note" data-rbc="cancel-help">The time opens back up, and Julia gets a note that you cancelled. If a different week works better, you can move the call instead.</p>
         <div class="rfc-field"><label for="rbc-note">Anything you want Julia to know? <span class="rbc-opt">(optional)</span></label><input id="rbc-note" name="cancelNote" type="text"></div>
       </section>
 
       <!-- 09 Call cancelled -->
       <section class="rfc-step" data-step="9" tabindex="-1" hidden>
-        <h2 class="rfc-title">Your call is cancelled</h2>
+        <h2 class="rfc-title" data-rbc="cancelled-title">Your call is cancelled</h2>
         <p class="rbc-note" data-rbc="cancelled-note"></p>
       </section>
 
@@ -500,8 +500,12 @@ form[data-rbc=form] { margin: 0; }
   });
 
   // ---------- 08 and 09 ----------
+  // The proposal call's links (Figma 18, screens 10 to 12) use the same screens with its own words.
+  function proposal() { return !!(state.booking && state.booking.call === "proposal"); }
   function showCancel() {
     var b = state.booking;
+    $("cancel-title").textContent = proposal() ? "Cancel your proposal call?" : "Cancel your call?";
+    $("cancel-help").textContent = "The time opens back up, and Julia gets a note that you cancelled. If a different " + (proposal() ? "day" : "week") + " works better, you can move the call instead.";
     $("cancel-day").textContent = longDay(b.callAt); $("cancel-line").textContent = line(b);
     show(8);
   }
@@ -511,7 +515,8 @@ form[data-rbc=form] { margin: 0; }
       busy(false);
       if (!r.ok) return problem(r);
       state.booking = r.booking;
-      $("cancelled-note").textContent = "Julia has your note, and a cancellation email is on the way to " + r.booking.email + ". If you want to talk another time, pick a new time whenever you’re ready.";
+      $("cancelled-title").textContent = proposal() ? "Your proposal call is cancelled" : "Your call is cancelled";
+      $("cancelled-note").textContent = "Julia has your note, and a cancellation email is on the way to " + r.booking.email + ". " + (proposal() ? "If you still want to go through your proposal together, pick a new time whenever you’re ready." : "If you want to talk another time, pick a new time whenever you’re ready.");
       state.mode = "rebook"; show(9);
     }).catch(function () { busy(false); problem(); });
   }
@@ -524,8 +529,9 @@ form[data-rbc=form] { margin: 0; }
     state.mode = state.mode === "rebook" || b.status === "cancelled" ? "rebook" : "move";
     var move = state.mode === "move";
     $("move-eyebrow").hidden = !move;
+    $("move-eyebrow").textContent = proposal() ? "Move your proposal call" : "Move your call";
     $("pick-title").textContent = move ? "Pick a new time" : "Pick a time";
-    $("pick-lead").textContent = move ? "Your call now: " + longDay(b.callAt) + " at " + fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + ". Pick a new day and time below." : "30 minutes with Julia";
+    $("pick-lead").textContent = move ? (proposal() ? "Your proposal call now: " : "Your call now: ") + longDay(b.callAt) + " at " + fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + ". Pick a new day and time below." : "30 minutes with Julia";
     root.querySelector('input[name="callKind"][value="' + (b.callKind === "Phone call" ? "Phone call" : "Google Meet") + '"]').checked = true;
     form.elements.callPhone.value = b.phone || "";
     state.day = null; state.time = null; state.month = null;
@@ -557,6 +563,8 @@ form[data-rbc=form] { margin: 0; }
       state.booking = r.booking;
       // Marked a no-show: the 03e email's "Reschedule your Call" opens straight on Pick a time.
       if (r.booking.status === "no-show") { state.mode = "rebook"; startMove(r.booking); return; }
+      // A cancelled proposal call: 04.3d's "Book a new time" opens straight on Pick a time.
+      if (r.booking.status === "cancelled" && r.booking.call === "proposal") { state.mode = "rebook"; startMove(r.booking); return; }
       if (r.booking.status === "cancelled") { state.mode = "rebook"; $("cancelled-note").textContent = "This call was cancelled. If you want to talk another time, pick a new time whenever you’re ready."; show(9); return; }
       if (params.get("cancel")) { state.mode = "cancel"; showCancel(); } else startMove(r.booking);
     }).catch(function () { problem(); });
@@ -571,7 +579,7 @@ form[data-rbc=form] { margin: 0; }
       [[15, 0], [15, 30], [17, 30], [19, 0], [19, 30], [21, 0]].forEach(function (h) { times.push(new Date(Date.UTC(y, m, dd, h[0], h[1])).toISOString()); });
       days.push({ date: y + "-" + String(m + 1).padStart(2, "0") + "-" + String(dd).padStart(2, "0"), times: wd === 5 ? times.slice(0, 2) : times });
     }
-    var sample = { token: "demo", firstName: (data && data.booking && data.booking.firstName) || "Marcus", email: (data && data.booking && data.booking.email) || "marcus@reedhomesolutions.com", phone: (data && (data.phone || (data.booking && data.booking.phone))) || "(704) 555-0142", callAt: (data && (data.callAt || (data.booking && data.booking.callAt))) || days[1].times[1], callKind: (data && (data.callKind || (data.booking && data.booking.callKind))) || "Google Meet", status: "booked", googleCalendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE", ics: "BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n" };
+    var sample = { token: "demo", firstName: (data && data.booking && data.booking.firstName) || "Marcus", email: (data && data.booking && data.booking.email) || "marcus@reedhomesolutions.com", phone: (data && (data.phone || (data.booking && data.booking.phone))) || "(704) 555-0142", callAt: (data && (data.callAt || (data.booking && data.booking.callAt))) || days[1].times[1], callKind: (data && (data.callKind || (data.booking && data.booking.callKind))) || "Google Meet", call: params.get("demo") === "proposal" ? "proposal" : "discovery", status: "booked", googleCalendarUrl: "https://calendar.google.com/calendar/render?action=TEMPLATE", ics: "BEGIN:VCALENDAR\r\nEND:VCALENDAR\r\n" };
     var res = action === "times" ? { ok: true, days: days } : action === "cancel" ? { ok: true, booking: Object.assign(sample, { status: "cancelled" }) } : { ok: true, booking: sample };
     return new Promise(function (ok) { setTimeout(function () { ok(res); }, 300); });
   }
