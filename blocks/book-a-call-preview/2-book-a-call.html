@@ -17,19 +17,10 @@
       <!-- Not for people: bots fill it, the booking service ignores anything that does. -->
       <div class="rbc-hp" aria-hidden="true"><label>Company website <input type="text" name="company_website" tabindex="-1" autocomplete="off"></label></div>
 
-      <!-- 01 About you -->
+      <!-- 01 Your business -->
       <section class="rfc-step" data-step="1" tabindex="-1">
         <h1 class="rfc-title">Book a call with Julia</h1>
         <p class="rfc-lead">A few quick questions, then you pick a time that works for you. It takes about a minute.</p>
-        <div class="rfc-field" data-req="name"><label for="rbc-first">First name</label><input id="rbc-first" name="firstName" type="text" autocomplete="given-name"></div>
-        <div class="rfc-field" data-req="name"><label for="rbc-last">Last name</label><input id="rbc-last" name="lastName" type="text" autocomplete="family-name"></div>
-        <div class="rfc-field" data-req="email"><label for="rbc-email">Email</label><input id="rbc-email" name="email" type="email" autocomplete="email" inputmode="email"></div>
-        <div class="rfc-field" data-check="phone"><label for="rbc-phone">Phone <span class="rbc-opt">(optional)</span></label><input id="rbc-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
-        <div class="rfc-field"><label for="rbc-business">Business name <span class="rbc-opt">(optional)</span></label><input id="rbc-business" name="business" type="text" autocomplete="organization"></div>
-      </section>
-
-      <!-- 02 Your business -->
-      <section class="rfc-step" data-step="2" tabindex="-1" hidden>
         <fieldset class="rfc-field" data-req="pick"><legend>What best describes your business?</legend>
           <div class="rfc-options" data-name="kind" data-type="radio">
             <span data-value="Landlord">Long-term rentals</span>
@@ -49,8 +40,8 @@
         </fieldset>
       </section>
 
-      <!-- 03 Your books -->
-      <section class="rfc-step" data-step="3" tabindex="-1" hidden>
+      <!-- 02 Your books -->
+      <section class="rfc-step" data-step="2" tabindex="-1" hidden>
         <fieldset class="rfc-field" data-req="pick"><legend>What do you use for your books now?</legend>
           <div class="rfc-options rfc-options--chips rfc-options--two" data-name="software" data-type="radio">
             <span>QuickBooks Online</span><span>QuickBooks Desktop</span><span>Xero</span><span>Wave</span><span>Something else</span><span>Nothing yet</span>
@@ -65,8 +56,8 @@
         <div class="rfc-field"><label for="rbc-else">Anything else I should know? <span class="rbc-opt">(optional)</span></label><textarea id="rbc-else" name="anythingElse" rows="3"></textarea></div>
       </section>
 
-      <!-- 04 What brought you here -->
-      <section class="rfc-step" data-step="4" tabindex="-1" hidden>
+      <!-- 03 What brought you here -->
+      <section class="rfc-step" data-step="3" tabindex="-1" hidden>
         <fieldset class="rfc-field" data-req="pick"><legend>What's driving you to look for a bookkeeper now?</legend>
           <div class="rfc-options" data-name="driver" data-type="radio">
             <span>Tax time is coming and I want to be ready</span>
@@ -85,6 +76,16 @@
         <div class="rfc-field" data-show="referral" hidden><label for="rbc-thank">Who can we thank? <span class="rbc-opt">(optional)</span></label><input id="rbc-thank" name="referredBy" type="text"></div>
       </section>
 
+      <!-- 04 About you (contact details come last, right before the calendar: Julia, Nov 9 2026) -->
+      <section class="rfc-step" data-step="4" tabindex="-1" hidden>
+        <h2 class="rfc-title">How can Julia reach you?</h2>
+        <div class="rfc-field" data-req="name"><label for="rbc-first">First name</label><input id="rbc-first" name="firstName" type="text" autocomplete="given-name"></div>
+        <div class="rfc-field" data-req="name"><label for="rbc-last">Last name</label><input id="rbc-last" name="lastName" type="text" autocomplete="family-name"></div>
+        <div class="rfc-field" data-req="email"><label for="rbc-email">Email</label><input id="rbc-email" name="email" type="email" autocomplete="email" inputmode="email"></div>
+        <div class="rfc-field" data-check="phone"><label for="rbc-phone">Phone <span class="rbc-opt">(optional)</span></label><input id="rbc-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div>
+        <div class="rfc-field"><label for="rbc-business">Business name <span class="rbc-opt">(optional)</span></label><input id="rbc-business" name="business" type="text" autocomplete="organization"></div>
+      </section>
+
       <!-- 05 Pick a time (also 07 Move your call, and a new time after cancelling) -->
       <section class="rfc-step" data-step="5" tabindex="-1" hidden>
         <p class="rbc-eyebrow" data-rbc="move-eyebrow" hidden>Move your call</p>
@@ -99,7 +100,7 @@
         <div class="rfc-field" data-rbc="phone-field" data-check="callphone" hidden>
           <label for="rbc-callphone">Your phone number</label>
           <input id="rbc-callphone" name="callPhone" type="tel" autocomplete="tel" inputmode="tel">
-          <p class="rbc-after rbc-after--phone" data-rbc="phone-help">Filled in from step 1. Change it if a different number is better.</p>
+          <p class="rbc-after rbc-after--phone" data-rbc="phone-help">Filled in from your contact details. Change it if a different number is better.</p>
         </div>
         <div class="rfc-field rbc-when" data-rbc="when" data-req="time">
           <div class="rbc-cal" data-rbc="cal" aria-live="polite">
@@ -376,8 +377,16 @@ form[data-rbc=form] { margin: 0; }
 
   // ---------- screens ----------
   var LABELS = { 1: "Next", 2: "Next", 3: "Next", 4: "Next: pick a time", 5: "Book my call", 6: "Done", 8: "Cancel my call", 9: "Pick a new time", 10: "Book a call" };
+  // Step events for Clarity and Google Analytics, once per step per visit, nothing personal sent (Nov 2026).
+  var tracked = {};
+  function track(name) {
+    if (tracked[name]) return; tracked[name] = true;
+    try { if (window.clarity) window.clarity("event", name); } catch (e) {}
+    try { if (window.gtag) window.gtag("event", name); } catch (e) {}
+  }
   function show(n) {
     state.step = n;
+    if (state.mode === "book" && n <= 5) track("bac_step_" + n);
     steps.forEach(function (s) { s.hidden = Number(s.dataset.step) !== n; });
     var q = state.mode === "book" && n <= 5;
     count.textContent = q ? "Step " + n + " of 5" : "";
@@ -488,6 +497,7 @@ form[data-rbc=form] { margin: 0; }
   function line(b) { return fmt(b.callAt, { hour: "numeric", minute: "2-digit" }) + " " + (ZONES[state.zone] || "") + " · " + (onboarding() ? "about an hour on Google Meet" : b.callKind === "Phone call" ? "30 minute phone call" : "30 minutes on Google Meet"); }
   function booked() {
     var b = state.booking;
+    if (state.mode === "book") track("bac_booked");
     $("booked-title").textContent = "You're booked, " + b.firstName;
     $("booked-day").textContent = longDay(b.callAt);
     $("booked-line").textContent = line(b);
